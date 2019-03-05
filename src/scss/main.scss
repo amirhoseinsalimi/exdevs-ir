@@ -1,105 +1,125 @@
 @import 'variables';
 
 /*****************************
-*      Utitlity clasess
+*      Utility classes
 *****************************/
 .red-border {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .green-border {
-    border: 1px solid green;
+  border: 1px solid green;
 }
 
 .blue-border {
-    border: 1px solid blue;
+  border: 1px solid blue;
 }
 
 .text-light-gray {
-    color: $light-gray-color !important;
+  color: $light-gray-color !important;
 }
 
 .text-dark-gray {
-    color: $dark-gray-color !important;
+  color: $dark-gray-color !important;
 }
 
-.text-web {
-    color: $web-team-color;
+.text-web, .team-1 {
+  color: $web-team-color;
 }
 
 .bg-web {
-    background-color: $web-team-color;
+  background-color: $web-team-color;
 }
 
-.text-app {
-    color: $app-team-color;
+.text-app, .team-2 {
+  color: $app-team-color;
 }
 
 .bg-app {
-    background-color: $app-team-color;
+  background-color: $app-team-color;
 }
 
-.text-game {
-    color: $game-team-color;
+.text-game, .team-3 {
+  color: $game-team-color;
 }
 
 .bg-game {
-    background-color: $game-team-color;
+  background-color: $game-team-color;
 }
 
-.text-server {
-    color: $server-team-color;
+.text-server, .team-4 {
+  color: $server-team-color;
 }
 
 .bg-app {
-    background-color: $server-team-color;
+  background-color: $server-team-color;
 }
 
+.text-light-gray {
+  color: $lighter-gray-color;
+}
+
+.bg-app {
+  background-color: $lighter-gray-color;
+}
 
 /*****************************
 *       General rules
 *****************************/
 body {
-    color: tomato;
-    width: 100vw;
-    height: 100vh;
-    // border: 1px solid red;
-    background: #000;
+  color: tomato;
+  width: 100vw;
+  height: 100vh;
+  // border: 1px solid red;
+  background: #000;
 }
 
 .text-decoration-none {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .container > .row:last-child {
-    // position: fixed;
-    // bottom: 0;
-} 
-
+  // position: fixed;
+  // bottom: 0;
+}
 
 /*****************************
 *       Navbar rules
 *****************************/
 .navbar {
-    background-color: $transparent-color !important;
-    height: 80px;
+  background-color: $transparent-color !important;
+  height: 80px;
 
-    a.navbar-brand {
-        color: #fff !important;
+  a.navbar-brand {
+    color: #fff !important;
+  }
+
+  a.nav-link {
+    padding: 10px 20px !important;
+    margin: 0 10px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $light-gray-color !important;
     }
+  }
 
-    a.nav-link {
-        padding: 10px 20px !important;
-        margin: 0 10px;
-        transition: color 0.2s;
-
-        &:hover {
-            color:$light-gray-color !important;
-        }
-    }
-    
 }
 
 .container-fluid {
-    // border: 1px solid red;
+  // border: 1px solid red;
+}
+
+object {
+  width: 30px;
+  height: 30px;
+}
+
+.progress {
+  margin: 10px;
+  height: 3px;
+
+  .progress-bar {
+
+  }
 }

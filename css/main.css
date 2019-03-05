@@ -1,5 +1,5 @@
 /*****************************
-*      Utitlity clasess
+*      Utility classes
 *****************************/
 .red-border {
   border: 1px solid red;
@@ -21,7 +21,7 @@
   color: #707070 !important;
 }
 
-.text-web {
+.text-web, .team-1 {
   color: #f0db4f;
 }
 
@@ -29,7 +29,7 @@
   background-color: #f0db4f;
 }
 
-.text-app {
+.text-app, .team-2 {
   color: #4ff05f;
 }
 
@@ -37,7 +37,7 @@
   background-color: #4ff05f;
 }
 
-.text-game {
+.text-game, .team-3 {
   color: #f04f4f;
 }
 
@@ -45,12 +45,20 @@
   background-color: #f04f4f;
 }
 
-.text-server {
+.text-server, .team-4 {
   color: #4f8af0;
 }
 
 .bg-app {
   background-color: #4f8af0;
+}
+
+.text-light-gray {
+  color: #f1f1f1;
+}
+
+.bg-app {
+  background-color: #f1f1f1;
 }
 
 /*****************************
@@ -84,6 +92,16 @@ body {
 }
 .navbar a.nav-link:hover {
   color: #e5e5e5 !important;
+}
+
+object {
+  width: 30px;
+  height: 30px;
+}
+
+.progress {
+  margin: 10px;
+  height: 3px;
 }
 
 /*# sourceMappingURL=main.css.map */
