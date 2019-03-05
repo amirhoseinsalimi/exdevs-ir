@@ -1,36 +1,105 @@
 @import 'variables';
 
 /*****************************
+*      Utitlity clasess
+*****************************/
+.red-border {
+    border: 1px solid red;
+}
+
+.green-border {
+    border: 1px solid green;
+}
+
+.blue-border {
+    border: 1px solid blue;
+}
+
+.text-light-gray {
+    color: $light-gray-color !important;
+}
+
+.text-dark-gray {
+    color: $dark-gray-color !important;
+}
+
+.text-web {
+    color: $web-team-color;
+}
+
+.bg-web {
+    background-color: $web-team-color;
+}
+
+.text-app {
+    color: $app-team-color;
+}
+
+.bg-app {
+    background-color: $app-team-color;
+}
+
+.text-game {
+    color: $game-team-color;
+}
+
+.bg-game {
+    background-color: $game-team-color;
+}
+
+.text-server {
+    color: $server-team-color;
+}
+
+.bg-app {
+    background-color: $server-team-color;
+}
+
+
+/*****************************
 *       General rules
 *****************************/
 body {
     color: tomato;
+    width: 100vw;
+    height: 100vh;
+    // border: 1px solid red;
+    background: #000;
 }
 
 .text-decoration-none {
     text-decoration: none;
 }
 
+.container > .row:last-child {
+    // position: fixed;
+    // bottom: 0;
+} 
+
 
 /*****************************
 *       Navbar rules
 *****************************/
 .navbar {
-    background-color: $primary-color !important;
+    background-color: $transparent-color !important;
+    height: 80px;
 
-    a {
-        color: $solid-white !important;
+    a.navbar-brand {
+        color: #fff !important;
+    }
+
+    a.nav-link {
+        padding: 10px 20px !important;
+        margin: 0 10px;
+        transition: color 0.2s;
+
+        &:hover {
+            color:$light-gray-color !important;
+        }
     }
     
 }
 
-/*****************************
-*       Navbar rules
-*****************************/
-.drawer {
-    position: relative;
-    left: calc(100vw - 270px);
-    width: 240px;
-    border: 1px solid red;
-    min-height: 100vh;
+.container-fluid {
+    // border: 1px solid red;
 }

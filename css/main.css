@@ -1,8 +1,66 @@
 /*****************************
+*      Utitlity clasess
+*****************************/
+.red-border {
+  border: 1px solid red;
+}
+
+.green-border {
+  border: 1px solid green;
+}
+
+.blue-border {
+  border: 1px solid blue;
+}
+
+.text-light-gray {
+  color: #e5e5e5 !important;
+}
+
+.text-dark-gray {
+  color: #707070 !important;
+}
+
+.text-web {
+  color: #f0db4f;
+}
+
+.bg-web {
+  background-color: #f0db4f;
+}
+
+.text-app {
+  color: #4ff05f;
+}
+
+.bg-app {
+  background-color: #4ff05f;
+}
+
+.text-game {
+  color: #f04f4f;
+}
+
+.bg-game {
+  background-color: #f04f4f;
+}
+
+.text-server {
+  color: #4f8af0;
+}
+
+.bg-app {
+  background-color: #4f8af0;
+}
+
+/*****************************
 *       General rules
 *****************************/
 body {
   color: tomato;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
 }
 
 .text-decoration-none {
@@ -13,21 +71,19 @@ body {
 *       Navbar rules
 *****************************/
 .navbar {
-  background-color: #29B6F6 !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  height: 80px;
 }
-.navbar a {
+.navbar a.navbar-brand {
   color: #fff !important;
 }
-
-/*****************************
-*       Navbar rules
-*****************************/
-.drawer {
-  position: relative;
-  left: calc(100vw - 270px);
-  width: 240px;
-  border: 1px solid red;
-  min-height: 100vh;
+.navbar a.nav-link {
+  padding: 10px 20px !important;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+.navbar a.nav-link:hover {
+  color: #e5e5e5 !important;
 }
 
 /*# sourceMappingURL=main.css.map */

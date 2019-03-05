@@ -5,5 +5,26 @@ head
 body
     include _partials/header.pug
 
-    .container
-        | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, velit! Consectetur, ipsam cumque dolorum vero voluptas nihil delectus ipsa adipisci rem corrupti molestiae sequi fugit alias quaerat? Repudiandae, fugit error!
+    .container-fluid
+        .container
+            .row
+                .col-12
+                    h1.text-web IOExecption
+            .row
+                .col-12
+                    h4: small.text-muted catch the exception!
+            .row.mb-5
+                .col-8    
+                    p.text-justify.text-web
+                        | Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, sit beatae molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse, cumque exercitationem dignissimos, quibusdam ipsa nostrum.
+            .row
+                .col-4.offset-8(style="min-height: 100px;")
+                    h5.text-web Web development
+                    .progress.mb-3(style='height: 3px;')
+                        .progress-bar.bg-web(role='progressbar', style='width: 50%;', aria-valuenow='50', aria-valuemin='0', aria-valuemax='100')
+                    p.text-web
+                        | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, doloremque.
+
+                    
+
+
