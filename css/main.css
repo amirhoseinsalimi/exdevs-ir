@@ -1,5 +1,33 @@
+/*****************************
+*       General rules
+*****************************/
 body {
   color: tomato;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+/*****************************
+*       Navbar rules
+*****************************/
+.navbar {
+  background-color: #29B6F6 !important;
+}
+.navbar a {
+  color: #fff !important;
+}
+
+/*****************************
+*       Navbar rules
+*****************************/
+.drawer {
+  position: relative;
+  left: calc(100vw - 270px);
+  width: 240px;
+  border: 1px solid red;
+  min-height: 100vh;
 }
 
 /*# sourceMappingURL=main.css.map */

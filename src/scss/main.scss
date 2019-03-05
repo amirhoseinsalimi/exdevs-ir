@@ -1,5 +1,36 @@
 @import 'variables';
 
+/*****************************
+*       General rules
+*****************************/
 body {
     color: tomato;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+
+/*****************************
+*       Navbar rules
+*****************************/
+.navbar {
+    background-color: $primary-color !important;
+
+    a {
+        color: $solid-white !important;
+    }
+    
+}
+
+/*****************************
+*       Navbar rules
+*****************************/
+.drawer {
+    position: relative;
+    left: calc(100vw - 270px);
+    width: 240px;
+    border: 1px solid red;
+    min-height: 100vh;
 }
