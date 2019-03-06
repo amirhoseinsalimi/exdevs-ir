@@ -21,6 +21,10 @@
   color: #707070 !important;
 }
 
+.text-white {
+  color: #f1f1f1;
+}
+
 .text-web, .team-1 {
   color: #f0db4f;
 }
@@ -49,7 +53,7 @@
   color: #4f8af0;
 }
 
-.bg-app {
+.bg-server {
   background-color: #4f8af0;
 }
 
@@ -57,12 +61,8 @@
   color: #f1f1f1;
 }
 
-.bg-app {
-  background-color: #f1f1f1;
-}
-
 /*****************************
-*       General rules
+*          General
 *****************************/
 body {
   color: tomato;
@@ -76,7 +76,7 @@ body {
 }
 
 /*****************************
-*       Navbar rules
+*           Navbar
 *****************************/
 .navbar {
   background-color: rgba(0, 0, 0, 0) !important;
@@ -94,6 +94,9 @@ body {
   color: #e5e5e5 !important;
 }
 
+/*****************************
+*           Main
+*****************************/
 object {
   width: 30px;
   height: 30px;
@@ -102,6 +105,38 @@ object {
 .progress {
   margin: 10px;
   height: 3px;
+}
+/*****************************
+*       Contact form
+*****************************/
+.contact-form .form-group.col-12 {
+  padding: 0;
+  margin-bottom: -15px;
+}
+.contact-form .form-group .form-control {
+  background: rgba(40, 40, 40, 0.7);
+  color: #f1f1f1;
+  border: 0;
+}
+.contact-form .form-group .form-control:focus {
+  border-color: #f1f1f1;
+  outline: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(100, 100, 100, 0.6);
+}
+.contact-form .form-group textarea {
+  resize: none;
+}
+.contact-form .btn.btn-primary {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 20px;
+  background: #707070;
+}
+.contact-form a {
+  text-decoration: none;
+  position: relative;
+  top: 5px;
+  color: #e5e5e5;
 }
 
 /*# sourceMappingURL=main.css.map */

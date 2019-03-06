@@ -16,11 +16,15 @@
 }
 
 .text-light-gray {
-  color: $light-gray-color !important;
+  color: $light-gray !important;
 }
 
 .text-dark-gray {
-  color: $dark-gray-color !important;
+  color: $dark-gray !important;
+}
+
+.text-white {
+  color: $white;
 }
 
 .text-web, .team-1 {
@@ -51,26 +55,21 @@
   color: $server-team-color;
 }
 
-.bg-app {
+.bg-server {
   background-color: $server-team-color;
 }
 
 .text-light-gray {
-  color: $lighter-gray-color;
-}
-
-.bg-app {
-  background-color: $lighter-gray-color;
+  color: $white;
 }
 
 /*****************************
-*       General rules
+*          General
 *****************************/
 body {
   color: tomato;
   width: 100vw;
   height: 100vh;
-  // border: 1px solid red;
   background: #000;
 }
 
@@ -78,16 +77,11 @@ body {
   text-decoration: none;
 }
 
-.container > .row:last-child {
-  // position: fixed;
-  // bottom: 0;
-}
-
 /*****************************
-*       Navbar rules
+*           Navbar
 *****************************/
 .navbar {
-  background-color: $transparent-color !important;
+  background-color: $transparent !important;
   height: 80px;
 
   a.navbar-brand {
@@ -100,16 +94,15 @@ body {
     transition: color 0.2s;
 
     &:hover {
-      color: $light-gray-color !important;
+      color: $light-gray !important;
     }
   }
 
 }
 
-.container-fluid {
-  // border: 1px solid red;
-}
-
+/*****************************
+*           Main
+*****************************/
 object {
   width: 30px;
   height: 30px;
@@ -122,4 +115,49 @@ object {
   .progress-bar {
 
   }
+}
+
+/*****************************
+*       Contact form
+*****************************/
+.contact-form {
+
+  .form-group {
+    &.col-12 {
+      padding: 0;
+      margin-bottom: -15px;
+    }
+
+    .form-control {
+      background: $transparent-gary;
+      color: $white;
+      border: 0;
+    }
+
+    .form-control:focus {
+      border-color: $white;
+      outline: 0;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(100, 100, 100, .6);
+    }
+
+    textarea {
+      resize: none;
+    }
+
+  }
+
+  .btn.btn-primary {
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px;
+    background: $dark-gray;
+  }
+  
+  a {
+    text-decoration: none;
+    position: relative;
+    top: 5px;
+    color: $light-gray;
+  }
+
 }

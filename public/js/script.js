@@ -38,7 +38,8 @@ $(function () {
     const $teamName = $('.team-name'),
         $teamMotto = $('.team-motto'),
         $teamDescription = $('.team-description'),
-        $progressBar = $('.progress-bar');
+        $progressBar = $('.progress-bar'),
+        $ioExceptionHeader = $('.io-exception-header');
 
     setInterval(function () {
         currentProgress += 1;
@@ -64,36 +65,42 @@ $(function () {
         $("#dynamic").css("width", `${0}%`);
 
         if (currentTeam === 0) {
-            console.log("web");
-            $("h1").removeClass("text-server").addClass("text-web");
+            $ioExceptionHeader.removeClass("text-server").addClass("text-web");
             $teamName.removeClass("text-server").addClass("text-web");
             $teamMotto.removeClass("text-server").addClass("text-web");
             $progressBar.removeClass("bg-server").addClass("bg-web");
         } else if (currentTeam === 1) {
-            console.log("app");
-            $("h1").removeClass("text-web").addClass("text-app");
+            $ioExceptionHeader.removeClass("text-web").addClass("text-app");
             $teamName.removeClass("text-web").addClass("text-app");
             $teamMotto.removeClass("text-web").addClass("text-app");
             $progressBar.removeClass("bg-web").addClass("bg-app");
         } else if (currentTeam === 2) {
-            console.log("game");
-            $("h1").removeClass("text-app").addClass("text-game");
+            $ioExceptionHeader.removeClass("text-app").addClass("text-game");
             $teamName.removeClass("text-app").addClass("text-game");
             $teamMotto.removeClass("text-app").addClass("text-game");
             $progressBar.removeClass("bg-app").addClass("bg-game");
         } else if (currentTeam === 3) {
-            console.log("server");
-            $("h1").removeClass("text-game").addClass("text-server");
+            $ioExceptionHeader.removeClass("text-game").addClass("text-server");
             $teamName.removeClass("text-game").addClass("text-server");
             $teamMotto.removeClass("text-game").addClass("text-server");
             $progressBar.removeClass("bg-game").addClass("bg-server");
         }
     };
 
-    /*const pause = milliseconds => {
+    const pause = milliseconds => {
         let dt = new Date();
-        while ((new Date()) - dt <= milliseconds) { /!* Do nothing *!/ }
-    }*/
+        while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+    };
+
+    $('#discardForm, #home').on("click", () => {
+        $(".container:nth-child(2)").addClass("d-none");
+        $(".container:nth-child(1)").removeClass("d-none");
+    });
+
+    $('#contact').on("click", () => {
+        $(".container:nth-child(1)").addClass("d-none");
+        $(".container:nth-child(2)").removeClass("d-none");
+    });
 
 });
 

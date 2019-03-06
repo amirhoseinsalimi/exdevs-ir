@@ -9,7 +9,7 @@ body
         .container
             .row.no-gutters
                 .col-12
-                    h1.text-web IOException
+                    h1.io-exception-header.text-web IOException
             .row.no-gutters
                 .col-12
                     h4: small.text-muted catch the exception!
@@ -28,7 +28,25 @@ body
                     p.text-web.team-motto
                         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, doloremque.
 
-                    
+        .container.d-none
+            h1.text-light-gray(style="font-weight: 600") Contact
+            .row
+                .col-12.col-lg-6
+                    form.contact-form(autocomplete="off" method="POST" action="")
+                        .form-group.col-12.col-lg-6
+                            label.text-white(for='name')
+                            input#name.form-control(autocomplete="off" type='text', aria-describedby='name', placeholder='Name')
+                        .form-group.col-12.col-lg-8
+                            label.text-white(for='email')
+                            input#email.form-control(type='email', placeholder='Email')
+                        .form-group.col-12.col-lg-12.mb-3
+                            label(for='message')
+                            textarea#message.form-control(rows='5' placeholder="Message")
+                        .d-flex.justify-content-start.flex-row-reverse
+                            button.btn.btn-primary(type='submit') Send
+                            a.mr-4#discardForm(href="#") Discard
+
+
 
 
     include _partials/scripts
