@@ -1,38 +1,36 @@
 'use strict';
 
 $(function () {
-    $('.mobile-menu').css("display", "none");
-
     let currentProgress = 0,
         currentTeam = 0,
-        clicks = false;
+        mobileMenuStatus = false;
 
     let teamsInfo = [
         {
-            "name": "<h5>Web development</h5>",
-            "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, sit beatae molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse cumque.</p>",
-            "motto": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>",
+            "name": "Web development",
+            "description": "Molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse cumque.Molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse cumque.",
+            "motto": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             "color": "#f0db4f",
             "icon": "thumbs/web.svg"
         },
         {
-            "name": "<h5>Application development</h5>",
-            "description": "<p>Debitis blanditiis adipisci excepturi animi totam sint esse cumque... Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, sit beatae molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint!</p>",
-            "motto": "<p>Harum quod praesentium reiciendis tempore excepturi animi totam</p>",
+            "name": "Application development",
+            "description": "Debitis blanditiis adipisci excepturi animi totam sint esse cumque... Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, sit beatae molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint!",
+            "motto": "Harum quod praesentium reiciendis tempore excepturi animi totam",
             "color": "#4ff05f",
             "icon": "thumbs/app.svg"
         },
         {
-            "name": "<h5>Game development</h5>",
-            "description": "<p>Voluptates odit iure natus sint! Imque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, cupiditate in. Por lome toe. Iste nostrum omnis.</p>",
-            "motto": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>",
+            "name": "Game development",
+            "description": "Voluptates odit iure natus sint! Imque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, cupiditate in. Por lome toe. Iste nostrum omnis.",
+            "motto": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             "color": "#f04f4f",
             "icon": "thumbs/game.svg"
         },
         {
-            "name": "<h5>Server development</h5>",
-            "description": "<p>Postrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor, pet cupiditate in. Lorem ipsum dolor, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse, cumque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi!!</p>",
-            "motto": "<p>Debitis blanditiis adipisci excepturi excepturi</p>",
+            "name": "Server development",
+            "description": "Postrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor, pet cupiditate in. Lorem ipsum dolor, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse, cumque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi!!",
+            "motto": "Debitis blanditiis adipisci excepturi excepturi",
             "color": "#4f8af0",
             "icon": "thumbs/server.svg"
         },
@@ -45,7 +43,7 @@ $(function () {
         $progressBar = $('.progress-bar'),
         $ioExceptionHeader = $('.io-exception-header');
 
-    const $togglerContainer = $(".toggler-container"),
+    const $mobileMenuIndicator = $(".mobile-menu-indicator"),
         $hrs = $('hr'),
         $hr1 = $("hr:nth-child(1)"),
         $hr2 = $("hr:nth-child(2)"),
@@ -69,10 +67,10 @@ $(function () {
     const changeTeam = (currentTeam) => {
         const team = teamsInfo[currentTeam];
 
-        $allInfo.fadeOut(500, function(e) {
-            $teamName.html(team["name"]);
-            $teamMotto.html(team["motto"]);
-            $teamDescription.html(team["description"]);
+        $allInfo.fadeOut(500, function (e) {
+            $teamName.html(`<h5>${team["name"]}</h5>`);
+            $teamMotto.html(`<p>${team["motto"]}</p>`);
+            $teamDescription.html(`<p>${team["description"]}</p>`);
 
             $('.team-icon').attr("data", team["icon"]);
             $("#dynamic").css("width", `${0}%`);
@@ -104,51 +102,40 @@ $(function () {
 
     };
 
-    // const pause = milliseconds => {
-    //     let dt = new Date();
-    //     while ((new Date()) - dt <= milliseconds) { /* Do nothing */
-    //     }
-    // };
-
-    $('span .left-arrow').on('click', function() {
+    $('span .left-arrow').on('click', function () {
         currentProgress = 0;
         changeTeam(--currentTeam <= -1 ? currentTeam = 3 : currentTeam);
     });
 
-    $('span .right-arrow').on('click', function() {
+    $('span .right-arrow').on('click', function () {
         currentProgress = 0;
         changeTeam(++currentTeam >= 4 ? currentTeam = 0 : currentTeam);
     });
 
-    $('#discardForm, .home-link').on("click", function() {
-        $(".container:nth-child(2)").fadeOut(500, function() {
-            $(".container:nth-child(1)").fadeIn(500);
-        });
-        $('.contact-link, .projects-link').removeClass('active');
-        $('.home-link').addClass('active');
-        $('.mobile-menu').css("display", "none");
+    $('#discardForm, .home-link').on("click", function () {
+        navigateToHome();
     });
 
-    $('.projects-link').on("click", function() {
-        $('.contact-link, .home-link').removeClass('active');
-        $(this).addClass('active');
-        $('.mobile-menu').css("display", "none");
+    $('.projects-link').on("click", function () {
+        navigateToProjects();
     });
 
-    $('.contact-link').on("click", function() {
-        $(".container:nth-child(1)").fadeOut(500, function() {
-            $(".container:nth-child(2)").removeClass("d-none").fadeIn(500);
-        });
-        $('.home-link, .projects-link').removeClass('active');
-        $(this).addClass('active');
-        $('.mobile-menu').css("display", "none");
+    $('.contact-link').on("click", function () {
+        navigateToContact();
     });
 
-    const isMobileMenuOpen = () => {
-        return !clicks;
+    $("form a").on("click", () => {
+        setTimeout(function() {
+            discardForm();
+        }, 500);
+    });
+
+    const toggleMobileMenu = function () {
+        mobileMenuStatus = !mobileMenuStatus;
+        return mobileMenuStatus;
     };
 
-    const openToggleBtn = () => {
+    const openMobileMenu = () => {
         $hr1.css({
             "transform": "rotate(45deg)",
             "top": "25px",
@@ -159,15 +146,13 @@ $(function () {
             "top": "25px",
         });
 
-        $('.mobile-menu').css("display", "block");
+        $('.mobile-menu').removeClass('d-none').addClass('d-block');
+        $('body').css("overflow-y", "hidden");
 
         $hr2.fadeOut(200);
-
-
-        console.log("opened");
     };
 
-    const closeToggleBtn = () => {
+    const closeMobileMenu = () => {
         $hr2.fadeIn();
 
         $hr1.css({
@@ -187,20 +172,53 @@ $(function () {
             "right": "10%",
         });
 
-        $('.mobile-menu').css("display", "none");
+        $('.mobile-menu').removeClass('d-block').addClass('d-none');
+        $('body').css("overflow-y", "auto");
     };
 
-    $togglerContainer.on('click', () => {
-        if (!clicks) {
-            openToggleBtn();
-            console.log(clicks);
+    $mobileMenuIndicator.on('click', () => {
+        if   (!mobileMenuStatus) openMobileMenu();
+        else                     closeMobileMenu();
 
-        } else {
-            closeToggleBtn();
-            console.log(clicks);
-        }
-        clicks = !clicks;
+        toggleMobileMenu();
     });
+
+    const navigateToHome = () => {
+        $(".contact-container, .projects-container").fadeOut(500, function () {
+            $(".home-container").fadeIn(500);
+        });
+        $('.contact-link, .projects-link').removeClass('active');
+        $('.home-link').addClass('active');
+
+        mobileMenuStatus = false;
+        closeMobileMenu();
+    };
+
+    const navigateToProjects = () => {
+        $(".home-container, .contact-container").fadeOut(500, function () {
+            $(".projects-container").removeClass("d-none").fadeIn(500);
+        });
+        $('.contact-link, .home-link').removeClass('active');
+        $('.projects-link').addClass('active');
+
+        mobileMenuStatus = false;
+        closeMobileMenu();
+    };
+
+    const navigateToContact = () => {
+        $(".home-container, .projects-container").fadeOut(500, function () {
+            $(".contact-container").removeClass("d-none").fadeIn(500);
+        });
+        $('.home-link, .projects-link').removeClass('active');
+        $('.contact-link').addClass('active');
+
+        mobileMenuStatus = false;
+        closeMobileMenu();
+    };
+
+    const discardForm = () => {
+        $('.contact-form').trigger("reset");
+    }
 
 
 });

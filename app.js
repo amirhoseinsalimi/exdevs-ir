@@ -8,7 +8,7 @@ const createError = require('http-errors'),
 
 // Routers
 let rootRouter = require('./routes/index');
-let loginRouter = require('./routes/login');
+let contactMessageRouter = require('./routes/contact-message');
 
 let app = express();
 
@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', rootRouter);
-app.use('/login', loginRouter);
+app.use('/contact-message', contactMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

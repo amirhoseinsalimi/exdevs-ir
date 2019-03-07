@@ -1,13 +1,17 @@
 nav.navbar.navbar-expand-sm.navbar-light.bg-light.d-flex
-  a.text-bold.navbar-brand.text-dark-gray(href='#') IOEX
-  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-    span.navbar-toggler-icon
+  a.navbar-brand(href='#'): img(src="thumbs/ioex.svg" alt="IOException logo")
+  .mobile-menu-indicator.d-sm-none
+      hr
+      hr
+      hr
+
+  span.navbar-toggler-icon
   #navbarNav.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
-      li.nav-item.active
-        a.nav-link.text-light-gray#home(href='#') Home
+      li.nav-item.active.home-link
+        a.nav-link(href='#' style="color: #707070") Home
           span.sr-only (current)
-      li.nav-item
-        a.nav-link.text-dark-gray#projects(href='#') Projects
-      li.nav-item
-        a.nav-link.text-dark-gray#contact(href="#") Contact
+      li.nav-item.projects-link
+        a.nav-link(href='#' style="color: #707070") Projects
+      li.nav-item.contact-link
+        a.nav-link(href="#" style="color: #707070") Contact

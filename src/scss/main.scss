@@ -16,11 +16,11 @@
 }
 
 .text-light-gray {
-  color: $light-gray !important;
+  color: $light-gray;
 }
 
 .text-dark-gray {
-  color: $dark-gray !important;
+  color: $dark-gray;
 }
 
 .text-white {
@@ -63,10 +63,21 @@
   color: $white;
 }
 
+a.no-text-decoration {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /*****************************
 *          General
 *****************************/
 body {
+  font: {
+    family: sans-serif;
+  };
   color: tomato;
   width: 100vw;
   height: 100vh;
@@ -83,6 +94,7 @@ body {
 .navbar {
   background-color: $transparent !important;
   height: 80px;
+  z-index: 1001;
 
   a.navbar-brand {
     color: #fff !important;
@@ -96,8 +108,67 @@ body {
     &:hover {
       color: $light-gray !important;
     }
+
   }
 
+  .nav-item.active a {
+    color: $light-gray !important;
+  }
+
+}
+
+.mobile-menu-indicator {
+  position: fixed;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-flow: column wrap;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+hr {
+  border: 1px solid $light-gray;
+  border-radius: 14px;
+  width: 80%;
+  float: left;
+  background-color: $light-gray;
+  height: 1px;
+  margin: 0;
+}
+
+hr:nth-child(1),
+hr:nth-child(3) {
+  position: absolute;
+  -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
+  -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
+  -o-transition: transform 0.5s, width 0.5s, position 0.5s;
+  transition: transform 0.5s, width 0.5s, position 0.5s;
+}
+
+hr:nth-child(2) {
+  position: absolute;
+  -webkit-transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
+}
+
+hr:nth-child(1) {
+  top: 15px;
+  right: 0;
+}
+
+hr:nth-child(2) {
+  top: 25px;
+  right: 10%;
+  width: 60%;
+}
+
+hr:nth-child(3) {
+  top: 35px;
+  right: 0;
 }
 
 /*****************************
@@ -160,4 +231,38 @@ object {
     color: $light-gray;
   }
 
+}
+
+.left-arrow,
+.right-arrow {
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  height: calc(100vh);
+  z-index: 1000;
+  background: #000;
+
+  ul {
+    margin-top: 40%;
+
+    li {
+      &.active {
+        a {
+          color: $light-gray;
+        }
+      }
+
+      a {
+        color: #707070;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $light-gray;
+        }
+      }
+    }
+  }
 }

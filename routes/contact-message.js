@@ -3,7 +3,7 @@ let express = require('express'),
 
 /* GET login page */
 router.get('/', function(req, res, next) {
-  res.send('login form');
+
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink"
-     enable-background="new 0 0 129 129" style="fill: #f1f1f1">
+     enable-background="new 0 0 129 129" style="fill: #f1f1f1; transform: rotate(180deg);">
     <a href="https://developer.mozilla.org/docs/Web/SVG/Element/circle">
         <g>
             <g>
