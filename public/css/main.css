@@ -180,7 +180,7 @@ object {
   margin-bottom: -15px;
 }
 .contact-form .form-group .form-control {
-  background: rgba(40, 40, 40, 0.7);
+  background: rgba(40, 40, 40, 0.2);
   color: #f1f1f1;
   border: 0;
 }
