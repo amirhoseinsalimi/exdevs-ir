@@ -1,6 +1,10 @@
 'use strict';
 
 $(function () {
+    const config = {
+        transitionTime: 700
+    };
+
     let currentProgress = 0,
         currentTeam = 0,
         mobileMenuStatus = false;
@@ -44,7 +48,6 @@ $(function () {
         $ioExceptionHeader = $('.io-exception-header');
 
     const $mobileMenuIndicator = $(".mobile-menu-indicator"),
-        $hrs = $('hr'),
         $hr1 = $("hr:nth-child(1)"),
         $hr2 = $("hr:nth-child(2)"),
         $hr3 = $("hr:nth-child(3)");
@@ -67,7 +70,7 @@ $(function () {
     const changeTeam = (currentTeam) => {
         const team = teamsInfo[currentTeam];
 
-        $allInfo.fadeOut(500, function (e) {
+        $allInfo.fadeOut(500, function () {
             $teamName.html(`<h5>${team["name"]}</h5>`);
             $teamMotto.html(`<p>${team["motto"]}</p>`);
             $teamDescription.html(`<p>${team["description"]}</p>`);
@@ -75,7 +78,7 @@ $(function () {
             $('.team-icon').attr("data", team["icon"]);
             $("#dynamic").css("width", `${0}%`);
 
-            $(this).fadeIn(500);
+            $(this).fadeIn(config.transitionTime);
 
             if (currentTeam === 0) {
                 $ioExceptionHeader.removeClass('text-app').removeClass("text-server").addClass("text-web");
@@ -127,7 +130,7 @@ $(function () {
     $("form a").on("click", () => {
         setTimeout(function() {
             discardForm();
-        }, 500);
+        }, config.transitionTime);
     });
 
     const toggleMobileMenu = function () {
@@ -184,8 +187,8 @@ $(function () {
     });
 
     const navigateToHome = () => {
-        $(".contact-container, .projects-container").fadeOut(500, function () {
-            $(".home-container").fadeIn(500);
+        $(".contact-container, .projects-container").fadeOut(config.transitionTime, function () {
+            $(".home-container").fadeIn(config.transitionTime);
         });
         $('.contact-link, .projects-link').removeClass('active');
         $('.home-link').addClass('active');
@@ -195,8 +198,8 @@ $(function () {
     };
 
     const navigateToProjects = () => {
-        $(".home-container, .contact-container").fadeOut(500, function () {
-            $(".projects-container").removeClass("d-none").fadeIn(500);
+        $(".home-container, .contact-container").fadeOut(config.transitionTime, function () {
+            $(".projects-container").removeClass("d-none").fadeIn(config.transitionTime);
         });
         $('.contact-link, .home-link').removeClass('active');
         $('.projects-link').addClass('active');
@@ -206,8 +209,8 @@ $(function () {
     };
 
     const navigateToContact = () => {
-        $(".home-container, .projects-container").fadeOut(500, function () {
-            $(".contact-container").removeClass("d-none").fadeIn(500);
+        $(".home-container, .projects-container").fadeOut(config.transitionTime, function () {
+            $(".contact-container").removeClass("d-none").fadeIn(config.transitionTime);
         });
         $('.home-link, .projects-link').removeClass('active');
         $('.contact-link').addClass('active');
@@ -219,6 +222,5 @@ $(function () {
     const discardForm = () => {
         $('.contact-form').trigger("reset");
     }
-
 
 });
