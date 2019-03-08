@@ -4,7 +4,8 @@ const createError = require('http-errors'),
     express = require('express'),
     path = require('path'),
     cookieParser = require('cookie-parser'),
-    logger = require('morgan');
+    logger = require('morgan'),
+    favicon = require('serve-favicon');
 
 // Routers
 let rootRouter = require('./routes/index');
@@ -16,6 +17,7 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
