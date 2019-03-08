@@ -1,0 +1,168 @@
+@mixin transform {
+  @for $i from 1 through 24 {
+    &:nth-child(#{$i}) {
+      transform: rotate( #{(360 / 24) * $i }deg);
+    }
+  }
+}
+
+:root{
+  --color-background: #BEEB9F;
+  --color-bug: #00A388;
+  --color-text: #00A388;
+}
+
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  overflow:hidden;
+  background:var(--color-background);
+}
+
+.error-code{
+  display:flex;
+  grid-gap:4vw;
+  position:relative;
+  border:0;
+  background:none;
+  font-family: "Nunito", sans-serif;
+  font-weight:600;
+  letter-spacing:.1em;
+  white-space:nowrap;
+  padding:4vw;
+  border-radius:1vw;
+  transition: all 250ms ease;
+
+  &:after{
+    content:"Looks like you found a bug.";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:4vw;
+    color:var(--color-text);
+    opacity:0;
+    transition: all 500ms ease;
+    transition-delay:1000ms;
+  }
+
+  &:hover{
+
+    &:after{
+      opacity:1;
+    }
+
+    .cell.filled{
+      @include transform;
+    }
+
+    .number{
+      grid-gap:2vw;
+    }
+
+    .bug{
+      transform: translateY(-200vh);
+      transition-delay:500ms;
+    }
+
+    .bug:before{
+      top:-.5vw;
+    }
+
+    .bug:after{
+      left:-.75vw;
+      right:-.75vw;
+      height:1.5vw;
+    }
+  }
+}
+
+.number{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-template-rows:repeat(6, 1fr);
+  transition:all 500ms ease;
+  grid-gap:.25vw;
+  margin:auto 2vw;
+}
+
+.cell.filled{
+  transition:all 500ms ease;
+}
+
+.bug{
+  background:var(--color-bug);
+  transition: transform 4000ms ease;
+  width:2.25vw;
+  height:2.5vw;
+  position:relative;
+  border-radius:100%;
+  transition-delay:0;
+
+  //bug head...
+  &:before{
+    content:'';
+    height: 1.5vw;
+    width: 1.5vw;
+    display:block;
+    position:absolute;
+    top:0;
+    left:.375vw;
+    background:var(--color-bug);
+    border-radius:100%;
+    z-index:-1;
+    transition: all 1000ms ease;
+  }
+
+  //bug legs...
+  &:after{
+    content:'';
+    display:block;
+    position:absolute;
+    left:.5vw;
+    right:.5vw;
+    bottom:.5vw;
+    height:0;
+    transition:all 250ms ease;
+    animation: infinite skitter 100ms ease;
+    background:
+            top left / 100% 100% linear-gradient(
+                            transparent,
+                            transparent 45%,
+                            var(--color-bug) 45%,
+                            var(--color-bug) 55%,
+                            transparent 55%
+            ),
+            top left / 100% 100% linear-gradient(
+                            to bottom right,
+                            transparent,
+                            transparent 45%,
+                            var(--color-bug) 45%,
+                            var(--color-bug) 55%,
+                            transparent 55%
+            ),
+            top left / 100% 100% linear-gradient(
+                            to bottom left,
+                            transparent,
+                            transparent 45%,
+                            var(--color-bug) 45%,
+                            var(--color-bug) 55%,
+                            transparent 55%
+            );
+  }
+}
+
+@keyframes skitter{
+  0%,100%{
+    transform:rotate(-35deg)
+  }
+  50%{
+    transform: rotate(35deg);
+  }
+}
