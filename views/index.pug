@@ -37,16 +37,16 @@ body
             h1.text-light-gray(style="font-weight: 600") Contact
             .row
                 .col-12.col-lg-6
-                    form.contact-form(autocomplete="off" method="get" action="/contact-message")
+                    form.contact-form(autocomplete="off" method="POST" action="/contact-message")
                         .form-group.col-12.col-lg-6
                             label.text-white(for='name')
-                            input#name.form-control(type='text', placeholder='Name' required="required")
+                            input#name.form-control(type='text', placeholder='Name' required="required" name='name')
                         .form-group.col-12.col-lg-8
                             label.text-white(for='email')
-                            input#email.form-control(type='email', placeholder='Email' required="required")
+                            input#email.form-control(type='email', placeholder='Email' required="required" name="email")
                         .form-group.col-12.col-lg-12.mb-3
                             label(for='message')
-                            textarea#message.form-control(rows='5' placeholder="Message" required="required")
+                            textarea#message.form-control(rows='5' placeholder="Message" required="required" name="message")
                         .d-flex.justify-content-start.flex-row-reverse
                             button.btn.btn-primary(type='submit') Send
                             a.mr-4#discardForm(href="#") Discard
