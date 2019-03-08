@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
 
     connection.connect((err) => {
         if (err){
-            console.log(err.message);
+            res.status(500);
             res.render('500');
         } else {
             const name = req.body.name;
@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
 
             connection.query(query, [name, email, message], (err, result) => {
                 if (err) {
-                    console.log(err.message);
+                    res.status(500);
                     res.render('500');
                 } else {
                     res.redirect('/');
