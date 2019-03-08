@@ -154,7 +154,7 @@ body {
   height: 2.5vw;
   position: relative;
   border-radius: 100%;
-  transition-delay: 0;
+  transition-delay: 0ms;
 }
 .bug:before {
   content: "";

@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu);
 //variables
 $purple: #28254C;
 $l-purple: #332F63;
@@ -8,8 +7,8 @@ $white: #fff;
 
 html, body {
   background: $purple;
-  font-family: 'Ubuntu';
 }
+
 * {
   box-sizing: border-box;
 }
@@ -34,7 +33,7 @@ html, body {
     top: 30%;
     transform: translate(-50%, -30%);
 
-    .symbol{
+    .symbol {
       &:nth-child(1) {
         opacity: .2;
         animation: shine 4s ease-in-out 3s infinite;
@@ -62,9 +61,8 @@ html, body {
         top: 30px;
         height: 18px;
         width: 18px;
-        border: 4px solid;
         border-radius: 50%;
-        border-color: $white;
+        border: 4px solid $white;
         opacity: .2;
         animation: shine 4s ease-in-out 1.3s infinite;
       }
@@ -116,9 +114,8 @@ html, body {
         top: 40px;
         height: 12px;
         width: 12px;
-        border: 3px solid;
         border-radius: 50%;
-        border-color: $white;
+        border: 3px solid $white;
         opacity: .2;
         animation: shine 1.7s ease-in-out 7s infinite;
       }
@@ -158,7 +155,6 @@ html, body {
         position: absolute;
         left: 50%;
         top: 45%;
-        //transform: translate(-50%, -45%); 
         height: 12px;
         width: 70px;
 
@@ -183,18 +179,18 @@ html, body {
       }
 
       .box__ghost-bottom {
-        display:flex;
+        display: flex;
         position: absolute;
-        top:100%;
-        left:0;
-        right:0;
+        top: 100%;
+        left: 0;
+        right: 0;
 
         div {
-          flex-grow:1;
+          flex-grow: 1;
           position: relative;
-          top:-10px;
-          height:20px;
-          border-radius:100%;
+          top: -10px;
+          height: 20px;
+          border-radius: 100%;
           background-color: $white;
 
           &:nth-child(2n) {
@@ -286,18 +282,40 @@ html, body {
 
 //keyframes
 @keyframes upndown {
-  0% {transform: translateY(5px);}
-  50% {transform: translateY(15px);}
-  100% {transform: translateY(5px);}
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
 }
+
 @keyframes smallnbig {
-  0% {width: 90px;}
-  50% {width: 100px;}
-  100% {width: 90px;}
+  0% {
+    width: 90px;
+  }
+  50% {
+    width: 100px;
+  }
+  100% {
+    width: 90px;
+  }
 }
+
 @keyframes shine {
-  0% {opacity: .2;}
-  25% {opacity: .1;}
-  50% {opacity: .2;}
-  100% {opacity: .2;}
+  0% {
+    opacity: .2;
+  }
+  25% {
+    opacity: .1;
+  }
+  50% {
+    opacity: .2;
+  }
+  100% {
+    opacity: .2;
+  }
 }

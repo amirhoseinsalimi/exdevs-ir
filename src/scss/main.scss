@@ -3,18 +3,6 @@
 /*****************************
 *      Utility classes
 *****************************/
-.red-border {
-  border: 1px solid red;
-}
-
-.green-border {
-  border: 1px solid green;
-}
-
-.blue-border {
-  border: 1px solid blue;
-}
-
 .text-light-gray {
   color: $light-gray;
 }
@@ -84,10 +72,6 @@ body {
   background: #000;
 }
 
-.text-decoration-none {
-  text-decoration: none;
-}
-
 /*****************************
 *           Navbar
 *****************************/
@@ -115,60 +99,60 @@ body {
     color: $light-gray !important;
   }
 
-}
+  .mobile-menu-indicator {
+    position: fixed;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-flow: column wrap;
+    cursor: pointer;
+    z-index: 1001;
 
-.mobile-menu-indicator {
-  position: fixed;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  flex-flow: column wrap;
-  cursor: pointer;
-  z-index: 1001;
-}
+    hr {
+      border: 1px solid $light-gray;
+      border-radius: 14px;
+      width: 80%;
+      float: left;
+      background-color: $light-gray;
+      height: 1px;
+      margin: 0;
+    }
 
-hr {
-  border: 1px solid $light-gray;
-  border-radius: 14px;
-  width: 80%;
-  float: left;
-  background-color: $light-gray;
-  height: 1px;
-  margin: 0;
-}
+    hr:nth-child(1),
+    hr:nth-child(3) {
+      position: absolute;
+      -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
+      -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
+      -o-transition: transform 0.5s, width 0.5s, position 0.5s;
+      transition: transform 0.5s, width 0.5s, position 0.5s;
+    }
 
-hr:nth-child(1),
-hr:nth-child(3) {
-  position: absolute;
-  -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
-  -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
-  -o-transition: transform 0.5s, width 0.5s, position 0.5s;
-  transition: transform 0.5s, width 0.5s, position 0.5s;
-}
+    hr:nth-child(2) {
+      position: absolute;
+      -webkit-transition: right 0.5s;
+      -moz-transition: right 0.5s;
+      -o-transition: right 0.5s;
+      transition: right 0.5s;
+    }
 
-hr:nth-child(2) {
-  position: absolute;
-  -webkit-transition: right 0.5s;
-  -moz-transition: right 0.5s;
-  -o-transition: right 0.5s;
-  transition: right 0.5s;
-}
+    hr:nth-child(1) {
+      top: 15px;
+      right: 0;
+    }
 
-hr:nth-child(1) {
-  top: 15px;
-  right: 0;
-}
+    hr:nth-child(2) {
+      top: 25px;
+      right: 10%;
+      width: 60%;
+    }
 
-hr:nth-child(2) {
-  top: 25px;
-  right: 10%;
-  width: 60%;
-}
+    hr:nth-child(3) {
+      top: 35px;
+      right: 0;
+    }
+  }
 
-hr:nth-child(3) {
-  top: 35px;
-  right: 0;
 }
 
 /*****************************
@@ -182,10 +166,11 @@ object {
 .progress {
   margin: 10px;
   height: 3px;
+}
 
-  .progress-bar {
-
-  }
+.left-arrow,
+.right-arrow {
+  cursor: pointer;
 }
 
 /*****************************
@@ -194,6 +179,7 @@ object {
 .contact-form {
 
   .form-group {
+
     &.col-12 {
       padding: 0;
       margin-bottom: -15px;
@@ -233,11 +219,10 @@ object {
 
 }
 
-.left-arrow,
-.right-arrow {
-  cursor: pointer;
-}
 
+/*****************************
+*        Mobile menu
+*****************************/
 .mobile-menu {
   position: fixed;
   top: 70px;

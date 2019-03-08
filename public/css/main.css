@@ -1,18 +1,6 @@
 /*****************************
 *      Utility classes
 *****************************/
-.red-border {
-  border: 1px solid red;
-}
-
-.green-border {
-  border: 1px solid green;
-}
-
-.blue-border {
-  border: 1px solid blue;
-}
-
 .text-light-gray {
   color: #e5e5e5;
 }
@@ -79,10 +67,6 @@ body {
   background: #000;
 }
 
-.text-decoration-none {
-  text-decoration: none;
-}
-
 /*****************************
 *           Navbar
 *****************************/
@@ -105,8 +89,7 @@ body {
 .navbar .nav-item.active a {
   color: #e5e5e5 !important;
 }
-
-.mobile-menu-indicator {
+.navbar .mobile-menu-indicator {
   position: fixed;
   right: 30px;
   width: 50px;
@@ -116,8 +99,7 @@ body {
   cursor: pointer;
   z-index: 1001;
 }
-
-hr {
+.navbar .mobile-menu-indicator hr {
   border: 1px solid #e5e5e5;
   border-radius: 14px;
   width: 80%;
@@ -126,36 +108,31 @@ hr {
   height: 1px;
   margin: 0;
 }
-
-hr:nth-child(1),
-hr:nth-child(3) {
+.navbar .mobile-menu-indicator hr:nth-child(1),
+.navbar .mobile-menu-indicator hr:nth-child(3) {
   position: absolute;
   -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
   -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
   -o-transition: transform 0.5s, width 0.5s, position 0.5s;
   transition: transform 0.5s, width 0.5s, position 0.5s;
 }
-
-hr:nth-child(2) {
+.navbar .mobile-menu-indicator hr:nth-child(2) {
   position: absolute;
   -webkit-transition: right 0.5s;
   -moz-transition: right 0.5s;
   -o-transition: right 0.5s;
   transition: right 0.5s;
 }
-
-hr:nth-child(1) {
+.navbar .mobile-menu-indicator hr:nth-child(1) {
   top: 15px;
   right: 0;
 }
-
-hr:nth-child(2) {
+.navbar .mobile-menu-indicator hr:nth-child(2) {
   top: 25px;
   right: 10%;
   width: 60%;
 }
-
-hr:nth-child(3) {
+.navbar .mobile-menu-indicator hr:nth-child(3) {
   top: 35px;
   right: 0;
 }
@@ -172,6 +149,12 @@ object {
   margin: 10px;
   height: 3px;
 }
+
+.left-arrow,
+.right-arrow {
+  cursor: pointer;
+}
+
 /*****************************
 *       Contact form
 *****************************/
@@ -205,11 +188,9 @@ object {
   color: #e5e5e5;
 }
 
-.left-arrow,
-.right-arrow {
-  cursor: pointer;
-}
-
+/*****************************
+*        Mobile menu
+*****************************/
 .mobile-menu {
   position: fixed;
   top: 70px;
