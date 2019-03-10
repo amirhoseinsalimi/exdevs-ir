@@ -1,8 +1,14 @@
 'use strict';
 
 $(function () {
+
+    /**
+     * Objects representing all possible configuration
+     * @type {{transitionTime: number, progreesBarCompletionTime: string}}
+     */
     const config = {
-        transitionTime: 700
+        transitionTime: 700,
+        progreesBarCompletionTime: "10s", // seconds
     };
 
     let currentProgress = 0,
@@ -41,6 +47,10 @@ $(function () {
 
     ];
 
+    /**
+     * jQuery elements
+     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+     */
     const $teamName = $('.team-name'),
         $teamMotto = $('.team-motto'),
         $teamDescription = $('.team-description'),
@@ -54,6 +64,9 @@ $(function () {
 
     const $allInfo = $('.team-name, .team-motto, .team-description');
 
+    /**
+     * Execute the function each `config.progreesBarCompletionTime * 10` millis
+     */
     setInterval(function () {
         currentProgress += 1;
 
@@ -61,12 +74,16 @@ $(function () {
             .css("width", currentProgress + "%")
             .attr("aria-valuenow", currentProgress);
 
-        if (currentProgress >= 100) {
+        if (currentProgress >= 107) {
             changeTeam(++currentTeam >= 4 ? currentTeam = 0 : currentTeam);
-            currentProgress = 0;
+            currentProgress = -7;
         }
-    }, 100);
+    }, parseFloat(config.progreesBarCompletionTime) * 10);
 
+    /**
+     * Update the content depending on current team
+     * @param currentTeam
+     */
     const changeTeam = (currentTeam) => {
         const team = teamsInfo[currentTeam];
 
@@ -104,6 +121,10 @@ $(function () {
         });
 
     };
+
+    /**
+     * jQuery event handlers
+     */
 
     $('span .left-arrow').on('click', function () {
         currentProgress = 0;
@@ -179,6 +200,11 @@ $(function () {
         $('body').css("overflow-y", "auto");
     };
 
+    /**
+     *
+     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+     */
+
     $mobileMenuIndicator.on('click', () => {
         if   (!mobileMenuStatus) openMobileMenu();
         else                     closeMobileMenu();
@@ -186,6 +212,9 @@ $(function () {
         toggleMobileMenu();
     });
 
+    /**
+     * Hide "Projects" and "Contact" sections and displays "Home"
+     */
     const navigateToHome = () => {
         $(".contact-container, .projects-container").fadeOut(config.transitionTime, function () {
             $(".home-container").fadeIn(config.transitionTime);
@@ -197,6 +226,9 @@ $(function () {
         closeMobileMenu();
     };
 
+    /**
+     * Hide "Projects" and "Contact" sections and displays "Home"
+     */
     const navigateToProjects = () => {
         $(".home-container, .contact-container").fadeOut(config.transitionTime, function () {
             $(".projects-container").removeClass("d-none").fadeIn(config.transitionTime);
@@ -208,6 +240,9 @@ $(function () {
         closeMobileMenu();
     };
 
+    /**
+     * Hide "Projects" and "Contact" sections and displays "Home"
+     */
     const navigateToContact = () => {
         $(".home-container, .projects-container").fadeOut(config.transitionTime, function () {
             $(".contact-container").removeClass("d-none").fadeIn(config.transitionTime);
@@ -219,6 +254,9 @@ $(function () {
         closeMobileMenu();
     };
 
+    /**
+     * Discard the form - Used when user clicks on the "Discard" button
+     */
     const discardForm = () => {
         $('.contact-form').trigger("reset");
     }
