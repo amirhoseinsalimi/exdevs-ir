@@ -1,4 +1,4 @@
-particlesJS("particles-js", {
+particlesJS("particlesJS", {
     "particles": {
         "number": {
             "value": 355,
@@ -40,7 +40,7 @@ particlesJS("particles-js", {
             "random": true,
             "anim": {
                 "enable": true,
-                "speed": 2,
+                "speed": 1,
                 "size_min": 0,
                 "sync": false
             }
@@ -54,7 +54,7 @@ particlesJS("particles-js", {
         },
         "move": {
             "enable": true,
-            "speed": 0.2,
+            "speed": 0.1,
             "direction": "none",
             "random": true,
             "straight": false,
