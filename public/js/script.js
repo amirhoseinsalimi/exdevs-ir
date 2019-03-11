@@ -74,9 +74,9 @@ $(function () {
             .css("width", currentProgress + "%")
             .attr("aria-valuenow", currentProgress);
 
-        if (currentProgress >= 107) {
+        if (currentProgress >= 106) {
             changeTeam(++currentTeam >= 4 ? currentTeam = 0 : currentTeam);
-            currentProgress = -7;
+            currentProgress = -6;
         }
     }, parseFloat(config.progreesBarCompletionTime) * 10);
 
