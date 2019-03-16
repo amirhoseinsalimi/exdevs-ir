@@ -3,9 +3,13 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jquery": true
   },
   "extends": "airbnb",
+  "globals": {
+    "particlesJS" : true
+  },
   "parserOptions": {
     "ecmaVersion": 8
   },
