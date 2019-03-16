@@ -1,10 +1,10 @@
-
+/* eslint no-use-before-define: 0, no-plusplus: 0, func-names: 0 */
 
 $(() => {
   /**
-     * Objects representing all possible configuration
-     * @type {{transitionTime: number, progreesBarCompletionTime: string}}
-     */
+   * Objects representing all possible configuration
+   * @type {{transitionTime: number, progreesBarCompletionTime: string}}
+   */
   const config = {
     transitionTime: 700,
     progreesBarCompletionTime: '10s', // seconds
@@ -17,15 +17,27 @@ $(() => {
   const teamsInfo = [
     {
       name: 'Web development',
-      description: 'Molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse cumque.Molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse cumque.',
-      motto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      description: 'Web is an essential part of every successful product nowadays. Our web'
+      + ' division, having enthusiastic developers, provides you every website and web'
+      + ' application you want with a exemplary quality. We use high-demand frameworks and latest'
+      + ' technologies as our main tool to bring this achievement. Our speciality in JavaScript'
+      + ' front-end and back-end frameworks, gives us the ability to build robust full-stack web'
+      + ' apps with an astonishing performance. Long story short, we do our best to always be on'
+      + ' the edge of web development world.',
+      motto: 'Always deliver more than expected',
       color: '#f0db4f',
       icon: 'thumbs/web.svg',
     },
     {
       name: 'Application development',
-      description: 'Debitis blanditiis adipisci excepturi animi totam sint esse cumque... Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, sit beatae molestias laborum neque distinctio nihil. Culpa reiciendis commodi nostrum et cupiditate in. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint!',
-      motto: 'Harum quod praesentium reiciendis tempore excepturi animi totam',
+      description: 'Want to expand your business? Maybe you need a mobile app! Our experienced'
+      + ' developers at our mobile division, are capable of doing anything possible in the'
+      + ' industry. Having the experience in Java, Kotlin and Flutter, there\'s no goddamn'
+      + ' obstacle for us to go beyond the boundaries. We build your desired Android or iOS app'
+      + ' with the quality, fewer young teams would be capable of. With the knowledge of a bunch'
+      + ' of technologies, we always choose the right one for the job, and it wouldn\'t be'
+      + ' exaggerating to say that nothing is impossible for us.',
+      motto: 'Success is not a final point, it\'s a road',
       color: '#4ff05f',
       icon: 'thumbs/app.svg',
     },
@@ -38,18 +50,24 @@ $(() => {
     },
     {
       name: 'Server development',
-      description: 'Postrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor, pet cupiditate in. Lorem ipsum dolor, adipisicing elit. Iste nostrum omnis voluptates odit iure natus sint! Debitis blanditiis adipisci excepturi animi totam sint esse, cumque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi!!',
-      motto: 'Debitis blanditiis adipisci excepturi excepturi',
+      description: 'The spirit of every mobile app, website or a web service is its back-end.'
+      + ' PHP, Elixir and Python are just a few tools we have in our hands, but our real power'
+      + ' doesn\'t come from these tools, it comes from our mind! We know all the feasible features'
+      + ' your product needs, so you can trust us on all kinds of projects,'
+      + ' whether it is a RESTful API or a back-end for a website, we do the correct'
+      + ' job. We\'ve also come a looong way in designing databases and MySQL/MariaDB,'
+      + ' MongoDB were our best friends during our journey. We know that success doesn\'t'
+      + ' achieved by accident, so we don\'t wait for it, we chase it!.',
+      motto: 'Use the right tool, for the right job, in the right way!',
       color: '#4f8af0',
       icon: 'thumbs/server.svg',
     },
-
   ];
 
   /**
-     * jQuery elements
-     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
-     */
+   * jQuery elements
+   * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+   */
   const $teamName = $('.team-name');
   const $teamMotto = $('.team-motto');
   const $teamDescription = $('.team-description');
@@ -64,8 +82,8 @@ $(() => {
   const $allInfo = $('.team-name, .team-motto, .team-description');
 
   /**
-     * Execute the function each `config.progreesBarCompletionTime * 10` millis
-     */
+   * Execute the function each `config.progreesBarCompletionTime * 10` millis
+   */
   setInterval(() => {
     currentProgress += 1;
 
@@ -80,9 +98,9 @@ $(() => {
   }, parseFloat(config.progreesBarCompletionTime) * 10);
 
   /**
-     * Update the content depending on current team
-     * @param currentTeam
-     */
+   * Update the content depending on current team
+   * @param currentTeam
+   */
   const changeTeam = (currentTeam) => {
     const team = teamsInfo[currentTeam];
 
@@ -121,8 +139,8 @@ $(() => {
   };
 
   /**
-     * jQuery event handlers
-     */
+   * jQuery event handlers
+   */
 
   $('span .left-arrow').on('click', () => {
     currentProgress = 0;
@@ -199,9 +217,9 @@ $(() => {
   };
 
   /**
-     *
-     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
-     */
+   *
+   * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+   */
 
   $mobileMenuIndicator.on('click', () => {
     if (!mobileMenuStatus) openMobileMenu();
@@ -211,8 +229,8 @@ $(() => {
   });
 
   /**
-     * Hide "Projects" and "Contact" sections and displays "Home"
-     */
+   * Hide "Projects" and "Contact" sections and displays "Home"
+   */
   const navigateToHome = () => {
     $('.contact-container, .projects-container').fadeOut(config.transitionTime, () => {
       $('.home-container').fadeIn(config.transitionTime);
@@ -225,8 +243,8 @@ $(() => {
   };
 
   /**
-     * Hide "Projects" and "Contact" sections and displays "Home"
-     */
+   * Hide "Projects" and "Contact" sections and displays "Home"
+   */
   const navigateToProjects = () => {
     $('.home-container, .contact-container').fadeOut(config.transitionTime, () => {
       $('.projects-container').removeClass('d-none').fadeIn(config.transitionTime);
@@ -239,8 +257,8 @@ $(() => {
   };
 
   /**
-     * Hide "Projects" and "Contact" sections and displays "Home"
-     */
+   * Hide "Projects" and "Contact" sections and displays "Home"
+   */
   const navigateToContact = () => {
     $('.home-container, .projects-container').fadeOut(config.transitionTime, () => {
       $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
@@ -253,8 +271,8 @@ $(() => {
   };
 
   /**
-     * Discard the form - Used when user clicks on the "Discard" button
-     */
+   * Discard the form - Used when user clicks on the "Discard" button
+   */
   const discardForm = () => {
     $('.contact-form').trigger('reset');
   };
