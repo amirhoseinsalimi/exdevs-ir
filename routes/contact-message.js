@@ -1,34 +1,33 @@
-let express = require('express'),
-    router = express.Router(),
-    connection = require('../connection');
+const express = require('express');
+
+const router = express.Router();
+const connection = require('../connection');
 
 /* Process POST data */
-router.post('/', function(req, res, next) {
+router.post('/', (req, res) => {
+  connection.connect((err) => {
+    if (err) {
+      res.status(500);
+      res.render('500');
+    } else {
+      const { name } = req.body;
+      const { email } = req.body;
+      const { message } = req.body;
 
-    connection.connect((err) => {
-        if (err){
-            res.status(500);
-            res.render('500');
+      const query = 'INSERT INTO messages (name, email, text) VALUES (?, ?, ?);';
+
+      connection.query(query, [name, email, message], (err) => {
+        if (err) {
+          res.status(500);
+          res.render('500');
         } else {
-            const name = req.body.name;
-            const email = req.body.email;
-            const message = req.body.message;
-
-            const query = `INSERT INTO messages (name, email, text) VALUES (?, ?, ?);`;
-
-            connection.query(query, [name, email, message], (err, result) => {
-                if (err) {
-                    res.status(500);
-                    res.render('500');
-                } else {
-                    res.redirect('/');
-                }
-
-                connection.end();
-            });
+          res.redirect('/');
         }
-    });
 
+        connection.end();
+      });
+    }
+  });
 });
 
 module.exports = router;

@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-shadow": "off",
+    "no-unused-vars": "warn"
+  }
+}

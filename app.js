@@ -1,18 +1,15 @@
-'use strict';
-
-const createError = require('http-errors'),
-    express = require('express'),
-    path = require('path'),
-    cookieParser = require('cookie-parser'),
-    logger = require('morgan'),
-    favicon = require('serve-favicon'),
-    bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
 
 // Routers
-let rootRouter = require('./routes/index');
-let contactMessageRouter = require('./routes/contact-message');
+const rootRouter = require('./routes/index');
+const contactMessageRouter = require('./routes/contact-message');
 
-let app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,14 +26,14 @@ app.use('/', rootRouter);
 app.use('/contact-message', contactMessageRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res) => {
   // next(createError(404));
-    res.status(404);
-    res.render('404');
+  res.status(404);
+  res.render('404');
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
