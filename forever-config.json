@@ -1,0 +1,10 @@
+{
+  "uid": "iox-website",
+  "max": 5,
+  "spinSleepTime": 100,
+  "append": true,
+  "watch": true,
+  "script": "./bin/www",
+  "sourceDir": "/home/amirhosein/Programming/projects-express/ioex-website/",
+  "args": []
+}
