@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "test": "DEBUG=express* node ./bin/www",
     "nodemon": "nodemon ./bin/www",
-    "lint": "eslint"
+    "lint": "eslint",
+    "forever": "forever ./bin/www forever-config.json"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
