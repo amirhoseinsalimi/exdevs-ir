@@ -20,7 +20,7 @@ $(() => {
       description: 'The web is an essential part of every successful product nowadays. Our web'
       + ' division, having enthusiastic developers, provides you each website and web application'
       + '  you want with exemplary quality. We use high-demand frameworks and the latest'
-      + ' technologies as our main to ol to bring this achievement. Our specialty in front-end and'
+      + ' technologies as our main tool to bring this achievement. Our specialty in front-end and'
       + '  back-end JavaScript frameworks gives us the ability to build robust full-stack web apps'
       + '  with an astonishing performance. Long story short, we do our best to always be on the'
       + '  edge of the web development world.',
@@ -40,13 +40,6 @@ $(() => {
       motto: 'Success is not a final point, it\'s a road',
       color: '#4ff05f',
       icon: 'thumbs/app.svg',
-    },
-    {
-      name: 'Game development',
-      description: 'Voluptates odit iure natus sint! Imque exercitationem dignissimos, quibusdam ipsa nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod praesentium reiciendis tempore numquam accusamus aliquid, quasi quisquam voluptate sequi nostrum quas dignissimos voluptas excepturi beatae enim mollitia animi facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odio numquam perspiciatis, nemo, quasi vel quidem, cupiditate in. Por lome toe. Iste nostrum omnis.',
-      motto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      color: '#f04f4f',
-      icon: 'thumbs/game.svg',
     },
     {
       name: 'Server development',
@@ -88,11 +81,11 @@ $(() => {
     currentProgress += 1;
 
     $('#dynamic')
-        .css('width', `${currentProgress}%`)
-        .attr('aria-valuenow', currentProgress);
+      .css('width', `${currentProgress}%`)
+      .attr('aria-valuenow', currentProgress);
 
     if (currentProgress >= 106) {
-      changeTeam(++currentTeam >= 4 ? currentTeam = 0 : currentTeam);
+      changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
       currentProgress = -6;
     }
   }, parseFloat(config.progreesBarCompletionTime) * 10);
@@ -120,20 +113,15 @@ $(() => {
         $teamMotto.html(team.motto).removeClass('text-app').removeClass('text-server').addClass('text-web');
         $progressBar.removeClass('bg-app').removeClass('bg-server').addClass('bg-web');
       } else if (currentTeam === 1) {
-        $ioExceptionHeader.removeClass('text-game').removeClass('text-web').addClass('text-app');
-        $teamName.html(team.name).removeClass('text-game').removeClass('text-web').addClass('text-app');
-        $teamMotto.html(team.motto).removeClass('text-game').removeClass('text-web').addClass('text-app');
-        $progressBar.removeClass('bg-game').removeClass('bg-web').addClass('bg-app');
+        $ioExceptionHeader.removeClass('text-server').removeClass('text-web').addClass('text-app');
+        $teamName.html(team.name).removeClass('text-server').removeClass('text-web').addClass('text-app');
+        $teamMotto.html(team.motto).removeClass('text-server').removeClass('text-web').addClass('text-app');
+        $progressBar.removeClass('bg-server').removeClass('bg-web').addClass('bg-app');
       } else if (currentTeam === 2) {
-        $ioExceptionHeader.removeClass('text-server').removeClass('text-app').addClass('text-game');
-        $teamName.html(team.name).removeClass('text-server').removeClass('text-app').addClass('text-game');
-        $teamMotto.html(team.motto).removeClass('text-server').removeClass('text-app').addClass('text-game');
-        $progressBar.removeClass('bg-server').removeClass('bg-app').addClass('bg-game');
-      } else if (currentTeam === 3) {
-        $ioExceptionHeader.removeClass('text-web').removeClass('text-game').addClass('text-server');
-        $teamName.html(team.name).removeClass('text-web').removeClass('text-game').addClass('text-server');
-        $teamMotto.html(team.motto).removeClass('text-web').removeClass('text-game').addClass('text-server');
-        $progressBar.removeClass('bg-web').removeClass('bg-game').addClass('bg-server');
+        $ioExceptionHeader.removeClass('text-web').removeClass('text-app').addClass('text-server');
+        $teamName.html(team.name).removeClass('text-web').removeClass('text-app').addClass('text-server');
+        $teamMotto.html(team.motto).removeClass('text-web').removeClass('text-app').addClass('text-server');
+        $progressBar.removeClass('bg-web').removeClass('bg-app').addClass('bg-server');
       }
     });
   };
@@ -144,12 +132,12 @@ $(() => {
 
   $('span .left-arrow').on('click', () => {
     currentProgress = 0;
-    changeTeam(--currentTeam <= -1 ? currentTeam = 3 : currentTeam);
+    changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
   });
 
   $('span .right-arrow').on('click', () => {
     currentProgress = 0;
-    changeTeam(++currentTeam >= 4 ? currentTeam = 0 : currentTeam);
+    changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
   });
 
   $('#discardForm, .home-link').on('click', () => {
