@@ -1,64 +1,64 @@
 doctype html
 head
-    include _partials/metas-and-styles.pug
+  include _partials/metas-and-styles.pug
 
 body
-    include _partials/header.pug
+  include _partials/header.pug
 
-    #particlesJS
-    .container-fluid
-        .container.home-container
-            .row.no-gutters
-                .col-12
-                    h1.io-exception-header.text-web IOException
-            .row.no-gutters
-                .col-12
-                    h4: small.text-muted catch the exception!
-            .row.no-gutters.mb-4
-                .col-12.col-lg-7
-                    p.text-justify.text-light-gray.team-description
-                        | The web is an essential part of every successful product nowadays. Our web division, having enthusiastic developers, provides you each website and web application you want with exemplary quality. We use high-demand frameworks and the latest technologies as our main tool to bring this achievement. Our specialty in front-end and back-end JavaScript frameworks gives us the ability to build robust full-stack web apps with an astonishing performance. Long story short, we do our best to always be on the edge of the web development world.
-            .row.d-flex.justify-content-center
-                .col-10.col-lg-4.offset-lg-7.position-relative
-                    span
-                        i.fas.fa-chevron-circle-left.position-absolute.left-arrow.text-white(style="width: 22px; height: 22px; top: 30%; left: -20px;")
-                    span
-                        i.fas.fa-chevron-circle-right.position-absolute.right-arrow.text-white(style="width: 22px; height: 22px; top: 30%; right: -20px;")
+  #particlesJS
+  .container-fluid
+    .container.home-container
+      .row.no-gutters
+        .col-12
+          h1.io-exception-header.text-web IOException
+      .row.no-gutters
+        .col-12
+          h4: small.text-muted catch the exception!
+      .row.no-gutters.mb-4
+        .col-12.col-lg-7
+          p.text-justify.text-light-gray.team-description
+            | The web is an essential part of every successful product nowadays. Our web division, having enthusiastic developers, provides you each website and web application you want with exemplary quality. We use high-demand frameworks and the latest technologies as our main tool to bring this achievement. Our specialty in front-end and back-end JavaScript frameworks gives us the ability to build robust full-stack web apps with an astonishing performance. Long story short, we do our best to always be on the edge of the web development world.
+      .row.d-flex.justify-content-center.w-100.motto-box
+        .col-10.col-lg-4.offset-lg-7.position-relative
+          span
+            i.fas.fa-chevron-circle-left.position-absolute.left-arrow.text-white(style="width: 22px; height: 22px; top: 30%; left: -20px;")
+          span
+            i.fas.fa-chevron-circle-right.position-absolute.right-arrow.text-white(style="width: 22px; height: 22px; top: 30%; right: -20px;")
 
-                    div.d-flex.flex-row-reverse.justify-content-end
-                        h5.text-web.team-name Web development
-                        object.team-icon.mr-3(data='thumbs/web.svg', type='image/svg+xml')
-                    .progress.mb-3
-                        .progress-bar.bg-web#dynamic(role='progressbar', aria-valuenow='50', aria-valuemin='0', aria-valuemax='100')
+          div.d-flex.flex-row-reverse.justify-content-end
+            h5.text-web.team-name Web development
+            object.team-icon.mr-3(data='thumbs/web.svg', type='image/svg+xml')
+          .progress.mb-3
+            .progress-bar.bg-web#dynamic(role='progressbar', aria-valuemin='0', aria-valuemax='100')
 
-                    p.text-web.team-motto
-                        | Always deliver more than expected
+          p.text-web.team-motto
+            | Always deliver more than expected
 
-        .container.contact-container.d-none
-            h1.text-light-gray(style="font-weight: 600") Contact
-            .row
-                .col-12.col-lg-6
-                    form.contact-form(autocomplete="off" method="POST" action="/contact-message")
-                        .form-group.col-12.col-lg-6
-                            label.text-white(for='name')
-                            input#name.form-control(type='text', placeholder='Name' required="required" name='name')
-                        .form-group.col-12.col-lg-8
-                            label.text-white(for='email')
-                            input#email.form-control(type='email', placeholder='Email' required="required" name="email")
-                        .form-group.col-12.col-lg-12.mb-3
-                            label(for='message')
-                            textarea#message.form-control(rows='5' placeholder="Message" required="required" name="message")
-                        .d-flex.justify-content-start.flex-row-reverse
-                            button.btn.btn-primary(type='submit') Send
-                            a.mr-4#discardForm(href="#") Discard
-
-
-        .container.justify-content-center.align-content-center.mobile-menu.d-none
-            ul.list-unstyled.text-light-gray.d-flex.flex-column.align-content-center.justify-content-center
-                li.text-center.home-link.active(style="font-size: 35px"): a.no-text-decoration(href='#') Home
-                //li.text-center.projects-link(style="font-size: 35px"): a.no-text-decoration(href='#') Projects
-                li.text-center.contact-link(style="font-size: 35px"): a.no-text-decoration(href='#') Contact
+    .container.contact-container.d-none
+      h1.text-light-gray(style="font-weight: 600") Contact
+      .row
+        .col-12.col-lg-6
+          form.contact-form(autocomplete="off" method="POST" action="/contact-message")
+            .form-group.col-12.col-lg-6
+              label.text-white(for='name')
+              input#name.form-control(type='text', placeholder='Name' required="required" name='name')
+            .form-group.col-12.col-lg-8
+              label.text-white(for='email')
+              input#email.form-control(type='email', placeholder='Email' required="required" name="email")
+            .form-group.col-12.col-lg-12.mb-3
+              label(for='message')
+              textarea#message.form-control(rows='5' placeholder="Message" required="required" name="message")
+            .d-flex.justify-content-start.flex-row-reverse
+              button.btn.btn-primary(type='submit') Send
+              a.mr-4#discardForm(href="#") Discard
 
 
+    .container.justify-content-center.align-content-center.mobile-menu.d-none
+      ul.list-unstyled.text-light-gray.d-flex.flex-column.align-content-center.justify-content-center
+        li.text-center.home-link.active(style="font-size: 35px"): a.no-text-decoration(href='#') Home
+        //li.text-center.projects-link(style="font-size: 35px"): a.no-text-decoration(href='#') Projects
+        li.text-center.contact-link(style="font-size: 35px"): a.no-text-decoration(href='#') Contact
 
-    include _partials/scripts
+
+
+  include _partials/scripts
