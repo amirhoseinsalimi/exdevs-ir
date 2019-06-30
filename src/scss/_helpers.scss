@@ -1,0 +1,60 @@
+@import 'variables';
+
+/*****************************
+*      Utility classes
+*****************************/
+.text-light-gray {
+  color: $light-gray;
+}
+
+.text-dark-gray {
+  color: $dark-gray;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-web, .team-1 {
+  color: $web-team-color;
+}
+
+.bg-web {
+  background-color: $web-team-color;
+}
+
+.text-app, .team-2 {
+  color: $app-team-color;
+}
+
+.bg-app {
+  background-color: $app-team-color;
+}
+
+.text-game, .team-3 {
+  color: $game-team-color;
+}
+
+.bg-game {
+  background-color: $game-team-color;
+}
+
+.text-server, .team-4 {
+  color: $server-team-color;
+}
+
+.bg-server {
+  background-color: $server-team-color;
+}
+
+.text-light-gray {
+  color: $white;
+}
+
+a.no-text-decoration {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+}
+}
