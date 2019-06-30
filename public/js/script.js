@@ -210,8 +210,13 @@ $(() => {
    */
 
   $mobileMenuIndicator.on('click', () => {
-    if (!mobileMenuStatus) openMobileMenu();
-    else closeMobileMenu();
+    if (!mobileMenuStatus) {
+      openMobileMenu();
+      $('.home-container, .contact-container').fadeOut(0);
+    } else {
+      closeMobileMenu();
+      $('.home-container, .contact-container').fadeIn(0);
+    }
 
     toggleMobileMenu();
   });
