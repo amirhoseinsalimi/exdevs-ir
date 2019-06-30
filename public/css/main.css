@@ -52,7 +52,6 @@
 a.no-text-decoration {
   text-decoration: none;
 }
-
 a.no-text-decoration:hover {
   text-decoration: none;
 }
@@ -62,11 +61,10 @@ a.no-text-decoration:hover {
 *****************************/
 body {
   font-family: sans-serif;
-  font-size: 1rem;
   color: tomato;
   width: 100vw;
   height: 100vh;
-  background: #000;
+  background: black;
 }
 
 #particlesJS {
@@ -74,7 +72,7 @@ body {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 100vh
+  height: 100vh;
 }
 
 /*****************************
@@ -85,25 +83,20 @@ body {
   height: 80px;
   z-index: 1001;
 }
-
 .navbar a.navbar-brand {
   color: #fff !important;
 }
-
 .navbar a.nav-link {
   padding: 10px 20px !important;
   margin: 0 10px;
   transition: color 0.2s;
 }
-
 .navbar a.nav-link:hover {
   color: #e5e5e5 !important;
 }
-
 .navbar .nav-item.active a {
   color: #e5e5e5 !important;
 }
-
 .navbar .mobile-menu-indicator {
   position: fixed;
   right: 30px;
@@ -114,7 +107,6 @@ body {
   cursor: pointer;
   z-index: 1001;
 }
-
 .navbar .mobile-menu-indicator hr {
   border: 1px solid #e5e5e5;
   border-radius: 14px;
@@ -124,7 +116,6 @@ body {
   height: 1px;
   margin: 0;
 }
-
 .navbar .mobile-menu-indicator hr:nth-child(1),
 .navbar .mobile-menu-indicator hr:nth-child(3) {
   position: absolute;
@@ -133,7 +124,6 @@ body {
   -o-transition: transform 0.5s, width 0.5s, position 0.5s;
   transition: transform 0.5s, width 0.5s, position 0.5s;
 }
-
 .navbar .mobile-menu-indicator hr:nth-child(2) {
   position: absolute;
   -webkit-transition: right 0.5s;
@@ -141,18 +131,15 @@ body {
   -o-transition: right 0.5s;
   transition: right 0.5s;
 }
-
 .navbar .mobile-menu-indicator hr:nth-child(1) {
   top: 15px;
   right: 0;
 }
-
 .navbar .mobile-menu-indicator hr:nth-child(2) {
   top: 25px;
   right: 10%;
   width: 60%;
 }
-
 .navbar .mobile-menu-indicator hr:nth-child(3) {
   top: 35px;
   right: 0;
@@ -176,27 +163,6 @@ object {
   cursor: pointer;
 }
 
-.motto-box {
-  margin-top: 40px;
-  position: fixed;
-  right: 50px;
-  bottom: 70px;
-}
-
-@media screen and (max-width: 991px) {
-  .motto-box {
-    position: static;
-    margin: 0;
-    right: 0;
-  }
-}
-
-@media screen and (min-width: 1370px) {
-  body {
-    font-size: 1.3rem;
-  }
-}
-
 /*****************************
 *       Contact form
 *****************************/
@@ -204,30 +170,25 @@ object {
   padding: 0;
   margin-bottom: -15px;
 }
-
 .contact-form .form-group .form-control {
   background: rgba(40, 40, 40, 0.2);
   color: #f1f1f1;
   border: 0;
 }
-
 .contact-form .form-group .form-control:focus {
   border-color: #f1f1f1;
   outline: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(100, 100, 100, 0.6);
 }
-
 .contact-form .form-group textarea {
   resize: none;
 }
-
 .contact-form .btn.btn-primary {
   border: none;
   border-radius: 20px;
   padding: 5px 20px;
   background: #707070;
 }
-
 .contact-form a {
   text-decoration: none;
   position: relative;
@@ -245,20 +206,16 @@ object {
   z-index: 1000;
   background: #000;
 }
-
 .mobile-menu ul {
   margin-top: 40%;
 }
-
 .mobile-menu ul li.active a {
   color: #e5e5e5;
 }
-
 .mobile-menu ul li a {
   color: #707070;
   transition: color 0.2s;
 }
-
 .mobile-menu ul li a:hover {
   color: #e5e5e5;
 }

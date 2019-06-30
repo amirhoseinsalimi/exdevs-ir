@@ -72,6 +72,14 @@ body {
   background: rgba(0, 0, 0, 1);
 }
 
+#particlesJS {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh
+}
+
 /*****************************
 *           Navbar
 *****************************/
