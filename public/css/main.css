@@ -97,6 +97,21 @@ body {
 .navbar .nav-item.active a {
   color: #e5e5e5 !important;
 }
+.navbar .nav-item.active .btn-download {
+  border-radius: 20px;
+  font-size: 14px;
+  position: relative;
+  top: 5px;
+  background: #457fca;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #f1f1f1;
+  border: none;
+  outline: 0;
+}
 .navbar .mobile-menu-indicator {
   position: fixed;
   right: 30px;
@@ -218,6 +233,21 @@ object {
 }
 .mobile-menu ul li a:hover {
   color: #e5e5e5;
+}
+.mobile-menu ul li .btn-download {
+  border-radius: 20px;
+  font-size: 14px;
+  position: relative;
+  top: 5px;
+  background: #457fca;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #f1f1f1;
+  border: none;
+  outline: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
