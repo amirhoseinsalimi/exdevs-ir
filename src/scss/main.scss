@@ -52,21 +52,24 @@ body {
       color: $light-gray !important;
     }
 
-    .btn-download {
-      border-radius: 20px;
-      font-size: 14px;
-      position: relative;
-      top: 5px;
-      background: #457fca;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      color: $white;
-      border: none;
-      outline: 0;
-    }
-
   }
 
+  .btn-download {
+    border-radius: 30px;
+    font-size: 17px;
+    position: relative;
+    background: #8360c3; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8360c3, #2ebf91); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8360c3, #2ebf91); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: $white;
+    border: none;
+    outline: 0;
+    padding: 10px 15px;
+
+    &:hover {
+      box-shadow: 0 1px 10px 5px #333;
+    }
+  }
 
   .mobile-menu-indicator {
     position: fixed;
@@ -219,16 +222,17 @@ object {
       }
 
       .btn-download {
-        border-radius: 20px;
-        font-size: 14px;
+        border-radius: 25px;
+        font-size: 18px;
         position: relative;
         top: 5px;
-        background: #457fca;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #8360c3; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #8360c3, #2ebf91); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #8360c3, #2ebf91); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         color: $white;
         border: none;
         outline: 0;
+        padding: 10px 15px;
       }
     }
   }
