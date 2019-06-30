@@ -3,11 +3,11 @@
 $(() => {
   /**
    * Objects representing all possible configuration
-   * @type {{transitionTime: number, progreesBarCompletionTime: string}}
+   * @type {{transitionTime: number, progressBarCompletionTime: string}}
    */
   const config = {
     transitionTime: 700,
-    progreesBarCompletionTime: '10s', // seconds
+    progressBarCompletionTime: '10s', // seconds
   };
 
   let currentProgress = 0;
@@ -75,7 +75,7 @@ $(() => {
   const $allInfo = $('.team-name, .team-motto, .team-description');
 
   /**
-   * Execute the function each `config.progreesBarCompletionTime * 10` millis
+   * Execute the function each `config.progressBarCompletionTime * 10` millis
    */
   setInterval(() => {
     currentProgress += 1;
@@ -88,7 +88,7 @@ $(() => {
       changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
       currentProgress = -6;
     }
-  }, parseFloat(config.progreesBarCompletionTime) * 10);
+  }, parseFloat(config.progressBarCompletionTime) * 10);
 
   /**
    * Update the content depending on current team
