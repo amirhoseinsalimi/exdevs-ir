@@ -1,36 +1,26 @@
 doctype html
 head
-    title 404 Not Found | IOException Team - Developers
+  title 404 Not Found | IOException Team - Developers
 
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+  meta(charset="UTF-8")
+  link(rel="stylesheet", href="css/bootstrap.min.css")
+  link(href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet")
+  meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
 
-    link(rel="stylesheet", href="css/404.css")
-body
-    .box
-        .box__ghost
-            .symbol
-            .symbol
-            .symbol
-            .symbol
-            .symbol
-            .symbol
-            .box__ghost-container
-                .box__ghost-eyes
-                    .box__eye-left
-                    .box__eye-right
-                .box__ghost-bottom
-                    div
-                    div
-                    div
-                    div
-                    div
-            .box__ghost-shadow
-        .box__description
-            .box__description-container
-                .box__description-title Whoops!
-                .box__description-text It seems like we couldn't find the page you were looking for
-            a.box__button(href='javascript:history.back()', target='_blank') Go back
+  link(rel="stylesheet", href="css/errors.css")
+body(style='')
+  #particlesJS
+  .container
+    .row
+      col-12
+        img.img-error(src='thumbs/spaceman.png' alt='404 - not found')
+        h4.text-center You've lost in space
+        p.col-10.offset-1
+          | You thought this mission to the moon would be a quick six month thing. Your
+          | neighbor offered to look after your dog. Your high school math teacher was impressed.
+          | He once said you wouldn’t amount to anything.You sure showed him. But now here you
+          | are, fifty feet from your spaceship with no way to get back. Your dog will be so sad.
+          | Your math teacher will be so smug. Pretty devastating.
 
-    script(src="js/jquery-3.3.1.min.js")
-    script(src="js/404.js")
+  script(src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js')
+  script(src='js/particles.js')

@@ -1,0 +1,26 @@
+body {
+  background: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  color: #fff;
+}
+
+#particlesJS {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.img-error {
+  width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+h4, p {
+  text-align: center;
+}
+
+/*# sourceMappingURL=errors.css.map */

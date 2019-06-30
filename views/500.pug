@@ -1,130 +1,24 @@
 doctype html
 head
-    title 500 Internal Server Error | IOException Team - Developers
+  title 404 Not Found | IOException Team - Developers
 
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+  meta(charset="UTF-8")
+  link(rel="stylesheet", href="css/bootstrap.min.css")
+  link(href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet")
+  meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
 
-    link(rel="stylesheet", href="css/500.css")
-body
-    button.error-code
-        .number.five
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-        .number.zero
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-        .number.zero
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.empty
-            .cell.filled
-                .bug
-            .cell.filled
-                .bug
-            .cell.empty
+  link(rel="stylesheet", href="css/errors.css")
+body(style='background: #ed8536')
+  .container.pt-5
+    .row
+      col-12
+        img.img-error.mb-4(src='thumbs/mug.png' alt='500 - server error')
+        h4.text-center Oops! You broke something
+        p.col-10.offset-1
+          | This mug was a family heirloom. Of your neighbor. Your neighbor always loved the
+          | color, shape, and quantity of coffee held by this mug. But your neighbor moved out and
+          | left it on their porch, no explanation, no repair materials, no nothing. So you have
+          | this broken mug.
 
-
-    //script(src="js/jquery-3.3.1.min.js")
-    //script(src="js/404.js")
+  script(src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js')
+  script(src='js/particles.js')
