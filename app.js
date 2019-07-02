@@ -9,6 +9,7 @@ const helmet = require('helmet');
 // Routers
 const rootRouter = require('./routes/index');
 const contactMessageRouter = require('./routes/contact-message');
+const downloaderRouter = require('./routes/downloader');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', rootRouter);
 app.use('/contact-message', contactMessageRouter);
+app.use('/download', downloaderRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
