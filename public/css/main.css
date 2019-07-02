@@ -166,7 +166,7 @@ body {
 /*****************************
 *           Main
 *****************************/
-object {
+.motto-box .header img {
   width: 30px;
   height: 30px;
 }

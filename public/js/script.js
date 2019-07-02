@@ -102,7 +102,7 @@ $(() => {
       $teamMotto.html(`<p>${team.motto}</p>`);
       $teamDescription.html(`<p>${team.description}</p>`);
 
-      $('.team-icon').attr('data', team.icon);
+      $('.motto-box .header img').attr('src', team.icon);
       $('#dynamic').css('width', `${0}%`);
 
       $(this).fadeIn(config.transitionTime);
