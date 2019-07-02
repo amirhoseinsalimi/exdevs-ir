@@ -7,7 +7,8 @@
     "test": "DEBUG=express* node ./bin/www",
     "nodemon": "nodemon ./bin/www",
     "lint": "eslint",
-    "forever": "forever ./bin/www forever-config.json"
+    "forever": "forever ./bin/www forever-config.json",
+    "minify": "./node_modules/.bin/minify public/js/script.js > ./public/js/script.min.js; ./node_modules/.bin/minify public/css/main.css > ./public/css/main.min.css"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -27,6 +28,7 @@
     "eslint": "^5.15.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-plugin-react": "^7.12.4",
+    "minify": "^4.1.2"
   }
 }
