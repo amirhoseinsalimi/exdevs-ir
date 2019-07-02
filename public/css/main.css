@@ -56,6 +56,10 @@ a.no-text-decoration:hover {
   text-decoration: none;
 }
 
+img:not([alt]), img[alt=""] {
+  border: 1px solid red;
+}
+
 /*****************************
 *          General
 *****************************/
