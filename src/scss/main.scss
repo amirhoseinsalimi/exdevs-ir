@@ -130,6 +130,14 @@ body {
 /*****************************
 *           Main
 *****************************/
+.motto-box {
+  @media screen and (min-width: 992px) {
+    position: fixed;
+    bottom: 100px;
+    right: 60px;
+  }
+}
+
 .motto-box .header img {
   width: 30px;
   height: 30px;;
