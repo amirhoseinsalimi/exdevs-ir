@@ -45,7 +45,7 @@ pids
 
 # Logs and databases #
 ######################
-connection.js
+connection.*
 logs
 nohup*
 *.log
