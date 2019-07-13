@@ -7,6 +7,7 @@ const connection = require('../connection');
 router.post('/', (req, res) => {
   connection.connect((err) => {
     if (err) {
+      console.log(err);
       res.status(500);
       res.render('500');
     } else {
