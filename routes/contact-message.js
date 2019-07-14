@@ -15,14 +15,17 @@ router.post('/', (req, res) => {
       const { email } = req.body;
       const { message } = req.body;
 
-      const query = 'INSERT INTO messages (name, email, text) VALUES (?, ?, ?);';
+      const query = 'INSERT INTO contact (name, email, text) VALUES (?, ?, ?);';
 
       connection.query(query, [name, email, message], (err) => {
         if (err) {
+          console.log(err);
           res.status(500);
           res.render('500');
+          connection.end();
         } else {
           res.redirect('/');
+          connection.end();
         }
 
         connection.end();
