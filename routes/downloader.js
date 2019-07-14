@@ -1,13 +1,9 @@
-let express = require('express'),
-    router = express.Router()
-    fs = require('fs');
+const express = require('express');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  const file = `${__dirname}/app.apk`;
-  res.setHeader('Content-Type', 'application/apk');
-  res.setHeader('Content-disposition', 'attachment; filename=app.apk');
-  res.download('../app.apk');
+const router = express.Router();
+
+router.get('/', (req, res, next) => {
+  res.redirect(`https://cafebazaar.ir/app/com.digikala/?l=en`);
 });
 
 module.exports = router;
