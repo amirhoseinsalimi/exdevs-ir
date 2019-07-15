@@ -53,11 +53,14 @@
 
 a.no-text-decoration {
   text-decoration: none;
-  cursor: pointer;
 
   &:hover {
     text-decoration: none;
   }
+}
+
+a {
+  cursor: pointer;
 }
 
 img:not([alt]), img[alt=""] {
