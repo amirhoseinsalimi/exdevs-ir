@@ -51,6 +51,7 @@
 
 a.no-text-decoration {
   text-decoration: none;
+  cursor: pointer;
 }
 a.no-text-decoration:hover {
   text-decoration: none;
@@ -237,7 +238,7 @@ body {
   text-decoration: none;
   position: relative;
   top: 5px;
-  color: #e5e5e5;
+  color: #e5e5e5 !important;
 }
 
 /*****************************
