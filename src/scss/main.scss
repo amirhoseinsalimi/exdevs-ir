@@ -133,6 +133,23 @@ body {
     position: fixed;
     bottom: 100px;
     right: 60px;
+    width: 40% !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    position: fixed;
+    width: 80%;
+    margin: 0 auto;
+    bottom: 100px;
+    right: 60px;
+  }
+
+  @media screen and (min-width: 576px) {
+    position: fixed;
+    width: 80%;
+    margin: 0 auto;
+    bottom: 100px;
+    right: 60px;
   }
 }
 
