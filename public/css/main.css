@@ -169,30 +169,23 @@ body {
 /*****************************
 *           Main
 *****************************/
+@media screen and (max-width: 576px) {
+  .main-content {
+    margin-bottom: 50px;
+  }
+}
+@media screen and (min-width: 577px) {
+  .main-content {
+    margin-bottom: 100px;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .motto-box {
     position: fixed;
     bottom: 100px;
     right: 60px;
     width: 40% !important;
-  }
-}
-@media screen and (min-width: 768px) {
-  .motto-box {
-    position: fixed;
-    width: 80%;
-    margin: 0 auto;
-    bottom: 100px;
-    right: 60px;
-  }
-}
-@media screen and (min-width: 576px) {
-  .motto-box {
-    position: fixed;
-    width: 80%;
-    margin: 0 auto;
-    bottom: 100px;
-    right: 60px;
   }
 }
 
