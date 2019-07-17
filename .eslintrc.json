@@ -16,6 +16,7 @@
   "rules": {
     "no-console": "warn",
     "no-shadow": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-use-before-define": "off"
   }
 }
