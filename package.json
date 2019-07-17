@@ -25,10 +25,26 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
     "eslint": "^5.15.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "minify": "^4.1.2"
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-deporder": "^1.2.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-noop": "^1.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-terser": "^1.2.0",
+    "minify": "^4.1.2",
+    "node-sass": "^4.12.0",
+    "postcss-assets": "^5.0.0"
   }
 }
