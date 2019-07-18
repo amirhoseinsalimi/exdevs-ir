@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const connection = require('../connection');
+const { incrementContactMessageCounter } = require('../counter');
 
 /* Process POST data */
 router.post('/', (req, res) => {
@@ -32,6 +33,8 @@ router.post('/', (req, res) => {
       });
     }
   });
+
+  incrementContactMessageCounter();
 });
 
 module.exports = router;
