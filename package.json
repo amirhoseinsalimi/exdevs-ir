@@ -7,7 +7,8 @@
     "test": "DEBUG=express* node ./bin/www",
     "nodemon": "nodemon ./bin/www",
     "lint": "eslint",
-    "forever": "forever ./bin/www forever-config.json",
+    "forever list": "./node_modules/.bin/forever ./bin/www forever-config.json",
+    "forever start": "./node_modules/.bin/forever start ./bin/www forever-config.json",
     "minify": "./node_modules/.bin/minify public/js/script.js > ./public/js/script.min.js; ./node_modules/.bin/minify public/css/main.css > ./public/css/main.min.css"
   },
   "dependencies": {
