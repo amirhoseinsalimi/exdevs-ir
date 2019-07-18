@@ -14,9 +14,13 @@
     "ecmaVersion": 8
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     "no-shadow": "off",
     "no-unused-vars": "warn",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "no-plusplus": "off",
+    "prefer-destructuring": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off"
   }
 }
