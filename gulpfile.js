@@ -35,7 +35,7 @@ sass.compiler = require('node-sass');
 function images() {
   const out = `${dest}/img`;
 
-  return gulp.src(`${src}images/**/*`)
+  return gulp.src(`${src}img/**/*`)
     .pipe(newer(out))
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(gulp.dest(out));
@@ -59,12 +59,12 @@ function css() {
     .pipe(sourcemaps ? sourcemaps.init() : noop())
     .pipe(sass({
       outputStyle: 'nested',
-      imagePath: '/images/',
+      imagePath: '/img/',
       precision: 3,
       errLogToConsole: true,
     }).on('error', sass.logError))
     .pipe(postcss([
-      assets({ loadPaths: ['images/'] }),
+      assets({ loadPaths: ['img/'] }),
       autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
       mqpacker,
       cssnano,
@@ -76,7 +76,7 @@ function css() {
 // Watch for file changes
 function watch(done) {
   // image changes
-  gulp.watch(`${src}images/**/*`, images);
+  gulp.watch(`${src}img/**/*`, images);
 
   // js changes
   gulp.watch(`${src}js/**/*`, js);
