@@ -59,11 +59,46 @@ html(lang='en-US')
                 a.mr-4#discardForm Discard
 
 
+      .container.meet-team-container.d-none
+        h1.text-light-gray(style="font-weight: 600") Meet the Team!
+        .row.no-gutters
+          .col-12.d-flex.row.wrap.justify-content-sm-center
+            .col-12.col-md-6.col-lg-4.col-xl-3.member-card.position-relative.px-3.m-3(link='https://www.linkedin.com/in/amirhoseinsalimi/')
+              img.profile-image(src="img/salimi.jpeg" alt='Exception member')
+              .d-inline-block.ml-3.h-100.position-absolute.text
+                span.mt-4 Amir Hosein Salimi
+                br
+                span.small.text-muted Front-end Developer
+
+            .col-12.col-md-6.col-lg-4.col-xl-3.member-card.position-relative.px-3.m-3(link='https://www.linkedin.com/in/hamidr3zabayat/')
+              img.profile-image(src="img/bayat.jpeg" alt='Exception member')
+              .d-inline-block.ml-3.h-100.position-absolute.text
+                span.mt-4 Hamidreza Bayat
+                br
+                span.small.text-muted Mobile Developer
+
+            .col-12.col-md-6.col-lg-4.col-xl-3.member-card.position-relative.px-3.m-3(link='https://www.linkedin.com/in/milad-karimiyan-0337a8a9/')
+              img.profile-image(src="img/karimiyan.jpeg" alt='Exception member')
+              .d-inline-block.ml-3.h-100.position-absolute.text
+                span.mt-4 Milad Karimiyan
+                br
+                span.small.text-muted Back-end Developer
+
+            .col-12.col-md-6.col-lg-4.col-xl-3.member-card.position-relative.px-3.m-3(link='https://www.linkedin.com/in/fatemeh-akhlaghi-6a211615b/')
+              img.profile-image(src="img/akhlaghi.jpeg" alt='Exception member')
+              .d-inline-block.ml-3.h-100.position-absolute.text
+                span.mt-4 Fatemeh Akhlaghi
+                br
+                span.small.text-muted Mobile Developer
+
+
       .container.justify-content-center.align-content-center.mobile-menu.d-none
         ul.list-unstyled.text-light-gray.d-flex.flex-column.align-content-center.justify-content-center
-          li.text-center.home-link.active(style="font-size: 35px"): a.no-text-decoration(href='#') Home
-          li.text-center.contact-link(style="font-size: 35px"): a.no-text-decoration(href='#') Contact
-          li.text-center.contact-link(style="font-size: 35px")
+          li.text-center.home-link.active(style="font-size: 35px"): a.no-text-decoration Home
+          li.text-center.meet-team-link(style="font-size: 35px"): a.no-text-decoration
+            | Meet the Team!
+          li.text-center.contact-link(style="font-size: 35px"): a.no-text-decoration Contact
+          li.text-center(style="font-size: 35px")
             a.no-text-decoration.btn.btn-primary.btn-download(href='/download') Download app
 
     include _partials/scripts
