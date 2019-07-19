@@ -10,6 +10,10 @@ $(() => {
     progressBarCompletionTime: '10s', // seconds
   };
 
+
+  /**
+   * Global variables
+   */
   let currentProgress = 0;
   let currentTeam = 0;
   let mobileMenuStatus = false;
@@ -58,6 +62,7 @@ $(() => {
     },
   ];
 
+
   /**
    * jQuery elements
    * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
@@ -91,6 +96,7 @@ $(() => {
       currentProgress = -6;
     }
   }, parseFloat(config.progressBarCompletionTime) * 10);
+
 
   /**
    * Update the content depending on current team
@@ -127,6 +133,7 @@ $(() => {
       }
     });
   };
+
 
   /**
    * jQuery event handlers
@@ -209,11 +216,6 @@ $(() => {
     $('body').css('overflow-y', 'auto');
   };
 
-  /**
-   *
-   * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
-   */
-
   $mobileMenuIndicator.on('click', () => {
     if (!mobileMenuStatus) {
       openMobileMenu();
@@ -225,6 +227,7 @@ $(() => {
 
     toggleMobileMenu();
   });
+
 
   /**
    * Hide "Meet the Team" and "Contact" sections and display "Home"
@@ -251,6 +254,7 @@ $(() => {
     mobileMenuStatus = false;
     closeMobileMenu();
   };
+
 
   /**
    * Hide "Home" and "Contact" sections and display "Meet the Team"
@@ -280,6 +284,7 @@ $(() => {
     closeMobileMenu();
   };
 
+
   /**
    * Hide "Home" and "Meet the Team" sections and display "Contact"
    */
@@ -305,6 +310,7 @@ $(() => {
     mobileMenuStatus = false;
     closeMobileMenu();
   };
+
 
   /**
    * Discard the form - Used when user clicks on the "Discard" button
