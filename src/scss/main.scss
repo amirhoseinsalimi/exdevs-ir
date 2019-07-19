@@ -8,7 +8,7 @@ body {
   font: {
     family: sans-serif;
   };
-  color: tomato;
+  color: $white;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 1);
@@ -42,7 +42,6 @@ body {
     &:hover {
       color: $light-gray !important;
     }
-
 
   }
 
@@ -208,6 +207,33 @@ body {
 
 }
 
+/*****************************
+*       Meet The Team
+*****************************/
+.member-card {
+  height: 80px;
+  border: 1px solid rgba(190, 190, 190, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 3px 35px -19px rgba(179, 179, 179, 0.9);
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 35px -15px rgba(179, 179, 179, 0.9);
+  }
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 8px;
+  border-radius: 50%;
+}
+
+.text {
+  top: 15px;
+}
 
 /*****************************
 *        Mobile menu
@@ -225,12 +251,12 @@ body {
     li {
       &.active {
         a {
-          color: $light-gray;
+          color: $light-gray !important;
         }
       }
 
       a {
-        color: #707070;
+        color: #707070 !important;
         transition: color 0.2s;
         font-size: 25px;
 
@@ -245,7 +271,7 @@ body {
         font-size: 18px;
         top: 5px;
         background: transparent;
-        color: $white;
+        color: $white !important;
         border: 2px solid $white;
         outline: 0;
         padding: 5px 20px;
@@ -253,6 +279,13 @@ body {
 
         &:hover {
           box-shadow: 0 1px 10px 5px #222;
+        }
+
+        &.btn.btn-primary:focus,
+        &.btn.btn-primary:active,
+        &.btn.btn-primary:hover {
+          background: transparent;
+          outline: none;
         }
       }
     }
