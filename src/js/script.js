@@ -13,6 +13,7 @@ $(() => {
   let currentProgress = 0;
   let currentTeam = 0;
   let mobileMenuStatus = false;
+  let currentPage = 'Home';
 
   const teamsInfo = [
     {
@@ -148,6 +149,10 @@ $(() => {
     navigateToHome();
   });
 
+  $('.meet-team-link').on('click', () => {
+    navigateToMeetTheTeam();
+  });
+
   $('.contact-link').on('click', () => {
     navigateToContact();
   });
@@ -212,39 +217,91 @@ $(() => {
   $mobileMenuIndicator.on('click', () => {
     if (!mobileMenuStatus) {
       openMobileMenu();
-      $('.home-container, .contact-container').fadeOut(0);
+      $('.home-container, .meet-team-container, .contact-container').fadeOut(0);
     } else {
       closeMobileMenu();
-      $('.home-container, .contact-container').fadeIn(0);
+      $('.home-container, .meet-team-container, .contact-container').fadeIn(0);
     }
 
     toggleMobileMenu();
   });
 
   /**
-   * Hide "Contact" section and display "Home"
+   * Hide "Meet the Team" and "Contact" sections and display "Home"
    */
   const navigateToHome = () => {
-    $('.contact-container').fadeOut(config.transitionTime, () => {
-      $('.home-container').fadeIn(config.transitionTime);
-    });
-    $('.contact-link').removeClass('active');
+    if (currentPage === 'Meet the Team') {
+      $('.contact-container').hide();
+      $('.meet-team-container').fadeOut(config.transitionTime, () => {
+        $('.home-container').fadeIn(config.transitionTime);
+        $('.meet-team').hide();
+      });
+    } else {
+      $('.meet-team-container').hide();
+      $('.contact-container').fadeOut(config.transitionTime, () => {
+        $('.home-container').fadeIn(config.transitionTime);
+        $('.contact-team').hide();
+      });
+    }
+
+    $('.contact-link, .meet-team-link').removeClass('active');
     $('.home-link').addClass('active');
 
+    currentPage = 'Home';
     mobileMenuStatus = false;
     closeMobileMenu();
   };
 
   /**
-   * Hide "Home" section and display "Contact"
+   * Hide "Home" and "Contact" sections and display "Meet the Team"
+   */
+  const navigateToMeetTheTeam = () => {
+    if (currentPage === 'Contact') {
+      $('.home-container').hide();
+      $('.contact-container').fadeOut(config.transitionTime, () => {
+        $('.meet-team-container').removeClass('d-none').fadeIn(config.transitionTime, () => {
+          $('.contact-container').hide();
+        });
+      });
+    } else {
+      $('.contact-container').hide();
+      $('.home-container').fadeOut(config.transitionTime, () => {
+        $('.meet-team-container').removeClass('d-none').fadeIn(config.transitionTime, () => {
+          $('.home-container').hide();
+        });
+      });
+    }
+
+    $('.contact-link, .home-link').removeClass('active');
+    $('.meet-team-link').addClass('active');
+
+    currentPage = 'Meet the Team';
+    mobileMenuStatus = false;
+    closeMobileMenu();
+  };
+
+  /**
+   * Hide "Home" and "Meet the Team" sections and display "Contact"
    */
   const navigateToContact = () => {
-    $('.home-container').fadeOut(config.transitionTime, () => {
-      $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
-    });
-    $('.home-link').removeClass('active');
+    if (currentPage === 'Home') {
+      $('.meet-team-container').hide();
+      $('.home-container').fadeOut(config.transitionTime, () => {
+        $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
+        $('.home-container').hide();
+      });
+    } else {
+      $('.home-container').hide();
+      $('.meet-team-container').fadeOut(config.transitionTime, () => {
+        $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
+        $('.meet-team-container').hide();
+      });
+    }
+
+    $('.home-link, .meet-team-link').removeClass('active');
     $('.contact-link').addClass('active');
 
+    currentPage = 'Contact';
     mobileMenuStatus = false;
     closeMobileMenu();
   };
