@@ -66,3 +66,15 @@ a {
 img:not([alt]), img[alt=""] {
   border: 1px solid red;
 }
+
+.red-border {
+  border: 1px solid red;
+}
+
+.blue-border {
+  border: 1px solid blue;
+}
+
+.green-border {
+  border: 1px solid green;
+}
