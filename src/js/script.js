@@ -134,6 +134,14 @@ $(() => {
     });
   };
 
+  /**
+   * Randomly sort the member cards
+   */
+  const $parent = $('.meet-team-container .justify-content-sm-center');
+  const $members = $parent.children();
+  while ($members.length) {
+    $parent.append($members.splice(Math.floor(Math.random() * $members.length), 1)[0]);
+  }
 
   /**
    * jQuery event handlers
