@@ -148,10 +148,6 @@ $(() => {
     navigateToHome();
   });
 
-  $('.projects-link').on('click', () => {
-    navigateToProjects();
-  });
-
   $('.contact-link').on('click', () => {
     navigateToContact();
   });
@@ -226,13 +222,13 @@ $(() => {
   });
 
   /**
-   * Hide "Projects" and "Contact" sections and displays "Home"
+   * Hide "Contact" section and display "Home"
    */
   const navigateToHome = () => {
-    $('.contact-container, .projects-container').fadeOut(config.transitionTime, () => {
+    $('.contact-container').fadeOut(config.transitionTime, () => {
       $('.home-container').fadeIn(config.transitionTime);
     });
-    $('.contact-link, .projects-link').removeClass('active');
+    $('.contact-link').removeClass('active');
     $('.home-link').addClass('active');
 
     mobileMenuStatus = false;
@@ -240,27 +236,13 @@ $(() => {
   };
 
   /**
-   * Hide "Projects" and "Contact" sections and displays "Home"
-   */
-  const navigateToProjects = () => {
-    $('.home-container, .contact-container').fadeOut(config.transitionTime, () => {
-      $('.projects-container').removeClass('d-none').fadeIn(config.transitionTime);
-    });
-    $('.contact-link, .home-link').removeClass('active');
-    $('.projects-link').addClass('active');
-
-    mobileMenuStatus = false;
-    closeMobileMenu();
-  };
-
-  /**
-   * Hide "Projects" and "Contact" sections and displays "Home"
+   * Hide "Home" section and display "Contact"
    */
   const navigateToContact = () => {
-    $('.home-container, .projects-container').fadeOut(config.transitionTime, () => {
+    $('.home-container').fadeOut(config.transitionTime, () => {
       $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
     });
-    $('.home-link, .projects-link').removeClass('active');
+    $('.home-link').removeClass('active');
     $('.contact-link').addClass('active');
 
     mobileMenuStatus = false;
