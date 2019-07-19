@@ -66,6 +66,7 @@ $(() => {
   const $teamDescription = $('.team-description');
   const $progressBar = $('.progress-bar');
   const $ioExceptionHeader = $('.io-exception-header');
+  const $memberCards = $('.member-card');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
   const $hr1 = $('hr:nth-child(1)');
@@ -129,6 +130,9 @@ $(() => {
   /**
    * jQuery event handlers
    */
+  $memberCards.on('click', (e) => {
+    window.open(e.target.closest('.member-card').getAttribute('link'));
+  });
 
   $('span .left-arrow').on('click', () => {
     currentProgress = 0;
