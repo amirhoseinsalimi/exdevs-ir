@@ -9,8 +9,9 @@ useragent(true);
 
 router.get('/', (req, res) => {
   const agent = useragent.parse(req.headers['user-agent']);
+  console.log(agent.os.family === 'iOS');
 
-  if (agent.os === 'iOS') {
+  if (agent.os.family === 'iOS') {
     res.redirect('https://timeset-web.firebaseapp.com');
   } else {
     res.set({ 'Content-Type': 'application/vnd.android.package-archive' });
