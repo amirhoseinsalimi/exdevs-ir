@@ -25,7 +25,10 @@
     "nthline": "^1.0.1",
     "pm2": "^3.5.1",
     "pug": "^2.0.3",
-    "serve-favicon": "^2.5.0"
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0",
+    "useragent": "^2.3.0",
+    "yamlparser": "0.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
