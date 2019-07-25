@@ -7,7 +7,7 @@ $(() => {
    */
   const config = {
     transitionTime: 700,
-    progressBarCompletionTime: '3s', // seconds
+    progressBarCompletionTime: '10s', // seconds
   };
 
 
@@ -82,7 +82,7 @@ $(() => {
       .attr('aria-valuenow', currentProgress);
 
     if (currentProgress >= 106) {
-      changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
+      changeTeam(++currentTeam >= teamsInfo.length ? 0 : currentTeam);
       currentProgress = -6;
     }
   }, parseFloat(config.progressBarCompletionTime) * 10);
