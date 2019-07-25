@@ -7,7 +7,19 @@ html(lang='en-US')
     include _partials/header.pug
 
     #particlesJS
-    .container-fluid
+    .container-fluid.loader-container
+      .container
+        .row.no-gutters.align-items-center(style="height: 400px;")
+          .col-12.d-flex.justify-content-center
+            .a(style='--n: 5;')
+              .dot(style='--i: 0;').mx-2
+              .dot(style='--i: 1;').mx-2
+              .dot(style='--i: 2;').mx-2
+              .dot(style='--i: 3;').mx-2
+              .dot(style='--i: 4;').mx-2
+
+
+    .container-fluid.main-container.d-none
       .container.home-container
         .row.no-gutters
           .col-12

@@ -1,0 +1,28 @@
+@import 'variables';
+
+$d: 1.3em;
+$t: 1.5s;
+
+.dot {
+  background: $white;
+
+  &, &:after {
+    display: inline-block;
+    width: $d;
+    height: $d;
+    border-radius: 50%;
+    animation: a $t calc(((var(--i) + var(--o, 0)) / var(--n) - 1) * #{$t}) infinite
+  }
+
+  &:after {
+    --o: 1;
+    background: black;
+    content: ''
+  }
+}
+
+@keyframes a {
+  0%, 50% {
+    transform: scale(0)
+  }
+}
