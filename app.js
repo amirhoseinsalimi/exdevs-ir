@@ -12,6 +12,8 @@ const contactMessageRouter = require('./routes/contact-message');
 const downloaderRouter = require('./routes/downloader');
 const downloaderAppRouter = require('./routes/downloader-app');
 const playStoreRouter = require('./routes/play-store');
+const getContentRouter = require('./routes/get-content');
+const serverErrorRouter = require('./routes/server-error');
 
 const app = express();
 
@@ -32,6 +34,8 @@ app.use('/contact-message', contactMessageRouter);
 app.use('/download', downloaderRouter);
 app.use('/download-app', downloaderAppRouter);
 app.use('/playstore', playStoreRouter);
+app.use('/get-content', getContentRouter);
+app.use('/server-error', serverErrorRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
