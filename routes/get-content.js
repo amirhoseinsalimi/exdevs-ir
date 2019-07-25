@@ -115,7 +115,7 @@ router.get('/', (req, res) => {
       img: 'img/abedinia.jpg',
       linkedIn: 'marzieh-abedinia-4a71a2184/',
       twitter: '',
-      email: '',
+      email: 'm.abedinia1998@gmail.com',
       telegram: 'm_abedinia',
     },
   ];
