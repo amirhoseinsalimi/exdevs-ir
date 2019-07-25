@@ -69,7 +69,7 @@ $(() => {
   const $hr2 = $('hr:nth-child(2)');
   const $hr3 = $('hr:nth-child(3)');
 
-  const $allInfo = $('.team-name, .team-motto, .team-description');
+  const $allInfo = $('.team-name, .team-motto, .team-description, .team-icon');
 
   /**
    * Execute the function each `config.progressBarCompletionTime * 10` millis
