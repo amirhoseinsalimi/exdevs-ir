@@ -63,7 +63,6 @@ $(() => {
   const $teamDescription = $('.team-description');
   const $progressBar = $('.progress-bar');
   const $ioExceptionHeader = $('.io-exception-header');
-  const $members = $('.members');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
   const $hr1 = $('hr:nth-child(1)');
@@ -126,26 +125,43 @@ $(() => {
   };
 
   const generateMemberCards = (members) => {
-    members.forEach((value) => {
+    members.forEach((member) => {
       $('.members').append(`
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 member-card position-relative px-3 m-3" link="${value.link}">
-          <img class="profile-image" src="${value.img}" alt="Exception member" />
-          <div class="d-inline-block ml-3 h-100 position-absolute text">
-          <span class="mt-4">${value.name}</span>
-          <br />
-          <span class="small text-muted">${value.position}</span>
+        <div class="col-12 col-md-4 py-3 col-lg-3 m-1 member-card" link="${member.link}">
+          <img class="d-block mx-auto mb-3 profile-image" src="${member.img}" alt="Exception member" />
+          <div class="text text-center">
+            <span class="text-center">${member.name}</span>
+            <br />
+            <span class="small text-muted">${member.position}</span>
+            <p style="font-size: 13px" class="text-left mb-3">
+              ${member.text}            
+            </p>
+            
+            <div class="d-flex justify-content-center">
+              <a href="https://twitter.com/${member.twitter}" target="_blank" class="member-link twitter">
+                <img src="img/twitter.svg" alt="${member.name}-twitter">
+              </a>
+              <a href="https://www.linkedin.com/in/${member.linkedIn}" target="_blank" class="member-link linkedIn">
+                <img src="img/linkedin.svg" alt="${member.name}-linkedin">
+              </a>
+              <a href="https://t.me/${member.telegram}" target="_blank" class="member-link telegram">
+                <img src="img/telegram.svg" alt="${member.name}-telegram">
+              </a>
+              <a href="mailto:${member.email}" class="member-link email">
+                <img src="img/email.svg" alt="${member.name}-email">
+              </a>
+            </div>
           </div>
         </div>
     `);
     });
   };
 
+
   /**
    * jQuery event handlers
    */
-  $members.on('click', '.member-card', (e) => {
-    window.open(e.target.closest('.member-card').getAttribute('link'));
-  });
+
 
   $('span .left-arrow').on('click', () => {
     currentProgress = 0;

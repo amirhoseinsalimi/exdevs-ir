@@ -212,7 +212,6 @@ body {
 *       Meet The Team
 *****************************/
 .member-card {
-  height: 80px;
   border: 1px solid rgba(190, 190, 190, 0.1);
   border-radius: 10px;
   box-shadow: 0 3px 35px -19px rgba(179, 179, 179, 0.9);
@@ -222,18 +221,29 @@ body {
   &:hover {
     box-shadow: 0 3px 35px -15px rgba(179, 179, 179, 0.9);
   }
-}
 
-.profile-image {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  top: 8px;
-  border-radius: 50%;
-}
+  .profile-image {
+    width: 60px;
+    height: 60px;
+    top: 8px;
+    border-radius: 50%;
+  }
 
-.text {
-  top: 15px;
+  .text {
+    top: 15px;
+  }
+
+  .member-link {
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 0 8px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+  }
 }
 
 /*****************************
