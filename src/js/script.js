@@ -7,7 +7,7 @@ $(() => {
    */
   const config = {
     transitionTime: 700,
-    progressBarCompletionTime: '10s', // seconds
+    progressBarCompletionTime: '3s', // seconds
   };
 
 
@@ -15,52 +15,43 @@ $(() => {
    * Global variables
    */
   let currentProgress = 0;
+  let teamsInfo;
+  let members;
   let currentTeam = 0;
   let mobileMenuStatus = false;
+
   let currentPage = 'Home';
 
-  const teamsInfo = [
-    {
-      name: 'Web development',
-      description: 'The web is an essential part of every successful product nowadays. Our web'
-      + ' division, having enthusiastic developers, provides you each website and web application'
-      + '  you want with exemplary quality. We use high-demand frameworks and the latest'
-      + ' technologies as our main tool to bring this achievement. Our specialty in front-end and'
-      + '  back-end JavaScript frameworks gives us the ability to build robust full-stack web apps'
-      + '  with an astonishing performance. Long story short, we do our best to always be on the'
-      + '  edge of the web development world.',
-      motto: 'Always deliver more than expected',
-      color: '#f0db4f',
-      icon: 'thumbs/web.svg',
+
+  $.ajax({
+    url: '/get-content',
+    method: 'get',
+    dataType: 'json',
+    timeout: 3000,
+    beforeSend: () => {
+
     },
-    {
-      name: 'Application development',
-      description: 'Want to expand your business? Maybe you need a mobile app! Our experienced'
-      + ' developers at our mobile division, are capable of doing anything possible in the'
-      + ' industry. Having experience in Java, Kotlin, Flutter, there\'s no obstacle for us to go'
-      + ' beyond the boundaries. We build your desired Android or iOS app with the quality, fewer'
-      + ' young teams would be capable. With the knowledge of a bunch of technologies, we always'
-      + ' choose the right one for the job, and it wouldn\'t be exaggerating to say that nothing is'
-      + ' impossible for us.',
-      motto: 'Success is not a final point, it\'s a road',
-      color: '#4ff05f',
-      icon: 'thumbs/app.svg',
+    statusCode: {
+      200: (data) => {
+        $('.loader-container').addClass('d-none');
+        $('.main-container').fadeIn(config.transitionTime, () => {
+          // Nothing to do
+        }).removeClass('d-none');
+        teamsInfo = data.mainContent;
+        // changeTeam(0);
+        members = data.members;
+        generateMemberCards(members);
+      },
+      404: () => {
+        window.location.replace('/server-error');
+        console.log('404');
+      },
     },
-    {
-      name: 'Server development',
-      description: 'The spirit of every mobile app, website or a web service is server-side.'
-      + ' PHP, Elixir, Python are just a few tools we have in our hands, but our real power'
-      + ' doesn\'t come from these tools, it comes from our mind! We know all the feasible'
-      + ' features your product needs, so you can trust us on all kinds of projects, whether it is'
-      + ' a RESTful API or a back-end for a website, we do the correct job. We\'ve also come a'
-      + ' long way in designing databases and MySQL/MariaDB, MongoDB were our best friends during'
-      + ' our journey. We know that success isn\'t achieved by accident, so we don\'t wait for it,'
-      + ' we chase it!',
-      motto: 'Use the right tool, for the right job, in the right way!',
-      color: '#4f8af0',
-      icon: 'thumbs/server.svg',
+    error: () => {
+      window.location.href = '/server-error';
+      console.log('500');
     },
-  ];
+  });
 
 
   /**
@@ -72,7 +63,7 @@ $(() => {
   const $teamDescription = $('.team-description');
   const $progressBar = $('.progress-bar');
   const $ioExceptionHeader = $('.io-exception-header');
-  const $memberCards = $('.member-card');
+  const $members = $('.members');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
   const $hr1 = $('hr:nth-child(1)');
@@ -134,19 +125,25 @@ $(() => {
     });
   };
 
-  /**
-   * Randomly sort the member cards
-   */
-  const $parent = $('.meet-team-container .justify-content-sm-center');
-  const $members = $parent.children();
-  while ($members.length) {
-    $parent.append($members.splice(Math.floor(Math.random() * $members.length), 1)[0]);
-  }
+  const generateMemberCards = (members) => {
+    members.forEach((value) => {
+      $('.members').append(`
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 member-card position-relative px-3 m-3" link="${value.link}">
+          <img class="profile-image" src="${value.img}" alt="Exception member" />
+          <div class="d-inline-block ml-3 h-100 position-absolute text">
+          <span class="mt-4">${value.name}</span>
+          <br />
+          <span class="small text-muted">${value.position}</span>
+          </div>
+        </div>
+    `);
+    });
+  };
 
   /**
    * jQuery event handlers
    */
-  $memberCards.on('click', (e) => {
+  $members.on('click', '.member-card', (e) => {
     window.open(e.target.closest('.member-card').getAttribute('link'));
   });
 

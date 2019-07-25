@@ -4,10 +4,30 @@ const router = express.Router();
 
 /* English content */
 router.get('/', (req, res) => {
-  const result = [
+  function shuffle(array) {
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  const mainContent = [
     {
       name: 'Web development',
-      description: 'The web is an essential part of every successful product nowadays. Our web'
+      description: 'lalalla The web is an essential part of every successful product nowadays. Our web'
       + ' division, having enthusiastic developers, provides you each website and web application'
       + '  you want with exemplary quality. We use high-demand frameworks and the latest'
       + ' technologies as our main tool to bring this achievement. Our specialty in front-end and'
@@ -46,6 +66,44 @@ router.get('/', (req, res) => {
       icon: 'thumbs/server.svg',
     },
   ];
+
+  const members = [
+    {
+      name: 'Amir Hosein Salimi',
+      position: 'Front-end Developer',
+      img: 'img/salimi.jpeg',
+      link: 'https://www.linkedin.com/in/amirhoseinsalimi/',
+    },
+    {
+      name: 'Hamidreza Bayat',
+      position: 'Mobile Developer',
+      img: 'img/bayat.jpeg',
+      link: 'https://www.linkedin.com/in/hamidr3zabayat/',
+    },
+    {
+      name: 'Milad Karimiyan',
+      position: 'Back-end Developer',
+      img: 'img/karimiyan.jpeg',
+      link: 'https://www.linkedin.com/in/milad-karimiyan-0337a8a9/',
+    },
+    {
+      name: 'Fatemeh Akhlaghi',
+      position: 'Mobile Developer',
+      img: 'img/akhlaghi.jpg',
+      link: 'https://www.linkedin.com/in/fatemeh-akhlaghi-6a211615b/',
+    },
+    {
+      name: 'Marzieh Abedinia',
+      position: 'Mobile Developer',
+      img: 'img/abedinia.jpg',
+      link: 'https://www.linkedin.com/in/marzieh-abedinia-4a71a2184/',
+    },
+  ];
+
+  const result = {
+    mainContent: shuffle(mainContent),
+    members: shuffle(members),
+  };
 
   res.json(result);
 });
