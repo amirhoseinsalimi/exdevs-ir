@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
   const mainContent = [
     {
       name: 'Web development',
-      description: 'lalalla The web is an essential part of every successful product nowadays. Our web'
+      description: 'The web is an essential part of every successful product nowadays. Our web'
       + ' division, having enthusiastic developers, provides you each website and web application'
       + '  you want with exemplary quality. We use high-demand frameworks and the latest'
       + ' technologies as our main tool to bring this achievement. Our specialty in front-end and'
