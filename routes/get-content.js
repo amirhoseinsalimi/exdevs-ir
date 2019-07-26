@@ -105,7 +105,7 @@ router.get('/', (req, res) => {
       img: 'img/akhlaghi.jpg',
       linkedIn: 'fatemeh-akhlaghi-6a211615b/',
       twitter: 'ftad3v',
-      email: '',
+      email: 'akhlaghi.fatemeh@gmail.com',
       telegram: 'FtaDev',
     },
     {
