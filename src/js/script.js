@@ -33,14 +33,17 @@ $(() => {
     },
     statusCode: {
       200: (data) => {
-        $('.loader-container').addClass('d-none');
-        $('.main-container').fadeIn(config.transitionTime, () => {
-          // Nothing to do
-        }).removeClass('d-none');
         teamsInfo = data.mainContent;
-        // changeTeam(0);
+        changeTeam(0);
         members = data.members;
+
         generateMemberCards(members);
+
+        $('.loader-container').fadeOut(config.transitionTime, () => {
+          $('.main-container').fadeIn(config.transitionTime, () => {
+            // Nothing to do
+          }).removeClass('d-none');
+        }).addClass('d-none');
       },
       404: () => {
         window.location.replace('/server-error');
