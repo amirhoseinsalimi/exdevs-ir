@@ -1,28 +1,37 @@
 const gulp = require('gulp');
 
-/* Modules related SCSS and CSS */
+
+/* General plugins */
+const sourcemaps = require('gulp-sourcemaps');
+
+
+/* Plugins related SCSS and CSS */
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 
-/* Modules related to JS */
+
+/* Plugins related to JS */
 const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
 const terser = require('gulp-terser');
 const stripDebug = require('gulp-strip-debug');
 const noop = require('gulp-noop');
 
-/* CSS and SCSS related modules */
-sass.compiler = require('node-sass');
 
-/* SCSS to CSS */
+/* Paths */
 const styleSrc = 'src/scss/**/*.scss';
 const styleDest = './public/css/';
 
 const scriptSrc = 'src/js/**/*.js';
 const scriptDest = './public/js/';
 
+
+/* Plugins' configuration */
+sass.compiler = require('node-sass');
+
+
+/* SCSS to CSS */
 gulp.task('style', () => gulp.src(styleSrc)
   .pipe(sourcemaps.init())
   .pipe(sass({
@@ -36,6 +45,8 @@ gulp.task('style', () => gulp.src(styleSrc)
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(styleDest)));
 
+
+/* JS task */
 gulp.task('script', () => gulp.src(scriptSrc)
   .pipe(sourcemaps ? sourcemaps.init() : noop())
   .pipe(deporder())
@@ -46,8 +57,11 @@ gulp.task('script', () => gulp.src(scriptSrc)
   .pipe(gulp.dest(scriptDest)));
 
 
+/* Default task */
 gulp.task('default', gulp.series('style', 'script'));
 
+
+/* Watch files */
 gulp.task('watch', (done) => {
   gulp.watch(styleSrc, gulp.series('style'));
   gulp.watch(scriptSrc, gulp.series('script'));
