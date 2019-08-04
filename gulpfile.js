@@ -6,22 +6,40 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 
-
-/* CSS processing */
+/* CSS and SCSS related modules */
 sass.compiler = require('node-sass');
 
-const srcPath = './src/scss/**/*.scss';
-const distPath = './public/css/';
+/* SCSS to CSS */
+const styleSrc = 'src/scss/**/*.scss';
+const styleDest = './public/css/';
 
-gulp.task('style', () => gulp.src(srcPath)
-  .pipe(sourcemaps.init())
-  .pipe(sass({
-    outputStyle: 'compressed',
+const scriptSrc = 'src/js/**/*.js';
+const scriptDest = './public/js/';
+
+gulp
+  .task('style', () => gulp.src(styleSrc)
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      outputStyle: 'compressed',
+    })
+      .on('error', sass.logError))
+    .pipe(autoprefixer({
+      cascade: false,
+    }))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(styleDest)))
+
+  .task('script', () => {
+    gulp.src(scriptSrc)
+      .pipe(gulp.dest(scriptDest));
   })
-    .on('error', sass.logError))
-  .pipe(autoprefixer({
-    cascade: false,
-  }))
-  .pipe(rename({ suffix: '.min' }))
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest(distPath)));
+
+  .task('default', ['style'], () => {
+    console.log('Finished');
+  })
+
+  .task('watch', ['default'], () => {
+    gulp.watch(styleSrc, ['style']);
+    gulp.watch(styleDest, ['script']);
+  });
