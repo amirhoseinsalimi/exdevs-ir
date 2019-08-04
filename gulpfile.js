@@ -1,98 +1,56 @@
-// Gulp.js configuration
-
-/* Development mode? */
-const devBuild = (process.env.NODE_ENV !== 'production');
-
-
-/* Folders */
-const src = 'src/';
-const dest = 'public/';
-
-
-/* Modules */
 const gulp = require('gulp');
-const newer = require('gulp-newer');
-const imagemin = require('gulp-imagemin');
-const noop = require('gulp-noop');
+
+/* Modules related SCSS and CSS */
+const rename = require('gulp-rename');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+
+/* Modules related to JS */
 const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
 const terser = require('gulp-terser');
-const stripdebug = devBuild ? null : require('gulp-strip-debug');
-const sourcemaps = devBuild ? require('gulp-sourcemaps') : null;
-const sass = require('gulp-sass');
-const postcss = require('gulp-postcss');
-const assets = require('postcss-assets');
-const autoprefixer = require('autoprefixer');
-const mqpacker = require('css-mqpacker');
-const cssnano = require('cssnano');
+const stripDebug = require('gulp-strip-debug');
+const noop = require('gulp-noop');
 
-
-/* Module configuration */
+/* CSS and SCSS related modules */
 sass.compiler = require('node-sass');
 
+/* SCSS to CSS */
+const styleSrc = 'src/scss/**/*.scss';
+const styleDest = './public/css/';
 
-/* Tasks configuration */
+const scriptSrc = 'src/js/**/*.js';
+const scriptDest = './public/js/';
 
-// Image processing
-function images() {
-  const out = `${dest}/img`;
+gulp.task('style', () => gulp.src(styleSrc)
+  .pipe(sourcemaps.init())
+  .pipe(sass({
+    outputStyle: 'compressed',
+  })
+    .on('error', sass.logError))
+  .pipe(autoprefixer({
+    cascade: false,
+  }))
+  .pipe(rename({ suffix: '.min' }))
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest(styleDest)));
 
-  return gulp.src(`${src}img/**/*`)
-    .pipe(newer(out))
-    .pipe(imagemin({ optimizationLevel: 5 }))
-    .pipe(gulp.dest(out));
-}
+gulp.task('script', () => gulp.src(scriptSrc)
+  .pipe(sourcemaps ? sourcemaps.init() : noop())
+  .pipe(deporder())
+  .pipe(concat('main.js'))
+  .pipe(stripDebug ? stripDebug() : noop())
+  .pipe(terser())
+  .pipe(sourcemaps ? sourcemaps.write() : noop())
+  .pipe(gulp.dest(scriptDest)));
 
-// JS processing
-function js() {
-  return gulp.src(`${src}js/**/*`)
-    .pipe(sourcemaps ? sourcemaps.init() : noop())
-    .pipe(deporder())
-    .pipe(concat('main.js'))
-    .pipe(stripdebug ? stripdebug() : noop())
-    .pipe(terser())
-    .pipe(sourcemaps ? sourcemaps.write() : noop())
-    .pipe(gulp.dest(`${dest}js/`));
-}
 
-// Sass and CSS processing
-function css() {
-  return gulp.src(`${src}scss/main.scss`)
-    .pipe(sourcemaps ? sourcemaps.init() : noop())
-    .pipe(sass({
-      outputStyle: 'nested',
-      imagePath: '/img/',
-      precision: 3,
-      errLogToConsole: true,
-    }).on('error', sass.logError))
-    .pipe(postcss([
-      assets({ loadPaths: ['img/'] }),
-      autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
-      mqpacker,
-      cssnano,
-    ]))
-    .pipe(sourcemaps ? sourcemaps.write() : noop())
-    .pipe(gulp.dest(`${dest}css/`));
-}
+gulp.task('default', gulp.series('style', 'script'));
 
-// Watch for file changes
-function watch(done) {
-  // image changes
-  gulp.watch(`${src}img/**/*`, images);
-
-  // js changes
-  gulp.watch(`${src}js/**/*`, js);
-
-  // css changes
-  gulp.watch(`${src}scss/**/*`, css);
+gulp.task('watch', (done) => {
+  gulp.watch(styleSrc, gulp.series('style'));
+  gulp.watch(scriptSrc, gulp.series('script'));
 
   done();
-}
-
-
-/* Tasks */
-exports.images = images;
-exports.js = js;
-exports.css = css;
-exports.build = gulp.parallel(exports.images, exports.css, exports.js); // run all tasks
-exports.watch = watch;
+});
