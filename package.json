@@ -50,6 +50,7 @@
     "gulp-terser": "^1.2.0",
     "minify": "^4.1.2",
     "node-sass": "^4.12.0",
-    "postcss-assets": "^5.0.0"
+    "postcss-assets": "^5.0.0",
+    "readable-stream": "^3.4.0"
   }
 }
