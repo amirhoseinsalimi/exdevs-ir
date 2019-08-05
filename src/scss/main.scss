@@ -213,12 +213,12 @@ body {
 .member-card {
   border: 1px solid rgba(190, 190, 190, 0.1);
   border-radius: 10px;
-  box-shadow: 0 3px 35px -19px rgba(179, 179, 179, 0.9);
+  box-shadow: 0 3px 35px -19px rgba(179, 179, 179, 0.3);
   transition: box-shadow 0.5s;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 3px 35px -15px rgba(179, 179, 179, 0.9);
+    box-shadow: 0 3px 35px -15px rgba(179, 179, 179, 0.5);
   }
 
   .profile-image {
