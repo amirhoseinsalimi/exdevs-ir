@@ -253,10 +253,18 @@ $(() => {
   $mobileMenuIndicator.on('click', () => {
     if (!mobileMenuStatus) {
       openMobileMenu();
+
       $('.home-container, .meet-team-container, .contact-container').fadeOut(0);
     } else {
       closeMobileMenu();
-      $('.home-container, .meet-team-container, .contact-container').fadeIn(0);
+
+      if (currentPage === 'Home') {
+        $('.home-container').fadeIn(0);
+      } else if (currentPage === 'Meet the Team') {
+        $('.meet-team-container').fadeIn(0);
+      } else if (currentPage === 'Contact') {
+        $('.contact-container').fadeIn(0);
+      }
     }
 
     toggleMobileMenu();
