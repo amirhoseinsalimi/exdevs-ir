@@ -3,7 +3,9 @@
   "version": "1.1.1",
   "private": true,
   "scripts": {
-    "start": "npm run serve",
+    "start": "./node_modules/.bin/pm2 start ioex-wesbsite",
+    "restart": "./node_modules/.bin/pm2 restart ioex-wesbsite",
+    "stop": "./node_modules/.bin/pm2 stop ioex-wesbsite",
     "test": "DEBUG=express* node ./bin/www",
     "serve": "./node_modules/.bin/gulp",
     "lint": "./node_modules/.bin/eslint"
