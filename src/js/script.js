@@ -19,8 +19,8 @@ $(() => {
   let members;
   let currentTeam = 0;
   let mobileMenuStatus = false;
-
   let currentPage = 'Home';
+  const fragId = window.location.hash.substr(1);
 
 
   $.ajax({
@@ -44,6 +44,16 @@ $(() => {
             // Nothing to do
           }).removeClass('d-none');
         }).addClass('d-none');
+
+        if (fragId === 'home') {
+          navigateToHome();
+        } else if (fragId === 'team') {
+          navigateToMeetTheTeam();
+        } else if (fragId === 'contact') {
+          navigateToContact();
+        } else {
+          navigateToHome();
+        }
       },
       404: () => {
         window.location.replace('/server-error');
@@ -274,6 +284,7 @@ $(() => {
     $('.contact-link, .meet-team-link').removeClass('active');
     $('.home-link').addClass('active');
 
+    window.location.hash = '';
     currentPage = 'Home';
     mobileMenuStatus = false;
     closeMobileMenu();
@@ -303,6 +314,7 @@ $(() => {
     $('.contact-link, .home-link').removeClass('active');
     $('.meet-team-link').addClass('active');
 
+    window.location.hash = 'team';
     currentPage = 'Meet the Team';
     mobileMenuStatus = false;
     closeMobileMenu();
@@ -330,6 +342,7 @@ $(() => {
     $('.home-link, .meet-team-link').removeClass('active');
     $('.contact-link').addClass('active');
 
+    window.location.hash = 'contact';
     currentPage = 'Contact';
     mobileMenuStatus = false;
     closeMobileMenu();
