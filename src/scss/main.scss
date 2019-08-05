@@ -179,11 +179,23 @@ body {
 
   }
 
-  .btn.btn-primary {
-    border: none;
+  .btn.btn-secondary {
     border-radius: 20px;
     padding: 5px 20px;
-    background: $dark-gray;
+    background: $transparent;
+    border: 2px solid $white;
+    transition: color 0.3s, background-color 0.3s;
+
+    &:active {
+      color: #000;
+      background-color: $white;
+      outline: none;
+      border: 2px solid $white;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   a {
