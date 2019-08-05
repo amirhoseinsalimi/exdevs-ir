@@ -95,7 +95,7 @@ $(() => {
       .attr('aria-valuenow', currentProgress);
 
     if (currentProgress >= 106) {
-      changeTeam(++currentTeam >= teamsInfo.length ? 0 : currentTeam);
+      changeTeam(++currentTeam >= teamsInfo.length ? currentTeam = 0 : currentTeam);
       currentProgress = -6;
     }
   }, parseFloat(config.progressBarCompletionTime) * 10);
