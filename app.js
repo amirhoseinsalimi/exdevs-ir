@@ -12,6 +12,7 @@ const contactMessageRouter = require('./routes/contact-message');
 const playStoreRouter = require('./routes/play-store');
 const getContentRouter = require('./routes/get-content');
 const serverErrorRouter = require('./routes/server-error');
+const cattyRouter = require('./routes/catty');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/contact-message', contactMessageRouter);
 app.use('/playstore', playStoreRouter);
 app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
+app.use('/catty', cattyRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
