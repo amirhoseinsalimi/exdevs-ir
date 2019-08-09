@@ -7,6 +7,7 @@ body {
     weight: lighter;
   }
   color: #fff;
+  height: 100vh;
 }
 
 #particlesJS {
@@ -18,7 +19,8 @@ body {
 }
 
 .img-error {
-  width: 400px;
+  padding-top: 20px;
+  width: 170px;
   margin: 0 auto;
   display: block;
 }
