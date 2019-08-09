@@ -28,8 +28,6 @@ router.post('/', (req, res) => {
           res.redirect('/');
           connection.end();
         }
-
-        connection.end();
       });
     }
   });
