@@ -140,7 +140,7 @@ $(() => {
   const generateMemberCards = (members) => {
     members.forEach((member) => {
       $('.members').append(`
-        <div class="col-12 col-md-4 py-4 col-lg-3 my-2 mx-1 member-card" link="${member.link}">
+        <div class="col-12 col-md-4 py-4 col-lg-3 my-2 mx-1 member-card">
           <img class="d-block mx-auto mb-3 profile-image" src="${member.img}" alt="Exception member" />
           <div class="text text-center">
             <span class="text-center">${member.name}</span>
