@@ -152,16 +152,16 @@ $(() => {
             
             <div class="d-flex justify-content-center">
               <a href="https://twitter.com/${member.twitter}" target="_blank" class="member-link twitter">
-                <img src="img/twitter.svg" alt="${member.name}-twitter">
+                <img src="icons/twitter.svg" alt="${member.name}-twitter">
               </a>
               <a href="https://www.linkedin.com/in/${member.linkedIn}" target="_blank" class="member-link linkedIn">
-                <img src="img/linkedin.svg" alt="${member.name}-linkedin">
+                <img src="icons/linkedin.svg" alt="${member.name}-linkedin">
               </a>
               <a href="https://t.me/${member.telegram}" target="_blank" class="member-link telegram">
-                <img src="img/telegram.svg" alt="${member.name}-telegram">
+                <img src="icons/telegram.svg" alt="${member.name}-telegram">
               </a>
               <a href="mailto:${member.email}" class="member-link email">
-                <img src="img/email.svg" alt="${member.name}-email">
+                <img src="icons/email.svg" alt="${member.name}-email">
               </a>
             </div>
           </div>
