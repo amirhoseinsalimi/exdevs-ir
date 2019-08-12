@@ -1,12 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const connection = require('../connection');
+const pool = require('../connection');
 const { incrementContactMessageCounter } = require('../counter');
 
 /* Process POST data */
 router.post('/', (req, res) => {
-  connection.connect((err) => {
+  pool.connect((err, connection) => {
     if (err) {
       console.log(err);
       res.status(500);
@@ -23,10 +23,9 @@ router.post('/', (req, res) => {
           console.log(err);
           res.status(500);
           res.render('500');
-          connection.end();
         } else {
+          res.status(200);
           res.redirect('/');
-          connection.end();
         }
       });
     }

@@ -2,10 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-/* Server error */
 router.get('/', (req, res) => {
-  res.status(500);
-  res.render('500');
+  res.render('admin/index');
 });
 
 module.exports = router;

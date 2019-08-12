@@ -1,0 +1,38 @@
+doctype html
+head
+  title Catty Page!
+
+  meta(charset="UTF-8")
+  link(rel="stylesheet", href="css/bootstrap.min.css")
+  link(href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet")
+  meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+  link(rel="stylesheet", href="css/catty.min.css")
+body(style='')
+  #particlesJS
+  .container-fluid.p-0
+    .row.no-gutters.h-100
+      .col-lg-8.d-none.d-lg-block
+      .col-12.col-lg-4.form-container
+        a.pt-3(href='/#home')
+          img.d-block.mx-auto(src='thumbs/ioex.svg' alt='IOException Logo')
+        form.d-flex.justify-content-center.align-items-center.flex-column.pb-5.my-auto(action='/catty'
+          method='POST' autocomplete='off')
+          div.md2-input.d-inline-flex.justify-content-center.align-items-center.flex-column.position-relative.mb-ioex.svg
+            label.mb-3
+              input.px-4(type='text' name='user' required='required' autocomplete='off')
+              span.px-2.position-absolute User
+
+          div.md2-input.d-inline-flex.justify-content-center.align-items-center.flex-column.position-relative.mb-2
+            label
+              input.px-4(type='password' name='password' required='required' autocomplete='off')
+              span.px-2.position-absolute Password
+
+          button.btn.btn-secondary.btn-submit(type='submit') Login
+
+        div.pb-3
+          span.d-block.text-center.copyright-logo Copyright © 2019
+
+
+  script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+  script(src='js/main.js')
