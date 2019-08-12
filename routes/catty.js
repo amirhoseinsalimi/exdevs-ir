@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const connection = require('../connection');
+const pool = require('../connection');
 
 /* GET admin page. */
 router.get('/', (req, res) => {
@@ -9,10 +9,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  connection.connect((err) => {
+  pool.getConnection((err, connection) => {
     if (err) {
-      console.log('connect nashod');
-      console.error(err);
+      console.log(`Error connecting to database: ${err.name}: ${err.message}`);
       res.status(500);
       res.render('500');
     } else {
@@ -23,22 +22,17 @@ router.post('/', (req, res) => {
 
       connection.query(query, [user, password], (err, result) => {
         if (err) {
-          console.error(`Error executing the query: ${err.name}: ${err.message}`);
+          console.log(`Error executing the query: ${err.name}: ${err.message}`);
           res.status(500);
           res.render('500');
-          connection.end();
+        } else if (result.length > 0) {
+          res.redirect('/admin');
         } else {
-          console.log(typeof result);
-          console.log(result);
-
-          if (result.length > 0) {
-            res.redirect('/admin');
-          } else {
-            res.redirect('/catty');
-          }
-
-          connection.end();
+          res.status(401);
+          res.render('catty');
         }
+
+        connection.release();
       });
     }
   });
