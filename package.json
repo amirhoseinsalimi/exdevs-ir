@@ -6,6 +6,7 @@
     "start": "./node_modules/.bin/pm2 start ioex-website",
     "restart": "./node_modules/.bin/pm2 restart ioex-website",
     "stop": "./node_modules/.bin/pm2 stop ioex-website",
+    "monit": "./node_modules/.bin/pm2 monit",
     "test": "DEBUG=express* node ./bin/www",
     "serve": "./node_modules/.bin/gulp",
     "lint": "./node_modules/.bin/eslint --fix gulpfile.js app.js counter.js src/js/script.js"
