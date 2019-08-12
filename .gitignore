@@ -4,6 +4,8 @@
 node_modules/
 jspm_packages/
 lib-cov
+public/**/*
+!public/favicon.ico
 
 
 # Environment #

@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
       + '  edge of the web development world.',
       motto: 'Always deliver more than expected',
       color: '#f0db4f',
-      icon: 'thumbs/web.svg',
+      icon: 'icons/web.svg',
     },
     {
       name: 'Application development',
@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
       + ' impossible for us.',
       motto: 'Success is not a final point, it\'s a road',
       color: '#4ff05f',
-      icon: 'thumbs/app.svg',
+      icon: 'icons/app.svg',
     },
     {
       name: 'Server development',
@@ -63,7 +63,7 @@ router.get('/', (req, res) => {
       + ' we chase it!',
       motto: 'Use the right tool, for the right job, in the right way!',
       color: '#4f8af0',
-      icon: 'thumbs/server.svg',
+      icon: 'icons/server.svg',
     },
   ];
 
@@ -119,10 +119,10 @@ router.get('/', (req, res) => {
       telegram: 'm_abedinia',
     },
     {
-      name: 'Ali Geramiyan Rad',
+      name: 'Ali Geramian Rad',
       position: 'UX Designer',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      img: 'img/geramiyan.jpeg',
+      img: 'img/geramian.jpeg',
       linkedIn: 'ali-geramian-rad-1354b3122',
       twitter: '',
       email: 'a.geramian@yahoo.com',

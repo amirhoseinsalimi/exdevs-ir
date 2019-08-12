@@ -21,11 +21,20 @@ const stripDebug = require('gulp-strip-debug');
 const noop = require('gulp-noop');
 
 
+/* Plugins related images */
+const newer = require('gulp-newer');
+const imagemin = require('gulp-imagemin');
+
+
 /* Paths */
 const styleSrc = 'src/scss/**/*.scss';
 const styleDest = './public/css/';
 const scriptSrc = 'src/js/**/*.js';
 const scriptDest = './public/js/';
+const imgSrc = 'src/img/**/*';
+const imgDest = './public/img/';
+const iconSrc = 'src/icons/**/*';
+const iconDest = './public/icons/';
 
 
 /* Plugins' configuration */
@@ -51,11 +60,25 @@ gulp.task('style', () => gulp.src(styleSrc)
 gulp.task('script', () => gulp.src(scriptSrc)
   .pipe(sourcemaps ? sourcemaps.init() : noop())
   .pipe(deporder())
-  .pipe(concat('main.js'))
+  .pipe(concat('main.min.js'))
   .pipe(stripDebug ? stripDebug() : noop())
   .pipe(terser())
   .pipe(sourcemaps ? sourcemaps.write() : noop())
   .pipe(gulp.dest(scriptDest)));
+
+
+/* Image task */
+gulp.task('image', () => gulp.src(imgSrc)
+  .pipe(newer(imgDest))
+  .pipe(imagemin({ optimizationLevel: 5 }))
+  .pipe(gulp.dest(imgDest)));
+
+
+/* Icon task */
+gulp.task('icon', () => gulp.src(iconSrc)
+  .pipe(newer(iconDest))
+  .pipe(imagemin({ optimizationLevel: 5 }))
+  .pipe(gulp.dest(iconDest)));
 
 
 /* Nodemon task */
@@ -103,17 +126,19 @@ gulp.task('browser-sync', (done) => {
 gulp.task('watch', (done) => {
   gulp.watch(styleSrc, gulp.series('style'));
   gulp.watch(scriptSrc, gulp.series('script'));
+  gulp.watch(imgSrc, gulp.series('image'));
+  gulp.watch(iconSrc, gulp.series('icon'));
 
   done();
 });
 
 
-/* Serve project */
-gulp.task('serve', gulp.series('nodemon', 'browser-sync'));
-
-
 /* Build project */
-gulp.task('build', gulp.series('style', 'script'));
+gulp.task('build', gulp.series('style', 'script', 'image', 'icon'));
+
+
+/* Serve project */
+gulp.task('serve', gulp.series('build', 'nodemon', 'browser-sync'));
 
 
 /* Default task */
