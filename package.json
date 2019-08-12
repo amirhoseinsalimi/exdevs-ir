@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/pm2 start ioex-website",
+    "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/pm2 start ioex-website",
     "restart": "./node_modules/.bin/pm2 restart ioex-website",
     "stop": "./node_modules/.bin/pm2 stop ioex-website",
     "monit": "./node_modules/.bin/pm2 monit",
