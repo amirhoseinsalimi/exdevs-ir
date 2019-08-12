@@ -6,9 +6,9 @@ git clone https://gitlab.com/Exceptional-Dev/IOException/WebException/ioex-websi
 ```
 
 ### Project setup
-```
-npm i
-```
+1. If you just want to run this app on a production environment, you only need to run: `npm i -S`
+2. If you want to test this app out you should install dev dependencies as well, so run `npm i
+ -D` or just `npm i`
 
 ### Create database connection
 1. Create a database named `ioex_website`
@@ -29,4 +29,9 @@ npm run test
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Run in production environment
+```
+npm start
 ```
