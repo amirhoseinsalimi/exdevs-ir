@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+@import 'variables';
+@import 'helpers';
+@import 'typography';
+@import 'animations';
+@import 'fab';
+
+body {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+
+.container-fluid {
+  padding-top: 56px;
+}
+
+ul.messages-list {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 1px 0 5px 1px #ddd;
+
+  li.message-item {
+    border-bottom: 1px solid #ddd;
+    background: #f1f1f1;
+    cursor: pointer;
+
+    &:hover {
+      background: #fff;
+    }
+
+    &.open {
+      background: #fff;
+      cursor: default;
+    }
+
+    .read-status-indicator {
+      width: 30px;
+      height: 30px;
+    }
+
+  }
+
+}
+
+.col-9 {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  background: #E1F5FE;
+}
+
+.message-section {
+  margin-top: 40px;
+
+  .message-bubble {
+    background: #0091EA;
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+
+}
