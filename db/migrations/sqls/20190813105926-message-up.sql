@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS  `message` (
 );
 
 /* Seed table */
-INSERT INTO `message` (sender_name, sender_email, message_text, date, time) VALUES (
-  'Amir Hosein', 'ahosein.salimi@gmail.com', 'This is a message', '1999-10-10', '09:09:09'
+INSERT INTO `message` (sender_name, sender_email, message_text, is_read, date, time) VALUES (
+  'Amir Hosein', 'ahosein.salimi@gmail.com', 'This is a message', 0, '1999-10-10', '09:09:09'
 );
