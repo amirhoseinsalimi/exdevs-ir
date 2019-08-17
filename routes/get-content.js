@@ -112,7 +112,7 @@ router.get('/', (req, res) => {
       name: 'Marzieh Abedinia',
       position: 'Mobile Developer',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      img: 'img/abedinia.jpg',
+      img: 'img/abedinia.jpeg',
       linkedIn: 'marzieh-abedinia-4a71a2184/',
       twitter: '',
       email: 'm.abedinia1998@gmail.com',
@@ -137,6 +137,16 @@ router.get('/', (req, res) => {
       twitter: '',
       email: 'Hajian.rh@gmail.com',
       telegram: 'Shaha_H',
+    },
+    {
+      name: 'Mahboubeh Seyedpour',
+      position: 'Operations Manaeger',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      img: 'img/seyedpour.png',
+      linkedIn: '/mahboubeh-sadat-seyedpour-676aa5190/',
+      twitter: '',
+      email: 'mahboobeh.seyedpour@gmail.com',
+      telegram: 'spr_m_s',
     },
   ];
 
