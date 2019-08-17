@@ -140,7 +140,7 @@ router.get('/', (req, res) => {
     },
     {
       name: 'Mahboubeh Seyedpour',
-      position: 'Operations Manaeger',
+      position: 'Operations Manager',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       img: 'img/seyedpour.png',
       linkedIn: '/mahboubeh-sadat-seyedpour-676aa5190/',
