@@ -15,6 +15,9 @@ const serverErrorRouter = require('./routes/server-error');
 const cattyRouter = require('./routes/catty');
 const adminRouter = require('./routes/admin');
 
+// API
+const deleteMessage = require('./routes/api/delete-message');
+
 const app = express();
 
 // view engine setup
@@ -36,6 +39,7 @@ app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
 app.use('/admin', adminRouter);
+app.use('/delete-message', deleteMessage);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
