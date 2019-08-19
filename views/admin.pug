@@ -29,12 +29,11 @@ body(style='')
               span.date.fs-12.text-light.float-right 19, Feb 1997 - 14:40
             span.email.fs-14.mb-3.text-light ahosein.salimi@gmail.com
             p.message-text
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam beatae, culpa debitis deleniti ex id inventore itaque molestiae nihil officia pariatur perferendis quaerat quisquam quos recusandae, sapiente sunt ut.
 
     nav.button-share-container
-      a.buttons(target='_blank' tooltip='Reply to Sender')
+      a.buttons(role='reply' tooltip='Send a reply')
         i.material-icons reply
-      a.buttons(target='_blank' tooltip='Delete message')
+      a.buttons(role='delete' tooltip='Delete message')
         i.material-icons delete
       a.buttons(href='#' onclick='return false;')
         span.buttons
