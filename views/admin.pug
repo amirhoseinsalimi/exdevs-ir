@@ -10,66 +10,16 @@ body(style='')
     .row.no-gutters
       .col-3
         ul.messages-list.list-unstyled.m-0
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2.open
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2
-            span.read-status-indicator
-            .d-flex.flex-column.mr-3
-              span.sender-name Amir Hosein
-              span.sender-email.text-secondary.small ahosein.salimi@gmail.com
+          for message in messages
+            li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2.position-relative(id=message.id data-message=message)
+              span.read-status-indicator
+                if message.is_read
+                  span
+              .d-inline-flex.flex-column.mr-3.w-75
+                span.sender-name.text-ellipsis= message.sender_name
+                span.sender-email.text-ellipsis.text-secondary.small= message.sender_email
+                span.position-absolute(style='top: 8px; right: 6px;')
+                  span.date.text-ellipsis.fs-10.text-secondary= message.date.toDateString().split(' ').slice(1).join(' ')
 
       .col-9.px-5
         .message-section
