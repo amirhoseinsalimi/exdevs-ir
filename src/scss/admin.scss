@@ -54,21 +54,50 @@ ul.messages-list {
 
   li.message-item {
     border-bottom: 1px solid #ddd;
-    background: #f1f1f1;
+    background: #f7f7f7;
     cursor: pointer;
+    transition: background-color 0.5s, margin-left 0.5s;
 
     &:hover {
       background: #fff;
+      margin-left: 6px;
     }
 
     &.open {
       background: #fff;
       cursor: default;
+      margin-left: 6px;
     }
 
     .read-status-indicator {
       width: 30px;
       height: 30px;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-content: flex-start;
+
+      span {
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: #0091EA;
+        border-radius: 50%;
+      }
+    }
+
+    span[class^='sender'] {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    span.sender-name {
+      width: 175px;
+
+      @media (max-width: 1200px) {
+        width: 120px;
+      }
     }
 
   }
