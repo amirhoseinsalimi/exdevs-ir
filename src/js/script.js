@@ -75,7 +75,7 @@ $(() => {
   const $teamMotto = $('.team-motto');
   const $teamDescription = $('.team-description');
   const $progressBar = $('.progress-bar');
-  const $ioExceptionHeader = $('.io-exception-header');
+  const $exceptionHeader = $('.exception-header');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
   const $hr1 = $('hr:nth-child(1)');
@@ -119,17 +119,17 @@ $(() => {
       $(this).fadeIn(config.transitionTime);
 
       if (team.name === 'Web development') {
-        $ioExceptionHeader.removeClass('text-app').removeClass('text-server').addClass('text-web');
+        $exceptionHeader.removeClass('text-app').removeClass('text-server').addClass('text-web');
         $teamName.html(team.name).removeClass('text-app').removeClass('text-server').addClass('text-web');
         $teamMotto.html(team.motto).removeClass('text-app').removeClass('text-server').addClass('text-web');
         $progressBar.removeClass('bg-app').removeClass('bg-server').addClass('bg-web');
       } else if (team.name === 'Application development') {
-        $ioExceptionHeader.removeClass('text-server').removeClass('text-web').addClass('text-app');
+        $exceptionHeader.removeClass('text-server').removeClass('text-web').addClass('text-app');
         $teamName.html(team.name).removeClass('text-server').removeClass('text-web').addClass('text-app');
         $teamMotto.html(team.motto).removeClass('text-server').removeClass('text-web').addClass('text-app');
         $progressBar.removeClass('bg-server').removeClass('bg-web').addClass('bg-app');
       } else if (team.name === 'Server development') {
-        $ioExceptionHeader.removeClass('text-web').removeClass('text-app').addClass('text-server');
+        $exceptionHeader.removeClass('text-web').removeClass('text-app').addClass('text-server');
         $teamName.html(team.name).removeClass('text-web').removeClass('text-app').addClass('text-server');
         $teamMotto.html(team.motto).removeClass('text-web').removeClass('text-app').addClass('text-server');
         $progressBar.removeClass('bg-web').removeClass('bg-app').addClass('bg-server');
