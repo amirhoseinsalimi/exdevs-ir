@@ -120,7 +120,7 @@ router.get('/', (req, res) => {
     },
     {
       name: 'Ali Geramian Rad',
-      position: 'UX Designer',
+      position: 'UI Designer',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       img: 'img/geramian.jpeg',
       linkedIn: 'ali-geramian-rad-1354b3122',
