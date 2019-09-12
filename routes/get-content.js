@@ -148,6 +148,26 @@ router.get('/', (req, res) => {
       email: 'mahboobeh.seyedpour@gmail.com',
       telegram: 'spr_m_s',
     },
+    {
+      name: 'Amir Hosein Asgari',
+      position: 'Front-end Developer',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      img: 'img/asgari.png',
+      linkedIn: '/amiagr/',
+      twitter: 'https://twitter.com/ami97agr',
+      email: 'amirhosseinasgari@hotmail.com',
+      telegram: 'amiagr',
+    },
+    {
+      name: 'Saeed Erfani',
+      position: 'Mobile Developer',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      img: 'img/s_erfani.png',
+      linkedIn: '/saeed-erfani/',
+      twitter: '',
+      email: 'saeederfani75@gmail.com',
+      telegram: '/s_erfani96',
+    },
   ];
 
   const result = {
