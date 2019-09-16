@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       text: 'Constantly developing his skills, never satisfies of what he knows. Very precise!',
       img: 'img/salimi.jpeg',
       linkedIn: 'amirhoseinsalimi/',
-      twitter: 'ahoseinsalimi',
+      twitter: 'ahsdev',
       email: 'st_ah_salimi@azad.ac.ir',
       telegram: 'amirhoseinsalimii',
     },
