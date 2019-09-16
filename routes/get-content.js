@@ -71,7 +71,7 @@ router.get('/', (req, res) => {
     {
       name: 'Amir Hosein Salimi',
       position: 'Front-end Developer',
-      text: 'Constantly developing his skills, never satisfies of what he knows and always demanding more knowledge. Very precise!',
+      text: 'Constantly developing his skills, never satisfies of what he knows. Very precise!',
       img: 'img/salimi.jpeg',
       linkedIn: 'amirhoseinsalimi/',
       twitter: 'ahoseinsalimi',
