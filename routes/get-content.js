@@ -71,7 +71,7 @@ router.get('/', (req, res) => {
     {
       name: 'Amir Hosein Salimi',
       position: 'Front-end Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Constantly developing his skills, never satisfies of what he knows. Very precise!',
       img: 'img/salimi.jpeg',
       linkedIn: 'amirhoseinsalimi/',
       twitter: 'ahoseinsalimi',
@@ -81,7 +81,7 @@ router.get('/', (req, res) => {
     {
       name: 'Hamidreza Bayat',
       position: 'Mobile Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'A true geek, great at developing software in a blink.',
       img: 'img/bayat.jpeg',
       linkedIn: 'hamidr3zabayat/',
       twitter: 'HrBDev',
@@ -91,7 +91,7 @@ router.get('/', (req, res) => {
     {
       name: 'Milad Karimiyan',
       position: 'Back-end Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Dreaming big is what he was born for. Also an ocean of knowledge in software development.',
       img: 'img/karimiyan.jpeg',
       linkedIn: 'milad-karimiyan-0337a8a9/',
       twitter: 'MiladKarimiyan',
@@ -101,7 +101,7 @@ router.get('/', (req, res) => {
     {
       name: 'Fatemeh Akhlaghi',
       position: 'Mobile Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Happy all the time, works passionately alongside her co-workers.',
       img: 'img/akhlaghi.jpg',
       linkedIn: 'fatemeh-akhlaghi-6a211615b/',
       twitter: 'ftad3v',
@@ -111,7 +111,7 @@ router.get('/', (req, res) => {
     {
       name: 'Marzieh Abedinia',
       position: 'Mobile Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'The quite girl of the team, doesn\'t waste even a minute!',
       img: 'img/abedinia.jpeg',
       linkedIn: 'marzieh-abedinia-4a71a2184/',
       twitter: '',
@@ -121,7 +121,7 @@ router.get('/', (req, res) => {
     {
       name: 'Ali Geramian Rad',
       position: 'UI Designer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Delivers tasks in time, surprises his co-workers every time showcases his works.',
       img: 'img/geramian.jpeg',
       linkedIn: 'ali-geramian-rad-1354b3122',
       twitter: '',
@@ -131,7 +131,7 @@ router.get('/', (req, res) => {
     {
       name: 'Shahryar Hajian',
       position: 'Researcher',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Digs into whatever the topic is, finds solution for every problem!',
       img: 'img/hajian.jpg',
       linkedIn: 'shahryar-hajian-209a50151/',
       twitter: '',
@@ -141,7 +141,7 @@ router.get('/', (req, res) => {
     {
       name: 'Mahboubeh Seyedpour',
       position: 'Operations Manager',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Productive in every situation, doesn\'t let a task overdue, kind to everybody she meets!',
       img: 'img/seyedpour.png',
       linkedIn: '/mahboubeh-sadat-seyedpour-676aa5190/',
       twitter: '',
@@ -151,7 +151,7 @@ router.get('/', (req, res) => {
     {
       name: 'Amir Hosein Asgari',
       position: 'Front-end Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Gets the work done, no matter what it is and why. Does the big work tomorrow!',
       img: 'img/asgari.png',
       linkedIn: '/amiagr/',
       twitter: 'https://twitter.com/ami97agr',
@@ -161,7 +161,7 @@ router.get('/', (req, res) => {
     {
       name: 'Saeed Erfani',
       position: 'Mobile Developer',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Team work is his shining ring; Very collaborative and true mentor.',
       img: 'img/s_erfani.png',
       linkedIn: '/saeed-erfani/',
       twitter: '',
