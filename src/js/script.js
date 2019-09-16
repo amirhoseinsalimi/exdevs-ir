@@ -140,17 +140,17 @@ $(() => {
   const generateMemberCards = (members) => {
     members.forEach((member) => {
       $('.members').append(`
-        <div class="col-12 col-md-4 py-4 col-lg-3 my-2 mx-1 member-card">
+        <div class="col-12 col-md-4 py-4 col-lg-3 my-2 mx-1 member-card position-relative">
           <img class="d-block mx-auto mb-3 profile-image" src="${member.img}" alt="Exception member" />
           <div class="text text-center">
             <span class="text-center">${member.name}</span>
             <br />
             <span class="small text-muted">${member.position}</span>
-            <p style="font-size: 13px" class="text-left mb-3">
+            <p style="font-size: 13px" class="text-left mb-5">
               ${member.text}            
             </p>
             
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center position-absolute mx-auto" style="width: 144px; bottom: 16px; left: 0; right: 0;">
               <a href="https://twitter.com/${member.twitter}" target="_blank" class="member-link twitter">
                 <img src="icons/twitter.svg" alt="${member.name}-twitter">
               </a>
