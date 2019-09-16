@@ -73,6 +73,28 @@ html(lang='en-US')
         h1.text-light-gray.mb-5.weight-400 Meet the Team!
         .row.no-gutters.justify-content-center
           .col-12.col-sm-12.d-flex.row.wrap.justify-content-sm-center.members
+            each member in members
+              .col-12.col-md-4.py-4.col-lg-3.my-2.mx-1.member-card.position-relative
+                img.d-block.mx-auto.mb-3.profile-image(src=`${member.img}`, alt='Exception member')
+                .text.text-center
+                  span.text-center= member.name
+                  br
+                  span.small.text-muted= member.position
+                  p.text-left.mb-5(style='font-size: 13px')= member.text
+                  .d-flex.justify-content-center.position-absolute.mx-auto(style='width: 144px; bottom: 16px; left: 0; right: 0;')
+                    if member.twitter !== ''
+                      a.member-link.twitter(href=`https://twitter.com/${member.twitter}`, target='_blank')
+                        img(src='icons/twitter.svg', alt=`${member.name}-twitter`)
+                    if member.linkedin !== ''
+                      a.member-link.linkedIn(href=`https://www.linkedin.com/in/${member.linkedIn}`, target='_blank')
+                        img(src='icons/linkedin.svg', alt=`${member.name}-linkedin`)
+                    if member.telegram !== ''
+                      a.member-link.telegram(href=`https://t.me/${member.telegram}`, target='_blank')
+                        img(src='icons/telegram.svg', alt=`${member.name}-telegram`)
+                    if member.email !== ''
+                      a.member-link.email(href=`mailto:${member.email}`)
+                        img(src='icons/email.svg', alt=`${member.name}-email`)
+
 
 
       .container.justify-content-center.align-content-center.mobile-menu.d-none
