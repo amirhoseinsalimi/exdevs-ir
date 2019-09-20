@@ -255,6 +255,10 @@ body {
   z-index: 1000;
   background: transparent;
 
+  @media screen and (min-width: 576px) {
+    display: none !important;
+  }
+
   ul {
     margin-top: 40%;
 
