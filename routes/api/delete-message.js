@@ -13,7 +13,7 @@ router.delete('/:id', (req, res) => {
       res.render('500');
     }
 
-    const query = 'DELETE FROM `ioex_website`.message WHERE id=?;';
+    const query = 'DELETE FROM `ex_website`.message WHERE id=?;';
 
     connection.query(query, messageId, (err) => {
       if (err) {
