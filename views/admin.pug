@@ -14,7 +14,7 @@ body
           for message in messages
             li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2.position-relative(id=message.id data-message=message)
               span.read-status-indicator
-                if message.is_read
+                if !message.is_read
                   span
               .d-inline-flex.flex-column.mr-3.w-75
                 span.sender-name.text-ellipsis= message.sender_name
@@ -24,11 +24,11 @@ body
 
       .col-9.px-5
         .message-section
-          .message-bubble.d-flex.flex-column.w-100.p-4
+          .message-bubble.d-none.flex-column.w-100.p-4
             .clearfix
-              span.name.font-weight-bold.float-left Amir Hosein
-              span.date.fs-12.text-light.float-right 19, Feb 1997 - 14:40
-            span.email.fs-14.mb-3.text-light ahosein.salimi@gmail.com
+              span.name.font-weight-bold.float-left
+              span.date.fs-12.text-light.float-right
+            span.email.fs-14.mb-3.text-light
             p.message-text
 
     nav.button-share-container
@@ -46,38 +46,23 @@ body
     $(() => {
       let currentMessage = {};
 
-      $('li.message-item').click(function() {
+      $('li.message-item').on('click', function() {
         const message = JSON.parse($(this).attr('data-message'));
 
-      currentMessage = message;
-      console.log(currentMessage);
-
-      $('span.name').text(message.sender_name);
-      $('span.email').text(message.sender_email);
-      $('span.date').text(message.date);
-      $('p.message-text').text(message.message_text);
-    });
-
-      $('a.buttons').on('click', function() {
-        const role = $(this).attr('role');
-
-      if (role === 'delete' && confirm('Are you sure about this ?')) {
         $.ajax({
-          url: `/delete-message/${currentMessage.id}`,
-          method: 'delete',
+          url: `/mark-message/${message.id}`,
+          method: 'put',
           dataType: 'json',
           timeout: 6000,
           beforeSend: () => {
-            $('.overlay').css({
-              visibility: 'visible',
-            });
+            // $('.overlay').css({
+            //   visibility: 'visible',
+            // });
           },
           statusCode: {
             204: (data) => {
-              $("ul").find(`[id='${currentMessage.id}']`).hide('slow', function(){ $(this).remove(); });
-              $('.overlay').css({
-                visibility: 'hidden',
-              });
+              $(this).find('span.read-status-indicator').addClass('d-hidden');
+              $('.message-bubble').removeClass('d-none').addClass('d-flex');
             },
             202: () => {
 
@@ -90,12 +75,53 @@ body
             window.location.href = '/server-error';
             console.log('500');
           },
+        });
+
+        currentMessage = message;
+
+        $('span.name').text(message.sender_name);
+        $('span.email').text(message.sender_email);
+        $('span.date').text(message.date);
+        $('p.message-text').text(message.message_text);
       });
-      } else if (role === 'reply') {
-        window.location.href = `mailto: ${currentMessage.sender_email}?subject=Exceptional Dev`;
-      }
-    })
-      ;
+
+      $('a.buttons').on('click', function() {
+        const role = $(this).attr('role');
+
+        if (role === 'delete' && confirm('Are you sure about this ?')) {
+          $.ajax({
+            url: `/delete-message/${currentMessage.id}`,
+            method: 'delete',
+            dataType: 'json',
+            timeout: 6000,
+            beforeSend: () => {
+              $('.overlay').css({
+                visibility: 'visible',
+              });
+            },
+            statusCode: {
+              204: (data) => {
+                $("ul").find(`[id='${currentMessage.id}']`).hide('slow', function(){ $(this).remove(); $('.message-bubble').removeClass('d-flex').addClass('d-none'); });
+                $('.overlay').css({
+                  visibility: 'hidden',
+                });
+              },
+              202: () => {
+
+              },
+              205: () => {
+
+              }
+            },
+            error: () => {
+              window.location.href = '/server-error';
+              console.log('500');
+            },
+          });
+        } else if (role === 'reply') {
+          window.location.href = `mailto: ${currentMessage.sender_email}?subject=Exceptional Developers`;
+        }
+      });
     });
 
 
