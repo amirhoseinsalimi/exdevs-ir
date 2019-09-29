@@ -39,7 +39,7 @@ app.use('/playstore', playStoreRouter);
 app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
-app.use('/admin', adminRouter);
+app.use('/yttac', adminRouter);
 
 app.use('/delete-message', deleteMessage);
 app.use('/mark-message', markMessage);
