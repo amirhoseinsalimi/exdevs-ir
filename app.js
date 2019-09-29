@@ -17,6 +17,7 @@ const adminRouter = require('./routes/admin');
 
 // API
 const deleteMessage = require('./routes/api/delete-message');
+const markMessage = require('./routes/api/mark-message');
 
 const app = express();
 
@@ -39,7 +40,9 @@ app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
 app.use('/admin', adminRouter);
+
 app.use('/delete-message', deleteMessage);
+app.use('/mark-message', markMessage);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
