@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
       const { user } = req.body;
       const { password } = req.body;
 
-      const query = 'SELECT * FROM admin WHERE user=? AND password=?;';
+      const query = 'SELECT * FROM admin WHERE username=? AND password=?;';
 
       connection.query(query, [user, password], (err, result) => {
         if (err) {
