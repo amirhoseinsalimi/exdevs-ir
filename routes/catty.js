@@ -26,7 +26,20 @@ router.post('/', (req, res) => {
           res.status(500);
           res.render('500');
         } else if (result.length > 0) {
-          res.redirect('/admin');
+          if (err) {
+            console.log(`Error executing the query: ${err.name}: ${err.message}`);
+            res.status(500);
+            res.render('500');
+          } else {
+            const date = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+            res.cookie('superuser', 'yes,heis', {
+              expires: date * 7 * 86400,
+              path: '/',
+              signed: true,
+              secure: true,
+            });
+            res.redirect('/yttac');
+          }
         } else {
           res.status(401);
           res.render('catty');
