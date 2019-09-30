@@ -5,7 +5,11 @@ const pool = require('../connection');
 
 /* GET admin page. */
 router.get('/', (req, res) => {
-  res.render('catty');
+  if (req.signedCookies.superuser === 'yes,heis') {
+    res.redirect('/yttac');
+  } else {
+    res.render('catty');
+  }
 });
 
 router.post('/', (req, res) => {
