@@ -5,13 +5,45 @@
 @import 'animations';
 @import 'fab';
 
+/*****************************
+*          General           *
+*****************************/
 body {
   height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
+
+/****************************
+*          Navbar           *
+****************************/
+.navbar {
+  background: $admin-primary-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  a.navbar-brand {
+    &:hover,
+    &:focus {
+      background: #186eb2;
+    }
+
+    span {
+      top: 3px;
+
+      i {
+        height: 100%;
+      }
+
+    }
+
+  }
+
+
+}
+
+
 .container-fluid {
-  padding-top: 56px;
+  padding-top: 48px;
 }
 
 ul.messages-list {
@@ -22,21 +54,50 @@ ul.messages-list {
 
   li.message-item {
     border-bottom: 1px solid #ddd;
-    background: #f1f1f1;
+    background: #f7f7f7;
     cursor: pointer;
+    transition: background-color 0.5s, margin-left 0.5s;
 
     &:hover {
       background: #fff;
+      margin-left: 6px;
     }
 
     &.open {
       background: #fff;
       cursor: default;
+      margin-left: 6px;
     }
 
     .read-status-indicator {
       width: 30px;
       height: 30px;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-content: flex-start;
+
+      span {
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: #0091EA;
+        border-radius: 50%;
+      }
+    }
+
+    span[class^='sender'] {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    span.sender-name {
+      width: 175px;
+
+      @media (max-width: 1200px) {
+        width: 120px;
+      }
     }
 
   }
@@ -58,4 +119,15 @@ ul.messages-list {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 
+}
+
+.overlay {
+  background-color: rgba(1, 1, 1, 0.7);
+  visibility: hidden;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
 }

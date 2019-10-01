@@ -15,6 +15,10 @@ const serverErrorRouter = require('./routes/server-error');
 const cattyRouter = require('./routes/catty');
 const adminRouter = require('./routes/admin');
 
+// API
+const deleteMessage = require('./routes/api/delete-message');
+const markMessage = require('./routes/api/mark-message');
+
 const app = express();
 
 // view engine setup
@@ -26,7 +30,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser('bethesmartestpersomintheroot'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', rootRouter);
@@ -35,7 +39,10 @@ app.use('/playstore', playStoreRouter);
 app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
-app.use('/admin', adminRouter);
+app.use('/yttac', adminRouter);
+
+app.use('/delete-message', deleteMessage);
+app.use('/mark-message', markMessage);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
