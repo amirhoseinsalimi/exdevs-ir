@@ -16,9 +16,9 @@ router.post('/', (req, res) => {
       const { email } = req.body;
       const { message } = req.body;
 
-      const query = 'INSERT INTO contact (name, email, text) VALUES (?, ?, ?);';
+      const query = 'INSERT INTO `message`(`sender_name`, `sender_email`, `message_text`, `is_read`) VALUES (?, ?, ?, ?)';
 
-      connection.query(query, [name, email, message], (err) => {
+      connection.query(query, [name, email, message, 0], (err) => {
         if (err) {
           console.log(err);
           res.status(500);
