@@ -6,7 +6,7 @@ const { incrementContactMessageCounter } = require('../counter');
 
 /* Process POST data */
 router.post('/', (req, res) => {
-  pool.connect((err, connection) => {
+  pool.getConnection((err, connection) => {
     if (err) {
       console.log(err);
       res.status(500);
