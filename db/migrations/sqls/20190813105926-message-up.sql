@@ -7,8 +7,7 @@ CREATE TABLE IF NOT EXISTS  `message` (
   `sender_email` VARCHAR(128) NOT NULL,
   `message_text` TEXT NOT NULL,
   `is_read` TINYINT(1) NOT NULL,
-  `date` DATE NOT NULL,
-  `time` TIME NOT NULL,
+  `date` TIMESTAMP NOT NULL,
   PRIMARY KEY (id)
 );
 
