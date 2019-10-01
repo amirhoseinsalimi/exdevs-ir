@@ -5,7 +5,11 @@ const pool = require('../connection');
 
 /* GET admin page. */
 router.get('/', (req, res) => {
-  res.render('catty');
+  if (req.signedCookies.superuser === 'yes,heis') {
+    res.redirect('/yttac');
+  } else {
+    res.render('catty');
+  }
 });
 
 router.post('/', (req, res) => {
@@ -18,7 +22,7 @@ router.post('/', (req, res) => {
       const { user } = req.body;
       const { password } = req.body;
 
-      const query = 'SELECT * FROM admin WHERE user=? AND password=?;';
+      const query = 'SELECT * FROM admin WHERE username=? AND password=?;';
 
       connection.query(query, [user, password], (err, result) => {
         if (err) {
@@ -26,7 +30,20 @@ router.post('/', (req, res) => {
           res.status(500);
           res.render('500');
         } else if (result.length > 0) {
-          res.redirect('/admin');
+          if (err) {
+            console.log(`Error executing the query: ${err.name}: ${err.message}`);
+            res.status(500);
+            res.render('500');
+          } else {
+            const date = (new Date(Date.now() + 86400 * 1000)).toUTCString();
+            res.cookie('superuser', 'yes,heis', {
+              expires: date * 7 * 86400,
+              path: '/',
+              signed: true,
+              secure: true,
+            });
+            res.redirect('/yttac');
+          }
         } else {
           res.status(401);
           res.render('catty');
