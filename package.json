@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/pm2 start ex-website",
+    "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/pm2 start ./bin/www --name ex-website",
     "restart": "./node_modules/.bin/pm2 restart ex-website",
     "stop": "./node_modules/.bin/pm2 stop ex-website",
     "monit": "./node_modules/.bin/pm2 monit",
