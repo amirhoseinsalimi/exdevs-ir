@@ -12,6 +12,7 @@
     "lint": "./node_modules/.bin/eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "db-migrate-mysql": "^1.1.10",
