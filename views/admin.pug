@@ -85,14 +85,16 @@ body
 
         $('span.name').text(message.sender_name);
         $('span.email').text(message.sender_email);
-        $('span.date').text(message.date);
+        const date = message.date.split('T')[0].split('-').join(', ');
+        const time = message.date.split('T')[1].split('.')[0];
+        $('.clearfix span.date').text(`${date} - ${time}`);
         $('p.message-text').text(message.message_text);
       });
 
       $('a.buttons').on('click', function() {
         const btnRole = $(this).attr('role');
 
-        if (btnRole === 'delete' && confirm('Are you sure about this ?')) {
+        if (btnRole === 'delete' && confirm('Are you sure about this?')) {
           $.ajax({
             url: `/delete-message/${currentMessage.id}`,
             method: 'delete',
