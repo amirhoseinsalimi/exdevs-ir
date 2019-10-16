@@ -1,10 +1,13 @@
 # Exceptional Developers Website
 
+Exceptional Developers' portfolio website. https://expteam.ir
+
 ### Requirements to run this website
 1. Node.js and npm
 2. MariaDB or MySQL 
 3. Globally installed `db-migrate` module (Simply run `npm i -g db-migrate`)
-4. Globally installed `gulp` (Run `npm i -g gulp` in it is not installed)
+4. Globally installed `gulp` (Run `npm i -g gulp`)
+5. Globally installed `pm2` (Run `npm i -g pm2`)
 
 ### Project setup
 
