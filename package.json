@@ -1,15 +1,15 @@
 {
-  "name": "express-generator-pug",
+  "name": "ex-website",
   "version": "1.1.1",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/pm2 start ./bin/www --name ex-website",
-    "restart": "./node_modules/.bin/pm2 restart ex-website",
-    "stop": "./node_modules/.bin/pm2 stop ex-website",
-    "monit": "./node_modules/.bin/pm2 monit",
+    "start": "gulp build && pm2 start ./bin/www --name ex-website",
+    "restart": "pm2 restart ex-website",
+    "stop": "pm2 stop ex-website",
+    "monit": "pm2 monit",
     "test": "DEBUG=express* node ./bin/www",
-    "serve": "./node_modules/.bin/gulp",
-    "lint": "./node_modules/.bin/eslint --fix gulpfile.js app.js counter.js src/js/script.js"
+    "serve": "gulp",
+    "lint": "eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -52,5 +52,20 @@
     "gulp-terser": "^1.2.0",
     "node-sass": "^4.12.0",
     "readable-stream": "^3.4.0"
-  }
+  },
+  "description": "Exceptional Developers' portfolio website.",
+  "main": "./bin/www",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website.git"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "Amir Hosein Salimi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website/issues"
+  },
+  "homepage": "https://expteam.ir"
 }
