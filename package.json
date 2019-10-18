@@ -1,6 +1,6 @@
 {
   "name": "ex-website",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "scripts": {
     "start": "gulp build && ./node_modules/.bin/pm2 start ./bin/www --name ex-website",
