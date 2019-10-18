@@ -31,7 +31,7 @@ body
             span.email.fs-14.mb-3.text-light
             p.message-text
 
-    nav.button-share-container
+    nav.button-share-container.d-none
       a.buttons(role='reply' tooltip='Send a reply')
         i.material-icons reply
       a.buttons(role='delete' tooltip='Delete message')
@@ -63,6 +63,10 @@ body
             204: (data) => {
               $(this).find('span.read-status-indicator').addClass('d-hidden');
               $('.message-bubble').removeClass('d-none').addClass('d-flex');
+
+                $('.button-share-container')
+                  .removeClass('d-none')
+                  .addClass('d-block');
             },
             202: () => {
 
@@ -81,14 +85,16 @@ body
 
         $('span.name').text(message.sender_name);
         $('span.email').text(message.sender_email);
-        $('span.date').text(message.date);
+        const date = message.date.split('T')[0].split('-').join(', ');
+        const time = message.date.split('T')[1].split('.')[0];
+        $('.clearfix span.date').text(`${date} - ${time}`);
         $('p.message-text').text(message.message_text);
       });
 
       $('a.buttons').on('click', function() {
-        const role = $(this).attr('role');
+        const btnRole = $(this).attr('role');
 
-        if (role === 'delete' && confirm('Are you sure about this ?')) {
+        if (btnRole === 'delete' && confirm('Are you sure about this?')) {
           $.ajax({
             url: `/delete-message/${currentMessage.id}`,
             method: 'delete',
@@ -105,6 +111,12 @@ body
                 $('.overlay').css({
                   visibility: 'hidden',
                 });
+
+                $('.button-share-container')
+                  .removeClass('d-block')
+                  .addClass('d-none');
+
+                currentMessage = {};
               },
               202: () => {
 
@@ -118,11 +130,12 @@ body
               console.log('500');
             },
           });
-        } else if (role === 'reply') {
+
+          $('.button-share-container')
+                  .removeClass('d-block')
+                  .addClass('d-none');
+        } else if (btnRole === 'reply') {
           window.location.href = `mailto: ${currentMessage.sender_email}?subject=Exceptional Developers`;
         }
       });
     });
-
-
-
