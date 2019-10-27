@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../connection');
 
-router.put('/:id', (req, res) => {
-  const messageId = req.params.id;
+router.put('/', (req, res) => {
+  const { messageId } = req.body;
 
   console.log(req.params);
 
