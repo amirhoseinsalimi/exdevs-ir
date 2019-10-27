@@ -1,5 +1,7 @@
 # Exceptional Developers Website
 
+Exceptional Developers' portfolio website. https://expteam.ir
+
 ### Requirements to run this website
 1. Node.js and npm
 2. MariaDB or MySQL 

@@ -14,7 +14,7 @@ const autoprefixer = require('gulp-autoprefixer');
 
 
 /* Plugins related to JS */
-const concat = require('gulp-concat');
+// const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
 const terser = require('gulp-terser');
 const stripDebug = require('gulp-strip-debug');
@@ -60,7 +60,7 @@ gulp.task('style', () => gulp.src(styleSrc)
 gulp.task('script', () => gulp.src(scriptSrc)
   .pipe(sourcemaps ? sourcemaps.init() : noop())
   .pipe(deporder())
-  .pipe(concat('main.min.js'))
+  // .pipe(concat('main.min.js'))
   .pipe(stripDebug ? stripDebug() : noop())
   .pipe(terser())
   .pipe(sourcemaps ? sourcemaps.write() : noop())

@@ -131,3 +131,28 @@ ul.messages-list {
   top: 0;
   z-index: 10;
 }
+
+.disable-page {
+  background-color: #fff;
+  display: flex;
+  visibility: hidden;
+  position: fixed;
+  line-height: 100vh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  height: 100vh;
+  width: 100vw;
+
+  p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.9rem;
+  }
+
+  @media screen and (max-width: 991px) {
+    visibility: visible;
+  }
+}
