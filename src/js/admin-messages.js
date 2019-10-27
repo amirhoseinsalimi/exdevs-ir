@@ -2,7 +2,9 @@ $(() => {
   let currentMessage = {};
 
   $('li.message-item')
-    .on('click', () => {
+    // eslint-disable-next-line
+    .on('click', function() {
+
       const message = JSON.parse($(this)
         .attr('data-message'));
 
