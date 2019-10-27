@@ -3,10 +3,8 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../connection');
 
-router.put('/', (req, res) => {
-  const { messageId } = req.body;
-
-  console.log(req.params);
+router.delete('/:id', (req, res) => {
+  const memberId = req.params.id;
 
   pool.getConnection((err, connection) => {
     if (err) {
@@ -15,14 +13,15 @@ router.put('/', (req, res) => {
       res.render('500');
     }
 
-    const query = 'UPDATE `ex_website`.message SET is_read=1 WHERE id=?';
+    const query = 'DELETE FROM `ex_website`.member WHERE id=?';
 
-    connection.query(query, messageId, (err) => {
+    connection.query(query, [memberId], (err, result) => {
       if (err) {
         console.log(err);
         res.status(500);
         res.render('500');
       } else {
+        console.log(result);
         res.status(204);
         res.end();
       }
