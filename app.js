@@ -15,9 +15,13 @@ const serverErrorRouter = require('./routes/server-error');
 const cattyRouter = require('./routes/catty');
 const adminRouter = require('./routes/admin');
 
-// API
+// RESTful API
 const deleteMessage = require('./routes/api/delete-message');
 const markMessage = require('./routes/api/mark-message');
+const getMember = require('./routes/api/get-member');
+const addMember = require('./routes/api/add-member');
+const deleteMember = require('./routes/api/delete-member');
+const updateMember = require('./routes/api/update-member');
 
 const app = express();
 
@@ -33,6 +37,7 @@ app.use(bodyParser.json());
 app.use(cookieParser('bethesmartestpersomintheroot'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
 app.use('/', rootRouter);
 app.use('/contact-message', contactMessageRouter);
 app.use('/playstore', playStoreRouter);
@@ -41,8 +46,13 @@ app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
 app.use('/yttac', adminRouter);
 
+// RESTful API
 app.use('/delete-message', deleteMessage);
 app.use('/mark-message', markMessage);
+app.use('/get-member', getMember);
+app.use('/add-member', addMember);
+app.use('/delete-member', deleteMember);
+app.use('/update-member', updateMember);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
