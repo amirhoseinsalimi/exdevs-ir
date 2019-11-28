@@ -142,6 +142,10 @@ body {
 .progress {
   margin: 10px;
   height: 3px;
+
+  .progress-bar {
+    transition: all 0.1s !important;
+  }
 }
 
 .left-arrow,
