@@ -90,9 +90,9 @@ $(() => {
       .css('width', `${currentProgress}%`)
       .attr('aria-valuenow', currentProgress);
 
-    if (currentProgress >= 106) {
+    if (currentProgress >= 100) {
       changeTeam(++currentTeam >= teamsInfo.length ? currentTeam = 0 : currentTeam);
-      currentProgress = -6;
+      currentProgress = 0;
     }
   }, parseFloat(config.progressBarCompletionTime) * 10);
 
