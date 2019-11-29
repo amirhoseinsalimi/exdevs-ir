@@ -3,8 +3,8 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && ./node_modules/.bin/pm2 start ./bin/www --name ex-website",
-    "restart": "pm2 restart ex-website",
+    "start": "gulp build && pm2 start ./bin/www --name ex-website",
+    "restart": "gulp build && pm2 restart ex-website",
     "stop": "pm2 stop ex-website",
     "monit": "pm2 monit",
     "test": "DEBUG=express* node ./bin/www",
