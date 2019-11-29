@@ -37,74 +37,86 @@ body {
     }
 
   }
-
-
 }
 
 
+/****************************
+*          Drawer           *
+****************************/
+.drawer {
+  width: 300px;
+  min-height: calc(100vh - 48px);
+  top: 48px;
+  left: -300px;
+  transition: left 0.3s ease-out;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  ul.messages-list {
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    li.message-item {
+      border-bottom: 1px solid #ddd;
+      background: #f7f7f7;
+      cursor: pointer;
+      transition: background-color 0.5s, margin-left 0.5s;
+
+      &:hover {
+        background: #fff;
+        margin-left: 6px;
+      }
+
+      &.open {
+        background: #fff;
+        cursor: default;
+        margin-left: 6px;
+      }
+
+      .read-status-indicator {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: flex-start;
+
+        span {
+          display: block;
+          width: 12px;
+          height: 12px;
+          background: #0091EA;
+          border-radius: 50%;
+        }
+      }
+
+      span[class^='sender'] {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      span.sender-name {
+        width: 175px;
+
+        @media (max-width: 1200px) {
+          width: 120px;
+        }
+      }
+    }
+  }
+}
+
+
+/****************************
+*           Main            *
+****************************/
 .container-fluid {
   padding-top: 48px;
 }
 
-ul.messages-list {
-  height: calc(100vh - 56px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  box-shadow: 1px 0 5px 1px #ddd;
-
-  li.message-item {
-    border-bottom: 1px solid #ddd;
-    background: #f7f7f7;
-    cursor: pointer;
-    transition: background-color 0.5s, margin-left 0.5s;
-
-    &:hover {
-      background: #fff;
-      margin-left: 6px;
-    }
-
-    &.open {
-      background: #fff;
-      cursor: default;
-      margin-left: 6px;
-    }
-
-    .read-status-indicator {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: center;
-      align-content: flex-start;
-
-      span {
-        display: block;
-        width: 12px;
-        height: 12px;
-        background: #0091EA;
-        border-radius: 50%;
-      }
-    }
-
-    span[class^='sender'] {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    span.sender-name {
-      width: 175px;
-
-      @media (max-width: 1200px) {
-        width: 120px;
-      }
-    }
-
-  }
-
-}
-
-.col-9 {
+.main {
   height: calc(100vh - 56px);
   overflow-y: auto;
   background: #E1F5FE;
