@@ -50,9 +50,12 @@ body
         const message = JSON.parse($(this).attr('data-message'));
 
         $.ajax({
-          url: `/mark-message/${message.id}`,
+          url: `/mark-message/`,
           method: 'put',
           dataType: 'json',
+          data: {
+            messageId: message.id,
+          },
           timeout: 6000,
           beforeSend: () => {
             // $('.overlay').css({
