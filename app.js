@@ -9,7 +9,6 @@ const helmet = require('helmet');
 // Routers
 const rootRouter = require('./routes/index');
 const contactMessageRouter = require('./routes/contact-message');
-const playStoreRouter = require('./routes/play-store');
 const getContentRouter = require('./routes/get-content');
 const serverErrorRouter = require('./routes/server-error');
 const cattyRouter = require('./routes/catty');
@@ -40,7 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', rootRouter);
 app.use('/contact-message', contactMessageRouter);
-app.use('/playstore', playStoreRouter);
 app.use('/get-content', getContentRouter);
 app.use('/server-error', serverErrorRouter);
 app.use('/catty', cattyRouter);
