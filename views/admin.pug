@@ -25,6 +25,10 @@ body
                   .join(' ')
 
     .row.no-gutters
+      .col-12.loader.d-none
+        .spinner-border.text-primary(role='status')
+          span.sr-only Loading...
+
       .col-12.px-2.px-md-5.main
         .message-section
           .message-bubble.d-none.flex-column.w-100.p-4
@@ -55,7 +59,7 @@ body
         if (isDrawerOpen) {
           $('.drawer')
             .css({
-              left: '-300px',
+              left: '-310px',
             });
 
           isDrawerOpen = false;
@@ -81,18 +85,20 @@ body
           },
           timeout: 6000,
           beforeSend: () => {
-            // $('.overlay').css({
-            //   visibility: 'visible',
-            // });
+            $('.loader')
+                .removeClass('d-none').addClass('d-flex');
           },
           statusCode: {
             204: (data) => {
               $(this).find('span.read-status-indicator').addClass('d-hidden');
               $('.message-bubble').removeClass('d-none').addClass('d-flex');
 
-                $('.button-share-container')
-                  .removeClass('d-none')
-                  .addClass('d-block');
+              $('.button-share-container')
+                .removeClass('d-none')
+                .addClass('d-block');
+
+              $('.loader')
+                  .removeClass('d-flex').addClass('d-none');
             },
             202: () => {
 
