@@ -53,7 +53,7 @@
     "node-sass": "^4.13.0",
     "readable-stream": "^3.4.0"
   },
-  "description": "### Requirements to run this website 1. Node.js and npm 2. MariaDB or MySQL  3. Globally installed `db-migrate` module (Simply run `npm i -g db-migrate`) 4. Globally installed `gulp` (Run `npm i -g gulp` in it is not installed)",
+  "description": "Exceptional Developers Website",
   "main": "./bin/www",
   "repository": {
     "type": "git",
