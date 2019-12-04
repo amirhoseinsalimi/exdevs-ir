@@ -4,7 +4,6 @@ const gulp = require('gulp');
 /* General plugins */
 const browserSync = require('browser-sync').create();
 const nodemon = require('gulp-nodemon');
-const sourcemaps = require('gulp-sourcemaps');
 
 
 /* Plugins related SCSS and CSS */
@@ -43,7 +42,6 @@ sass.compiler = require('node-sass');
 
 /* SCSS to CSS task */
 gulp.task('style', () => gulp.src(styleSrc)
-  .pipe(sourcemaps.init())
   .pipe(sass({
     outputStyle: 'compressed',
   })
@@ -52,18 +50,14 @@ gulp.task('style', () => gulp.src(styleSrc)
     cascade: false,
   }))
   .pipe(rename({ suffix: '.min' }))
-  .pipe(sourcemaps.write())
   .pipe(gulp.dest(styleDest)));
 
 
 /* JS task */
 gulp.task('script', () => gulp.src(scriptSrc)
-  .pipe(sourcemaps ? sourcemaps.init() : noop())
   .pipe(deporder())
-  // .pipe(concat('main.min.js'))
   .pipe(stripDebug ? stripDebug() : noop())
   .pipe(terser())
-  .pipe(sourcemaps ? sourcemaps.write() : noop())
   .pipe(gulp.dest(scriptDest)));
 
 
