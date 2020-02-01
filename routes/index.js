@@ -57,16 +57,6 @@ router.get('/', (req, res) => {
       telegram: 'm_abedinia',
     },
     {
-      name: 'Ali Geramian Rad',
-      position: 'UI Designer',
-      text: 'Delivers tasks in time, surprises his co-workers every time showcases his works.',
-      img: 'img/geramian.jpeg',
-      linkedIn: 'ali-geramian-rad-1354b3122',
-      twitter: '',
-      email: 'a.geramian@yahoo.com',
-      telegram: 'Ali_GR',
-    },
-    {
       name: 'Shahryar Hajian',
       position: 'Researcher',
       text: 'Digs into whatever the topic is, finds solution for every problem!',
