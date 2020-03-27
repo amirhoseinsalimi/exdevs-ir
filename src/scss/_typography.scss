@@ -1,7 +1,19 @@
 @import 'variables';
 
 * {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Baloo 2', cursive;
+}
+
+.font-serif {
+  font-family: 'IM Fell Double Pica SC', serif !important;
+}
+
+a.no-text-decoration {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .text-light-gray {
