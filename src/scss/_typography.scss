@@ -1,5 +1,9 @@
 @import 'variables';
 
+* {
+  font-family: 'Playfair Display', serif;
+}
+
 .text-light-gray {
   color: $light-gray;
 }
