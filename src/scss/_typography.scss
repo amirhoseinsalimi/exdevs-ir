@@ -16,8 +16,34 @@ a.no-text-decoration {
   }
 }
 
-.text-light-gray {
-  color: $light-gray;
+a {
+  cursor: pointer;
+}
+
+
+/* Colors */
+.text--primary {
+  color: $primary;
+}
+
+.text--primary-dark {
+  color: $primary-dark;
+}
+
+.text--primary-light {
+  color: $primary-light;
+}
+
+.text--primary-lighter {
+  color: $primary-lighter;
+}
+
+.text--accent {
+  color: $accent;
+}
+
+.text--accent {
+  color: #b8b8b8;
 }
 
 .text-dark-gray {
