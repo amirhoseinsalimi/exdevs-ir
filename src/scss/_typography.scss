@@ -120,7 +120,8 @@ $font-sizes: (
         '11': 1.08rem,
         '12': 1.16rem,
         '13': 1.24rem,
-        '14': 1.32rem
+        '14': 1.32rem,
+        '15': 1.40rem
 );
 
 $font-size--07: map-get($font-sizes, '07');
@@ -131,6 +132,7 @@ $font-size--11: map-get($font-sizes, '11');
 $font-size--12: map-get($font-sizes, '12');
 $font-size--13: map-get($font-sizes, '13');
 $font-size--14: map-get($font-sizes, '14');
+$font-size--15: map-get($font-sizes, '15');
 
 @each $font-size, $rem in $font-sizes {
   .font-size--#{$font-size} {
