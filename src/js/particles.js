@@ -3,19 +3,19 @@
 particlesJS('particlesJS', {
   "particles": {
     "number": {
-      "value": 1000,
+      "value": 60,
       "density": {
         "enable": true,
         "value_area": 1262.6362266116362
       }
     },
     "color": {
-      "value": ["#BD10E0","#B8E986","#50E3C2","#FFD300","#E86363"]
+      "value": ["#BD14E0","#B8E986","#50E3C2","#FFD300","#E86363"]
     },
     "shape": {
       "type": "circle",
       "stroke": {
-        "width": 10,
+        "width": 0,
         "color": "#000000"
       },
       "polygon": {
