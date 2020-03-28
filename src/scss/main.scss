@@ -43,7 +43,7 @@ body {
     transition: color 0.2s;
 
     &:hover {
-      color: $light-gray !important;
+      color: $primary-dark !important;
     }
 
   }
@@ -51,7 +51,7 @@ body {
   .nav-item.active {
 
     a {
-      color: $light-gray !important;
+      color: $primary-dark !important;
     }
 
   }
@@ -67,11 +67,11 @@ body {
     z-index: 1001;
 
     hr {
-      border: 1px solid $light-gray;
+      border: 1px solid $primary-dark;
       border-radius: 14px;
       width: 80%;
       float: left;
-      background-color: $light-gray;
+      background-color: $primary-dark;
       height: 1px;
       margin: 0;
     }
@@ -186,7 +186,7 @@ body {
   .btn.btn-secondary {
     border-radius: 20px;
     padding: 5px 20px;
-    background: $transparent;
+    background: transparent;
     border: 2px solid $white;
     transition: color 0.3s, background-color 0.3s;
 
@@ -206,7 +206,7 @@ body {
     text-decoration: none;
     position: relative;
     top: 5px;
-    color: $light-gray !important;
+    color: $primary-dark !important;
   }
 
 }
@@ -269,7 +269,7 @@ body {
     li {
       &.active {
         a {
-          color: $light-gray !important;
+          color: $primary-dark !important;
         }
       }
 
@@ -279,7 +279,7 @@ body {
         font-size: 25px;
 
         &:hover {
-          color: $light-gray;
+          color: $primary-dark;
         }
       }
 
