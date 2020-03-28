@@ -113,6 +113,25 @@ body {
 /***************************
 *           Main           *
 ***************************/
+@keyframes shining{
+  0% {
+    background-position: -2000%;
+  }
+  100% {
+    background-position: 2000%;
+  }
+}
+
+.shining {
+  position: relative;
+  background: linear-gradient(90deg, #fff, #000, #fff);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shining 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(30, 30, 30, 0.7);
+}
+
 .body {
   min-height: calc(100vh - 93px - 80px);
 
