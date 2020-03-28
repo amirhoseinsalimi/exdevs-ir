@@ -227,9 +227,7 @@ body {
 *       Contact form         *
 *****************************/
 .contact-form {
-
   .form-group {
-
     &.col-12 {
       padding: 0;
       margin-bottom: -15px;
@@ -237,7 +235,7 @@ body {
 
     .form-control {
       background: $transparent-gary;
-      color: $white;
+      color: $primary-dark;
       border: 0;
     }
 
@@ -250,21 +248,27 @@ body {
     textarea {
       resize: none;
     }
-
   }
 
   .btn.btn-secondary {
     border-radius: 20px;
     padding: 5px 20px;
     background: transparent;
-    border: 2px solid $white;
-    transition: color 0.3s, background-color 0.3s;
+    border: 2px solid $primary;
+    transition: color 0.3s, border-color 0.3s;
 
     &:active {
-      color: #000;
-      background-color: $white;
-      outline: none;
-      border: 2px solid $white;
+      background-color: transparent;
+      color: $primary-dark;
+    }
+
+    &:active:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: $primary-dark;
+      border-color: $primary-dark;
     }
 
     &:focus {
@@ -276,9 +280,8 @@ body {
     text-decoration: none;
     position: relative;
     top: 5px;
-    color: $primary-dark !important;
+    color: $primary !important;
   }
-
 }
 
 /*****************************

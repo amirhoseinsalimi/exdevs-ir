@@ -39,7 +39,7 @@ html(lang='en-US')
 
 
       .container.contact-container.d-none
-        h1.weight-400 Contact
+        h1.weight-400.text--primary-dark Contact
         .row
           .col-12.col-lg-6
             form.contact-form(autocomplete="off" method="POST" action="/contact-message")
@@ -53,12 +53,12 @@ html(lang='en-US')
                 label(for='message')
                 textarea#message.form-control(rows='5' placeholder="Message" required="required" name="message")
               .d-flex.justify-content-start.flex-row-reverse
-                button.btn.btn-secondary(type='submit') Send
+                button.btn.btn-secondary.text--primary(type='submit') Send
                 a.mr-4#discardForm Discard
 
 
       .container.meet-team-container.d-none
-        h1.mb-5.weight-400 Meet the Team!
+        h1.mb-5.weight-400.text--primary-dark Meet the Team!
         .row.no-gutters.justify-content-center
           .col-12.col-sm-12.d-flex.row.wrap.justify-content-sm-center.members
             each member in members
