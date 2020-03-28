@@ -26,68 +26,68 @@ a {
   color: $primary;
 }
 
+.bg--primary {
+  background-color: $primary;
+}
+
 .text--primary-dark {
   color: $primary-dark;
+}
+
+.bg--primary-dark {
+  background-color: $primary-dark;
 }
 
 .text--primary-light {
   color: $primary-light;
 }
 
+.bg--primary-light {
+  background-color: $primary-light;
+}
+
 .text--primary-lighter {
   color: $primary-lighter;
+}
+
+.bg--primary-lighter {
+  background-color: $primary-lighter;
 }
 
 .text--accent {
   color: $accent;
 }
 
-.text--accent {
-  color: #b8b8b8;
+.bg--accent {
+  background-color: $accent;
 }
 
-.text-dark-gray {
-  color: $dark-gray;
-}
-
-.text-white {
-  color: $white;
-}
-
-.text-web, .team-1 {
+.text--web {
   color: $web-team-color;
 }
 
-.bg-web {
+.bg--web {
   background-color: $web-team-color;
 }
 
-.text-app, .team-2 {
+.text--app {
   color: $app-team-color;
 }
 
-.bg-app {
+.bg--app {
   background-color: $app-team-color;
 }
 
-.text-game, .team-3 {
+.text--game {
   color: $game-team-color;
 }
 
-.bg-game {
-  background-color: $game-team-color;
-}
-
-.text-server, .team-4 {
+.text--server {
   color: $server-team-color;
 }
 
-.bg-server {
+.bg--server {
   background-color: $server-team-color;
-}
-
-.text-light-gray {
-  color: $white;
 }
 
 
