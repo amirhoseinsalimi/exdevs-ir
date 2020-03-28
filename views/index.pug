@@ -21,33 +21,21 @@ html(lang='en-US')
 
     .container-fluid.main-container.d-none.pb-5
       .container.home-container
-        .row.no-gutters
-          .col-12
-            h1.exception-header.text-web Exception
+        .body.d-flex.flex-wrap.flex-column.justify-content-between.align-items-center.mt-3.mt-md-5.overflow-auto
+          .row
+            .col-12.d-flex.justify-content-center.flex-wrap.headline
+              h2.text-capitalize.text-center.headline__header.w-100.font-serif.text--primary-dark Exceptional Developers
+              div.d-block.w-100.text-center
+                span.px-5.headline__tagline.d-inline-block.text-center.font-serif.text--primary-dark Catch the Exception
 
-        .row.no-gutters
-          .col-12
-            h4: small.text-muted catch the exception!
+          .row.no-gutters.main-content
+            .col-12.text-justify.text--primary-dark.team-description.font-size--11
 
-        .row.no-gutters.main-content
-          .col-12.col-lg-7
-            p.text-justify.text-light-gray.team-description.mb-5.mb-sm-2
-
-        .row.d-flex.justify-content-center.motto-box
-          .col-10.col-sm-10.d-md-flex.flex-column.justify-content-center.d-lg-block.position-relative
-            span
-              i.fas.fa-chevron-circle-left.position-absolute.left-arrow.text-white(style="width: 22px; height: 22px; top: 30%; left: -20px;")
-            span
-              i.fas.fa-chevron-circle-right.position-absolute.right-arrow.text-white(style="width: 22px; height: 22px; top: 30%; right: -20px;")
-
-            .d-flex.flex-row-reverse.justify-content-end.header.align-items-center
-              h5.text-web.team-name
-              img.mr-3.team-icon(src='' alt='Sample Icon')
-
-            .progress.mb-3
-              .progress-bar.bg-web#dynamic(role='progressbar', aria-valuemin='0', aria-valuemax='100')
-
-            p.text-web.team-motto
+        .actions.position-fixed.clearfix
+          .progress.m-0
+            .progress-bar#dynamic(role='progressbar', aria-valuemin='0', aria-valuemax='100')
+          a.actions_button.no-text-decoration.text-center.float-left.font-size--15(href='#') Contact us
+          a.actions_button.no-text-decoration.text-center.float-right.font-size--15(href='#') Our Apps (Coming Soon)
 
 
       .container.contact-container.d-none

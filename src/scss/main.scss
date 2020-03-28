@@ -29,7 +29,7 @@ body {
 *           Navbar           *
 *****************************/
 .navbar {
-  background-color: $transparent !important;
+  background-color: transparent !important;
   height: 80px;
   z-index: 1001;
 
@@ -115,9 +115,79 @@ body {
 /***************************
 *           Main           *
 ***************************/
+.body {
+  min-height: calc(100vh - 93px - 80px);
+
+  .headline {
+    .headline__tagline {
+      min-width: 200px;
+    }
+
+    @media screen and (max-width: 768px) {
+      & > .headline__header {
+        font-size: $font-size--11;
+      }
+
+      .headline__tagline {
+        font-size: $font-size--07;
+      }
+    }
+  }
+}
+
+.actions {
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+
+  a.actions_button {
+    padding: 30px;
+    color: black;
+    width: 50%;
+
+    &:nth-child(2) {
+      background-color: #c7c7c7;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    &:nth-child(3) {
+      background-color: #fff;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  .progress {
+    height: 5px;
+    border-radius: 0 !important;
+    background-color: transparent;
+
+    .progress-bar {
+      transition: all 0.1s !important;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    bottom: -96px;
+
+    a.actions_button {
+      width: 100%;
+    }
+  }
+}
+
 .main-content {
   @media screen and (max-width: 576px) {
     margin-bottom: 50px;
+
+    & > .team-description {
+      font-size: $font-size--09;
+    }
   }
 
   @media screen and (min-width: 577px) {
@@ -137,15 +207,6 @@ body {
 .motto-box .header img {
   width: 30px;
   height: 30px;;
-}
-
-.progress {
-  margin: 10px;
-  height: 3px;
-
-  .progress-bar {
-    transition: all 0.1s !important;
-  }
 }
 
 .left-arrow,
