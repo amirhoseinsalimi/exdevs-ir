@@ -49,11 +49,9 @@ body {
   }
 
   .nav-item.active {
-
     a {
       color: $primary-dark !important;
     }
-
   }
 
   .mobile-menu-indicator {
@@ -145,20 +143,12 @@ body {
     color: black;
     width: 50%;
 
-    &:nth-child(2) {
-      background-color: #c7c7c7;
-
-      &:hover {
-        background-color: #ddd;
-      }
+    &.bg--accent:hover {
+      background-color: $primary-lighter;
     }
 
-    &:nth-child(3) {
-      background-color: #fff;
-
-      &:hover {
-        background-color: #ddd;
-      }
+    &.bg--white:hover {
+      background-color: $primary-lighter;
     }
   }
 
