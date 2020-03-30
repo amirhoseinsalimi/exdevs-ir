@@ -7,7 +7,7 @@ $(() => {
    */
   const config = {
     transitionTime: 700,
-    progressBarCompletionTime: '10s', // seconds
+    progressBarCompletionTime: '15s', // seconds
   };
 
 
