@@ -135,6 +135,58 @@ $(() => {
 
 
   /**
+   * JavaScript event handlers
+   */
+  const main = document.getElementsByClassName('home-container')[0];
+  // For touch-capable mobile devices
+  main.addEventListener('touchstart', handleXTouchStart, false);
+  main.addEventListener('touchmove', handleXTouchMove, false);
+
+  let xDown = null;
+  let yDown = null;
+
+  function getTouches(evt) {
+    return evt.touches || evt.originalEvent.touches;
+  }
+
+  function handleXTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleXTouchMove(evt) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        currentProgress = 0;
+        changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
+      } else {
+        currentProgress = 0;
+        changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
+      }
+    } else if (yDiff > 0) {
+      /* up swipe */
+    } else {
+      /* down swipe */
+    }
+
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  }
+
+
+  /**
    * jQuery event handlers
    */
   $('span .left-arrow').on('click', () => {
