@@ -192,7 +192,7 @@ body {
 
 .main-content {
   @media screen and (max-width: 576px) {
-    margin-bottom: 50px;
+    margin-bottom: 0;
 
     & > .team-description {
       font-size: $font-size--09;
