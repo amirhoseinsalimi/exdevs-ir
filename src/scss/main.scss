@@ -162,6 +162,10 @@ body {
     color: black;
     width: 50%;
 
+    &:hover {
+      color: $primary-dark;
+    }
+
     &.bg--accent:hover {
       background-color: $primary-lighter;
     }
@@ -335,9 +339,10 @@ body {
   }
 
   ul {
-    margin-top: 40%;
+    margin-top: 50%;
 
     li {
+      margin-bottom: 30px;
       &.active {
         a {
           color: $primary-dark !important;
@@ -345,36 +350,12 @@ body {
       }
 
       a {
-        color: #707070 !important;
+        color: $primary !important;
         transition: color 0.2s;
-        font-size: 25px;
+        font-size: 2rem;
 
         &:hover {
           color: $primary-dark;
-        }
-      }
-
-      .btn-download {
-        border-radius: 25px;
-        position: relative;
-        font-size: 18px;
-        top: 5px;
-        background: transparent;
-        color: $white !important;
-        border: 2px solid $white;
-        outline: 0;
-        padding: 5px 20px;
-        margin-top: 17px;
-
-        &:hover {
-          box-shadow: 0 1px 10px 5px #222;
-        }
-
-        &.btn.btn-primary:focus,
-        &.btn.btn-primary:active,
-        &.btn.btn-primary:hover {
-          background: transparent;
-          outline: none;
         }
       }
     }
