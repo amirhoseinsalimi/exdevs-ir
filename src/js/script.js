@@ -20,7 +20,7 @@ $(() => {
   let mobileMenuStatus = false;
   let currentPage = 'Home';
   const fragId = window.location.hash.substr(1);
-
+  const D = document;
 
   $.ajax({
     url: '/get-content',
@@ -219,6 +219,16 @@ $(() => {
     yDown = null;
   }
 
+  D.getElementById('contact-form').addEventListener('submit', event => {
+    const inputs = D.getElementsByClassName('form-control');
+
+    Array.prototype.forEach.call(inputs, (input) => {
+      console.log(input.value.replace(/(<([^>]+)>)/ig, ''));
+    });
+
+    event.preventDefault();
+  });
+
 
   /**
    * jQuery event handlers
@@ -260,7 +270,8 @@ $(() => {
   };
 
   const closeMobileMenu = () => {
-    $('.ham.hamRotate.ham8').removeClass('active');
+    $('.ham.hamRotate.ham8')
+      .removeClass('active');
 
     $('.mobile-menu')
       .removeClass('open');
