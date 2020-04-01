@@ -288,13 +288,14 @@ body {
 *       Meet The Team        *
 *****************************/
 .member-card {
-  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, background-color 1000ms;
   cursor: pointer;
   border-radius: 10px;
   background: transparent;
 
   &:hover {
     box-shadow: 0 3px 40px -10px rgba(179, 179, 179, 1);
+    background-color: $primary-lighter;
   }
 
   .profile-image {
@@ -309,7 +310,6 @@ body {
   }
 
   .member-link {
-
     img {
       width: 20px;
       height: 20px;
@@ -317,7 +317,6 @@ body {
       border-radius: 50%;
       cursor: pointer;
     }
-
   }
 }
 
