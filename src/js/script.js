@@ -226,18 +226,6 @@ $(() => {
   /**
    * jQuery event handlers
    */
-  $('span .left-arrow')
-    .on('click', () => {
-      currentProgress = 0;
-      changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
-    });
-
-  $('span .right-arrow')
-    .on('click', () => {
-      currentProgress = 0;
-      changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
-    });
-
   $('#discardForm, .home-link')
     .on('click', () => {
       navigateToHome();
