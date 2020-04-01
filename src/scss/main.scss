@@ -64,50 +64,61 @@ body {
     cursor: pointer;
     z-index: 1001;
 
-    hr {
-      border: 1px solid $primary-dark;
-      border-radius: 14px;
-      width: 80%;
-      float: left;
-      background-color: $primary-dark;
-      height: 1px;
-      margin: 0;
+    .ham {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 400ms;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
-    hr:nth-child(1),
-    hr:nth-child(3) {
-      position: absolute;
-      -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
-      -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
-      -o-transition: transform 0.5s, width 0.5s, position 0.5s;
-      transition: transform 0.5s, width 0.5s, position 0.5s;
+    .hamRotate.active {
+      transform: rotate(45deg);
     }
 
-    hr:nth-child(2) {
-      position: absolute;
-      -webkit-transition: right 0.5s;
-      -moz-transition: right 0.5s;
-      -o-transition: right 0.5s;
-      transition: right 0.5s;
+    .hamRotate180.active {
+      transform: rotate(180deg);
     }
 
-    hr:nth-child(1) {
-      top: 15px;
-      right: 0;
+    .line {
+      fill:none;
+      transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+      stroke:#000;
+      stroke-width:5.5;
+      stroke-linecap:round;
     }
 
-    hr:nth-child(2) {
-      top: 25px;
-      right: 10%;
-      width: 60%;
+    .ham8 .top {
+      stroke-dasharray: 40 160;
     }
 
-    hr:nth-child(3) {
-      top: 35px;
-      right: 0;
+    .ham8 .middle {
+      stroke-dasharray: 40 142;
+      transform-origin: 50%;
+      transition: transform 400ms;
+    }
+
+    .ham8 .bottom {
+      stroke-dasharray: 40 85;
+      transform-origin: 50%;
+      transition: transform 400ms, stroke-dashoffset 400ms;
+    }
+
+    .ham8.active .top {
+      stroke-dashoffset: -64px;
+    }
+
+    .ham8.active .middle {
+      //stroke-dashoffset: -20px;
+      transform: rotate(90deg);
+    }
+
+    .ham8.active .bottom {
+      stroke-dashoffset: -64px;
     }
   }
-
 }
 
 /***************************
