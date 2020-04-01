@@ -65,6 +65,7 @@ body {
     z-index: 1001;
 
     .ham {
+      transform: scale(1.2);
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition: transform 400ms;
@@ -75,19 +76,19 @@ body {
     }
 
     .hamRotate.active {
-      transform: rotate(45deg);
+      transform: scale(1.2) rotate(45deg);
     }
 
     .hamRotate180.active {
-      transform: rotate(180deg);
+      transform: scale(1.2) rotate(45deg);
     }
 
     .line {
-      fill:none;
+      fill: none;
       transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-      stroke:#000;
-      stroke-width:5.5;
-      stroke-linecap:round;
+      stroke: #000;
+      stroke-width: 5.5;
+      stroke-linecap: round;
     }
 
     .ham8 .top {
@@ -124,7 +125,7 @@ body {
 /***************************
 *           Main           *
 ***************************/
-@keyframes shining{
+@keyframes shining {
   0% {
     background-position: -2000%;
   }
@@ -354,6 +355,7 @@ body {
 
     li {
       margin-bottom: 30px;
+
       &.active {
         a {
           color: $primary-dark !important;
