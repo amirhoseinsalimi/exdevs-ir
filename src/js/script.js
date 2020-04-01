@@ -78,9 +78,6 @@ $(() => {
   const $exceptionHeader = $('.exception-header');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
-  const $hr1 = $('hr:nth-child(1)');
-  const $hr2 = $('hr:nth-child(2)');
-  const $hr3 = $('hr:nth-child(3)');
 
   const $allInfo = $('.team-name, .team-motto, .team-description, .team-icon');
 
@@ -254,48 +251,21 @@ $(() => {
   };
 
   const openMobileMenu = () => {
-    $hr1.css({
-      transform: 'rotate(45deg)',
-      top: '25px',
-    });
-
-    $hr3.css({
-      transform: 'rotate(-45deg)',
-      top: '25px',
-    });
-
     $('.mobile-menu')
-      .removeClass('d-none')
-      .addClass('d-block');
+      .addClass('open');
+    $('.container-fluid.main-container')
+      .addClass('overlayed');
     $('body')
       .css('overflow-y', 'hidden');
-
-    $hr2.fadeOut(200);
   };
 
   const closeMobileMenu = () => {
-    $hr2.fadeIn();
-
-    $hr1.css({
-      transform: 'rotate(0deg)',
-      width: '80%',
-      top: '15px',
-    });
-
-    $hr3.css({
-      transform: 'rotate(0deg)',
-      width: '80%',
-      top: '35px',
-    });
-
-    $hr2.css({
-      top: '25px',
-      right: '10%',
-    });
+    $('.ham.hamRotate.ham8').removeClass('active');
 
     $('.mobile-menu')
-      .removeClass('d-block')
-      .addClass('d-none');
+      .removeClass('open');
+    $('.container-fluid.main-container')
+      .removeClass('overlayed');
     $('body')
       .css('overflow-y', 'auto');
   };

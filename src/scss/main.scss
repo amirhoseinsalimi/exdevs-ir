@@ -25,6 +25,17 @@ body {
   background-color: #e4e4e4;
 }
 
+.container-fluid.main-container {
+  z-index: 1;
+  transition: opacity 400ms;
+  opacity: 1;
+
+  &.overlayed {
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
 /*****************************
 *           Navbar           *
 *****************************/
@@ -339,12 +350,22 @@ body {
 /*****************************
 *        Mobile menu         *
 *****************************/
+
 .mobile-menu {
   position: fixed;
   top: 70px;
-  height: calc(100vh);
-  z-index: 1000;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
   background: transparent;
+  transform: scale(0.8);
+  transition: all 400ms;
+
+  &.open {
+    transform: scale(1);
+    z-index: 1000;
+    opacity: 1;
+  }
 
   @media screen and (min-width: 576px) {
     display: none !important;
