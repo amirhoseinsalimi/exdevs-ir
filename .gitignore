@@ -48,7 +48,6 @@ pids
 
 # Logs and databases #
 ######################
-connection.*
 logs
 nohup*
 *.log
