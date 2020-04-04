@@ -254,6 +254,7 @@ span.switch-team-arrow {
   top: 20%;
   transition: box-shadow 0.5s, background-color 1000ms;
   border-radius: 8px;
+  cursor: pointer;
 
   &.next {
     right: -30px;
