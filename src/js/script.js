@@ -233,6 +233,18 @@ $(() => {
   /**
    * jQuery event handlers
    */
+  $('.switch-team-arrow.prev')
+    .on('click', () => {
+      currentProgress = 0;
+      changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
+    });
+
+  $('.switch-team-arrow.next')
+    .on('click', () => {
+      currentProgress = 0;
+      changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
+    });
+
   $('#discardForm, .home-link')
     .on('click', () => {
       navigateToHome();

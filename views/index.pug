@@ -20,7 +20,7 @@ html(lang='en-US')
 
 
     .container-fluid.main-container.d-none.pb-5
-      .container.home-container
+      .container.home-container.position-relative
         .body.d-flex.flex-wrap.flex-column.justify-content-md-between.align-items-center.mt-3.mt-md-5.overflow-auto.justify-content-around
           .row.no-gutters
             .col-12.d-flex.justify-content-center.flex-wrap.headline
@@ -37,6 +37,10 @@ html(lang='en-US')
           a.actions_button.no-text-decoration.text-center.bg--accent.float-left.font-size--15.contact-link Contact us
           a.actions_button.no-text-decoration.text-center.bg--white.float-right.font-size--15 Our Apps (Coming Soon)
 
+        span.position-absolute.d-none.d-md-inline-block.switch-team-arrow.next.p-4
+          img(src='icons/right.svg' alt='Display next team')
+        span.position-absolute.d-none.d-md-inline-block.switch-team-arrow.prev.p-4
+          img(src='icons/left.svg' alt='Display next team')
 
       .container.contact-container.d-none
         h1.weight-400.text--primary-dark Contact
