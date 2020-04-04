@@ -6,6 +6,7 @@ jspm_packages/
 lib-cov
 public/**/*
 !public/favicon.ico
+!public/manifest.json
 
 
 # Environment #
