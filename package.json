@@ -50,6 +50,7 @@
     "gulp-strip-debug": "^3.0.0",
     "gulp-terser": "^1.2.0",
     "node-sass": "^4.13.1",
+    "prettier": "2.0.2",
     "readable-stream": "^3.6.0"
   },
   "description": "Exceptional Developers Website",
