@@ -59,12 +59,12 @@ const addMember = require('./routes/api/add-member');
 const deleteMember = require('./routes/api/delete-member');
 const updateMember = require('./routes/api/update-member');
 
-app.use('/delete-message', deleteMessage);
-app.use('/mark-message', markMessage);
-app.use('/get-member', getMember);
-app.use('/add-member', addMember);
-app.use('/delete-member', deleteMember);
-app.use('/update-member', updateMember);
+app.use('/api/delete-message', deleteMessage);
+app.use('/api/mark-message', markMessage);
+app.use('/api/add-member', addMember);
+app.use('/api/get-member', getMember);
+app.use('/api/delete-member', deleteMember);
+app.use('/api/update-member', updateMember);
 
 /* ****************************
          Error Handling
