@@ -5,22 +5,8 @@ const logger = require('morgan');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-
-// Routers
-const rootRouter = require('./routes/index');
-const contactMessageRouter = require('./routes/contact-message');
-const getContentRouter = require('./routes/get-content');
-const serverErrorRouter = require('./routes/server-error');
-const cattyRouter = require('./routes/catty');
-const adminRouter = require('./routes/admin');
-
-// RESTful API
-const deleteMessage = require('./routes/api/delete-message');
-const markMessage = require('./routes/api/mark-message');
-const getMember = require('./routes/api/get-member');
-const addMember = require('./routes/api/add-member');
-const deleteMember = require('./routes/api/delete-member');
-const updateMember = require('./routes/api/update-member');
+const busboy = require('then-busboy');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
