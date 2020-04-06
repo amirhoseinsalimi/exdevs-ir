@@ -32,7 +32,7 @@ $(() => {
     },
     statusCode: {
       200: (data) => {
-        teamsInfo = data.mainContent;
+        teamsInfo = data.teams;
         changeTeam(0);
 
         $('.loader-container')
@@ -219,7 +219,7 @@ $(() => {
     yDown = null;
   }
 
-  D.getElementById('contact-form').addEventListener('submit', event => {
+  D.getElementById('contact-form').addEventListener('submit', (event) => {
     const inputs = D.getElementsByClassName('form-control');
 
     Array.prototype.forEach.call(inputs, (input) => {
