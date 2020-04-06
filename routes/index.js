@@ -2,114 +2,24 @@ const express = require('express');
 
 const router = express.Router();
 const shuffleArray = require('./../my_modules/shuffle-array');
+const connection = require('../connection');
+const knex = require('knex')(connection); // eslint-disable-line
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  const members = [
-    {
-      name: 'Amir Hosein Salimi',
-      position: 'Front-end Developer',
-      text: 'Constantly developing his skills, never satisfies of what he knows. Very precise!',
-      img: 'img/salimi.jpeg',
-      linkedIn: 'amirhoseinsalimi',
-      twitter: 'ahsdev',
-      email: 'st_ah_salimi@azad.ac.ir',
-      telegram: 'amirhoseinsalimii',
-    },
-    {
-      name: 'Hamidreza Bayat',
-      position: 'Mobile Developer',
-      text: 'A true geek, great at developing software in a blink.',
-      img: 'img/bayat.jpeg',
-      linkedIn: 'hamidr3zabayat',
-      twitter: 'HrBDev',
-      email: 'st_hr_bayat@azad.ac.ir',
-      telegram: 'HrBD3v',
-    },
-    {
-      name: 'Milad Karimiyan',
-      position: 'Back-end Developer',
-      text: 'Dreaming big is what he was born for. Also an ocean of knowledge in software development.',
-      img: 'img/karimiyan.jpeg',
-      linkedIn: 'milad-karimiyan-0337a8a9',
-      twitter: 'MiladKarimiyan',
-      email: 'st_m_karimian@azad.ac.ir',
-      telegram: 'mikdev',
-    },
-    {
-      name: 'Fatemeh Akhlaghi',
-      position: 'Mobile Developer',
-      text: 'Happy all the time, works passionately alongside her co-workers.',
-      img: 'img/akhlaghi.jpg',
-      linkedIn: 'fatemeh-akhlaghi-6a211615b',
-      twitter: 'ftad3v',
-      email: 'akhlaghi.fatemeh@gmail.com',
-      telegram: 'FtaDev',
-    },
-    {
-      name: 'Marzieh Abedinia',
-      position: 'Mobile Developer',
-      text: 'The quite girl of the team, doesn\'t waste even a minute!',
-      img: 'img/abedinia.jpeg',
-      linkedIn: 'marzieh-abedinia-4a71a2184',
-      twitter: '',
-      email: 'm.abedinia1998@gmail.com',
-      telegram: 'm_abedinia',
-    },
-    {
-      name: 'Shahryar Hajian',
-      position: 'Researcher',
-      text: 'Digs into whatever the topic is, finds solution for every problem!',
-      img: 'img/hajian.jpg',
-      linkedIn: 'shahryar-hajian-209a50151/',
-      twitter: '',
-      email: 'Hajian.rh@gmail.com',
-      telegram: 'Shaha_H',
-    },
-    {
-      name: 'Mahboubeh Seyedpour',
-      position: 'Operations Manager',
-      text: 'Productive in every situation, doesn\'t let a task overdue, kind to everybody she meets!',
-      img: 'img/seyedpour.png',
-      linkedIn: '/mahboubeh-sadat-seyedpour-676aa5190',
-      twitter: '',
-      email: 'mahboobeh.seyedpour@gmail.com',
-      telegram: 'spr_m_s',
-    },
-    {
-      name: 'Amir Hosein Asgari',
-      position: 'Front-end Developer',
-      text: 'Gets the work done, no matter what it is and why. Does the big work tomorrow!',
-      img: 'img/asgari.png',
-      linkedIn: 'amiagr',
-      twitter: 'ami97agr',
-      email: 'amirhosseinasgari@hotmail.com',
-      telegram: 'amiagr',
-    },
-    {
-      name: 'Saeed Erfani',
-      position: 'Mobile Developer',
-      text: 'Team work is his shining ring; Very collaborative and true mentor.',
-      img: 'img/s_erfani.png',
-      linkedIn: 'saeed-erfani',
-      twitter: '',
-      email: 'saeederfani75@gmail.com',
-      telegram: 's_erfani96',
-    },
-    {
-      name: 'Mohammad Amin Daneshvar',
-      position: 'Game Developer',
-      text: 'Highly skilled at solving complicated algorithms, has a keen mind in finding the best solution.',
-      img: 'img/daneshvar.jpg',
-      linkedIn: 'm-a-daneshvar',
-      twitter: 'MADaneshvar',
-      email: 'm.amin.daneshvar@gmail.com',
-      telegram: 'daneshvar76',
-    },
-  ];
+  knex.select('*')
+    .from('users')
+    .then((members) => {
+      members.forEach((member) => {
+        member.photo = member.photo.replace(/uploads/g, '');
+      });
 
-  res.status(200);
-  res.render('index', { members: shuffleArray(members) });
+      res.status(200);
+      res.render('index', { members: shuffleArray(members) });
+    })
+    .catch((err) => {
+      throw Error(err);
+    });
 });
 
 module.exports = router;
