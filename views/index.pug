@@ -67,12 +67,11 @@ html(lang='en-US')
           .col-12.col-sm-12.d-flex.row.wrap.justify-content-sm-center.members
             each member in members
               .col-12.col-md-4.py-4.col-lg-3.my-2.mx-1.member-card.position-relative
-                img.d-block.mx-auto.mb-3.profile-image(src=`${member.img}`, alt='Exception member')
+                img.d-block.mx-auto.mb-3.profile-image(src=`${member.photo}`, alt='Exception member')
                 .text.text-center
-                  span.text-center.text--primary-dark.shining= member.name
-                  br
-                  span.small.text-muted= member.position
-                  p.text-left.mb-5.text--primary-dark(style='font-size: 13px')= member.text
+                  span.d-block.text-center.text--primary-dark.shining.mb-1= member.full_name
+                  span.d-block.small.text-muted.mb-2= member.role
+                  p.text-left.mb-5.text--primary-dark(style='font-size: 13px')= member.description
                   .d-flex.justify-content-center.position-absolute.mx-auto(style='width: 144px; bottom: 16px; left: 0; right: 0;')
                     if member.twitter !== ''
                       a.member-link.twitter(href=`https://twitter.com/${member.twitter}`, target='_blank')
