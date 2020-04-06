@@ -8,8 +8,6 @@ const logger = require('morgan');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const busboy = require('then-busboy');
-const fileUpload = require('express-fileupload');
 
 /* *****************************
     Application Configuration
@@ -30,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser('bethesmartestpersomintheroot'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(fileUpload());
 
 /* ***************************
           Page Routes
