@@ -5,16 +5,37 @@ const multer = require('multer');
 const connection = require('../../connection');
 const knex = require('knex')(connection); // eslint-disable-line
 
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+  destination(req, file, callback) {
+    callback(null, './uploads/');
+  },
+  filename(req, file, callback) {
+    callback(null, `${new Date().toISOString()}${file.originalname}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 1024 * 1024,
+  },
+  fileFilter: (req, file, callback) => {
+    if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+});
 
 router.post('/', upload.single('photo'), (req, res) => {
   const requestData = req.body;
-  requestData.photo = req.file.filename;
+  requestData.photo = req.file.path;
 
   knex('users')
     .insert(requestData)
     .then(() => {
-      // Handle later
+      res.end('Ok');
     })
     .catch((err) => {
       throw Error(err);
