@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser('bethesmartestpersomintheroot'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('uploads'));
 
 /* ***************************
           Page Routes
