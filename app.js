@@ -49,12 +49,12 @@ app.use('/yttac', adminRouter);
 /* ******************************
         RESTful API Routes
 ****************************** */
-const deleteMessage = require('./routes/api/delete-message');
-const markMessage = require('./routes/api/mark-message');
-const getMember = require('./routes/api/get-member');
-const addMember = require('./routes/api/add-member');
-const deleteMember = require('./routes/api/delete-member');
-const updateMember = require('./routes/api/update-member');
+const deleteMessage = require('./routes/api/message-delete');
+const markMessage = require('./routes/api/message-mark');
+const getMember = require('./routes/api/member-get');
+const addMember = require('./routes/api/member-add');
+const deleteMember = require('./routes/api/member-delete');
+const updateMember = require('./routes/api/member-update');
 
 app.use('/api/delete-message', deleteMessage);
 app.use('/api/mark-message', markMessage);
