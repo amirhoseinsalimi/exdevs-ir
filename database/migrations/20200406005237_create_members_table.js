@@ -7,11 +7,11 @@ exports.up = (knex) => {
         table.string('role').notNullable();
         table.text('description').notNullable();
         table.string('photo').notNullable();
-        table.string('telegram').notNullable();
-        table.string('email').notNullable();
-        table.string('twitter').notNullable();
-        table.string('linkedin').notNullable();
-        table.string('github').notNullable();
+        table.string('telegram').nullable();
+        table.string('email').nullable();
+        table.string('twitter').nullable();
+        table.string('linkedin').nullable();
+        table.string('github').nullable();
         table.timestamps();
       });
     }
