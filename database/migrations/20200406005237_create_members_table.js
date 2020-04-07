@@ -1,9 +1,9 @@
-exports.up = async (knex) => {
+exports.up = knex =>
   knex.schema
     .hasTable('members')
-    .then((exists) => {
+    .then(exists => {
       if (!exists) {
-        return knex.schema.createTable('members', (table) => {
+        return knex.schema.createTable('members', table => {
           table.increments().primary();
           table.string('full_name').notNullable();
           table.string('role').notNullable();
@@ -19,17 +19,15 @@ exports.up = async (knex) => {
       }
     })
     .catch(() => {});
-};
 
-exports.down = async (knex) => {
+exports.down = knex =>
   knex.schema
     .hasTable('members')
-    .then((exists) => {
+    .then(exists => {
       if (exists) {
         return knex.schema.dropTableIfExists('members');
       }
     })
     .catch(() => {});
-};
 
 exports.config = { transaction: false };
