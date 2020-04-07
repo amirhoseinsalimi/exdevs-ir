@@ -219,14 +219,12 @@ $(() => {
     yDown = null;
   }
 
-  D.getElementById('contact-form').addEventListener('submit', (event) => {
+  D.getElementById('contact-form').addEventListener('submit', () => {
     const inputs = D.getElementsByClassName('form-control');
 
     Array.prototype.forEach.call(inputs, (input) => {
       console.log(input.value.replace(/(<([^>]+)>)/ig, ''));
     });
-
-    event.preventDefault();
   });
 
 
