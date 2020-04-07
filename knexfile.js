@@ -45,7 +45,7 @@ module.exports = {
   // },
 
   production: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
       database,
       user,
