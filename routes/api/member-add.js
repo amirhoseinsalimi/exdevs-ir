@@ -32,7 +32,7 @@ router.post('/', upload.single('photo'), (req, res) => {
   const requestData = req.body;
   requestData.photo = req.file.path;
 
-  knex('users')
+  knex('members')
     .insert(requestData)
     .then(() => {
       res.end('Ok');
