@@ -8,7 +8,7 @@ const knex = require('knex')(connection); // eslint-disable-line
 /* GET home page. */
 router.get('/', (req, res) => {
   knex.select('*')
-    .from('users')
+    .from('members')
     .then((members) => {
       members.forEach((member) => {
         member.photo = member.photo.replace(/uploads/g, '');
