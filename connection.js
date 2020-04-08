@@ -3,7 +3,7 @@ const {
   DB_NAME: database,
   DB_USERNAME: user,
   DB_PASSWORD: password,
-} = require('./config');
+} = require('./env');
 
 const connection = {
   client: 'mysql',
