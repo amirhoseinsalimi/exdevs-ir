@@ -2,8 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const multer = require('multer');
-const connection = require('../../connection');
-const knex = require('knex')(connection); // eslint-disable-line
+const knex = require('../../knex');
 
 const storage = multer.diskStorage({
   destination(req, file, callback) {

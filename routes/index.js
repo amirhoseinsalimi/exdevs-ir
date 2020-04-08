@@ -2,8 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const shuffleArray = require('./../my_modules/shuffle-array');
-const connection = require('../connection');
-const knex = require('knex')(connection); // eslint-disable-line
+const knex = require('../knex');
 
 /* GET home page. */
 router.get('/', (req, res) => {

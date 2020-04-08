@@ -1,8 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const connection = require('../connection');
-const knex = require('knex')(connection); // eslint-disable-line
+const knex = require('../knex');
 
 /* Process POST data */
 router.post('/', (req, res) => {
