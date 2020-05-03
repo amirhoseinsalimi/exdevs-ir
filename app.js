@@ -33,12 +33,12 @@ app.use(express.static('uploads'));
 /* ***************************
           Page Routes
 *************************** */
-const rootRouter = require('./routes/index');
-const contactMessageRouter = require('./routes/contact-message');
-const getContentRouter = require('./routes/get-content');
+const rootRouter = require('./routes/website');
+const contactMessageRouter = require('./routes/website/contact-message');
+const getContentRouter = require('./routes/website/get-content');
 const serverErrorRouter = require('./routes/server-error');
-const cattyRouter = require('./routes/catty');
-const adminRouter = require('./routes/admin');
+const cattyRouter = require('./routes/admin/catty');
+const adminRouter = require('./routes/admin/admin');
 
 app.use('/', rootRouter);
 app.use('/contact-message', contactMessageRouter);
