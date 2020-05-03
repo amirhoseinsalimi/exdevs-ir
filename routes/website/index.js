@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       });
 
       res.status(200);
-      res.render('index', { members: shuffleArray(members) });
+      res.render('website/index', { members: shuffleArray(members) });
     })
     .catch((err) => {
       throw Error(err);
