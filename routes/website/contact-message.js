@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../knex');
+const knex = require('../../knex');
 
 /* Process POST data */
 router.post('/', (req, res) => {
