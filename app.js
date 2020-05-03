@@ -33,19 +33,24 @@ app.use(express.static('uploads'));
 /* ***************************
           Page Routes
 *************************** */
-const rootRouter = require('./routes/website');
-const contactMessageRouter = require('./routes/website/contact-message');
-const getContentRouter = require('./routes/website/get-content');
-const serverErrorRouter = require('./routes/server-error');
-const cattyRouter = require('./routes/admin/catty');
-const adminRouter = require('./routes/admin/admin');
+const index = require('./routes/website/index');
+const sendMessage = require('./routes/website/contact-message');
+const getContent = require('./routes/website/get-content');
+const serverError = require('./routes/server-error');
 
-app.use('/', rootRouter);
-app.use('/contact-message', contactMessageRouter);
-app.use('/get-content', getContentRouter);
-app.use('/server-error', serverErrorRouter);
-app.use('/catty', cattyRouter);
-app.use('/yttac', adminRouter);
+const adminLogin = require('./routes/admin/admin');
+const adminMessages = require('./routes/admin/messages');
+const adminMembers = require('./routes/admin/members');
+
+
+app.use('/', index);
+app.use('/contact-message', sendMessage);
+app.use('/get-content', getContent);
+app.use('/server-error', serverError);
+
+app.use('/admin', adminLogin);
+app.use('/admin/messages', adminMessages);
+app.use('/admin/members', adminMembers);
 
 /* ******************************
         RESTful API Routes
