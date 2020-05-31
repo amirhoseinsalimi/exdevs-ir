@@ -1,33 +1,26 @@
 const express = require('express');
 
 const router = express.Router();
-const pool = require('../../connection');
+const knex = require('../../knex');
 
 router.delete('/:id', (req, res) => {
-  const messageId = req.params.id;
+  const { id: messageId } = req.params;
 
-  pool.getConnection((err, connection) => {
-    if (err) {
-      console.log(`Error connecting to database: ${err.name}: ${err.message}`);
-      res.status(500);
-      res.render('500');
-    }
-
-    const query = 'DELETE FROM `ex_website`.message WHERE id=?';
-
-    connection.query(query, messageId, (err) => {
-      if (err) {
-        console.log(err);
-        res.status(500);
-        res.render('500');
-      } else {
-        res.status(204);
-        res.end();
-      }
-
-      connection.release();
+  if (!Number(messageId)) {
+    return res.status(400).json({
+      message: 'Invalid parameter',
     });
-  });
+  }
+
+  knex('messages')
+    .where('id', messageId)
+    .del()
+    .then(() => (
+      res.status(204).end()
+    ))
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 module.exports = router;
