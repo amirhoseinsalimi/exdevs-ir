@@ -1,34 +1,28 @@
 const express = require('express');
 
 const router = express.Router();
-const pool = require('../../connection');
+const knex = require('../../knex');
 
 router.get('/:id', (req, res) => {
-  const memberId = req.params.id;
+  const { id: memberId } = req.params;
 
-  pool.getConnection((err, connection) => {
-    if (err) {
-      console.log(`Error connecting to database: ${err.name}: ${err.message}`);
-      res.status(500);
-      res.render('500');
-    }
-
-    const query = 'SELECT * FROM `ex_website`.member WHERE id=?';
-
-    connection.query(query, [memberId], (err, results) => {
-      if (err) {
-        console.log(err);
-        res.status(500);
-        res.render('500');
-      } else {
-        console.log(results);
-        res.status(204);
-        res.end();
-      }
-
-      connection.release();
+  if (!Number(memberId)) {
+    return res.status(400).json({
+      message: 'Invalid parameter',
     });
-  });
+  }
+
+  knex('members')
+    .where({
+      id: memberId,
+    })
+    .select('*')
+    .then((member) => {
+      res.status(200).json(member);
+    })
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 module.exports = router;
