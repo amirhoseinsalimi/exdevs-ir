@@ -16,6 +16,7 @@ exports.seed = knex =>
             + '  back-end JavaScript frameworks gives us the ability to build robust full-stack web apps'
             + '  with an astonishing performance. Long story short, we do our best to always be on the'
             + '  edge of the web development world.',
+          color: '#f0db4f',
         },
         {
           id: 2,
@@ -28,6 +29,7 @@ exports.seed = knex =>
             + ' young teams would be capable. With the knowledge of a bunch of technologies, we always'
             + " choose the right one for the job, and it wouldn't be exaggerating to say that nothing is"
             + ' impossible for us.',
+          color: '#a4c639',
         },
         {
           id: 3,
@@ -41,5 +43,6 @@ exports.seed = knex =>
             + ' long way in designing databases and MySQL/MariaDB, MongoDB were our best friends during'
             + " our journey. We know that success isn't achieved by accident, so we don't wait for it,"
             + ' we chase it!',
+          color: '#777bb3',
         },
       ]));
