@@ -423,14 +423,23 @@ span.switch-team-arrow {
 /**************************
 *        Scrollbar        *
 **************************/
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+::-webkit-scrollbar {
+  height: 2px;
+  width: 3px;
+  border: 1px solid #d5d5d5;
 }
 
-body::-webkit-scrollbar {
-  width: 0;
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: whitesmoke;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: #000000;
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: $primary-dark;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+  background: $primary-dark;
+  border-radius: 10px;
 }
