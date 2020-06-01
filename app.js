@@ -55,9 +55,11 @@ app.use('/admin/members', adminMembers);
 ****************************** */
 const messageController = require('./routes/api/messageController');
 const memberController = require('./routes/api/memberController');
+const teamController = require('./routes/api/teamController');
 
 app.use('/api/message', messageController);
 app.use('/api/member', memberController);
+app.use('/api/team', teamController);
 
 /* ****************************
          Error Handling
