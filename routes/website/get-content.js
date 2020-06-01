@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const shuffleArray = require('../../my_modules/shuffle-array');
-const knex = require('../../knex');
+const knex = require('../../knex-export');
 
 /* English content */
 router.get('/', (req, res) => {

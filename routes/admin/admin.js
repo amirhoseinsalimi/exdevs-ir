@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const knex = require('../../knex');
+const knex = require('../../knex-export');
 
 /* GET admin page. */
 router.get('/', (req, res) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../../knex');
+const knex = require('../../knex-export');
 
 const upload = require('../../my_modules/uploader');
 

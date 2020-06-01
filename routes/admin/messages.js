@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../../knex');
+const knex = require('../../knex-export');
 
 router.get('/', (req, res) => {
   if (req.signedCookies.superuser === 'yes,heis') {
