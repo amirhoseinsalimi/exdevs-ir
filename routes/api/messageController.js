@@ -47,11 +47,12 @@ router.post('/', (req, res) => {
       res.status(200);
       res.redirect('/');
     })
-    .catch((err) => {
-      throw Error(err);
-    });
+    .catch((err) => (
+      res.status(500).json(err)
+    ));
 });
 
+/* Mark A Specific Message As Read */
 router.put('/:id', (req, res) => {
   const { id: messageId } = req.params;
 
@@ -69,11 +70,12 @@ router.put('/:id', (req, res) => {
     .then(() => (
       res.status(204).end()
     ))
-    .catch(() => (
-      res.status(500).render('500')
+    .catch((err) => (
+      res.status(500).json(err)
     ));
 });
 
+/* Delete A Specific Message By Its ID */
 router.delete('/:id', (req, res) => {
   const { id: messageId } = req.params;
 
@@ -89,8 +91,8 @@ router.delete('/:id', (req, res) => {
     .then(() => (
       res.status(204).end()
     ))
-    .catch(() => (
-      res.status(500).render('500')
+    .catch((err) => (
+      res.status(500).json(err)
     ));
 });
 

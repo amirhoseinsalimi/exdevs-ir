@@ -74,8 +74,6 @@ router.put('/', upload.single('photo'), (req, res) => {
 
   photo = req.file.path;
 
-  console.log(memberId);
-
   knex('members')
     .where('id', memberId)
     .update({
