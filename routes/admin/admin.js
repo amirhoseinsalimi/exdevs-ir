@@ -7,7 +7,7 @@ const knex = require('../../knex-export');
 /* GET admin page. */
 router.get('/', (req, res) => {
   if (req.signedCookies.superuser === 'yes,heis') {
-    res.redirect('admin/messages');
+    res.redirect('/admin/messages');
   } else {
     res.render('admin/login');
   }
@@ -36,13 +36,11 @@ router.post('/', (req, res, next) => {
             });
             res.redirect('/admin/messages');
           } else {
-            res.status(401);
-            res.redirect('/admin');
+            res.status(401).redirect('/admin');
           }
         });
       } else {
-        res.status(401);
-        res.redirect('/admin');
+        res.status(401).redirect('/admin');
       }
     })
     .catch(() => {
