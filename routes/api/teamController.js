@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
     ));
 });
 
-/* Add A Specific Team By Its ID */
+/* Add A Team */
 router.post('/', (req, res) => {
   knex('teams')
     .insert(req.body)
