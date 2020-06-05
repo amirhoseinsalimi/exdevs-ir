@@ -1,20 +1,113 @@
-/* eslint-disable func-names */
+/* eslint-disable func-names, prefer-arrow-callback */
+
+const getAllMessages = async () => {
+  try {
+    const fetchResult = await fetch('/api/message', {
+      method: 'get',
+    });
+
+    const response = await fetchResult;
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getAMessageById = async (id) => {
+  try {
+    const fetchResult = await fetch(`/api/message/${id}`, {
+      method: 'get',
+    });
+
+    const response = await fetchResult;
+    return await response.json();
+  } catch (err) {
+    throw Error(err);
+  }
+};
+
+const markMessageAsRead = async (id) => {
+  try {
+    await fetch(`/api/message/${id}`, {
+      method: 'put',
+    });
+
+    // const response = await fetchResult;
+    // return await response.json();
+  } catch (err) {
+    throw Error(err);
+  }
+};
 
 $(() => {
+  const $tBodyMessageTable = $('.messages-table tbody');
+
+  $tBodyMessageTable.on('click', 'tr', function () {
+    const messageId = $(this).data('id');
+
+    getAMessageById(messageId)
+      .then((messageArray) => {
+        const {
+          id,
+          name,
+          message,
+          email,
+          created_at: date,
+          is_read: isRead,
+        } = messageArray[0];
+        // console.log(message);
+        $('#message-sender-name').text(name);
+        $('#message-sender-email').text(email);
+        $('#message-text').text(message);
+        $('#message-date').text(date);
+
+        $('#messageDetailsModal').modal('toggle');
+
+        markMessageAsRead(messageId)
+          .then(() => {
+            $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
+          });
+      });
+  });
+
+  getAllMessages()
+    .then((messages) => {
+      messages.forEach(({
+        id,
+        name,
+        message,
+        email,
+        created_at: date,
+        is_read: isRead,
+      }) => {
+        $tBodyMessageTable.append(`
+        <tr data-id="${id}">
+          <th scope="row">
+            <img
+              class="read-indicator"
+              src="${isRead ? '/icons/circle.svg' : '/icons/circle-fill.svg'}"
+              alt="${isRead ? 'Message is read' : 'New message'}" />
+          </th>
+            <td>${name}</td>
+            <td class="message">${message}</td>
+            <td>${email}</td>
+            <td>${date}</td>
+          </tr>
+        `);
+      });
+    });
+
   let currentMessage = {};
 
   $('li.message-item')
     .on('click', function () {
       const message = JSON.parse($(this)
-        .attr('data-message'));
+        .data('message'));
 
       $.ajax({
-        url: '/mark-message/',
+        url: `/api/message/${message.id}`,
         method: 'put',
         dataType: 'json',
-        data: {
-          messageId: message.id,
-        },
         timeout: 6000,
         beforeSend: () => {
           $('.loader')
@@ -43,9 +136,8 @@ $(() => {
           205: () => {
           },
         },
-        error: () => {
-          window.location.href = '/server-error';
-          console.log('500');
+        error: (err) => {
+          console.log(err);
         },
       });
 

@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
       .select('*')
       .from('messages')
       .then(messages => {
-        console.log(Array.isArray(messages));
         res.status(200).render('admin/messages', { messages });
 
         // res.json(result);

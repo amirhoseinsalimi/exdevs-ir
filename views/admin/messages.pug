@@ -6,44 +6,37 @@ head
 body
   include ../_admin_partials/navbar
 
-  .overlay
-  .container-fluid.px-0
-    .drawer.position-fixed(data-open='false')
-      ul.messages-list.list-unstyled.m-0
-        each message in messages
-          li.message-item.d-flex.flex-row.flex-wrap.px-3.py-2.position-relative(id=message.id data-message=message)
-            span.read-status-indicator
-              if !message.is_read
-                span
-            .d-inline-flex.flex-column.mr-3.w-75
-              span.sender-name.text-ellipsis= message.name
-              span.sender-email.text-ellipsis.text-secondary.small= message.email
-              span.position-absolute(style='top: 8px; right: 6px;')
-                span.date.text-ellipsis.fs-10.text-secondary= message.created_at
+  #messageDetailsModal.modal.fade(data-keyboard='true', tabindex='-1', role='dialog', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#message-sender-name
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          .clearfix.mb-3
+            span.badge.badge-dark#message-sender-email.float-right
+            span.badge.badge-warning#message-date.float-left
+          p#message-text
+        .modal-footer
+          button.btn.btn-secondary.mr-auto(type='button', data-dismiss='modal') Close
+          button.btn.btn-danger(type='button') Delete
+          button.btn.btn-info(type='button') Reply
 
-    .row.no-gutters
-      .col-12.loader.d-none
-        .spinner-border.text-primary(role='status')
-          span.sr-only Loading...
 
-      .col-12.px-2.px-md-5.main
-        .message-section
-          .message-bubble.d-none.flex-column.w-100.p-4
-            .clearfix
-              span.name.font-weight-bold.float-left
-              span.date.fs-12.text-light.float-right
-            span.email.fs-14.mb-3.text-light
-            p.message-text d
-
-    nav.button-share-container.d-none
-      a.buttons(role='reply' tooltip='Send a reply')
-        i.material-icons reply
-      a.buttons(role='delete' tooltip='Delete message')
-        i.material-icons delete
-      a.buttons(href='#' onclick='return false;')
-        span.buttons
-          span.rotate
-
+  .container
+    .row
+      .col-12.table-container.table-responsive
+        table.table.table-striped.messages-table
+          thead
+            tr
+              th(scope='col') New
+              th(scope='col') Name
+              th(scope='col') Message
+              th(scope='col') Email
+              th(scope='col') Date
+          tbody
 
   script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI', crossorigin='anonymous')
   script(src="/js/admin-messages.js")
