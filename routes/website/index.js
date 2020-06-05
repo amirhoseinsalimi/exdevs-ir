@@ -13,8 +13,7 @@ router.get('/', (req, res) => {
         member.photo = member.photo.replace(/uploads/g, '');
       });
 
-      res.status(200);
-      res.render('website/index', { members: shuffleArray(members) });
+      res.status(200).render('website/index', { members: shuffleArray(members) });
     })
     .catch((err) => {
       throw Error(err);
