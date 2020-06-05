@@ -3,6 +3,43 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../../knex-export');
 
+/* Get All Messages */
+router.get('/', (req, res) => {
+  knex
+    .select('*')
+    .from('messages')
+    .then((messages) => {
+      res.status(200).json(messages);
+    })
+    .catch((err) => (
+      res.status(500).json(err)
+    ));
+});
+
+/* Get A Specific Message By Its ID */
+router.get('/:id', (req, res) => {
+  const { id: messageId } = req.params;
+
+  if (!Number(messageId)) {
+    return res.status(400).json({
+      message: 'Invalid parameter',
+    });
+  }
+
+  knex('messages')
+    .where({
+      id: messageId,
+    })
+    .select('*')
+    .then((message) => {
+      res.status(200).json(message);
+    })
+    .catch((err) => (
+      res.status(500).json(err)
+    ));
+});
+
+/* Add A Message */
 router.post('/', (req, res) => {
   knex('messages')
     .insert(req.body)
