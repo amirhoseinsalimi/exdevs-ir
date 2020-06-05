@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id: teamId } = req.params;
 
-  if (!Number(teamId)) {
+  if (!/^\d+$/.test(teamId)) {
     return res.status(400).json({
       message: 'Invalid parameter',
     });
@@ -79,7 +79,7 @@ router.put('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id: teamId } = req.params;
 
-  if (!Number(teamId)) {
+  if (!/^\d+$/.test(teamId)) {
     return res.status(400).json({
       message: 'Invalid parameter',
     });

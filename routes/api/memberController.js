@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id: memberId } = req.params;
 
-  if (!Number(memberId)) {
+  if (!/^\d+$/.test(memberId)) {
     return res.status(400).json({
       message: 'Invalid parameter',
     });
@@ -101,7 +101,7 @@ router.put('/', upload.single('photo'), (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id: memberId } = req.params;
 
-  if (!Number(memberId)) {
+  if (!/^\d+$/.test(memberId)) {
     return res.status(400).json({
       message: 'Invalid parameter',
     });
