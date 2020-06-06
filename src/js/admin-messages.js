@@ -13,7 +13,7 @@ const getAllMessages = async () => {
   }
 };
 
-const getAMessageById = async (id) => {
+const getMessageById = async (id) => {
   try {
     const fetchResult = await fetch(`/api/message/${id}`, {
       method: 'get',
@@ -31,9 +31,20 @@ const markMessageAsRead = async (id) => {
     await fetch(`/api/message/${id}`, {
       method: 'put',
     });
+  } catch (err) {
+    throw Error(err);
+  }
+};
 
-    // const response = await fetchResult;
-    // return await response.json();
+const deleteMessageById = async (id) => {
+  if (!id) {
+    return;
+  }
+
+  try {
+    await fetch(`/api/message/${id}`, {
+      method: 'delete',
+    });
   } catch (err) {
     throw Error(err);
   }
@@ -41,11 +52,26 @@ const markMessageAsRead = async (id) => {
 
 $(() => {
   const $tBodyMessageTable = $('.messages-table tbody');
+  const $btnDeleteMessage = $('.btn-delete-message');
+  const $btnReplyMessage = $('.btn-reply-message');
+  let currentMessageId = 0;
+  let currentMessageEmail = '';
+
+  $btnDeleteMessage.on('click', function () {
+    deleteMessageById(currentMessageId)
+      .then(() => {
+        window.location.reload();
+      });
+  });
+
+  $btnReplyMessage.on('click', function () {
+    window.location.href = `mailto:${currentMessageEmail}`;
+  });
 
   $tBodyMessageTable.on('click', 'tr', function () {
     const messageId = $(this).data('id');
 
-    getAMessageById(messageId)
+    getMessageById(messageId)
       .then((messageArray) => {
         const {
           id,
@@ -53,9 +79,11 @@ $(() => {
           message,
           email,
           created_at: date,
-          is_read: isRead,
         } = messageArray[0];
-        // console.log(message);
+
+        currentMessageId = id;
+        currentMessageEmail = email;
+
         $('#message-sender-name').text(name);
         $('#message-sender-email').text(email);
         $('#message-text').text(message);
