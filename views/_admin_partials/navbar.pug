@@ -1,5 +1,13 @@
-nav.navbar.navbar-expand-lg.navbar-dark.fixed-top.p-0
-  a.navbar-brand.drawer-toggler.p-2.px-3.m-0
-    span.position-relative
-      img(src='/icons/three-dots-vertical.svg' alt='Menu' width="20" height="20" title="Menu" class='position-relative'
-        style='bottom: 6px;')
+nav.navbar.fixed-top.px-0
+  ul.navbar-nav
+    li.nav-item.dropdown
+      a#navbarDropdown.pb-0.pl-3.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        span.position-relative
+          img(src='/icons/three-dots-vertical.svg' alt='Menu' width="20" height="20" title="Menu" class='position-relative'
+            style='bottom: 6px;')
+      .dropdown-menu(aria-labelledby='navbarDropdown')
+        a.dropdown-item(href='/admin/messages/') Messages
+        .dropdown-divider
+        a.dropdown-item(href='/admin/members/') Members
+        .dropdown-divider
+        a.dropdown-item(href='/admin/teams/') Teams
