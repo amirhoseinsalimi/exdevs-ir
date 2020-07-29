@@ -1,0 +1,69 @@
+doctype html
+head
+  include ../_admin_partials/head
+
+  link(rel="stylesheet", href="/css/admin.min.css")
+body
+  include ../_admin_partials/navbar
+
+  #memberModal.modal.fade(data-keyboard='true', tabindex='-1', role='dialog', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          form(action='/api/member', method='post' enctype="multipart/form-data")
+            .container-fluid
+              .row
+                .col-12.col-md-6
+                  .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='name', aria-describedby='name' name='full_name')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='role') Role
+                    input#role.form-control(type='name', aria-describedby='role' name='role')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='email') Email
+                    input#email.form-control(type='email', aria-describedby='email' name='email')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='telegram') Telegram
+                    input#telegram.form-control(type='name', aria-describedby='telegram' name='telegram')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='twitter') Twitter
+                    input#twitter.form-control(type='name', aria-describedby='twitter' name='twitter')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='github') Github
+                    input#github.form-control(type='name', aria-describedby='github' name='github')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='linkedin') LinkedIn
+                    input#linkedin.form-control(type='name', aria-describedby='linkedin' name='linkedin')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='photo') Photo
+                    input#photo.form-control(type='file', aria-describedby='photo' name='photo')
+                .col-12
+                  .form-group
+                    label(for='description') Description
+                    textarea#description.form-control(aria-describedby='description' name='description')
+
+
+            .modal-footer
+              button.btn.btn-secondary.mr-auto(type='button', data-dismiss='modal') Close
+              button.btn.btn-danger.btn-delete-member.btn-update(type='button') Delete
+              button.btn.btn-info.btn-update-member.btn-update(type='button') Update
+              button.btn.btn-success.btn-add-member.btn-add(type='submit') Add Member
+
+  .container.pb-4
+    .row.members-container
+      .col-12.col-md-6.col-lg-3.add-new-member.d-flex.align-items-center.justify-content-center
+
+  include ../_admin_partials/scripts
+  script(src="/js/admin-members.js")

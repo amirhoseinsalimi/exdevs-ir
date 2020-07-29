@@ -54,3 +54,28 @@ body {
     white-space: nowrap;
   }
 }
+
+
+/****************************
+*          Table            *
+****************************/
+.add-new-member {
+  border: 3px dashed #999;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+    border: 3px dashed #666;
+  }
+
+  &::before {
+    content: '+';
+    color: #999;
+    font-size: 30px;
+  }
+
+  &:hover::before {
+    color: #666;
+  }
+}

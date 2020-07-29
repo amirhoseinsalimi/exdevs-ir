@@ -49,7 +49,7 @@ router.post('/', upload.single('photo'), (req, res) => {
   knex('members')
     .insert(requestData)
     .then(() => {
-      res.end('Ok');
+      res.status(200).redirect('/admin/members');
     })
     .catch((err) => {
       throw Error(err);
