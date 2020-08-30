@@ -5,7 +5,7 @@ const knex = require('../../knex-export');
 
 const upload = require('../../my_modules/uploader');
 
-/* Get All Teams */
+/* Get All Members */
 router.get('/', (req, res) => {
   knex
     .select('*')
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     ));
 });
 
-/* Get A Specific Team By Its ID */
+/* Get A Specific Member By Its ID */
 router.get('/:id', (req, res) => {
   const { id: memberId } = req.params;
 
@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
     ));
 });
 
-/* Add A Specific Team By Its ID */
+/* Add A Member */
 router.post('/', upload.single('photo'), (req, res) => {
   const requestData = req.body;
   requestData.photo = req.file.path;
@@ -56,7 +56,7 @@ router.post('/', upload.single('photo'), (req, res) => {
     });
 });
 
-/* Update A Specific Team By Its ID */
+/* Update A Specific Member By Its ID */
 router.put('/', upload.single('photo'), (req, res) => {
   let { photo } = req.body;
 
@@ -95,7 +95,7 @@ router.put('/', upload.single('photo'), (req, res) => {
     ));
 });
 
-/* Delete A Specific Team By Its ID */
+/* Delete A Specific Member By Its ID */
 router.delete('/:id', (req, res) => {
   const { id: memberId } = req.params;
 
