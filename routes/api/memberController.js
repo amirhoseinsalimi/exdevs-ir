@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     .select('*')
     .from('members')
     .then((members) => {
-      res.status(200).json(members);
+      res.status(200).json([...members].reverse());
     })
     .catch((err) => (
       res.status(500).json(err)
