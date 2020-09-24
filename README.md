@@ -2,6 +2,9 @@
 
 Exceptional Developers' portfolio website. https://expteam.ir
 
+---
+This is the first version of the website, a facelift version is available now at https://expteam.ir, will be open sourced soon :D.
+
 ### Requirements to run this website
 1. Node.js and npm
 2. MariaDB or MySQL 
@@ -33,4 +36,3 @@ a. For development purpose: `npm run serve` with a nice hot reload, thanks to [B
 b. To ship as a product: `npm start`!\
 c. See `package.json` for other possible commands
  ---
-If you want to report a bug or willing a new feature feel free to open a issue. PRs are welcome as well!
