@@ -72,6 +72,9 @@ $(() => {
   let currentMemberId = 0;
 
   $addNewMember.on('click', function () {
+    $('.modal label[for=photo]').addClass('visible').removeClass('invisible');
+    $('.modal #photo').addClass('visible').removeClass('invisible');
+
     $('#name').val('');
     $('#email').val('');
     $('#description').val('');
@@ -114,12 +117,14 @@ $(() => {
         $('.modal-footer .btn-update').removeClass('invisible').addClass('visible');
         $('.modal-footer .btn-add').removeClass('visible').addClass('invisible');
 
+        $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
+        $('.modal #photo').removeClass('visible').addClass('invisible');
+
         const {
           id,
           full_name: name,
           role,
           description,
-          photo,
           telegram,
           email,
           twitter,
@@ -139,11 +144,6 @@ $(() => {
         $('#linkedin').val(linkedin);
 
         $('#memberModal').modal('toggle');
-
-        // updateMemberById(messageId)
-        //   .then(() => {
-        //     $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
-        //   });
       });
   });
 

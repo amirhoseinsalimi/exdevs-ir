@@ -73,8 +73,6 @@ router.put('/:id', (req, res) => {
     github,
   } = req.body;
 
-  photo = req.file.path;
-
   knex('members')
     .where('id', memberId)
     .update({
@@ -82,7 +80,6 @@ router.put('/:id', (req, res) => {
       role,
       description,
       telegram,
-      photo,
       email,
       twitter,
       linkedin,
