@@ -57,11 +57,12 @@ router.post('/', upload.single('photo'), (req, res) => {
 });
 
 /* Update A Specific Member By Its ID */
-router.put('/', upload.single('photo'), (req, res) => {
-  let { photo } = req.body;
-
+router.put('/:id', (req, res) => {
   const {
     id: memberId,
+  } = req.params;
+
+  const {
     full_name,
     role,
     description,
