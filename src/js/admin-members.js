@@ -168,7 +168,7 @@ $(() => {
 
         $membersContainer.prepend(`
         <div class="col-12 col-md-6 col-lg-3 mb-2">
-          <div class="card mb-2 d-inline-block h-100" data-id="${id}">
+          <div class="card mb-2 d-inline-block h-100" style="width: 100%;" data-id="${id}">
             <img src="${photo}" class="card-img-top" alt="${full_name}'s photo">
             <div class="card-body">
               <h5 class="card-title">${full_name}</h5>
