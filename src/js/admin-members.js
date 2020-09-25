@@ -26,27 +26,23 @@ const getMemberById = async (id) => {
   }
 };
 
-// const addNewMember = async (newMemberData) => {
-//   try {
-//     const fetchResult = await fetch('/api/member/', {
-//       method: 'post',
-//       body: {
-//
-//       },
-//     });
-//   } catch (err) {
-//
-//   }
-// };
-
-const updateMemberById = async (id) => {
-  try {
-    await fetch(`/api/member/${id}`, {
-      method: 'put',
-    });
-  } catch (err) {
-    throw Error(err);
-  }
+const updateMemberById = async (id, member) => {
+  $.ajax({
+    method: 'PUT',
+    url: `/api/member/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(member),
+    async success() {
+      $('#memberModal').modal('toggle');
+      window.location.reload();
+    },
+    complete() {
+      $('.modal label[for=photo]').addClass('visible').removeClass('invisible');
+      $('.modal #photo').addClass('visible').removeClass('invisible');
+    },
+  });
 };
 
 const deleteMemberById = async (id) => {
@@ -96,6 +92,19 @@ $(() => {
 
   $form.on('submit', () => {
     console.log('Added');
+  });
+
+  $btnUpdateMember.on('click', async () => {
+    await updateMemberById(currentMemberId, {
+      full_name: $('#name').val(),
+      email: $('#email').val(),
+      description: $('#description').val(),
+      telegram: $('#telegram').val(),
+      github: $('#github').val(),
+      role: $('#role').val(),
+      twitter: $('#twitter').val(),
+      linkedin: $('#linkedin').val(),
+    });
   });
 
   $membersContainer.on('click', '.btn-delete-member', function () {
@@ -152,17 +161,10 @@ $(() => {
       members.forEach(({
         id,
         full_name,
-        role,
         description,
         photo,
-        telegram,
-        email,
-        twitter,
-        linkedin,
-        github,
       }) => {
         photo = photo.replace(/uploads/g, '');
-        console.log(photo);
 
         $membersContainer.prepend(`
         <div class="col-12 col-md-6 col-lg-3 mb-2">
