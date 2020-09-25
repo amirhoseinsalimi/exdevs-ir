@@ -172,7 +172,7 @@ $(() => {
             <img src="${photo}" class="card-img-top" alt="${full_name}'s photo">
             <div class="card-body">
               <h5 class="card-title">${full_name}</h5>
-              <p class="card-text">${description}</p>
+              <p class="card-text" style="word-break: break-word">${description}</p>
             </div>
             <div class="card-footer d-flex justify-content-center">
               <div class="btn-group btn-group-sm mx-auto" role="group" aria-label="Team member">
