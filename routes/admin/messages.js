@@ -4,7 +4,7 @@ const router = express.Router();
 const knex = require('../../knex-export');
 
 router.get('/', (req, res) => {
-  if (req.signedCookies.superuser === 'yes,heis') {
+  if (req.session.username) {
     knex
       .select('*')
       .from('messages')
@@ -17,8 +17,7 @@ router.get('/', (req, res) => {
         throw Error(err);
       });
   } else {
-    res.status(401)
-      .redirect('/admin');
+    res.status(401).redirect('/admin');
   }
 });
 

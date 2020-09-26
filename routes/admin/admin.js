@@ -6,7 +6,7 @@ const knex = require('../../knex-export');
 
 /* GET admin page. */
 router.get('/', (req, res) => {
-  if (req.signedCookies.superuser === 'yes,heis') {
+  if (req.session.username) {
     res.redirect('/admin/messages');
   } else {
     res.render('admin/login');
@@ -26,14 +26,8 @@ router.post('/', (req, res, next) => {
       if (admins.length !== 0) {
         bcrypt.compare(password, admins[0].password).then(matched => {
           if (matched) {
-            const date = new Date(Date.now() + 86400 * 1000).toUTCString();
+            req.session.username = username;
 
-            res.cookie('superuser', 'yes,heis', {
-              expires: date * 7 * 86400,
-              path: '/',
-              signed: true,
-              secure: true,
-            });
             res.redirect('/admin/messages');
           } else {
             res.status(401).redirect('/admin');
@@ -44,8 +38,7 @@ router.post('/', (req, res, next) => {
       }
     })
     .catch(() => {
-      res.status(500);
-      next();
+      res.status(500).render('500');
     });
 });
 

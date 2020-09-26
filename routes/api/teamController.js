@@ -41,59 +41,71 @@ router.get('/:id', (req, res) => {
 
 /* Add A Team */
 router.post('/', (req, res) => {
-  knex('teams')
-    .insert(req.body)
-    .then(() => (
-      res.status(201).json('Created')
-    ))
-    .catch((err) => (
-      res.status(500).json(err)
-    ));
+  if (req.session.username) {
+    knex('teams')
+      .insert(req.body)
+      .then(() => (
+        res.status(201).json('Created')
+      ))
+      .catch(() => (
+        res.status(500).render('500')
+      ));
+  } else {
+    res.status(401).redirect('/admin');
+  }
 });
 
 /* Update A Specific Team By Its ID */
 router.put('/', (req, res) => {
-  const {
-    id: teamId,
-    name,
-    description,
-    color,
-  } = req.body;
-
-  knex('teams')
-    .where('id', teamId)
-    .update({
+  if (req.session.username) {
+    const {
+      id: teamId,
       name,
       description,
       color,
-    })
-    .then(() => (
-      res.status(204).json('Updated')
-    ))
-    .catch((err) => (
-      res.status(500).json(err)
-    ));
+    } = req.body;
+
+    knex('teams')
+      .where('id', teamId)
+      .update({
+        name,
+        description,
+        color,
+      })
+      .then(() => (
+        res.status(204).json('Updated')
+      ))
+      .catch(() => (
+        res.status(500).render('500')
+      ));
+  } else {
+    res.status(401).redirect('/admin');
+  }
 });
 
 /* Delete A Specific Team By Its ID */
 router.delete('/:id', (req, res) => {
-  const { id: teamId } = req.params;
+  if (req.session.username) {
+    const { id: teamId } = req.params;
 
-  if (!/^\d+$/.test(teamId)) {
-    return res.status(400).json({
-      message: 'Invalid parameter',
-    });
+    if (!/^\d+$/.test(teamId)) {
+      return res.status(400).json({
+        message: 'Invalid parameter',
+      });
+    }
+
+    knex('teams')
+      .where('id', teamId)
+      .del()
+      .then(() => (
+        res.status(204).json('Deleted')
+      ))
+      .catch(() => (
+        res.status(500).render('500')
+      ));
+  } else {
+    res.status(401).redirect('/admin');
   }
-
-  knex('teams')
-    .where('id', teamId)
-    .del()
-    .then(() => (
-      res.status(204).json('Deleted')
-    ))
-    .catch((err) => (
-      res.status(500).json(err)
-    ));
 });
 
 module.exports = router;
