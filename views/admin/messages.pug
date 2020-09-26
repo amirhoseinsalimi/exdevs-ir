@@ -1,0 +1,41 @@
+doctype html
+head
+  include ../_admin_partials/head
+
+  link(rel="stylesheet", href="/css/admin.min.css")
+body
+  include ../_admin_partials/navbar
+
+  #messageDetailsModal.modal.fade(data-keyboard='true', tabindex='-1', role='dialog', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#message-sender-name
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          .clearfix.mb-3
+            span.badge.badge-dark#message-sender-email.float-right
+            span.badge.badge-warning#message-date.float-left
+          p#message-text
+        .modal-footer
+          button.btn.btn-secondary.mr-auto(type='button', data-dismiss='modal') Close
+          button.btn.btn-danger.btn-delete-message(type='button') Delete
+          button.btn.btn-info.btn-reply-message(type='button') Reply
+
+
+  .container
+    .row
+      .col-12.table-container.table-responsive
+        table.table.table-striped.messages-table
+          thead
+            tr
+              th(scope='col') New
+              th(scope='col') Name
+              th(scope='col') Message
+              th(scope='col') Email
+              th(scope='col') Date
+          tbody
+
+  include ../_admin_partials/scripts
+  script(src="/js/admin-messages.js")

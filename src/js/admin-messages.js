@@ -1,101 +1,127 @@
-$(() => {
-  let currentMessage = {};
+/* eslint-disable func-names, prefer-arrow-callback */
 
-  $('li.message-item')
-    // eslint-disable-next-line
-    .on('click', function() {
-
-      const message = JSON.parse($(this)
-        .attr('data-message'));
-
-      $.ajax({
-        url: '/mark-message/',
-        method: 'put',
-        dataType: 'json',
-        data: {
-          messageId: message.id,
-        },
-        timeout: 6000,
-        beforeSend: () => {
-        },
-        statusCode: {
-          204: () => {
-            $(this)
-              .find('span.read-status-indicator')
-              .addClass('d-hidden');
-            $('.message-bubble')
-              .removeClass('d-none')
-              .addClass('d-flex');
-          },
-          202: () => {
-          },
-          205: () => {
-          },
-        },
-        error: () => {
-          window.location.href = '/server-error';
-          console.log('500');
-        },
-      });
-
-      currentMessage = message;
-
-      $('span.name')
-        .text(message.sender_name);
-      $('span.email')
-        .text(message.sender_email);
-      $('span.date')
-        .text(message.date);
-      $('p.message-text')
-        .text(message.message_text);
+const getAllMessages = async () => {
+  try {
+    const fetchResult = await fetch('/api/message', {
+      method: 'get',
     });
 
-  $('a.buttons')
-    .on('click', () => {
-      const role = $(this)
-        .attr('role');
+    const response = await fetchResult;
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-      // eslint-disable-next-line
-      if (role === 'delete' && confirm('Are you sure about this ?')) {
-        $.ajax({
-          url: `/delete-message/${currentMessage.id}`,
-          method: 'delete',
-          dataType: 'json',
-          timeout: 6000,
-          beforeSend: () => {
-            $('.overlay')
-              .css({
-                visibility: 'visible',
-              });
-          },
-          statusCode: {
-            204: () => {
-              $('ul')
-                .find(`[id='${currentMessage.id}']`)
-                .hide('slow', () => {
-                  $(this)
-                    .remove();
-                  $('.message-bubble')
-                    .removeClass('d-flex')
-                    .addClass('d-none');
-                });
-              $('.overlay')
-                .css({
-                  visibility: 'hidden',
-                });
-            },
-            202: () => {
-            },
-            205: () => {
-            },
-          },
-          error: () => {
-            window.location.href = '/server-error';
-            console.log('500');
-          },
-        });
-      } else if (role === 'reply') {
-        window.location.href = `mailto: ${currentMessage.sender_email}?subject=Exceptional Developers`;
-      }
+const getMessageById = async (id) => {
+  try {
+    const fetchResult = await fetch(`/api/message/${id}`, {
+      method: 'get',
+    });
+
+    const response = await fetchResult;
+    return await response.json();
+  } catch (err) {
+    throw Error(err);
+  }
+};
+
+const markMessageAsRead = async (id) => {
+  try {
+    await fetch(`/api/message/${id}`, {
+      method: 'put',
+    });
+  } catch (err) {
+    throw Error(err);
+  }
+};
+
+const deleteMessageById = async (id) => {
+  if (!id) {
+    return;
+  }
+
+  try {
+    await fetch(`/api/message/${id}`, {
+      method: 'delete',
+    });
+  } catch (err) {
+    throw Error(err);
+  }
+};
+
+$(() => {
+  const $tBodyMessageTable = $('.messages-table tbody');
+  const $btnDeleteMessage = $('.btn-delete-message');
+  const $btnReplyMessage = $('.btn-reply-message');
+  let currentMessageId = 0;
+  let currentMessageEmail = '';
+
+  $btnDeleteMessage.on('click', function () {
+    deleteMessageById(currentMessageId)
+      .then(() => {
+        window.location.reload();
+      });
+  });
+
+  $btnReplyMessage.on('click', function () {
+    window.location.href = `mailto:${currentMessageEmail}`;
+  });
+
+  $tBodyMessageTable.on('click', 'tr', function () {
+    const messageId = $(this).data('id');
+
+    getMessageById(messageId)
+      .then((messageArray) => {
+        const {
+          id,
+          name,
+          message,
+          email,
+          created_at: date,
+        } = messageArray[0];
+
+        currentMessageId = id;
+        currentMessageEmail = email;
+
+        $('#message-sender-name').text(name);
+        $('#message-sender-email').text(email);
+        $('#message-text').text(message);
+        $('#message-date').text(date);
+
+        $('#messageDetailsModal').modal('toggle');
+
+        markMessageAsRead(messageId)
+          .then(() => {
+            $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
+          });
+      });
+  });
+
+  getAllMessages()
+    .then((messages) => {
+      messages.forEach(({
+        id,
+        name,
+        message,
+        email,
+        created_at: date,
+        is_read: isRead,
+      }) => {
+        $tBodyMessageTable.append(`
+        <tr data-id="${id}">
+          <th scope="row">
+            <img
+              class="read-indicator"
+              src="${isRead ? '/icons/circle.svg' : '/icons/circle-fill.svg'}"
+              alt="${isRead ? 'Message is read' : 'New message'}" />
+          </th>
+            <td>${name}</td>
+            <td class="message">${message}</td>
+            <td>${email}</td>
+            <td>${date}</td>
+          </tr>
+        `);
+      });
     });
 });

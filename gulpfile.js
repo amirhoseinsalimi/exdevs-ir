@@ -56,8 +56,8 @@ gulp.task('style', () => gulp.src(styleSrc)
 /* JS task */
 gulp.task('script', () => gulp.src(scriptSrc)
   .pipe(deporder())
-  .pipe(stripDebug ? stripDebug() : noop())
-  .pipe(terser())
+  // .pipe(stripDebug ? stripDebug() : noop())
+  // .pipe(terser())
   .pipe(gulp.dest(scriptDest)));
 
 

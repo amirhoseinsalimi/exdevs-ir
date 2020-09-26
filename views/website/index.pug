@@ -1,0 +1,97 @@
+doctype html
+html(lang='en-US')
+  head
+    include ../_partials/metas-and-styles
+
+  body.scrollbar
+    include ../_partials/header
+
+    #particlesJS
+    .container-fluid.loader-container
+      .container
+        .row.no-gutters.align-items-center(style="height: 400px;")
+          .col-12.d-flex.justify-content-center
+            .a(style='--n: 5;')
+              .dot(style='--i: 0;').mx-2
+              .dot(style='--i: 1;').mx-2
+              .dot(style='--i: 2;').mx-2
+              .dot(style='--i: 3;').mx-2
+              .dot(style='--i: 4;').mx-2
+
+
+    .container-fluid.main-container.d-none.pb-5
+      .container.home-container.position-relative
+        .body.d-flex.flex-wrap.flex-column.justify-content-md-between.align-items-center.mt-3.mt-md-5.overflow-auto.justify-content-around
+          .row.no-gutters
+            .col-12.d-flex.justify-content-center.flex-wrap.headline
+              h2.text-capitalize.text-center.headline__header.w-100.font-serif.text--primary-dark.shining Exceptional Developers
+              div.d-block.w-100.text-center
+                span.px-5.headline__tagline.d-inline-block.text-center.font-serif.text--primary-dark Catch the Exception
+
+          .row.no-gutters.main-content
+            .col-12.text-justify.text--primary-dark.team-description.font-size--11
+
+        .actions.position-fixed.clearfix
+          .progress.m-0
+            .progress-bar#dynamic(role='progressbar', aria-valuemin='0', aria-valuemax='100')
+          a.actions_button.no-text-decoration.text-center.bg--accent.float-left.font-size--15.contact-link Contact us
+          a.actions_button.no-text-decoration.text-center.bg--white.float-right.font-size--15 Our Apps (Coming Soon)
+
+        span.position-absolute.d-none.d-md-inline-block.switch-team-arrow.next.p-4
+          img(src='icons/right.svg' alt='Display next team')
+        span.position-absolute.d-none.d-md-inline-block.switch-team-arrow.prev.p-4
+          img(src='icons/left.svg' alt='Display next team')
+
+      .container.contact-container.d-none
+        h1.weight-400.text--primary-dark Contact
+        .row
+          .col-12.col-lg-6
+            form.contact-form#contact-form(autocomplete="off" method="POST" action="/api/message")
+              .form-group.col-12.col-lg-6
+                label.text-white(for='name')
+                input#name.form-control(type='text', placeholder='Name' required="required" name='name')
+              .form-group.col-12.col-lg-8
+                label.text-white(for='email')
+                input#email.form-control(type='email', placeholder='Email' required="required" name="email")
+              .form-group.col-12.col-lg-12.mb-3
+                label(for='message')
+                textarea#message.form-control(rows='5' placeholder="Message" required="required" name="message")
+              .d-flex.justify-content-start.flex-row-reverse
+                button.btn.btn-secondary.text--primary(type='submit') Send
+                a.mr-4#discardForm Discard
+
+
+      .container.meet-team-container.d-none
+        h1.mb-5.weight-400.text--primary-dark Meet the Team!
+        .row.no-gutters.justify-content-center
+          .col-12.col-sm-12.d-flex.row.wrap.justify-content-sm-center.members
+            each member in members
+              .col-12.col-md-4.py-4.col-lg-3.my-2.mx-1.member-card.position-relative
+                img.d-block.mx-auto.mb-3.profile-image(src=`${member.photo}`, alt='Exception member')
+                .text.text-center
+                  span.d-block.text-center.text--primary-dark.shining.mb-1= member.full_name
+                  span.d-block.small.text-muted.mb-2= member.role
+                  p.text-left.mb-5.text--primary-dark(style='font-size: 13px')= member.description
+                  .d-flex.justify-content-center.position-absolute.mx-auto(style='width: 144px; bottom: 16px; left: 0; right: 0;')
+                    if member.twitter !== ''
+                      a.member-link.twitter(href=`https://twitter.com/${member.twitter}`, target='_blank')
+                        img(src='icons/twitter.svg', alt=`${member.name}-twitter`)
+                    if member.linkedin !== ''
+                      a.member-link.linkedIn(href=`https://www.linkedin.com/in/${member.linkedIn}`, target='_blank')
+                        img(src='icons/linkedin.svg', alt=`${member.name}-linkedin`)
+                    if member.telegram !== ''
+                      a.member-link.telegram(href=`https://t.me/${member.telegram}`, target='_blank')
+                        img(src='icons/telegram.svg', alt=`${member.name}-telegram`)
+                    if member.email !== ''
+                      a.member-link.email(href=`mailto:${member.email}`)
+                        img(src='icons/email.svg', alt=`${member.name}-email`)
+
+
+
+    .container.justify-content-center.align-content-center.mobile-menu
+      ul.list-unstyled.d-flex.flex-column.align-content-center.justify-content-center
+        li.text-center.home-link.active(style="font-size: 35px"): a.no-text-decoration Home
+        li.text-center.meet-team-link(style="font-size: 35px"): a.no-text-decoration
+          | Meet the Team!
+
+    include ../_partials/scripts

@@ -22,6 +22,9 @@
     "prefer-destructuring": "off",
     "no-param-reassign": "off",
     "consistent-return": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "implicit-arrow-linebreak": "off",
+    "arrow-parens": "off",
+    "camelcase": "off"
   }
 }

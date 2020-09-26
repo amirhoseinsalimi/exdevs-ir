@@ -14,7 +14,6 @@ body {
   color: $white;
   max-width: 100vw;
   min-height: 100vh;
-  background: rgba(0, 0, 0, 1);
 }
 
 #particlesJS {
@@ -22,14 +21,26 @@ body {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 100vh
+  height: 100vh;
+  background-color: #e4e4e4;
+}
+
+.container-fluid.main-container {
+  z-index: 1;
+  transition: opacity 400ms;
+  opacity: 1;
+
+  &.overlayed {
+    z-index: -1;
+    opacity: 0;
+  }
 }
 
 /*****************************
 *           Navbar           *
 *****************************/
 .navbar {
-  background-color: $transparent !important;
+  background-color: transparent !important;
   height: 80px;
   z-index: 1001;
 
@@ -43,17 +54,15 @@ body {
     transition: color 0.2s;
 
     &:hover {
-      color: $light-gray !important;
+      color: $primary-dark !important;
     }
 
   }
 
   .nav-item.active {
-
     a {
-      color: $light-gray !important;
+      color: $primary-dark !important;
     }
-
   }
 
   .mobile-menu-indicator {
@@ -66,58 +75,155 @@ body {
     cursor: pointer;
     z-index: 1001;
 
-    hr {
-      border: 1px solid $light-gray;
-      border-radius: 14px;
-      width: 80%;
-      float: left;
-      background-color: $light-gray;
-      height: 1px;
-      margin: 0;
+    .ham {
+      transform: scale(1.2);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 400ms;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
-    hr:nth-child(1),
-    hr:nth-child(3) {
-      position: absolute;
-      -webkit-transition: transform 0.5s, width 0.5s, position 0.5s;
-      -moz-transition: transform 0.5s, width 0.5s, position 0.5s;
-      -o-transition: transform 0.5s, width 0.5s, position 0.5s;
-      transition: transform 0.5s, width 0.5s, position 0.5s;
+    .hamRotate.active {
+      transform: scale(1.2) rotate(45deg);
     }
 
-    hr:nth-child(2) {
-      position: absolute;
-      -webkit-transition: right 0.5s;
-      -moz-transition: right 0.5s;
-      -o-transition: right 0.5s;
-      transition: right 0.5s;
+    .hamRotate180.active {
+      transform: scale(1.2) rotate(45deg);
     }
 
-    hr:nth-child(1) {
-      top: 15px;
-      right: 0;
+    .line {
+      fill: none;
+      transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+      stroke: #000;
+      stroke-width: 5.5;
+      stroke-linecap: round;
     }
 
-    hr:nth-child(2) {
-      top: 25px;
-      right: 10%;
-      width: 60%;
+    .ham8 .top {
+      stroke-dasharray: 40 160;
     }
 
-    hr:nth-child(3) {
-      top: 35px;
-      right: 0;
+    .ham8 .middle {
+      stroke-dasharray: 40 142;
+      transform-origin: 50%;
+      transition: transform 400ms;
+    }
+
+    .ham8 .bottom {
+      stroke-dasharray: 40 85;
+      transform-origin: 50%;
+      transition: transform 400ms, stroke-dashoffset 400ms;
+    }
+
+    .ham8.active .top {
+      stroke-dashoffset: -64px;
+    }
+
+    .ham8.active .middle {
+      //stroke-dashoffset: -20px;
+      transform: rotate(90deg);
+    }
+
+    .ham8.active .bottom {
+      stroke-dashoffset: -64px;
     }
   }
-
 }
 
 /***************************
 *           Main           *
 ***************************/
+@keyframes shining {
+  0% {
+    background-position: -2000%;
+  }
+  100% {
+    background-position: 2000%;
+  }
+}
+
+.shining {
+  position: relative;
+  background: linear-gradient(90deg, #fff, #000, #fff);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shining 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(30, 30, 30, 0.7);
+}
+
+.body {
+  min-height: calc(100vh - 93px - 80px);
+
+  .headline {
+    .headline__tagline {
+      min-width: 200px;
+    }
+
+    @media screen and (max-width: 768px) {
+      & > .headline__header {
+        font-size: $font-size--11;
+      }
+
+      .headline__tagline {
+        font-size: $font-size--07;
+      }
+    }
+  }
+}
+
+.actions {
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+
+  a.actions_button {
+    padding: 30px;
+    color: black;
+    width: 50%;
+
+    &:hover {
+      color: $primary-dark;
+    }
+
+    &.bg--accent:hover {
+      background-color: $primary-lighter;
+    }
+
+    &.bg--white:hover {
+      background-color: $primary-lighter;
+    }
+  }
+
+  .progress {
+    height: 5px;
+    border-radius: 0 !important;
+    background-color: transparent;
+
+    .progress-bar {
+      transition: all 0.3s !important;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    bottom: -96px;
+
+    a.actions_button {
+      width: 100%;
+    }
+  }
+}
+
 .main-content {
   @media screen and (max-width: 576px) {
-    margin-bottom: 50px;
+    margin-bottom: 0;
+
+    & > .team-description {
+      font-size: $font-size--09;
+    }
   }
 
   @media screen and (min-width: 577px) {
@@ -139,27 +245,39 @@ body {
   height: 30px;;
 }
 
-.progress {
-  margin: 10px;
-  height: 3px;
-
-  .progress-bar {
-    transition: all 0.1s !important;
-  }
-}
-
 .left-arrow,
 .right-arrow {
   cursor: pointer;
+}
+
+span.switch-team-arrow {
+  top: 20%;
+  transition: box-shadow 0.5s, background-color 1000ms;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &.next {
+    right: -30px;
+  }
+
+  &.prev {
+    left: -30px;
+  }
+
+  img {
+    width: 30px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 40px -10px rgba(179, 179, 179, 1);
+  }
 }
 
 /*****************************
 *       Contact form         *
 *****************************/
 .contact-form {
-
   .form-group {
-
     &.col-12 {
       padding: 0;
       margin-bottom: -15px;
@@ -167,7 +285,7 @@ body {
 
     .form-control {
       background: $transparent-gary;
-      color: $white;
+      color: $primary-dark;
       border: 0;
     }
 
@@ -180,21 +298,27 @@ body {
     textarea {
       resize: none;
     }
-
   }
 
   .btn.btn-secondary {
     border-radius: 20px;
     padding: 5px 20px;
-    background: $transparent;
-    border: 2px solid $white;
-    transition: color 0.3s, background-color 0.3s;
+    background: transparent;
+    border: 2px solid $primary;
+    transition: color 0.3s, border-color 0.3s;
 
     &:active {
-      color: #000;
-      background-color: $white;
-      outline: none;
-      border: 2px solid $white;
+      background-color: transparent;
+      color: $primary-dark;
+    }
+
+    &:active:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: $primary-dark;
+      border-color: $primary-dark;
     }
 
     &:focus {
@@ -206,23 +330,22 @@ body {
     text-decoration: none;
     position: relative;
     top: 5px;
-    color: $light-gray !important;
+    color: $primary !important;
   }
-
 }
 
 /*****************************
 *       Meet The Team        *
 *****************************/
 .member-card {
-  border: 1px solid rgba(190, 190, 190, 0.1);
-  border-radius: 10px;
-  box-shadow: 0 3px 35px -19px rgba(179, 179, 179, 0.3);
-  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, background-color 1000ms;
   cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
 
   &:hover {
-    box-shadow: 0 3px 35px -15px rgba(179, 179, 179, 0.5);
+    box-shadow: 0 3px 40px -10px rgba(179, 179, 179, 1);
+    background-color: $primary-lighter;
   }
 
   .profile-image {
@@ -237,7 +360,6 @@ body {
   }
 
   .member-link {
-
     img {
       width: 20px;
       height: 20px;
@@ -245,65 +367,52 @@ body {
       border-radius: 50%;
       cursor: pointer;
     }
-
   }
 }
 
 /*****************************
 *        Mobile menu         *
 *****************************/
+
 .mobile-menu {
   position: fixed;
   top: 70px;
-  height: calc(100vh);
-  z-index: 1000;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
   background: transparent;
+  transform: scale(0.8);
+  transition: all 400ms;
+
+  &.open {
+    transform: scale(1);
+    z-index: 1000;
+    opacity: 1;
+  }
 
   @media screen and (min-width: 576px) {
     display: none !important;
   }
 
   ul {
-    margin-top: 40%;
+    margin-top: 50%;
 
     li {
+      margin-bottom: 30px;
+
       &.active {
         a {
-          color: $light-gray !important;
+          color: $primary-dark !important;
         }
       }
 
       a {
-        color: #707070 !important;
+        color: $primary !important;
         transition: color 0.2s;
-        font-size: 25px;
+        font-size: 2rem;
 
         &:hover {
-          color: $light-gray;
-        }
-      }
-
-      .btn-download {
-        border-radius: 25px;
-        position: relative;
-        font-size: 18px;
-        top: 5px;
-        background: transparent;
-        color: $white !important;
-        border: 2px solid $white;
-        outline: 0;
-        padding: 5px 20px;
-        margin-top: 17px;
-
-        &:hover {
-          box-shadow: 0 1px 10px 5px #222;
-        }
-
-        &.btn.btn-primary:focus,
-        &.btn.btn-primary:active,
-        &.btn.btn-primary:hover {
-          background: transparent;
-          outline: none;
+          color: $primary-dark;
         }
       }
     }
@@ -314,14 +423,23 @@ body {
 /**************************
 *        Scrollbar        *
 **************************/
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+::-webkit-scrollbar {
+  height: 2px;
+  width: 3px;
+  border: 1px solid #d5d5d5;
 }
 
-body::-webkit-scrollbar {
-  width: 0;
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: whitesmoke;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: #000000;
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: $primary-dark;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+  background: $primary-dark;
+  border-radius: 10px;
 }

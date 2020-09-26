@@ -1,51 +1,11 @@
 @import 'variables';
 
-.text-light-gray {
-  color: $light-gray;
+* {
+  font-family: 'Baloo 2', cursive;
 }
 
-.text-dark-gray {
-  color: $dark-gray;
-}
-
-.text-white {
-  color: $white;
-}
-
-.text-web, .team-1 {
-  color: $web-team-color;
-}
-
-.bg-web {
-  background-color: $web-team-color;
-}
-
-.text-app, .team-2 {
-  color: $app-team-color;
-}
-
-.bg-app {
-  background-color: $app-team-color;
-}
-
-.text-game, .team-3 {
-  color: $game-team-color;
-}
-
-.bg-game {
-  background-color: $game-team-color;
-}
-
-.text-server, .team-4 {
-  color: $server-team-color;
-}
-
-.bg-server {
-  background-color: $server-team-color;
-}
-
-.text-light-gray {
-  color: $white;
+.font-serif {
+  font-family: 'IM Fell Double Pica SC', serif !important;
 }
 
 a.no-text-decoration {
@@ -53,30 +13,137 @@ a.no-text-decoration {
 
   &:hover {
     text-decoration: none;
-}
+  }
 }
 
 a {
   cursor: pointer;
 }
 
+
+/* Colors */
+.text--primary {
+  color: $primary;
+}
+
+.bg--primary {
+  background-color: $primary;
+}
+
+.text--primary-dark {
+  color: $primary-dark;
+}
+
+.bg--primary-dark {
+  background-color: $primary-dark;
+}
+
+.text--primary-light {
+  color: $primary-light;
+}
+
+.bg--primary-light {
+  background-color: $primary-light;
+}
+
+.text--primary-lighter {
+  color: $primary-lighter;
+}
+
+.bg--primary-lighter {
+  background-color: $primary-lighter;
+}
+
+.text--accent {
+  color: $accent;
+}
+
+.bg--accent {
+  background-color: $accent;
+}
+
+.text--web {
+  color: $web-team-color;
+}
+
+.bg--web {
+  background-color: $web-team-color;
+}
+
+.text--app {
+  color: $app-team-color;
+}
+
+.bg--app {
+  background-color: $app-team-color;
+}
+
+.text--game {
+  color: $game-team-color;
+}
+
+.text--server {
+  color: $server-team-color;
+}
+
+.bg--server {
+  background-color: $server-team-color;
+}
+
+.text--white {
+  color: #fff;
+}
+
+.bg--white {
+  background-color: #fff;
+}
+
+
+/* Font weights */
 .weight-400 {
   font-weight: 400;
 }
 
-.fs-10 {
-  font-size: 10px !important;
+.weight-400i {
+  font-weight: 400;
+  font-style: italic;
 }
 
-.fs-12 {
-  font-size: 12px !important;
+.weight-600 {
+  font-weight: 400;
 }
 
-.fs-14 {
-  font-size: 14px !important;
+.weight-600i {
+  font-weight: 400;
+  font-style: italic;
 }
 
 
-.fs-18 {
-  font-size: 18px !important;
+/* Font sizes */
+$font-sizes: (
+        '07': 0.76rem,
+        '08': 0.84rem,
+        '09': 0.92rem,
+        '10': 1.00rem,
+        '11': 1.08rem,
+        '12': 1.16rem,
+        '13': 1.24rem,
+        '14': 1.32rem,
+        '15': 1.40rem
+);
+
+$font-size--07: map-get($font-sizes, '07');
+$font-size--08: map-get($font-sizes, '08');
+$font-size--09: map-get($font-sizes, '09');
+$font-size--10: map-get($font-sizes, '10');
+$font-size--11: map-get($font-sizes, '11');
+$font-size--12: map-get($font-sizes, '12');
+$font-size--13: map-get($font-sizes, '13');
+$font-size--14: map-get($font-sizes, '14');
+$font-size--15: map-get($font-sizes, '15');
+
+@each $font-size, $rem in $font-sizes {
+  .font-size--#{$font-size} {
+    font-size: $rem;
+  }
 }

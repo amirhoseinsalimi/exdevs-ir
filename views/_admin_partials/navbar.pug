@@ -1,8 +1,9 @@
-nav.navbar.navbar-expand-lg.navbar-dark.fixed-top.p-0
-  a.navbar-brand.drawer-toggler.p-2.px-3.m-0(href='#')
-    span.position-relative
-      i.material-icons.drawer-btn menu
-
-  a.navbar-brand.p-2.px-3.m-0.ml-auto(href='#')
-    span.position-relative
-      i.material-icons apps
+nav.navbar.navbar-light
+  a.navbar-brand#navbarDropdownMenuLink.nav-link(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+    img(src='/icons/three-dots-vertical.svg' alt='Menu' width="20" height="20" title="Menu")
+    .dropdown-menu(aria-labelledby='navbarDropdown')
+      a.dropdown-item(href='/admin/messages/') Messages
+      .dropdown-divider
+      a.dropdown-item(href='/admin/members/') Members
+      .dropdown-divider
+      a.dropdown-item(href='/admin/teams/') Teams

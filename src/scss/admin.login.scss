@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+@import 'variables';
+@import 'helpers';
+@import 'typography';
+
+body {
+  font: {
+    family: 'Roboto', sans-serif;
+  };
+
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+}
+
+#particlesJS {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh
+}
+
+.container-fluid {
+  height: 100vh;
+
+  .form-container {
+    background-color: $white;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.md2-input {
+  width: 300px;
+
+  span {
+    top: 11px;
+    left: 44px;
+    z-index: 2;
+    background-color: $white;
+    transition: top 0.2s, font-size 0.2s, color 0.2s;
+  }
+
+  label {
+
+    input {
+      background-color: transparent;
+      color: #000;
+      border: 2px solid black;
+      border-radius: 30px;
+      height: 46px;
+      z-index: 1;
+
+      &:focus {
+        border-color: dodgerblue;
+
+        & + span {
+          color: dodgerblue;
+        }
+      }
+
+      &:valid,
+      &:focus {
+        outline: none;
+
+        & + span {
+          top: -7px;
+          font-size: 11px;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+.btn.btn-submit {
+  border-radius: 20px;
+  padding: 5px 20px;
+  background: #000;
+  border: 2px solid #fff;
+  transition: color 0.3s, background-color 0.3s;
+  color: #fff;
+
+  &:active {
+    color: #000 !important;
+    background-color: transparent !important;
+    outline: none;
+    border: 2px solid #000 !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.copyright-logo {
+  bottom: 0;
+  height: 30px;
+  text-align: center;
+}

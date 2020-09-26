@@ -7,7 +7,7 @@ $(() => {
    */
   const config = {
     transitionTime: 700,
-    progressBarCompletionTime: '10s', // seconds
+    progressBarCompletionTime: '15s', // seconds
   };
 
 
@@ -20,7 +20,7 @@ $(() => {
   let mobileMenuStatus = false;
   let currentPage = 'Home';
   const fragId = window.location.hash.substr(1);
-
+  const D = document;
 
   $.ajax({
     url: '/get-content',
@@ -32,14 +32,18 @@ $(() => {
     },
     statusCode: {
       200: (data) => {
-        teamsInfo = data.mainContent;
+        teamsInfo = data.teams;
         changeTeam(0);
 
-        $('.loader-container').fadeOut(config.transitionTime, () => {
-          $('.main-container').fadeIn(config.transitionTime, () => {
-            // Nothing to do
-          }).removeClass('d-none');
-        }).addClass('d-none');
+        $('.loader-container')
+          .fadeOut(config.transitionTime, () => {
+            $('.main-container')
+              .fadeIn(config.transitionTime, () => {
+                // Nothing to do
+              })
+              .removeClass('d-none');
+          })
+          .addClass('d-none');
 
         if (fragId === 'home') {
           navigateToHome();
@@ -74,9 +78,6 @@ $(() => {
   const $exceptionHeader = $('.exception-header');
 
   const $mobileMenuIndicator = $('.mobile-menu-indicator');
-  const $hr1 = $('hr:nth-child(1)');
-  const $hr2 = $('hr:nth-child(2)');
-  const $hr3 = $('hr:nth-child(3)');
 
   const $allInfo = $('.team-name, .team-motto, .team-description, .team-icon');
 
@@ -109,61 +110,160 @@ $(() => {
       $teamMotto.html(`<p>${team.motto}</p>`);
       $teamDescription.html(`<p>${team.description}</p>`);
 
-      $('.motto-box .header img').attr('src', team.icon);
-      $('#dynamic').css('width', `${0}%`);
+      $('.motto-box .header img')
+        .attr('src', team.icon);
+      $('#dynamic')
+        .css('width', `${0}%`);
 
-      $(this).fadeIn(config.transitionTime);
+      $(this)
+        .fadeIn(config.transitionTime);
 
       if (team.name === 'Web development') {
-        $exceptionHeader.removeClass('text-app').removeClass('text-server').addClass('text-web');
-        $teamName.html(team.name).removeClass('text-app').removeClass('text-server').addClass('text-web');
-        $teamMotto.html(team.motto).removeClass('text-app').removeClass('text-server').addClass('text-web');
-        $progressBar.removeClass('bg-app').removeClass('bg-server').addClass('bg-web');
+        $exceptionHeader.removeClass('text--app')
+          .removeClass('text--server')
+          .addClass('text--web');
+        $teamName.html(team.name)
+          .removeClass('text--app')
+          .removeClass('text--server')
+          .addClass('text--web');
+        $teamMotto.html(team.motto)
+          .removeClass('text--app')
+          .removeClass('text--server')
+          .addClass('text--web');
+        $progressBar.removeClass('bg--app')
+          .removeClass('bg--server')
+          .addClass('bg--web');
       } else if (team.name === 'Application development') {
-        $exceptionHeader.removeClass('text-server').removeClass('text-web').addClass('text-app');
-        $teamName.html(team.name).removeClass('text-server').removeClass('text-web').addClass('text-app');
-        $teamMotto.html(team.motto).removeClass('text-server').removeClass('text-web').addClass('text-app');
-        $progressBar.removeClass('bg-server').removeClass('bg-web').addClass('bg-app');
+        $exceptionHeader.removeClass('text--server')
+          .removeClass('text--web')
+          .addClass('text-app');
+        $teamName.html(team.name)
+          .removeClass('text--server')
+          .removeClass('text--web')
+          .addClass('text--app');
+        $teamMotto.html(team.motto)
+          .removeClass('text--server')
+          .removeClass('text--web')
+          .addClass('text--app');
+        $progressBar.removeClass('bg--server')
+          .removeClass('bg--web')
+          .addClass('bg--app');
       } else if (team.name === 'Server development') {
-        $exceptionHeader.removeClass('text-web').removeClass('text-app').addClass('text-server');
-        $teamName.html(team.name).removeClass('text-web').removeClass('text-app').addClass('text-server');
-        $teamMotto.html(team.motto).removeClass('text-web').removeClass('text-app').addClass('text-server');
-        $progressBar.removeClass('bg-web').removeClass('bg-app').addClass('bg-server');
+        $exceptionHeader.removeClass('text--web')
+          .removeClass('text--app')
+          .addClass('text--server');
+        $teamName.html(team.name)
+          .removeClass('text--web')
+          .removeClass('text--app')
+          .addClass('text--server');
+        $teamMotto.html(team.motto)
+          .removeClass('text--web')
+          .removeClass('text--app')
+          .addClass('text--server');
+        $progressBar.removeClass('bg--web')
+          .removeClass('bg--app')
+          .addClass('bg--server');
       }
     });
   };
 
 
   /**
+   * JavaScript event handlers
+   */
+  const main = document.getElementsByClassName('home-container')[0];
+  // For touch-capable mobile devices
+  main.addEventListener('touchstart', handleXTouchStart, false);
+  main.addEventListener('touchmove', handleXTouchMove, false);
+
+  let xDown = null;
+  let yDown = null;
+
+  function getTouches(evt) {
+    return evt.touches || evt.originalEvent.touches;
+  }
+
+  function handleXTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleXTouchMove(evt) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        currentProgress = 0;
+        changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
+      } else {
+        currentProgress = 0;
+        changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
+      }
+    } else if (yDiff > 0) {
+      /* up swipe */
+    } else {
+      /* down swipe */
+    }
+
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  }
+
+  D.getElementById('contact-form').addEventListener('submit', () => {
+    const inputs = D.getElementsByClassName('form-control');
+
+    Array.prototype.forEach.call(inputs, (input) => {
+      console.log(input.value.replace(/(<([^>]+)>)/ig, ''));
+    });
+  });
+
+
+  /**
    * jQuery event handlers
    */
-  $('span .left-arrow').on('click', () => {
-    currentProgress = 0;
-    changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
-  });
+  $('.switch-team-arrow.prev')
+    .on('click', () => {
+      currentProgress = 0;
+      changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
+    });
 
-  $('span .right-arrow').on('click', () => {
-    currentProgress = 0;
-    changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
-  });
+  $('.switch-team-arrow.next')
+    .on('click', () => {
+      currentProgress = 0;
+      changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
+    });
 
-  $('#discardForm, .home-link').on('click', () => {
-    navigateToHome();
-  });
+  $('#discardForm, .home-link')
+    .on('click', () => {
+      navigateToHome();
+    });
 
-  $('.meet-team-link').on('click', () => {
-    navigateToMeetTheTeam();
-  });
+  $('.meet-team-link')
+    .on('click', () => {
+      navigateToMeetTheTeam();
+    });
 
-  $('.contact-link').on('click', () => {
-    navigateToContact();
-  });
+  $('.contact-link')
+    .on('click', () => {
+      navigateToContact();
+    });
 
-  $('form a').on('click', () => {
-    setTimeout(() => {
-      discardForm();
-    }, config.transitionTime);
-  });
+  $('form a')
+    .on('click', () => {
+      setTimeout(() => {
+        discardForm();
+      }, config.transitionTime);
+    });
 
   const toggleMobileMenu = function () {
     mobileMenuStatus = !mobileMenuStatus;
@@ -171,60 +271,44 @@ $(() => {
   };
 
   const openMobileMenu = () => {
-    $hr1.css({
-      transform: 'rotate(45deg)',
-      top: '25px',
-    });
-
-    $hr3.css({
-      transform: 'rotate(-45deg)',
-      top: '25px',
-    });
-
-    $('.mobile-menu').removeClass('d-none').addClass('d-block');
-    $('body').css('overflow-y', 'hidden');
-
-    $hr2.fadeOut(200);
+    $('.mobile-menu')
+      .addClass('open');
+    $('.container-fluid.main-container')
+      .addClass('overlayed');
+    $('body')
+      .css('overflow-y', 'hidden');
   };
 
   const closeMobileMenu = () => {
-    $hr2.fadeIn();
+    $('.ham.hamRotate.ham8')
+      .removeClass('active');
 
-    $hr1.css({
-      transform: 'rotate(0deg)',
-      width: '80%',
-      top: '15px',
-    });
-
-    $hr3.css({
-      transform: 'rotate(0deg)',
-      width: '80%',
-      top: '35px',
-    });
-
-    $hr2.css({
-      top: '25px',
-      right: '10%',
-    });
-
-    $('.mobile-menu').removeClass('d-block').addClass('d-none');
-    $('body').css('overflow-y', 'auto');
+    $('.mobile-menu')
+      .removeClass('open');
+    $('.container-fluid.main-container')
+      .removeClass('overlayed');
+    $('body')
+      .css('overflow-y', 'auto');
   };
 
   $mobileMenuIndicator.on('click', () => {
     if (!mobileMenuStatus) {
       openMobileMenu();
 
-      $('.home-container, .meet-team-container, .contact-container').fadeOut(0);
+      $('.home-container, .meet-team-container, .contact-container')
+        .fadeOut(0);
     } else {
       closeMobileMenu();
 
       if (currentPage === 'Home') {
-        $('.home-container').fadeIn(0);
+        $('.home-container')
+          .fadeIn(0);
       } else if (currentPage === 'Meet the Team') {
-        $('.meet-team-container').fadeIn(0);
+        $('.meet-team-container')
+          .fadeIn(0);
       } else if (currentPage === 'Contact') {
-        $('.contact-container').fadeIn(0);
+        $('.contact-container')
+          .fadeIn(0);
       }
     }
 
@@ -237,21 +321,31 @@ $(() => {
    */
   const navigateToHome = () => {
     if (currentPage === 'Meet the Team') {
-      $('.contact-container').hide();
-      $('.meet-team-container').fadeOut(config.transitionTime, () => {
-        $('.home-container').fadeIn(config.transitionTime);
-        $('.meet-team').hide();
-      });
+      $('.contact-container')
+        .hide();
+      $('.meet-team-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.home-container')
+            .fadeIn(config.transitionTime);
+          $('.meet-team')
+            .hide();
+        });
     } else {
-      $('.meet-team-container').hide();
-      $('.contact-container').fadeOut(config.transitionTime, () => {
-        $('.home-container').fadeIn(config.transitionTime);
-        $('.contact-team').hide();
-      });
+      $('.meet-team-container')
+        .hide();
+      $('.contact-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.home-container')
+            .fadeIn(config.transitionTime);
+          $('.contact-team')
+            .hide();
+        });
     }
 
-    $('.contact-link, .meet-team-link').removeClass('active');
-    $('.home-link').addClass('active');
+    $('.contact-link, .meet-team-link')
+      .removeClass('active');
+    $('.home-link')
+      .addClass('active');
 
     window.location.hash = '';
     currentPage = 'Home';
@@ -265,23 +359,35 @@ $(() => {
    */
   const navigateToMeetTheTeam = () => {
     if (currentPage === 'Contact') {
-      $('.home-container').hide();
-      $('.contact-container').fadeOut(config.transitionTime, () => {
-        $('.meet-team-container').removeClass('d-none').fadeIn(config.transitionTime, () => {
-          $('.contact-container').hide();
+      $('.home-container')
+        .hide();
+      $('.contact-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.meet-team-container')
+            .removeClass('d-none')
+            .fadeIn(config.transitionTime, () => {
+              $('.contact-container')
+                .hide();
+            });
         });
-      });
     } else {
-      $('.contact-container').hide();
-      $('.home-container').fadeOut(config.transitionTime, () => {
-        $('.meet-team-container').removeClass('d-none').fadeIn(config.transitionTime, () => {
-          $('.home-container').hide();
+      $('.contact-container')
+        .hide();
+      $('.home-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.meet-team-container')
+            .removeClass('d-none')
+            .fadeIn(config.transitionTime, () => {
+              $('.home-container')
+                .hide();
+            });
         });
-      });
     }
 
-    $('.contact-link, .home-link').removeClass('active');
-    $('.meet-team-link').addClass('active');
+    $('.contact-link, .home-link')
+      .removeClass('active');
+    $('.meet-team-link')
+      .addClass('active');
 
     window.location.hash = 'team';
     currentPage = 'Meet the Team';
@@ -295,21 +401,33 @@ $(() => {
    */
   const navigateToContact = () => {
     if (currentPage === 'Home') {
-      $('.meet-team-container').hide();
-      $('.home-container').fadeOut(config.transitionTime, () => {
-        $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
-        $('.home-container').hide();
-      });
+      $('.meet-team-container')
+        .hide();
+      $('.home-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.contact-container')
+            .removeClass('d-none')
+            .fadeIn(config.transitionTime);
+          $('.home-container')
+            .hide();
+        });
     } else {
-      $('.home-container').hide();
-      $('.meet-team-container').fadeOut(config.transitionTime, () => {
-        $('.contact-container').removeClass('d-none').fadeIn(config.transitionTime);
-        $('.meet-team-container').hide();
-      });
+      $('.home-container')
+        .hide();
+      $('.meet-team-container')
+        .fadeOut(config.transitionTime, () => {
+          $('.contact-container')
+            .removeClass('d-none')
+            .fadeIn(config.transitionTime);
+          $('.meet-team-container')
+            .hide();
+        });
     }
 
-    $('.home-link, .meet-team-link').removeClass('active');
-    $('.contact-link').addClass('active');
+    $('.home-link, .meet-team-link')
+      .removeClass('active');
+    $('.contact-link')
+      .addClass('active');
 
     window.location.hash = 'contact';
     currentPage = 'Contact';
@@ -322,6 +440,7 @@ $(() => {
    * Discard the form - Used when user clicks on the "Discard" button
    */
   const discardForm = () => {
-    $('.contact-form').trigger('reset');
+    $('.contact-form')
+      .trigger('reset');
   };
 });
