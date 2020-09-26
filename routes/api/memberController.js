@@ -115,9 +115,9 @@ router.delete('/:id', (req, res) => {
     knex('members')
       .where('id', memberId)
       .del()
-      .then(() => (
-        res.status(204).end()
-      ))
+      .then(() => {
+        res.status(204).end();
+      })
       .catch(() => (
         res.status(500).render('500')
       ));

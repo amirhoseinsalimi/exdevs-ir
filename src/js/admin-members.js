@@ -112,7 +112,9 @@ $(() => {
       return;
     }
 
-    deleteMemberById(currentMemberId)
+    const memberId = $(this).closest('.card').data('id');
+
+    deleteMemberById(memberId)
       .then(() => {
         window.location.reload();
       });
