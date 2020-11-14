@@ -3,9 +3,9 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && pm2 start ./bin/www --name ex-website",
-    "restart": "gulp build && pm2 restart ex-website",
-    "stop": "pm2 stop ex-website",
+    "start": "gulp build && pm2 start ./bin/www --name expteam-ir",
+    "restart": "gulp build && pm2 restart expteam-ir",
+    "stop": "pm2 stop expteam-ir",
     "monit": "pm2 monit",
     "test": "DEBUG=express* node ./bin/www",
     "serve": "gulp",
@@ -34,12 +34,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.13",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-concat": "^2.6.1",
@@ -52,7 +52,7 @@
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-debug": "^3.0.0",
-    "gulp-terser": "^1.4.0",
+    "gulp-terser": "^1.4.1",
     "node-sass": "^4.14.1",
     "prettier": "2.0.2",
     "readable-stream": "^3.6.0"
@@ -61,15 +61,17 @@
   "main": "./bin/www",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website.git"
+    "url": "https://github.com/amirhoseinsalimi/expteam-ir.git"
   },
   "keywords": [
-    "website"
+    "website",
+    "nodejs",
+    "expressjs"
   ],
   "author": "Amir Hosein Salimi",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website/issues"
+    "url": "https://github.com/amirhoseinsalimi/expteam-ir/issues"
   },
-  "homepage": "https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website#readme"
+  "homepage": "https://github.com/amirhoseinsalimi/expteam-ir#readme"
 }
