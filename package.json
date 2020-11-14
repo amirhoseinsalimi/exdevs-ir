@@ -3,9 +3,9 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && pm2 start ./bin/www --name ex-website",
-    "restart": "gulp build && pm2 restart ex-website",
-    "stop": "pm2 stop ex-website",
+    "start": "gulp build && pm2 start ./bin/www --name expteam-ir",
+    "restart": "gulp build && pm2 restart expteam-ir",
+    "stop": "pm2 stop expteam-ir",
     "monit": "pm2 monit",
     "test": "DEBUG=express* node ./bin/www",
     "serve": "gulp",
@@ -61,15 +61,17 @@
   "main": "./bin/www",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website.git"
+    "url": "https://github.com/amirhoseinsalimi/expteam-ir.git"
   },
   "keywords": [
-    "website"
+    "website",
+    "nodejs",
+    "expressjs"
   ],
   "author": "Amir Hosein Salimi",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website/issues"
+    "url": "https://github.com/amirhoseinsalimi/expteam-ir/issues"
   },
-  "homepage": "https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website#readme"
+  "homepage": "https://github.com/amirhoseinsalimi/expteam-ir#readme"
 }

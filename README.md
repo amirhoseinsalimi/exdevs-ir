@@ -3,36 +3,34 @@
 Exceptional Developers' portfolio website. https://expteam.ir
 
 ---
-This is the first version of the website, a facelift version is available now at https://expteam.ir, will be open sourced soon :D.
+
+Simply clone and run this website for your personal use :D
 
 ### Requirements to run this website
 1. Node.js and npm
-2. MariaDB or MySQL 
-3. Globally installed `db-migrate` module (Simply run `npm i -g db-migrate`)
-4. Globally installed `gulp` (Run `npm i -g gulp`)
-5. Globally installed `pm2` (Run `npm i -g pm2`)
+2. MariaDB or MySQL Server (As the main database)
+3. Redis (For session management)
+
+**NOTE**: This project uses `bcrypt` so you should have an LTS version of Node.js.
 
 ### Project setup
 
 1. **Clone this repo:**\
-Run `git clone https://gitlab.com/Exceptional-Dev/IOException/WebException/ex-website.git ex-website && cd ex-website`
+Run `git clone https://github.com/amirhoseinsalimi/expteam-ir && cd expteam-ir`
 2. **Install dependencies:**
-Run `npm i -S`
-3. **Setup database:**\
-Create a database named `ex_website` (This website uses this database to store information. Should be automated but it's
- not!)
-Create a new file named `connection.js` at the root of the project. In `connection.js` create a *pool connection* as
- described on [npm](https://www.npmjs.com/package/mysql). Export the pool object and save the file.
-4. **Setup migrations:**\
-Configure the database interfaces for `db-migrate` under `./db/config`. To have the database tables up and running
- simply run the following:\
-`db-migrate up --migrations-dir ./db/migrations --config ./db/config/{dev|prod}.json`\
-This creates tables from the migration and seeds them too. To drop the tables run this command multiple times as
- long as all tables are dropped. This is because each time you run this command, one table is being removed recursively
- (More information on that should be found at the module's website):
-`db-migrate down --migrations-dir ./db/migrations --config ./db/config/{dev|prod}.json`
-5. **Run the website**\
-a. For development purpose: `npm run serve` with a nice hot reload, thanks to [Browser-Sync](https://www.npmjs.com/package/browser-sync)\
-b. To ship as a product: `npm start`!\
-c. See `package.json` for other possible commands
+Run `npm i`
+3. **Configure environment variables:**\
+Copy `.env.example` to `.env`, fill all required fields. For `SECRET` field, run `node gen-secret.js` and paste the output there. Don't forget to fill the fields for admin user. No worries! Your password will be stored hashed.
+4. **Run migrations:**\
+Run `knex migration:run`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
+5. **Run seeds:**\
+It's time to seed the database with some data.\
+`knex seed:run`
+This will also create the admin user for you. Later you can log in with your credentials from `/admin`.
+6. **Run the website:**\
+a. For development: `npm run serve` with a nice hot reload, thanks to [Browser-Sync](https://www.npmjs.com/package/browser-sync) \
+b. For production: `npm start`!\
+c. See `package.json` for other possible commands. \
+d. Don't forget to star this repo!
+
  ---
