@@ -30,7 +30,9 @@ app.set('view engine', 'pug');
 /* ******************************
            Middlewares
 ****************************** */
-app.use(helmet());
+app.use(helmet({
+  hidePoweredBy: false,
+}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
