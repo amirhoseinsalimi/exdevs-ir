@@ -22,7 +22,7 @@ Run `npm i`
 3. **Configure environment variables:**\
 Copy `.env.example` to `.env`, fill all required fields. For `SECRET` field, run `node gen-secret.js` and paste the output there. Don't forget to fill the fields for admin user. No worries! Your password will be stored hashed.
 4. **Run migrations:**\
-Run `knex migration:run`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
+Run `knex migrate:run`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
 5. **Run seeds:**\
 It's time to seed the database with some data.\
 `knex seed:run`
