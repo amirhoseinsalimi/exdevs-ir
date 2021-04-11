@@ -3,6 +3,6 @@
   "arrowParens": "avoid",
   "singleQuote": true,
   "tabs": 2,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "endOfLine": "lf"
 }
