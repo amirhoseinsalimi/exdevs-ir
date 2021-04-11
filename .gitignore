@@ -135,4 +135,5 @@ typings/
 # other #
 #########
 app.apk
-uploads/
+uploads/*
+!uploads/.gitkeep
