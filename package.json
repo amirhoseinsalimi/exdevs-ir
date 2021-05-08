@@ -77,7 +77,7 @@
     "express-boilerplate"
   ],
   "author": "Amir Hosein Salimi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/amirhoseinsalimi/expteam-ir/issues"
   },
