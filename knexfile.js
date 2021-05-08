@@ -28,21 +28,25 @@ module.exports = {
     },
   },
 
-  // staging: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // },
+  testing: {
+    client: 'mysql', // Your database driver
+    connection: {
+      database,
+      user,
+      password,
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: 'knex_migrations',
+      directory: `${__dirname}/database/migrations`,
+    },
+    seeds: {
+      directory: `${__dirname}/database/seeds`,
+    },
+  },
 
   production: {
     client: 'mysql',
