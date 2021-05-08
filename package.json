@@ -73,7 +73,8 @@
   "keywords": [
     "website",
     "nodejs",
-    "expressjs"
+    "expressjs",
+    "express-boilerplate"
   ],
   "author": "Amir Hosein Salimi",
   "license": "ISC",
