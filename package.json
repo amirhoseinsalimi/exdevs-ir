@@ -7,7 +7,7 @@
     "restart": "gulp build && pm2 restart expteam-ir",
     "stop": "pm2 stop expteam-ir",
     "monit": "pm2 monit",
-    "test": "DEBUG=express* node ./bin/www",
+    "test": "cross-env NODE_ENV=testing mocha --timeout 10000",
     "serve": "gulp",
     "lint": "eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
