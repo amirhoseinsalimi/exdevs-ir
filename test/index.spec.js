@@ -65,6 +65,21 @@ describe('Website', () => {
     expect(copyrightNotice).equals(`Copyright © ${new Date().getFullYear()}`);
   });
 
+  it('should login the admin with specified credentials and get a cookie', async () => {
+    const { headers } = await supertest(app)
+      .post('/admin')
+      .type('form')
+      .send({
+        user: adminUsername,
+        password: adminPassword,
+      })
+      .expect(302);
+
+    adminCookie = headers['set-cookie'].pop().split(';')[0];
+
+    expect(adminCookie.length).to.greaterThan(1);
+  });
+
   it('should store contact form messages', async () => {
     await supertest(app)
       .post('/api/message')
@@ -86,21 +101,6 @@ describe('Website', () => {
     expect(message).equals(testMessage);
   });
 
-  it('should login the admin with specified credentials and get a cookie', async () => {
-    const { headers } = await supertest(app)
-      .post('/admin')
-      .type('form')
-      .send({
-        user: adminUsername,
-        password: adminPassword,
-      })
-      .expect(302);
-
-    adminCookie = headers['set-cookie'].pop().split(';')[0];
-
-    expect(adminCookie.length).to.greaterThan(1);
-  });
-
   it('should mark message as read by its id', async () => {
     const requestWithCookie = supertest(app).put('/api/message/1');
 
@@ -111,6 +111,18 @@ describe('Website', () => {
     const { is_read: isRead } = await knex.select('*').from('messages').first();
 
     expect(isRead).equals(1);
+  });
+
+  it('should delete message by its id', async () => {
+    const requestWithCookie = supertest(app).delete('/api/message/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie.expect(204);
+
+    const { length } = await knex.select('*').from('messages');
+
+    expect(length).equals(0);
   });
 
   it('should create a member', async () => {
@@ -179,18 +191,6 @@ describe('Website', () => {
     expect(description).equals(description);
 
     expect(await existsAsync(photo)).equals(true);
-  });
-
-  it('should delete message by its id', async () => {
-    const requestWithCookie = supertest(app).delete('/api/message/1');
-
-    requestWithCookie.cookies = adminCookie;
-
-    await requestWithCookie.expect(204);
-
-    const { length } = await knex.select('*').from('messages');
-
-    expect(length).equals(0);
   });
 
   it('should delete member by its id', async () => {
