@@ -331,6 +331,31 @@ describe('Website', () => {
       .and.to.include.keys('name', 'description', 'color');
   });
 
+  it('should update team', async () => {
+    const requestWithCookie = supertest(app).put('/api/team/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie
+      .type('form')
+      .send({
+        name: `New_${testName}`,
+        description: `New_${testDescription}`,
+        color: `New_${testColor}`,
+      })
+      .expect(204);
+
+    const {
+      name: newName,
+      description: newDescription,
+      color: newColor,
+    } = await knex.select('*').from('teams').first();
+
+    expect(newName).equals(`New_${testName}`);
+    expect(newDescription).equals(`New_${testDescription}`);
+    expect(newColor).equals(`New_${testColor}`);
+  });
+
   it('should delete team by its id', async () => {
     const { length: oldL } = await knex.select('*').from('teams');
 
