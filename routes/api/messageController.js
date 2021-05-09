@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         res.status(200).json(messages);
       })
       .catch(() => (
-        res.status(500).render(500)
+        res.status(500).render('500')
       ));
   } else {
     res.redirect(401, '/admin');
