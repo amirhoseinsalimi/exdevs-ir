@@ -6,9 +6,9 @@
     "start": "gulp build && pm2 start ./bin/www --name expteam-ir",
     "restart": "gulp build && pm2 restart expteam-ir",
     "stop": "pm2 stop expteam-ir",
+    "dev": "gulp",
     "monit": "pm2 monit",
     "test": "cross-env NODE_ENV=testing mocha --timeout 10000",
-    "serve": "gulp",
     "lint": "eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
   "dependencies": {
