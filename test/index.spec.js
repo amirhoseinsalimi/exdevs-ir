@@ -369,4 +369,38 @@ describe('Website', () => {
 
     expect(newL).equals(oldL - 1);
   });
+
+  it('should reject restricted routes without admin cookie set', async () => {
+    let text;
+
+    ({ res: { text } } = await supertest(app).get('/api/message').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).get('/api/message/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).put('/api/message/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).delete('/api/message/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).post('/api/member').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).put('/api/member/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).delete('/api/member/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).post('/api/team').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).put('/api/team/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+
+    ({ res: { text } } = await supertest(app).delete('/api/team/1').expect(302));
+    expect(text).equals('Found. Redirecting to /admin');
+  });
 });
