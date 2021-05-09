@@ -8,6 +8,10 @@
     "stop": "pm2 stop expteam-ir",
     "dev": "gulp",
     "monit": "pm2 monit",
+    "db:migrate": "knex migrate:latest",
+    "db:seeds": "knex seed:run",
+    "db:seed": "npm run db:seeds",
+    "db:rollback": "knex migrate:rollback --all",
     "test": "cross-env NODE_ENV=testing mocha --timeout 10000",
     "lint": "eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
