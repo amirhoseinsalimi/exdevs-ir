@@ -106,9 +106,7 @@ describe('Website', () => {
 
     requestWithCookie.cookies = adminCookie;
 
-    const {
-      body: messages,
-    } = await requestWithCookie.expect(200);
+    const { body: messages } = await requestWithCookie.expect(200);
 
     expect(messages).to.be.an('array').and.to.have.lengthOf(1);
     expect(messages.pop())
@@ -121,9 +119,7 @@ describe('Website', () => {
 
     requestWithCookie.cookies = adminCookie;
 
-    const {
-      body: message,
-    } = await requestWithCookie.expect(200);
+    const { body: message } = await requestWithCookie.expect(200);
 
     expect(message.pop())
       .to.be.an('object')
@@ -195,6 +191,27 @@ describe('Website', () => {
     expect(await existsAsync(photo)).equals(true);
   });
 
+  it('should fetch the list of all members', async () => {
+    const { body: members } = await supertest(app)
+      .get('/api/member')
+      .expect(200);
+
+    expect(members).to.be.an('array').and.to.have.lengthOf(1);
+    expect(members.pop())
+      .to.be.an('object')
+      .and.to.include.keys(
+        'full_name',
+        'role',
+        'description',
+        'photo',
+        'telegram',
+        'email',
+        'twitter',
+        'linkedin',
+        'github',
+      );
+  });
+
   it('should get a member by its id', async () => {
     const { body } = await supertest(app).get('/api/member/1').expect(200);
 
@@ -220,6 +237,46 @@ describe('Website', () => {
     expect(description).equals(description);
 
     expect(await existsAsync(photo)).equals(true);
+  });
+
+  it('should update member', async () => {
+    const requestWithCookie = supertest(app).put('/api/member/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie
+      .type('form')
+      .send({
+        full_name: `New_${testName}`,
+        email: `New_${testEmail}`,
+        role: `New_${testRole}`,
+        telegram: `New_${testTelegram}`,
+        github: `New_${testGithub}`,
+        linkedin: `New_${testLinkedIn}`,
+        twitter: `New_${testTwitter}`,
+        description: `New_${testDescription}`,
+      })
+      .expect(204);
+
+    const {
+      full_name: newFullName,
+      email: newEmail,
+      role: newRole,
+      telegram: newTelegram,
+      github: newGithub,
+      linkedin: newLinkedIn,
+      twitter: newTwitter,
+      description: newDescription,
+    } = await knex.select('*').from('members').first();
+
+    expect(newFullName).equals(`New_${testName}`);
+    expect(newEmail).equals(`New_${testEmail}`);
+    expect(newRole).equals(`New_${testRole}`);
+    expect(newTelegram).equals(`New_${testTelegram}`);
+    expect(newGithub).equals(`New_${testGithub}`);
+    expect(newLinkedIn).equals(`New_${testLinkedIn}`);
+    expect(newTwitter).equals(`New_${testTwitter}`);
+    expect(newDescription).equals(`New_${testDescription}`);
   });
 
   it('should delete member by its id', async () => {
