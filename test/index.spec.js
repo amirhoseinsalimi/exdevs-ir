@@ -94,7 +94,7 @@ describe('Website', () => {
     expect(adminCookie.length).to.greaterThan(1);
   });
 
-  it('should mark messages as read', async () => {
+  it('should mark message as read by its id', async () => {
     const requestWithCookie = supertest(app).put('/api/message/1');
 
     requestWithCookie.cookies = adminCookie;
@@ -174,7 +174,7 @@ describe('Website', () => {
     expect(await existsAsync(photo)).equals(true);
   });
 
-  it('should delete messages', async () => {
+  it('should delete message by its id', async () => {
     const requestWithCookie = supertest(app).delete('/api/message/1');
 
     requestWithCookie.cookies = adminCookie;
@@ -186,7 +186,7 @@ describe('Website', () => {
     expect(length).equals(0);
   });
 
-  it('should delete member', async () => {
+  it('should delete member by its id', async () => {
     const requestWithCookie = supertest(app).delete('/api/member/1');
 
     requestWithCookie.cookies = adminCookie;
