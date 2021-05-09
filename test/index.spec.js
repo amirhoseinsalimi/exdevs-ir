@@ -17,7 +17,16 @@ const execAsync = promisify(exec);
 let server;
 let adminCookie;
 
-describe('Website', () => {
+  const testName = 'Test T. Test';
+  const testEmail = 'test@test.com';
+  const testRole = 'Test Developer';
+  const testDescription = 'Lorem ipsum description';
+  const testTwitter = 'test-twitter';
+  const testTelegram = 'test-telegram';
+  const testGithub = 'test-github';
+  const testLinkedIn = 'test-linked-in';
+  const testMessage = 'Hello, this is a test.';
+
   before(async () => {
     await execAsync('cross-env NODE_ENV=testing knex migrate:latest');
     await execAsync('cross-env NODE_ENV=testing knex seed:run');
@@ -48,11 +57,7 @@ describe('Website', () => {
     expect(copyrightNotice).to.be.equal(`Copyright © ${new Date().getFullYear()}`);
   });
 
-  it('should be able to store contact form messages', async () => {
-    const testName = 'Amir Hosein';
-    const testEmail = 'ahosein.salimi@gmail.com';
-    const testMessage = 'Hello, this is a test.';
-
+  it('should store contact form messages', async () => {
     await supertest(app)
       .post('/api/message')
       .type('form')
