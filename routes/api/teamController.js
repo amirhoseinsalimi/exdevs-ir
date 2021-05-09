@@ -61,14 +61,15 @@ router.post('/', (req, res) => {
 });
 
 /* Update A Specific Team By Its ID */
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
   if (req.session.username) {
     const {
-      id: teamId,
       name,
       description,
       color,
     } = req.body;
+
+    const { id: teamId } = req.params;
 
     knex('teams')
       .where('id', teamId)
