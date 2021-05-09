@@ -23,7 +23,7 @@ $(() => {
   const D = document;
 
   $.ajax({
-    url: '/get-content',
+    url: '/api/team',
     method: 'get',
     dataType: 'json',
     timeout: 3000,

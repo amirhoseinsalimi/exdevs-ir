@@ -50,13 +50,13 @@ router.post('/', upload.single('photo'), (req, res) => {
     knex('members')
       .insert(requestData)
       .then(() => {
-        res.status(200).redirect('/admin/members');
+        res.redirect('/admin/members');
       })
       .catch(() => {
         res.status(500).render('500');
       });
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -97,7 +97,7 @@ router.put('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -122,7 +122,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 

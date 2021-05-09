@@ -13,10 +13,10 @@ router.get('/', (req, res) => {
         res.status(200).json(messages);
       })
       .catch(() => (
-        res.status(500).render(500)
+        res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -83,7 +83,7 @@ router.put('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -108,7 +108,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 

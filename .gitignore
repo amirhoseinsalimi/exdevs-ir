@@ -13,6 +13,7 @@ public/**/*
 # Environment #
 ##############
 .env
+.env.testing
 
 
 # Compiled source #

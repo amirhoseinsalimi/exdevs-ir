@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const knex = require('../../knex-export');
+const shuffleArray = require('../../my_modules/shuffle-array');
 
 /* Get All Teams */
 router.get('/', (req, res) => {
@@ -9,7 +10,11 @@ router.get('/', (req, res) => {
     .select('*')
     .from('teams')
     .then((teams) => {
-      res.status(200).json(teams);
+      const result = {
+        teams: shuffleArray(teams),
+      };
+
+      res.status(200).json(result);
     })
     .catch((err) => (
       res.status(500).json(err)
@@ -45,25 +50,26 @@ router.post('/', (req, res) => {
     knex('teams')
       .insert(req.body)
       .then(() => (
-        res.status(201).json('Created')
+        res.status(302).json('Created')
       ))
       .catch(() => (
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
 /* Update A Specific Team By Its ID */
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
   if (req.session.username) {
     const {
-      id: teamId,
       name,
       description,
       color,
     } = req.body;
+
+    const { id: teamId } = req.params;
 
     knex('teams')
       .where('id', teamId)
@@ -79,7 +85,7 @@ router.put('/', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 
@@ -104,7 +110,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect('/admin');
   }
 });
 

@@ -57,7 +57,6 @@ app.use(express.static('uploads'));
           Page Routes
 *************************** */
 const index = require('./routes/website/index');
-const getContent = require('./routes/website/get-content');
 const serverError = require('./routes/server-error');
 
 const adminLogin = require('./routes/admin/admin');
@@ -66,7 +65,6 @@ const adminMembers = require('./routes/admin/members');
 
 
 app.use('/', index);
-app.use('/get-content', getContent);
 app.use('/server-error', serverError);
 
 app.use('/admin', adminLogin);
