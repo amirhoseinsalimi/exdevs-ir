@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         throw Error(err);
       });
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 

@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
@@ -79,7 +79,7 @@ router.put('/', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
@@ -104,7 +104,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 

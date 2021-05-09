@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
@@ -52,7 +52,8 @@ router.post('/', (req, res) => {
   knex('messages')
     .insert(req.body)
     .then(() => {
-      res.redirect(200, '/');
+      res.status(200);
+      res.redirect('/');
     })
     .catch((err) => (
       res.status(500).json(err)
@@ -82,7 +83,7 @@ router.put('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
@@ -107,7 +108,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.redirect(401, '/admin');
+    res.status(401).redirect('/admin');
   }
 });
 
