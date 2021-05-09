@@ -4,8 +4,9 @@ const { exec } = require('child_process');
 const { promisify } = require('util');
 const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
-
 const expect = require('chai').expect;
+
+const { generateSecretKey } = require('../gen-secret');
 const app = require('../app');
 const knex = require('../knex-export');
 const {
@@ -402,5 +403,15 @@ describe('Website', () => {
 
     ({ res: { text } } = await supertest(app).delete('/api/team/1').expect(302));
     expect(text).equals('Found. Redirecting to /admin');
+  });
+
+  it('should generate a random string w/ specified length', done => {
+    const randomNumber = Math.floor(Math.random() * 100) + 10;
+
+    expect(generateSecretKey(randomNumber, false))
+      .to.be.a('string')
+      .and.with.lengthOf(randomNumber);
+
+    done();
   });
 });
