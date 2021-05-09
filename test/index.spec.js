@@ -1,4 +1,5 @@
 const http = require('http');
+const { exists } = require('fs');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const { JSDOM } = require('jsdom');
@@ -14,8 +15,11 @@ const {
 } = require('../env');
 
 const execAsync = promisify(exec);
-let server;
-let adminCookie;
+const existsAsync = promisify(exists);
+
+describe('Website', () => {
+  let server;
+  let adminCookie;
 
   const testName = 'Test T. Test';
   const testEmail = 'test@test.com';
@@ -100,6 +104,47 @@ let adminCookie;
     const { is_read: isRead } = await knex.select('*').from('messages').first();
 
     expect(isRead).to.be.equal(1);
+  });
+
+  it('should create a member', async () => {
+    const requestWithCookie = supertest(app).post('/api/member');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie
+      .field('full_name', testName)
+      .field('email', testEmail)
+      .field('role', testRole)
+      .field('twitter', testTwitter)
+      .field('telegram', testTelegram)
+      .field('github', testGithub)
+      .field('linkedin', testLinkedIn)
+      .field('description', testDescription)
+      .attach('photo', 'src/img/mug.png')
+      .expect(302);
+
+    const {
+      full_name: fullName,
+      email,
+      role,
+      twitter,
+      telegram,
+      github,
+      linkedin,
+      photo,
+      description,
+    } = await knex.select('*').from('members').first();
+
+    expect(fullName).to.be.equal(testName);
+    expect(email).to.be.equal(testEmail);
+    expect(role).to.be.equal(testRole);
+    expect(twitter).to.be.equal(testTwitter);
+    expect(telegram).to.be.equal(testTelegram);
+    expect(github).to.be.equal(testGithub);
+    expect(linkedin).to.be.equal(testLinkedIn);
+    expect(description).to.be.equal(description);
+
+    expect(await existsAsync(photo)).equals(true);
   });
 
   it('should delete messages', async () => {
