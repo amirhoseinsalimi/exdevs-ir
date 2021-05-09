@@ -5,13 +5,17 @@ const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
 const expect = require('chai').expect;
 const app = require('../app');
+const knex = require('../knex-export');
 
 const {
   PORT: port,
+  ADMIN_USERNAME: adminUsername,
+  ADMIN_PASSWORD: adminPassword,
 } = require('../env');
 
 const execAsync = promisify(exec);
 let server;
+let adminCookie;
 
 describe('Website', () => {
   before(async () => {
@@ -42,5 +46,66 @@ describe('Website', () => {
     const { document } = new JSDOM(text).window;
     const copyrightNotice = document.querySelector('.copyright-notice').textContent;
     expect(copyrightNotice).to.be.equal(`Copyright © ${new Date().getFullYear()}`);
+  });
+
+  it('should be able to store contact form messages', async () => {
+    const testName = 'Amir Hosein';
+    const testEmail = 'ahosein.salimi@gmail.com';
+    const testMessage = 'Hello, this is a test.';
+
+    await supertest(app)
+      .post('/api/message')
+      .type('form')
+      .send({
+        name: testName,
+        email: testEmail,
+        message: testMessage,
+      })
+      .expect(200);
+
+    const { name, email, message } = await knex.select('*').from('messages').first();
+
+    expect(name).to.be.equal(testName);
+    expect(email).to.be.equal(testEmail);
+    expect(message).to.be.equal(testMessage);
+  });
+
+  it('should login the admin with specified credentials and get a cookie', async () => {
+    const { headers } = await supertest(app)
+      .post('/admin')
+      .type('form')
+      .send({
+        user: adminUsername,
+        password: adminPassword,
+      })
+      .expect(302);
+
+    adminCookie = headers['set-cookie'].pop().split(';')[0];
+
+    expect(adminCookie.length).to.greaterThan(1);
+  });
+
+  it('should mark messages as read', async () => {
+    const requestWithCookie = supertest(app).put('/api/message/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie.expect(204);
+
+    const { is_read: isRead } = await knex.select('*').from('messages').first();
+
+    expect(isRead).to.be.equal(1);
+  });
+
+  it('should delete messages', async () => {
+    const requestWithCookie = supertest(app).delete('/api/message/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie.expect(204);
+
+    const { length } = await knex.select('*').from('messages');
+
+    expect(length).to.be.equal(0);
   });
 });
