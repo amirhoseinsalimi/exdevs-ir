@@ -30,11 +30,11 @@ router.post('/', (req, res, next) => {
 
             res.redirect('/admin/messages');
           } else {
-            res.status(401).redirect('/admin');
+            res.redirect('/admin');
           }
         });
       } else {
-        res.status(401).redirect('/admin');
+        res.redirect('/admin');
       }
     })
     .catch(() => {
