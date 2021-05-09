@@ -4,10 +4,10 @@ const { exec } = require('child_process');
 const { promisify } = require('util');
 const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
+
 const expect = require('chai').expect;
 const app = require('../app');
 const knex = require('../knex-export');
-
 const {
   PORT: port,
   ADMIN_USERNAME: adminUsername,
@@ -49,7 +49,9 @@ describe('Website', () => {
     const { text } = await supertest(app).get('/').expect(200);
 
     const { document } = new JSDOM(text).window;
-    const headline = document.querySelector('.headline .headline__header.shining').textContent;
+    const headline = document.querySelector(
+      '.headline .headline__header.shining',
+    ).textContent;
     expect(headline).equals('Exceptional Developers');
   });
 
@@ -57,7 +59,8 @@ describe('Website', () => {
     const { text } = await supertest(app).get('/admin').expect(200);
 
     const { document } = new JSDOM(text).window;
-    const copyrightNotice = document.querySelector('.copyright-notice').textContent;
+    const copyrightNotice = document.querySelector('.copyright-notice')
+      .textContent;
     expect(copyrightNotice).equals(`Copyright © ${new Date().getFullYear()}`);
   });
 
@@ -72,7 +75,10 @@ describe('Website', () => {
       })
       .expect(302);
 
-    const { name, email, message } = await knex.select('*').from('messages').first();
+    const { name, email, message } = await knex
+      .select('*')
+      .from('messages')
+      .first();
 
     expect(name).equals(testName);
     expect(email).equals(testEmail);
