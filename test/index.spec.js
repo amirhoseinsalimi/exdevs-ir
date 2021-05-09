@@ -198,11 +198,36 @@ describe('Website', () => {
     expect(length).equals(0);
   });
 
-  // it('should fetch content (teams and members)', async () => {
-  //   const { body } = await supertest(app)
-  //     .get('/get-content')
-  //     .expect(200);
-  //
-  //   console.log(body);
-  // });
+  it('should fetch the list of all teams', async () => {
+    const {
+      body: { teams },
+    } = await supertest(app).get('/api/team').expect(200);
+
+    expect(teams).to.be.an('array').and.to.have.lengthOf.above(1);
+    expect(teams.pop())
+      .to.be.an('object')
+      .and.to.include.keys('name', 'description', 'color');
+  });
+
+  it('should get a team by its id', async () => {
+    const { body: team } = await supertest(app).get('/api/team/1').expect(200);
+
+    expect(team.pop())
+      .to.be.an('object')
+      .and.to.include.keys('name', 'description', 'color');
+  });
+
+  it('should delete team by its id', async () => {
+    const { length: oldL } = await knex.select('*').from('teams');
+
+    const requestWithCookie = supertest(app).delete('/api/team/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie.expect(204);
+
+    const { length: newL } = await knex.select('*').from('teams');
+
+    expect(newL).equals(oldL - 1);
+  });
 });
