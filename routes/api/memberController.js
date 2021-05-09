@@ -122,7 +122,7 @@ router.delete('/:id', (req, res) => {
         res.status(500).render('500')
       ));
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect(401, '/admin');
   }
 });
 

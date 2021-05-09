@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   if (req.session.username) {
     res.render('admin/members');
   } else {
-    res.status(401).redirect('/admin');
+    res.redirect(401, '/admin');
   }
 });
 

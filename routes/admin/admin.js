@@ -28,13 +28,13 @@ router.post('/', (req, res, next) => {
           if (matched) {
             req.session.username = username;
 
-            res.redirect('/admin/messages');
+            res.redirect(302, '/admin/messages');
           } else {
-            res.status(401).redirect('/admin');
+            res.redirect(401, '/admin');
           }
         });
       } else {
-        res.status(401).redirect('/admin');
+        res.redirect(401, '/admin');
       }
     })
     .catch(() => {
