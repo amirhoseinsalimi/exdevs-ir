@@ -70,7 +70,7 @@ describe('Website', () => {
         email: testEmail,
         message: testMessage,
       })
-      .expect(200);
+      .expect(302);
 
     const { name, email, message } = await knex.select('*').from('messages').first();
 
