@@ -30,6 +30,7 @@ describe('Website', () => {
   const testGithub = 'test-github';
   const testLinkedIn = 'test-linked-in';
   const testMessage = 'Hello, this is a test.';
+  const testColor = '#f1f1f1';
 
   before(async () => {
     await execAsync('cross-env NODE_ENV=testing knex migrate:latest');
@@ -202,6 +203,27 @@ describe('Website', () => {
     const { length } = await knex.select('*').from('members');
 
     expect(length).equals(0);
+  });
+
+  it('should create a team', async () => {
+    const { length: oldL } = await knex.select('*').from('teams');
+
+    const requestWithCookie = supertest(app).post('/api/team');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie
+      .type('form')
+      .send({
+        name: testName,
+        description: testDescription,
+        color: testColor,
+      })
+      .expect(302);
+
+    const { length: newL } = await knex.select('*').from('teams');
+
+    expect(newL).equals(oldL + 1);
   });
 
   it('should fetch the list of all teams', async () => {

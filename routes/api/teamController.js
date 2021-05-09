@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
     knex('teams')
       .insert(req.body)
       .then(() => (
-        res.status(201).json('Created')
+        res.status(302).json('Created')
       ))
       .catch(() => (
         res.status(500).render('500')
