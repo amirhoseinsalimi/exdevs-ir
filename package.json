@@ -6,9 +6,13 @@
     "start": "gulp build && pm2 start ./bin/www --name expteam-ir",
     "restart": "gulp build && pm2 restart expteam-ir",
     "stop": "pm2 stop expteam-ir",
+    "dev": "gulp",
     "monit": "pm2 monit",
-    "test": "cross-env NODE_ENV=testing mocha --timeout 10000",
-    "serve": "gulp",
+    "db:migrate": "knex migrate:latest",
+    "db:seeds": "knex seed:run",
+    "db:seed": "npm run db:seeds",
+    "db:rollback": "knex migrate:rollback --all",
+    "test": "cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
     "lint": "eslint --fix gulpfile.js app.js counter.js src/js/script.js"
   },
   "dependencies": {
