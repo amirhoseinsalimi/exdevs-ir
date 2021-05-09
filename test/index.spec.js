@@ -50,7 +50,7 @@ describe('Website', () => {
 
     const { document } = new JSDOM(text).window;
     const headline = document.querySelector('.headline .headline__header.shining').textContent;
-    expect(headline).to.be.equal('Exceptional Developers');
+    expect(headline).equals('Exceptional Developers');
   });
 
   it('should get the admin login page', async () => {
@@ -58,7 +58,7 @@ describe('Website', () => {
 
     const { document } = new JSDOM(text).window;
     const copyrightNotice = document.querySelector('.copyright-notice').textContent;
-    expect(copyrightNotice).to.be.equal(`Copyright © ${new Date().getFullYear()}`);
+    expect(copyrightNotice).equals(`Copyright © ${new Date().getFullYear()}`);
   });
 
   it('should store contact form messages', async () => {
@@ -74,9 +74,9 @@ describe('Website', () => {
 
     const { name, email, message } = await knex.select('*').from('messages').first();
 
-    expect(name).to.be.equal(testName);
-    expect(email).to.be.equal(testEmail);
-    expect(message).to.be.equal(testMessage);
+    expect(name).equals(testName);
+    expect(email).equals(testEmail);
+    expect(message).equals(testMessage);
   });
 
   it('should login the admin with specified credentials and get a cookie', async () => {
@@ -103,7 +103,7 @@ describe('Website', () => {
 
     const { is_read: isRead } = await knex.select('*').from('messages').first();
 
-    expect(isRead).to.be.equal(1);
+    expect(isRead).equals(1);
   });
 
   it('should create a member', async () => {
@@ -135,14 +135,14 @@ describe('Website', () => {
       description,
     } = await knex.select('*').from('members').first();
 
-    expect(fullName).to.be.equal(testName);
-    expect(email).to.be.equal(testEmail);
-    expect(role).to.be.equal(testRole);
-    expect(twitter).to.be.equal(testTwitter);
-    expect(telegram).to.be.equal(testTelegram);
-    expect(github).to.be.equal(testGithub);
-    expect(linkedin).to.be.equal(testLinkedIn);
-    expect(description).to.be.equal(description);
+    expect(fullName).equals(testName);
+    expect(email).equals(testEmail);
+    expect(role).equals(testRole);
+    expect(twitter).equals(testTwitter);
+    expect(telegram).equals(testTelegram);
+    expect(github).equals(testGithub);
+    expect(linkedin).equals(testLinkedIn);
+    expect(description).equals(description);
 
     expect(await existsAsync(photo)).equals(true);
   });
@@ -156,6 +156,14 @@ describe('Website', () => {
 
     const { length } = await knex.select('*').from('messages');
 
-    expect(length).to.be.equal(0);
+    expect(length).equals(0);
   });
+
+  // it('should fetch content (teams and members)', async () => {
+  //   const { body } = await supertest(app)
+  //     .get('/get-content')
+  //     .expect(200);
+  //
+  //   console.log(body);
+  // });
 });
