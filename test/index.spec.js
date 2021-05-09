@@ -147,6 +147,33 @@ describe('Website', () => {
     expect(await existsAsync(photo)).equals(true);
   });
 
+  it('should get a member by its id', async () => {
+    const { body } = await supertest(app).get('/api/member/1').expect(200);
+
+    const {
+      full_name: fullName,
+      email,
+      role,
+      twitter,
+      telegram,
+      github,
+      linkedin,
+      photo,
+      description,
+    } = body[0];
+
+    expect(fullName).equals(testName);
+    expect(email).equals(testEmail);
+    expect(role).equals(testRole);
+    expect(twitter).equals(testTwitter);
+    expect(telegram).equals(testTelegram);
+    expect(github).equals(testGithub);
+    expect(linkedin).equals(testLinkedIn);
+    expect(description).equals(description);
+
+    expect(await existsAsync(photo)).equals(true);
+  });
+
   it('should delete messages', async () => {
     const requestWithCookie = supertest(app).delete('/api/message/1');
 
