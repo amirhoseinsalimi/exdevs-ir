@@ -101,6 +101,35 @@ describe('Website', () => {
     expect(message).equals(testMessage);
   });
 
+  it('should fetch the list of all messages', async () => {
+    const requestWithCookie = supertest(app).get('/api/message');
+
+    requestWithCookie.cookies = adminCookie;
+
+    const {
+      body: messages,
+    } = await requestWithCookie.expect(200);
+
+    expect(messages).to.be.an('array').and.to.have.lengthOf(1);
+    expect(messages.pop())
+      .to.be.an('object')
+      .and.to.include.keys('name', 'email', 'message', 'is_read');
+  });
+
+  it('should get a message by its id', async () => {
+    const requestWithCookie = supertest(app).get('/api/message/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    const {
+      body: message,
+    } = await requestWithCookie.expect(200);
+
+    expect(message.pop())
+      .to.be.an('object')
+      .and.to.include.keys('name', 'email', 'message', 'is_read');
+  });
+
   it('should mark message as read by its id', async () => {
     const requestWithCookie = supertest(app).put('/api/message/1');
 
