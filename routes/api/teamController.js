@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const knex = require('../../knex-export');
+const shuffleArray = require('../../my_modules/shuffle-array');
 
 /* Get All Teams */
 router.get('/', (req, res) => {
@@ -9,7 +10,11 @@ router.get('/', (req, res) => {
     .select('*')
     .from('teams')
     .then((teams) => {
-      res.status(200).json(teams);
+      const result = {
+        teams: shuffleArray(teams),
+      };
+
+      res.status(200).json(result);
     })
     .catch((err) => (
       res.status(500).json(err)
