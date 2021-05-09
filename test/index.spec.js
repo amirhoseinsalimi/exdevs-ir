@@ -159,6 +159,18 @@ describe('Website', () => {
     expect(length).equals(0);
   });
 
+  it('should delete member', async () => {
+    const requestWithCookie = supertest(app).delete('/api/member/1');
+
+    requestWithCookie.cookies = adminCookie;
+
+    await requestWithCookie.expect(204);
+
+    const { length } = await knex.select('*').from('members');
+
+    expect(length).equals(0);
+  });
+
   // it('should fetch content (teams and members)', async () => {
   //   const { body } = await supertest(app)
   //     .get('/get-content')
