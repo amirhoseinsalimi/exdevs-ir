@@ -62,6 +62,7 @@ const serverError = require('./routes/server-error');
 const adminLogin = require('./routes/admin/admin');
 const adminMessages = require('./routes/admin/messages');
 const adminMembers = require('./routes/admin/members');
+const adminTeams = require('./routes/admin/teams');
 
 
 app.use('/', index);
@@ -70,6 +71,7 @@ app.use('/server-error', serverError);
 app.use('/admin', adminLogin);
 app.use('/admin/messages', adminMessages);
 app.use('/admin/members', adminMembers);
+app.use('/admin/teams', adminTeams);
 
 /* ******************************
         RESTful API Routes
