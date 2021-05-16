@@ -1,0 +1,49 @@
+doctype html
+head
+  include ../_admin_partials/head
+
+  link(rel="stylesheet", href="/css/admin.min.css")
+body
+  include ../_admin_partials/navbar
+
+  #teamModal.modal.fade(data-keyboard='true', tabindex='-1', role='dialog', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          form(action='/api/team', method='post')
+            .container-fluid
+              .row
+                .col-12.col-md-6
+                  .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text', required='required', aria-describedby='name' name='name')
+                .col-12.col-md-6
+                  .form-group
+                    label(for='color') Color
+                    input#color.form-control(type='text', required='required', aria-describedby='color' name='color')
+                .col-12
+                  .form-group
+                    label(for='description') Description
+                    textarea#description.form-control(
+                      aria-describedby='description'
+                      name='description'
+                      required='required'
+                      rows="6"
+                    )
+
+
+            .modal-footer
+              button.btn.btn-secondary.mr-auto(type='button', data-dismiss='modal') Close
+              button.btn.btn-info.btn-update-team.btn-update(type='button') Update
+              button.btn.btn-success.btn-add-team.btn-add(type='submit') Add Team
+
+  .container.pb-4
+    .row.teams-container.align-items-center
+      .col-12.col-md-6.add-new-team.d-flex.align-items-center.justify-content-center
+
+  include ../_admin_partials/scripts
+  script(src="/js/admin-teams.js")
