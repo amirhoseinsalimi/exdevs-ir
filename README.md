@@ -20,7 +20,7 @@ Run `git clone https://github.com/amirhoseinsalimi/expteam-ir && cd expteam-ir`
 2. **Install dependencies:**
 Run `npm i`
 3. **Configure environment variables:**\
-Copy `.env.example` to `.env`, fill all required fields. For `SECRET` field, run `node gen-secret.js` and paste the output there. Don't forget to fill the fields for admin user. No worries! Your password will be stored hashed.
+Copy `.env.example` to `.env`, fill all required fields. For `SECRET` field, run `npm run key:generate` and paste the output there. Don't forget to fill the fields for admin user. No worries! Your password will be stored hashed.
 4. **Run migrations:**\
 Run `knex migrate:latest`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
 5. **Run seeds:**\
