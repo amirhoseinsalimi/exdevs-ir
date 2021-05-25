@@ -1,4 +1,4 @@
-exports.generateSecretKey = function generateSecretKey(length, print = true) {
+exports.generateSecretKey = function generateSecretKey(length) {
   const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-';
   let result = '';
 
@@ -8,9 +8,11 @@ exports.generateSecretKey = function generateSecretKey(length, print = true) {
     );
   }
 
-  if (print) {
+  if (process.env.NODE_ENV !== 'testing') {
     console.log(result);
   }
 
   return result;
 };
+
+exports.generateSecretKey(32);
