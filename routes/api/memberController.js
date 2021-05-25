@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../../knex-export');
 
-const upload = require('../../my_modules/uploader');
+const upload = require('../../utils/uploader');
 
 /* Get All Members */
 router.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const { generateSecretKey } = require('../gen-secret');
+const { generateSecretKey } = require('../utils/gen-secret');
 
 describe('Utils', () => {
   it('should generate a random string w/ specified length', done => {
