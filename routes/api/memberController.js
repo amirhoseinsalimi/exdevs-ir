@@ -4,6 +4,7 @@ const router = express.Router();
 const knex = require('../../knex-export');
 
 const upload = require('../../utils/uploader');
+const { authenticate } = require('../../middlewares/authenticate');
 
 /* Get All Members */
 router.get('/', (req, res) => {
@@ -42,32 +43,40 @@ router.get('/:id', (req, res) => {
 });
 
 /* Add A Member */
-router.post('/', upload.single('photo'), (req, res) => {
-  if (req.session.username) {
-    const requestData = req.body;
-    requestData.photo = req.file.path;
+router.post('/', authenticate, upload.single('photo'), (req, res) => {
+  const requestData = req.body;
+  requestData.photo = req.file.path;
 
-    knex('members')
-      .insert(requestData)
-      .then(() => {
-        res.redirect('/admin/members');
-      })
-      .catch(() => {
-        res.status(500).render('500');
-      });
-  } else {
-    res.redirect('/admin');
-  }
+  knex('members')
+    .insert(requestData)
+    .then(() => {
+      res.redirect('/admin/members');
+    })
+    .catch(() => {
+      res.status(500).render('500');
+    });
 });
 
 /* Update A Specific Member By Its ID */
-router.put('/:id', (req, res) => {
-  if (req.session.username) {
-    const {
-      id: memberId,
-    } = req.params;
+router.put('/:id', authenticate, (req, res) => {
+  const {
+    id: memberId,
+  } = req.params;
 
-    const {
+  const {
+    full_name,
+    role,
+    description,
+    telegram,
+    email,
+    twitter,
+    linkedin,
+    github,
+  } = req.body;
+
+  knex('members')
+    .where('id', memberId)
+    .update({
       full_name,
       role,
       description,
@@ -76,54 +85,34 @@ router.put('/:id', (req, res) => {
       twitter,
       linkedin,
       github,
-    } = req.body;
-
-    knex('members')
-      .where('id', memberId)
-      .update({
-        full_name,
-        role,
-        description,
-        telegram,
-        email,
-        twitter,
-        linkedin,
-        github,
-      })
-      .then(() => (
-        res.status(204).json('Updated')
-      ))
-      .catch(() => (
-        res.status(500).render('500')
-      ));
-  } else {
-    res.redirect('/admin');
-  }
+    })
+    .then(() => (
+      res.status(204).json('Updated')
+    ))
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 /* Delete A Specific Member By Its ID */
-router.delete('/:id', (req, res) => {
-  if (req.session.username) {
-    const { id: memberId } = req.params;
+router.delete('/:id', authenticate, (req, res) => {
+  const { id: memberId } = req.params;
 
-    if (!/^\d+$/.test(memberId)) {
-      return res.status(400).json({
-        message: 'Invalid parameter',
-      });
-    }
-
-    knex('members')
-      .where('id', memberId)
-      .del()
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(() => (
-        res.status(500).render('500')
-      ));
-  } else {
-    res.redirect('/admin');
+  if (!/^\d+$/.test(memberId)) {
+    return res.status(400).json({
+      message: 'Invalid parameter',
+    });
   }
+
+  knex('members')
+    .where('id', memberId)
+    .del()
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 module.exports = router;

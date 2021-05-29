@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../../knex-export');
 const shuffleArray = require('../../utils/shuffle-array');
+const { authenticate } = require('../../middlewares/authenticate');
 
 /* Get All Teams */
 router.get('/', (req, res) => {
@@ -45,73 +46,61 @@ router.get('/:id', (req, res) => {
 });
 
 /* Add A Team */
-router.post('/', (req, res) => {
-  if (req.session.username) {
-    knex('teams')
-      .insert(req.body)
-      .then(() => (
-        res.redirect('/admin/teams')
-      ))
-      .catch(() => (
-        res.status(500).render('500')
-      ));
-  } else {
-    res.redirect('/admin');
-  }
+router.post('/', authenticate, (req, res) => {
+  knex('teams')
+    .insert(req.body)
+    .then(() => (
+      res.redirect('/admin/teams')
+    ))
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 /* Update A Specific Team By Its ID */
-router.put('/:id', (req, res) => {
-  if (req.session.username) {
-    const {
+router.put('/:id', authenticate, (req, res) => {
+  const {
+    name,
+    description,
+    color,
+  } = req.body;
+
+  const { id: teamId } = req.params;
+
+  knex('teams')
+    .where('id', teamId)
+    .update({
       name,
       description,
       color,
-    } = req.body;
-
-    const { id: teamId } = req.params;
-
-    knex('teams')
-      .where('id', teamId)
-      .update({
-        name,
-        description,
-        color,
-      })
-      .then(() => (
-        res.status(204).json('Updated')
-      ))
-      .catch(() => (
-        res.status(500).render('500')
-      ));
-  } else {
-    res.redirect('/admin');
-  }
+    })
+    .then(() => (
+      res.status(204).json('Updated')
+    ))
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 /* Delete A Specific Team By Its ID */
-router.delete('/:id', (req, res) => {
-  if (req.session.username) {
-    const { id: teamId } = req.params;
+router.delete('/:id', authenticate, (req, res) => {
+  const { id: teamId } = req.params;
 
-    if (!/^\d+$/.test(teamId)) {
-      return res.status(400).json({
-        message: 'Invalid parameter',
-      });
-    }
-
-    knex('teams')
-      .where('id', teamId)
-      .del()
-      .then(() => (
-        res.status(204).json('Deleted')
-      ))
-      .catch(() => (
-        res.status(500).render('500')
-      ));
-  } else {
-    res.redirect('/admin');
+  if (!/^\d+$/.test(teamId)) {
+    return res.status(400).json({
+      message: 'Invalid parameter',
+    });
   }
+
+  knex('teams')
+    .where('id', teamId)
+    .del()
+    .then(() => (
+      res.status(204).json('Deleted')
+    ))
+    .catch(() => (
+      res.status(500).render('500')
+    ));
 });
 
 module.exports = router;
