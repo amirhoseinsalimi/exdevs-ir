@@ -4,7 +4,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const knex = require('../../knex-export');
 
-/* GET admin page. */
 router.get('/', (req, res) => {
   if (req.session.username) {
     res.redirect('/admin/messages');
@@ -13,7 +12,7 @@ router.get('/', (req, res) => {
   }
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   const { user: username, password } = req.body;
 
   knex

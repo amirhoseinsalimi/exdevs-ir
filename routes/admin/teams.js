@@ -1,13 +1,10 @@
 const express = require('express');
+const { authenticate } = require('../../middlewares/authenticate');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  if (req.session.username) {
-    res.render('admin/teams');
-  } else {
-    res.redirect('/admin');
-  }
+router.get('/', authenticate, (req, res) => {
+  res.render('admin/teams');
 });
 
 module.exports = router;

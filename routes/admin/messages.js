@@ -1,24 +1,10 @@
 const express = require('express');
+const { authenticate } = require('../../middlewares/authenticate');
 
 const router = express.Router();
-const knex = require('../../knex-export');
 
-router.get('/', (req, res) => {
-  if (req.session.username) {
-    knex
-      .select('*')
-      .from('messages')
-      .then(messages => {
-        res.status(200).render('admin/messages', { messages });
-
-        // res.json(result);
-      })
-      .catch(err => {
-        throw Error(err);
-      });
-  } else {
-    res.redirect('/admin');
-  }
+router.get('/', authenticate, (req, res) => {
+  res.render('admin/messages');
 });
 
 module.exports = router;
