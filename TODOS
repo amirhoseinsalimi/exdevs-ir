@@ -16,3 +16,6 @@ TODO: Swagger and Postman documentation
 TODO: Dockerize
 TODO: Migrate to a more mature Express boilerplate?
 TODO: Use IoC/DI *
+TODO: Use async/await
+TODO: Rely more on templating instead of AJAX requests
+TODO: Logout functionality for admin
