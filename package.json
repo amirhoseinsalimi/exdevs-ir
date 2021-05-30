@@ -38,6 +38,7 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
+    "@types/node": "^15.6.1",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.14",
     "chai": "^4.3.4",
@@ -62,10 +63,12 @@
     "node-sass": "^4.14.1",
     "prettier": "2.0.2",
     "readable-stream": "^3.6.0",
-    "supertest": "^6.1.3"
+    "supertest": "^6.1.3",
+    "tsc-watch": "^4.4.0",
+    "typescript": "^4.3.2"
   },
   "description": "Exceptional Developers Website",
-  "main": "server.js",
+  "main": "server.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/amirhoseinsalimi/expteam-ir.git"
