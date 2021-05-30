@@ -21,10 +21,10 @@ const app = express();
 
 const {
   SECRET: secret,
-} = require('./env');
+} = require('../env');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 
 /* ******************************
@@ -33,8 +33,8 @@ app.set('view engine', 'pug');
 app.use(helmet({
   hidePoweredBy: false,
 }));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev', { skip: (req, res) => process.env.NODE_ENV === 'testing' }));
+app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
+app.use(logger('dev', { skip: () => process.env.NODE_ENV === 'testing' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({

@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const app = require('../app');
+const app = require('../bootstrap/app');
 
 /* ***************************
           Page Routes

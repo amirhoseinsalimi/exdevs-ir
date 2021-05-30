@@ -3,7 +3,7 @@ const { promisify } = require('util');
 const supertest = require('supertest');
 const expect = require('chai').expect;
 
-const app = require('../app');
+const app = require('../bootstrap/app');
 const knex = require('../knex-export');
 const {
   ADMIN_USERNAME: adminUsername,
