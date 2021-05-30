@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../../../knex-export');
 
-const upload = require('../../../utils/uploader');
+const upload = require('../../helpers/uploader');
 const { authenticate } = require('../../middleware/authenticate');
 
 /* Get All Members */
