@@ -79,7 +79,7 @@ gulp.task('icon', () => gulp.src(iconSrc)
 gulp.task('nodemon', (done) => {
   const STARTUP_TIMEOUT = 5000;
   const server = nodemon({
-    script: 'bin/www',
+    script: 'www',
     stdout: false, // without this line the stdout event won't fire
   });
   let starting = false;
@@ -107,7 +107,7 @@ gulp.task('nodemon', (done) => {
 gulp.task('browser-sync', (done) => {
   browserSync.init({
     proxy: 'http://localhost:3001',
-    files: ['public/**/*.*', 'views/**/*.*', 'src/**/*.*', '*.js', 'routes/*.js', 'bin/www'],
+    files: ['public/**/*.*', 'views/**/*.*', 'src/**/*.*', '*.js', 'routes/*.js', 'www'],
     port: 3000,
     ui: {
       port: 3030,
