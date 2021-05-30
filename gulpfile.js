@@ -13,11 +13,7 @@ const autoprefixer = require('gulp-autoprefixer');
 
 
 /* Plugins related to JS */
-// const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
-const terser = require('gulp-terser');
-const stripDebug = require('gulp-strip-debug');
-const noop = require('gulp-noop');
 
 
 /* Plugins related images */
