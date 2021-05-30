@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && pm2 start www --name expteam-ir",
+    "start": "gulp build && pm2 start server.js --name expteam-ir",
     "restart": "gulp build && pm2 restart expteam-ir",
     "stop": "pm2 stop expteam-ir",
     "dev": "gulp",
@@ -65,7 +65,7 @@
     "supertest": "^6.1.3"
   },
   "description": "Exceptional Developers Website",
-  "main": "www",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/amirhoseinsalimi/expteam-ir.git"
