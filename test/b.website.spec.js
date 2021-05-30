@@ -2,7 +2,7 @@ const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
 const expect = require('chai').expect;
 
-const app = require('../app');
+const app = require('../routes');
 
 describe('Website', () => {
   it('should get the index page', async () => {
