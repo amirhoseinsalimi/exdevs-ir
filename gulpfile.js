@@ -22,13 +22,13 @@ const imagemin = require('gulp-imagemin');
 
 
 /* Paths */
-const styleSrc = 'src/scss/**/*.scss';
+const styleSrc = 'resources/scss/**/*.scss';
 const styleDest = './public/css/';
-const scriptSrc = 'src/js/**/*.js';
+const scriptSrc = 'resources/js/**/*.js';
 const scriptDest = './public/js/';
-const imgSrc = 'src/img/**/*';
+const imgSrc = 'resources/img/**/*';
 const imgDest = './public/img/';
-const iconSrc = 'src/icons/**/*';
+const iconSrc = 'resources/icons/**/*';
 const iconDest = './public/icons/';
 
 
@@ -103,7 +103,7 @@ gulp.task('nodemon', (done) => {
 gulp.task('browser-sync', (done) => {
   browserSync.init({
     proxy: 'http://localhost:3001',
-    files: ['public/**/*.*', 'views/**/*.*', 'src/**/*.*', '*.js', 'routes/*.js', 'www'],
+    files: ['public/**/*.*', 'views/**/*.*', 'resources/**/*.*', '*.js', 'routes/*.js', 'www'],
     port: 3000,
     ui: {
       port: 3030,

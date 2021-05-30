@@ -164,7 +164,7 @@ describe('API', () => {
         .field('github', testGithub)
         .field('linkedin', testLinkedIn)
         .field('description', testDescription)
-        .attach('photo', 'src/img/mug.png')
+        .attach('photo', 'resources/img/mug.png')
         .expect(302);
 
       const {
