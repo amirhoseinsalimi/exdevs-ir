@@ -3,10 +3,10 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && pm2 start server.js --name expteam-ir",
+    "start": "gulp build && pm2 start dist/server.js --name expteam-ir",
     "restart": "gulp build && pm2 restart expteam-ir",
     "stop": "pm2 stop expteam-ir",
-    "dev": "gulp",
+    "dev": "tsc-watch --noClear --onFirstSuccess gulp",
     "monit": "pm2 monit",
     "db:migrate": "knex migrate:latest",
     "db:seeds": "knex seed:run",
