@@ -8,7 +8,6 @@ public/**/*
 !public/favicon.ico
 !public/manifest.json
 !public/robots.txt
-dist
 
 
 # Environment #
@@ -25,6 +24,7 @@ dist
 *.exe
 *.o
 *.so
+dist
 
 
 # Runtime data #
