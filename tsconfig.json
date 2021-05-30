@@ -1,0 +1,23 @@
+{
+  "include": [
+    "./**/*.ts",
+    "./**/*.js"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "target": "es5",
+    "outDir": "dist",
+    "downlevelIteration": true,
+    "resolveJsonModule": false,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
+    "sourceMap": false,
+    "allowJs": true
+  },
+  "exclude": [
+    "./test/",
+    "./node_modules/",
+    "./dist/",
+    "./resources/"
+  ]
+}
