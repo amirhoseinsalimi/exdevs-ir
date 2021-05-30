@@ -24,7 +24,7 @@ const {
 } = require('../env');
 
 // view engine setup
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../resources/views'));
 app.set('view engine', 'pug');
 
 /* ******************************
@@ -50,7 +50,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static('uploads'));
 
 module.exports = app;
