@@ -1,6 +1,6 @@
 const http = require('http');
 
-const app = require('../app');
+const app = require('../bootstrap/app');
 const knex = require('../knex-export');
 const {
   PORT: port,

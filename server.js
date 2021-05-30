@@ -5,8 +5,7 @@
  */
 const debug = require('debug')('generator:server');
 const http = require('http');
-const app = require('../app');
-
+const app = require('./routes');
 
 /**
  * Normalize a port into a number, string, or false.

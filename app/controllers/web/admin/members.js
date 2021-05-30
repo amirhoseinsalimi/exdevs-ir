@@ -1,10 +1,10 @@
 const express = require('express');
-const { authenticate } = require('../../middlewares/authenticate');
+const { authenticate } = require('../../../middleware/authenticate');
 
 const router = express.Router();
 
 router.get('/', authenticate, (req, res) => {
-  res.render('admin/messages');
+  res.render('admin/members');
 });
 
 module.exports = router;

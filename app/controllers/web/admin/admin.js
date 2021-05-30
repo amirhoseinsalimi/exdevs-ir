@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const knex = require('../../knex-export');
+const knex = require('../../../../knex-export');
 
 router.get('/', (req, res) => {
   if (req.session.username) {

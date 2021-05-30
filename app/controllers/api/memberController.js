@@ -1,10 +1,10 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../../knex-export');
+const knex = require('../../../knex-export');
 
-const upload = require('../../utils/uploader');
-const { authenticate } = require('../../middlewares/authenticate');
+const upload = require('../../helpers/uploader');
+const { authenticate } = require('../../middleware/authenticate');
 
 /* Get All Members */
 router.get('/', (req, res) => {

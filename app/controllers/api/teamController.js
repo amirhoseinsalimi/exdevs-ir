@@ -1,9 +1,9 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../../knex-export');
-const shuffleArray = require('../../utils/shuffle-array');
-const { authenticate } = require('../../middlewares/authenticate');
+const knex = require('../../../knex-export');
+const shuffleArray = require('../../helpers/shuffle-array');
+const { authenticate } = require('../../middleware/authenticate');
 
 /* Get All Teams */
 router.get('/', (req, res) => {

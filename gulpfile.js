@@ -13,11 +13,7 @@ const autoprefixer = require('gulp-autoprefixer');
 
 
 /* Plugins related to JS */
-// const concat = require('gulp-concat');
 const deporder = require('gulp-deporder');
-const terser = require('gulp-terser');
-const stripDebug = require('gulp-strip-debug');
-const noop = require('gulp-noop');
 
 
 /* Plugins related images */
@@ -26,13 +22,13 @@ const imagemin = require('gulp-imagemin');
 
 
 /* Paths */
-const styleSrc = 'src/scss/**/*.scss';
+const styleSrc = 'resources/scss/**/*.scss';
 const styleDest = './public/css/';
-const scriptSrc = 'src/js/**/*.js';
+const scriptSrc = 'resources/js/**/*.js';
 const scriptDest = './public/js/';
-const imgSrc = 'src/img/**/*';
+const imgSrc = 'resources/img/**/*';
 const imgDest = './public/img/';
-const iconSrc = 'src/icons/**/*';
+const iconSrc = 'resources/icons/**/*';
 const iconDest = './public/icons/';
 
 
@@ -79,7 +75,7 @@ gulp.task('icon', () => gulp.src(iconSrc)
 gulp.task('nodemon', (done) => {
   const STARTUP_TIMEOUT = 5000;
   const server = nodemon({
-    script: 'bin/www',
+    script: 'server.js',
     stdout: false, // without this line the stdout event won't fire
   });
   let starting = false;
@@ -107,7 +103,7 @@ gulp.task('nodemon', (done) => {
 gulp.task('browser-sync', (done) => {
   browserSync.init({
     proxy: 'http://localhost:3001',
-    files: ['public/**/*.*', 'views/**/*.*', 'src/**/*.*', '*.js', 'routes/*.js', 'bin/www'],
+    files: ['public/**/*.*', 'views/**/*.*', 'resources/**/*.*', '*.js', 'routes/*.js', 'server.js'],
     port: 3000,
     ui: {
       port: 3030,

@@ -3,7 +3,7 @@ const { promisify } = require('util');
 const supertest = require('supertest');
 const expect = require('chai').expect;
 
-const app = require('../app');
+const app = require('../bootstrap/app');
 const knex = require('../knex-export');
 const {
   ADMIN_USERNAME: adminUsername,
@@ -164,7 +164,7 @@ describe('API', () => {
         .field('github', testGithub)
         .field('linkedin', testLinkedIn)
         .field('description', testDescription)
-        .attach('photo', 'src/img/mug.png')
+        .attach('photo', 'resources/img/mug.png')
         .expect(302);
 
       const {

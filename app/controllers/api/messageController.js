@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const knex = require('../../knex-export');
-const { authenticate } = require('../../middlewares/authenticate');
+const knex = require('../../../knex-export');
+const { authenticate } = require('../../middleware/authenticate');
 
 /* Get All Messages */
 router.get('/', authenticate, (req, res) => {
