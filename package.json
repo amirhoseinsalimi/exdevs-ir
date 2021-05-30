@@ -38,6 +38,9 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
     "@types/node": "^15.6.1",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.14",
