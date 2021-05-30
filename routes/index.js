@@ -6,12 +6,12 @@ const app = require('../app');
 /* ***************************
           Page Routes
 *************************** */
-const index = require('./website/index');
+const index = require('../app/controllers/web');
 
-const adminLogin = require('./admin/admin');
-const adminMessages = require('./admin/messages');
-const adminMembers = require('./admin/members');
-const adminTeams = require('./admin/teams');
+const adminLogin = require('../app/controllers/web/admin/admin');
+const adminMessages = require('../app/controllers/web/admin/messages');
+const adminMembers = require('../app/controllers/web/admin/members');
+const adminTeams = require('../app/controllers/web/admin/teams');
 
 
 app.use('/', index);
@@ -24,9 +24,9 @@ app.use('/admin/teams', adminTeams);
 /* ******************************
         RESTful API Routes
 ****************************** */
-const messageController = require('./api/messageController');
-const memberController = require('./api/memberController');
-const teamController = require('./api/teamController');
+const messageController = require('../app/controllers/api/messageController');
+const memberController = require('../app/controllers/api/memberController');
+const teamController = require('../app/controllers/api/teamController');
 
 app.use('/api/message', messageController);
 app.use('/api/member', memberController);
