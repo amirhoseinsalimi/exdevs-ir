@@ -5,6 +5,7 @@
  */
 const debug = require('debug')('generator:server');
 const http = require('http');
+// @ts-ignore
 const app = require('./routes');
 
 /**

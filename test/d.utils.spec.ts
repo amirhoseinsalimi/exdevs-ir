@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 const expect = require('chai').expect;
 
 const { generateSecretKey } = require('../app/commands/gen-secret');

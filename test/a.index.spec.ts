@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 const http = require('http');
 
 const app = require('../bootstrap/app');

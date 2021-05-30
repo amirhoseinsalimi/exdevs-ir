@@ -1,7 +1,9 @@
+/* tslint:disable */
+
 const { exists } = require('fs');
 const { promisify } = require('util');
 const supertest = require('supertest');
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
 const app = require('../bootstrap/app');
 const knex = require('../knex-export');

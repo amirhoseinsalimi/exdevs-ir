@@ -1,6 +1,8 @@
+/* tslint:disable */
+
 const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
 const app = require('../routes');
 

@@ -17,6 +17,7 @@ const helmet = require('helmet');
 /* *****************************
     Application Configuration
 ****************************** */
+// @ts-ignore
 const app = express();
 const cwd = process.cwd();
 
