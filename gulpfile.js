@@ -23,13 +23,13 @@ const imagemin = require('gulp-imagemin');
 
 /* Paths */
 const styleSrc = 'resources/scss/**/*.scss';
-const styleDest = './public/css/';
+const styleDest = './dist/public/css/';
 const scriptSrc = 'resources/js/**/*.js';
-const scriptDest = './public/js/';
+const scriptDest = './dist/public/js/';
 const imgSrc = 'resources/img/**/*';
-const imgDest = './public/img/';
+const imgDest = './dist/public/img/';
 const iconSrc = 'resources/icons/**/*';
-const iconDest = './public/icons/';
+const iconDest = './dist/public/icons/';
 
 
 /* Plugins' configuration */
@@ -75,7 +75,7 @@ gulp.task('icon', () => gulp.src(iconSrc)
 gulp.task('nodemon', (done) => {
   const STARTUP_TIMEOUT = 5000;
   const server = nodemon({
-    script: 'server.js',
+    script: 'dist/server.js',
     stdout: false, // without this line the stdout event won't fire
   });
   let starting = false;
@@ -103,7 +103,7 @@ gulp.task('nodemon', (done) => {
 gulp.task('browser-sync', (done) => {
   browserSync.init({
     proxy: 'http://localhost:3001',
-    files: ['public/**/*.*', 'views/**/*.*', 'resources/**/*.*', '*.js', 'routes/*.js', 'server.js'],
+    files: ['public/**/*.*', 'views/**/*.*', 'resources/**/*.*', '*.js', 'routes/*.js', 'dist/server.js'],
     port: 3000,
     ui: {
       port: 3030,

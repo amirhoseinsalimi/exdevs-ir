@@ -18,13 +18,14 @@ const helmet = require('helmet');
     Application Configuration
 ****************************** */
 const app = express();
+const cwd = process.cwd();
 
 const {
   SECRET: secret,
 } = require('../env');
 
 // view engine setup
-app.set('views', path.join(__dirname, '../resources/views'));
+app.set('views', path.join(cwd, 'resources/views'));
 app.set('view engine', 'pug');
 
 /* ******************************
@@ -33,7 +34,8 @@ app.set('view engine', 'pug');
 app.use(helmet({
   hidePoweredBy: false,
 }));
-app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
+
+app.use(favicon(path.join(cwd, 'public', 'favicon.ico')));
 app.use(logger('dev', { skip: () => process.env.NODE_ENV === 'testing' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -50,7 +52,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
 }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(cwd, 'public')));
 app.use(express.static('uploads'));
 
 module.exports = app;
