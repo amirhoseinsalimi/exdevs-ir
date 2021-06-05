@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 const debug = require('debug')('generator:server');
-const http = require('http');
-const app = require('./routes');
+import { createServer } from 'http';
+import { app } from './routes';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -35,7 +35,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-const server = http.createServer(app);
+const server = createServer(app);
 
 /**
  * Event listener for HTTP server "error" event.

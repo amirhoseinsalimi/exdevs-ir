@@ -1,10 +1,11 @@
-const express = require('express');
+import * as express from 'express';
+import * as bcrypt from 'bcrypt';
 
-const router = express.Router();
-const bcrypt = require('bcrypt');
 const knex = require('../../../../knex-export');
+const router = express.Router();
 
 router.get('/', (req, res) => {
+  // @ts-ignore
   if (req.session.username) {
     res.redirect('/admin/messages');
   } else {
@@ -25,6 +26,7 @@ router.post('/', (req, res) => {
       if (admins.length !== 0) {
         bcrypt.compare(password, admins[0].password).then(matched => {
           if (matched) {
+            // @ts-ignore
             req.session.username = username;
 
             res.redirect('/admin/messages');
@@ -41,4 +43,4 @@ router.post('/', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

@@ -1,8 +1,9 @@
-const express = require('express');
+import * as express from 'express';
 
-const router = express.Router();
-const shuffleArray = require('../../helpers/shuffle-array');
+import shuffle from '../../helpers/shuffle-array';
+
 const knex = require('../../../knex-export');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -13,11 +14,11 @@ router.get('/', (req, res) => {
         member.photo = member.photo.replace(/uploads/g, '');
       });
 
-      res.status(200).render('website/index', { members: shuffleArray(members) });
+      res.status(200).render('website/index', { members: shuffle(members) });
     })
     .catch((err) => {
       throw Error(err);
     });
 });
 
-module.exports = router;
+export default router;

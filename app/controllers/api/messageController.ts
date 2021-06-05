@@ -1,8 +1,9 @@
-const express = require('express');
+import * as express from 'express';
 
-const router = express.Router();
+import authenticate from '../../middleware/authenticate';
+
 const knex = require('../../../knex-export');
-const { authenticate } = require('../../middleware/authenticate');
+const router = express.Router();
 
 /* Get All Messages */
 router.get('/', authenticate, (req, res) => {
@@ -97,4 +98,4 @@ router.delete('/:id', authenticate, (req, res) => {
     ));
 });
 
-module.exports = router;
+export default router;

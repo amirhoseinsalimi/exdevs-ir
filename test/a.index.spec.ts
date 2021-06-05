@@ -1,6 +1,8 @@
+/* tslint:disable */
+
 const http = require('http');
 
-const app = require('../bootstrap/app');
+const { app } = require('../bootstrap/app');
 const knex = require('../knex-export');
 const {
   PORT: port,

@@ -1,8 +1,10 @@
+/* tslint:disable */
+
 const { JSDOM } = require('jsdom');
 const supertest = require('supertest');
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
-const app = require('../routes');
+const { app } = require('../routes');
 
 describe('Website', () => {
   it('should get the index page', async () => {

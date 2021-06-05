@@ -1,9 +1,11 @@
+/* tslint:disable */
+
 const { exists } = require('fs');
 const { promisify } = require('util');
 const supertest = require('supertest');
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
-const app = require('../bootstrap/app');
+const { app } = require('../routes');
 const knex = require('../knex-export');
 const {
   ADMIN_USERNAME: adminUsername,
@@ -200,16 +202,16 @@ describe('API', () => {
       expect(members.pop())
         .to.be.an('object')
         .and.to.include.keys(
-          'full_name',
-          'role',
-          'description',
-          'photo',
-          'telegram',
-          'email',
-          'twitter',
-          'linkedin',
-          'github',
-        );
+        'full_name',
+        'role',
+        'description',
+        'photo',
+        'telegram',
+        'email',
+        'twitter',
+        'linkedin',
+        'github',
+      );
     });
 
     it('should get a member by its id', async () => {

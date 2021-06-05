@@ -24,6 +24,7 @@ public/**/*
 *.exe
 *.o
 *.so
+dist
 
 
 # Runtime data #
