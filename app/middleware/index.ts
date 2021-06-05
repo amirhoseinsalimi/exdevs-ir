@@ -12,7 +12,9 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const {
-  SECRET: secret,
+  SECRET,
+  REDIS_HOST,
+  REDIS_PORT,
 } = require('../../env');
 app.use(helmet({
   hidePoweredBy: false,
@@ -24,11 +26,11 @@ app.use(logger('dev', { skip: () => process.env.NODE_ENV === 'testing' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
-  secret,
+  secret: SECRET,
   store: new RedisStore(
     {
-      host: '127.0.0.1',
-      port: 6379,
+      host: REDIS_HOST,
+      port: REDIS_PORT,
       client,
       ttl: 260,
     },
