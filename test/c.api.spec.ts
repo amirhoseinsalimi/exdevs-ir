@@ -1,11 +1,11 @@
 /* tslint:disable */
 
-import { exists } from 'fs';
-import { promisify } from 'util';
-import * as supertest from 'supertest';
+const { exists } = require('fs');
+const { promisify } = require('util');
+const supertest = require('supertest');
 import { expect } from 'chai';
 
-import { app } from '../routes';
+const { app } = require('../routes');
 const knex = require('../knex-export');
 const {
   ADMIN_USERNAME: adminUsername,
@@ -202,16 +202,16 @@ describe('API', () => {
       expect(members.pop())
         .to.be.an('object')
         .and.to.include.keys(
-          'full_name',
-          'role',
-          'description',
-          'photo',
-          'telegram',
-          'email',
-          'twitter',
-          'linkedin',
-          'github',
-        );
+        'full_name',
+        'role',
+        'description',
+        'photo',
+        'telegram',
+        'email',
+        'twitter',
+        'linkedin',
+        'github',
+      );
     });
 
     it('should get a member by its id', async () => {

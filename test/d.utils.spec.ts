@@ -1,8 +1,8 @@
 /* tslint:disable */
 
-import { expect } from 'chai';
+const expect = require('chai').expect;
 
-import { generateSecretKey } from '../app/commands/gen-secret';
+const { generateSecretKey } = require('../app/commands/gen-secret');
 
 describe('Utils', () => {
   it('should generate a random string w/ specified length', done => {

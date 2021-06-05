@@ -1,8 +1,8 @@
 /* tslint:disable */
 
-import { createServer } from 'http';
-import app from '../bootstrap/app';
+const http = require('http');
 
+const { app } = require('../bootstrap/app');
 const knex = require('../knex-export');
 const {
   PORT: port,
@@ -14,7 +14,7 @@ before(async () => {
   await knex.migrate.latest();
   await knex.seed.run();
 
-  server = await createServer(app);
+  server = await http.createServer(app);
   server.listen(port);
 });
 
