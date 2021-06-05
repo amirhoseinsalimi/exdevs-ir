@@ -1,10 +1,10 @@
 import * as express from 'express';
 
-const router = express.Router();
-const knex = require('../../../knex-export');
-
 import upload from '../../helpers/uploader';
 import authenticate from '../../middleware/authenticate';
+
+const knex = require('../../../knex-export');
+const router = express.Router();
 
 /* Get All Members */
 router.get('/', (req, res) => {
@@ -115,4 +115,4 @@ router.delete('/:id', authenticate, (req, res) => {
     ));
 });
 
-module.exports = router;
+export default router;

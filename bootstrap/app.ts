@@ -1,18 +1,12 @@
-/* ***************************
-    Import Node.js modules
-**************************** */
-const express = require('express');
-const path = require('path');
+import * as express from 'express';
+import { join } from 'path';
 
-/* *****************************
-    Application Configuration
-****************************** */
 // @ts-ignore
 const app = express();
 const cwd = process.cwd();
 
 // view engine setup
-app.set('views', path.join(cwd, 'resources/views'));
+app.set('views', join(cwd, 'resources/views'));
 app.set('view engine', 'pug');
 
-module.exports = app;
+export default app;

@@ -1,11 +1,11 @@
 /* tslint:disable */
 
-const { exists } = require('fs');
-const { promisify } = require('util');
-const supertest = require('supertest');
+import { exists } from 'fs';
+import { promisify } from 'util';
+import * as supertest from 'supertest';
 import { expect } from 'chai';
 
-const app = require('../bootstrap/app');
+import { app } from '../routes';
 const knex = require('../knex-export');
 const {
   ADMIN_USERNAME: adminUsername,

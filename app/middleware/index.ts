@@ -1,24 +1,27 @@
 import * as express from 'express';
 import * as path from 'path';
-const session = require('express-session');
-const redis = require('redis');
-const app = require('../../bootstrap/app');
+import * as session from 'express-session';
+import * as redis from 'redis';
+import * as logger from 'morgan';
+import * as favicon from 'serve-favicon';
+import * as bodyParser from 'body-parser';
+import * as helmet from 'helmet';
 
 const RedisStore = require('connect-redis')(session);
 
+import app from '../../bootstrap/app';
+
 const client = redis.createClient();
-const logger = require('morgan');
-const favicon = require('serve-favicon');
-const bodyParser = require('body-parser');
-const helmet = require('helmet');
 const {
   SECRET,
   REDIS_HOST,
   REDIS_PORT,
 } = require('../../env');
+
 app.use(helmet({
   hidePoweredBy: false,
 }));
+
 const cwd = process.cwd();
 
 app.use(favicon(path.join(cwd, 'public', 'favicon.ico')));
@@ -41,4 +44,4 @@ app.use(session({
 app.use(express.static(path.join(cwd, 'public')));
 app.use(express.static('uploads'));
 
-module.exports = app;
+export default app;

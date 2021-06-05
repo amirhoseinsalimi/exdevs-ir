@@ -1,4 +1,4 @@
-const multer = require('multer');
+import * as multer from 'multer';
 
 const storage = multer.diskStorage({
   destination(req, file, callback) {

@@ -1,8 +1,9 @@
 import * as express from 'express';
 
-const router = express.Router();
 import shuffle from '../../helpers/shuffle-array';
+
 const knex = require('../../../knex-export');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -20,4 +21,4 @@ router.get('/', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

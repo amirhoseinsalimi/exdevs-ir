@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import authenticate from '../../../middleware/authenticate';
 
 const router = express.Router();
@@ -7,4 +8,4 @@ router.get('/', authenticate, (req, res) => {
   res.render('admin/teams');
 });
 
-module.exports = router;
+export default router;
