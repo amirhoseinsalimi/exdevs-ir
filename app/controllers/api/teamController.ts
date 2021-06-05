@@ -1,9 +1,9 @@
-const express = require('express');
+import * as express from 'express';
 
 const router = express.Router();
 const knex = require('../../../knex-export');
-const shuffleArray = require('../../helpers/shuffle-array');
-const { authenticate } = require('../../middleware/authenticate');
+import shuffle from '../../helpers/shuffle-array';
+import authenticate from '../../middleware/authenticate';
 
 /* Get All Teams */
 router.get('/', (req, res) => {
@@ -12,13 +12,14 @@ router.get('/', (req, res) => {
     .from('teams')
     .then((teams) => {
       const result = {
-        teams: shuffleArray(teams),
+        teams: shuffle(teams),
       };
 
       res.status(200).json(result);
     })
     .catch((err) => (
-      res.status(500).json(err)
+      // res.status(500).json(err)
+      console.log(err)
     ));
 });
 

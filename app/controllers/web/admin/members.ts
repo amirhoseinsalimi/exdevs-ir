@@ -1,5 +1,5 @@
-const express = require('express');
-const { authenticate } = require('../../../middleware/authenticate');
+import * as express from 'express';
+import authenticate from '../../../middleware/authenticate';
 
 const router = express.Router();
 

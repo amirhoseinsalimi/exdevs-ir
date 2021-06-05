@@ -12,8 +12,8 @@
     "db:seeds": "knex seed:run",
     "db:seed": "npm run db:seeds",
     "db:rollback": "knex migrate:rollback --all",
-    "key:generate": "node app/commands/gen-secret.js",
-    "test": "tsc test/*.ts --outDir dist/test && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
+    "key:generate": "node app/commands/gen-secret.ts",
+    "test": "tsc test/*.ts --outDir dist/test && tsc && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
     "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js"
   },
   "dependencies": {
@@ -38,9 +38,11 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.12",
     "@types/chai": "^4.2.18",
+    "@types/express": "^4.17.12",
+    "@types/express-session": "^1.17.3",
     "@types/mocha": "^8.2.2",
+    "@types/multer": "^1.4.5",
     "@types/node": "^15.6.1",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.14",

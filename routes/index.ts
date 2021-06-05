@@ -1,7 +1,7 @@
-const express = require('express');
+import * as express from 'express';
 
 const router = express.Router();
-const app = require('../bootstrap/app');
+const app = require('../app/middleware/');
 
 /* ***************************
           Page Routes

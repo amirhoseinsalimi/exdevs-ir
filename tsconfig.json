@@ -19,5 +19,9 @@
     "./node_modules/",
     "./dist/",
     "./resources/"
+  ],
+  "typeRoots": [
+    "./contracts",
+    "./node_modules/@types"
   ]
 }
