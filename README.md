@@ -1,6 +1,6 @@
 # Exceptional Developers Website
 
-Exceptional Developers' portfolio website. https://expteam.ir
+Exceptional Developers' portfolio website. https://exdevs.ir
 
 ---
 
@@ -16,7 +16,7 @@ Simply clone and run this website for your personal use :D
 ### Project setup
 
 1. **Clone this repo:**\
-Run `git clone https://github.com/amirhoseinsalimi/expteam-ir && cd expteam-ir`
+Run `git clone https://github.com/amirhoseinsalimi/exdevs-ir && cd exdevs-ir`
 2. **Install dependencies:**
 Run `npm i`
 3. **Configure environment variables:**\
