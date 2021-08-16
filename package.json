@@ -12,7 +12,7 @@
     "db:seeds": "knex seed:run",
     "db:seed": "npm run db:seeds",
     "db:rollback": "knex migrate:rollback --all",
-    "key:generate": "node app/commands/gen-secret.ts",
+    "key:generate": "ts-node app/commands/gen-secret.ts",
     "test": "tsc test/*.ts --outDir dist/test && tsc && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
     "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js"
   },
