@@ -21,6 +21,14 @@ const {
 app.use(helmet({
   hidePoweredBy: false,
 }));
+const store = new RedisStore(
+  {
+    host: REDIS_HOST,
+    port: REDIS_PORT,
+    client,
+    ttl: 260,
+  },
+);
 
 const cwd = process.cwd();
 
@@ -30,14 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
   secret: SECRET,
-  store: new RedisStore(
-    {
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-      client,
-      ttl: 260,
-    },
-  ),
+  store,
   saveUninitialized: false,
   resave: false,
 }));
