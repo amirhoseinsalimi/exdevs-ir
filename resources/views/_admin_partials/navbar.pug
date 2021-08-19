@@ -7,3 +7,18 @@ nav.navbar.navbar-light
       a.dropdown-item(href='/admin/members/') Members
       .dropdown-divider
       a.dropdown-item(href='/admin/teams/') Teams
+      .dropdown-divider
+      a.dropdown-item(class='btn-logout') Logout
+
+script.
+  document.querySelectorAll('.btn-logout')[0].addEventListener('click', async () => {
+    try {
+      await fetch('/admin/logout', {
+        method: 'POST',
+      });
+
+      location.href = '/admin'
+    } catch (e) {
+      console.log(e);
+    }
+  });
