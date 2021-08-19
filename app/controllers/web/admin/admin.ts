@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as bcrypt from 'bcrypt';
+import { store } from '../../../middleware';
 
 const knex = require('../../../../knex-export');
 const router = express.Router();
@@ -41,6 +42,13 @@ router.post('/', (req, res) => {
     .catch(() => {
       res.status(500).render('500');
     });
+});
+
+router.post('/logout', (req, res) => {
+  store.clear(() => {
+    res.redirect('/admin');
+    console.log('C');
+  });
 });
 
 export default router;

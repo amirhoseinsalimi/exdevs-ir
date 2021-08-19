@@ -7,20 +7,27 @@ import * as favicon from 'serve-favicon';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 
-const RedisStore = require('connect-redis')(session);
-
 import app from '../../bootstrap/app';
-
-const client = redis.createClient();
+const RedisStore = require('connect-redis')(session);
 const {
   SECRET,
   REDIS_HOST,
   REDIS_PORT,
 } = require('../../env');
 
+const client = redis.createClient();
+
 app.use(helmet({
   hidePoweredBy: false,
 }));
+const store = new RedisStore(
+  {
+    host: REDIS_HOST,
+    port: REDIS_PORT,
+    client,
+    ttl: 260,
+  },
+);
 
 const cwd = process.cwd();
 
@@ -30,14 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
   secret: SECRET,
-  store: new RedisStore(
-    {
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-      client,
-      ttl: 260,
-    },
-  ),
+  store,
   saveUninitialized: false,
   resave: false,
 }));
@@ -46,3 +46,4 @@ app.use(express.static(path.join(cwd, 'public')));
 app.use(express.static('uploads'));
 
 export default app;
+export { store };
