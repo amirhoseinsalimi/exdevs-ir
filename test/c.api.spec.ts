@@ -374,4 +374,15 @@ describe('API', () => {
       expect(newL).equals(oldL - 1);
     });
   });
+
+  describe('Admin Authentication', () => {
+    it('should logout the admin', async () => {
+      const { headers } = await supertest(app)
+        .post('/admin/logout');
+
+      adminCookie = headers['set-cookie'];
+
+      expect(adminCookie).to.be.undefined;
+    });
+  });
 });
