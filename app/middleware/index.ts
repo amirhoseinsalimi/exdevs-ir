@@ -47,3 +47,4 @@ app.use(express.static(path.join(cwd, 'public')));
 app.use(express.static('uploads'));
 
 export default app;
+export { store };
