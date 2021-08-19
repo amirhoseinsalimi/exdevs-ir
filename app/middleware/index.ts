@@ -7,16 +7,15 @@ import * as favicon from 'serve-favicon';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 
-const RedisStore = require('connect-redis')(session);
-
 import app from '../../bootstrap/app';
-
-const client = redis.createClient();
+const RedisStore = require('connect-redis')(session);
 const {
   SECRET,
   REDIS_HOST,
   REDIS_PORT,
 } = require('../../env');
+
+const client = redis.createClient();
 
 app.use(helmet({
   hidePoweredBy: false,
