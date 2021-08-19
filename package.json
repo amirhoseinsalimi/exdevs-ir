@@ -3,8 +3,8 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "start": "gulp build && pm2 start dist/server.js --name exdevs-ir",
-    "restart": "gulp build && pm2 restart exdevs-ir",
+    "start": "tsc && gulp build && pm2 start dist/server.js --name exdevs-ir",
+    "restart": "tsc && gulp build && pm2 restart exdevs-ir",
     "stop": "pm2 stop exdevs-ir",
     "dev": "tsc-watch --noClear --onFirstSuccess gulp",
     "monit": "pm2 monit",

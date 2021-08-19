@@ -41,6 +41,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
 }));
+app.use(express.static(path.join(cwd, 'dist/public')));
 app.use(express.static(path.join(cwd, 'public')));
 app.use(express.static('uploads'));
 
