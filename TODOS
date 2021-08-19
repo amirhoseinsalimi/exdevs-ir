@@ -9,13 +9,10 @@ TODO: Write tests for back-end *
 TODO: Migrate to Express 5 *
 TODO: Migrate front-end to TypeScript *
 TODO: Migrate back-end to TypeScript
-TODO: Dark theme
 TODO: Migrate to vanilla JavaScript *
 TODO: Send incoming messages to personal email
 TODO: Swagger and Postman documentation
 TODO: Dockerize
-TODO: Migrate to a more mature Express boilerplate?
 TODO: Use IoC/DI *
 TODO: Use async/await
 TODO: Rely more on templating instead of AJAX requests
-TODO: Logout functionality for admin
