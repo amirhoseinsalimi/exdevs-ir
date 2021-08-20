@@ -184,17 +184,13 @@ body {
   a.actions_button {
     padding: 30px;
     color: black;
-    width: 50%;
+    width: 100%;
 
     &:hover {
       color: $primary-dark;
     }
 
     &.bg--accent:hover {
-      background-color: $primary-lighter;
-    }
-
-    &.bg--white:hover {
       background-color: $primary-lighter;
     }
   }
@@ -210,8 +206,6 @@ body {
   }
 
   @media screen and (max-width: 991px) {
-    bottom: -96px;
-
     a.actions_button {
       width: 100%;
     }
