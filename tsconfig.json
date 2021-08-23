@@ -4,7 +4,7 @@
     "./**/*.js"
   ],
   "compilerOptions": {
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "target": "es5",
     "outDir": "dist",
     "downlevelIteration": true,
@@ -12,7 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "sourceMap": false,
-    "allowJs": true
+    "allowJs": true,
+    "declaration": true
   },
   "exclude": [
     "./test/",
