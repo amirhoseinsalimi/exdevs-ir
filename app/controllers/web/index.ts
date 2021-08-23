@@ -9,15 +9,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
   knex.select('*')
     .from('members')
-    .then((members) => {
-      members.forEach((member) => {
+    .then((members: any) => {
+      members.forEach((member: any) => {
         member.photo = member.photo.replace(/uploads/g, '');
       });
 
       res.status(200).render('website/index', { members: shuffle(members) });
     })
-    .catch((err) => {
-      throw Error(err);
+    .catch((err: Error) => {
+      throw Error(err.message);
     });
 });
 

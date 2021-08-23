@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     })
     .select('*')
     .from('admins')
-    .then(admins => {
+    .then((admins: any) => {
       if (admins.length !== 0) {
         bcrypt.compare(password, admins[0].password).then(matched => {
           if (matched) {

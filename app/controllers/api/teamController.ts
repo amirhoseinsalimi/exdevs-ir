@@ -11,14 +11,14 @@ router.get('/', (req, res) => {
   knex
     .select('*')
     .from('teams')
-    .then((teams) => {
+    .then((teams: any) => {
       const result = {
         teams: shuffle(teams),
       };
 
       res.status(200).json(result);
     })
-    .catch((err) => (
+    .catch((err: Error) => (
       // res.status(500).json(err)
       console.log(err)
     ));
@@ -39,10 +39,10 @@ router.get('/:id', (req, res) => {
       id: teamId,
     })
     .select('*')
-    .then((team) => {
+    .then((team: any) => {
       res.status(200).json(team);
     })
-    .catch((err) => (
+    .catch((err: Error) => (
       res.status(500).json(err)
     ));
 });
