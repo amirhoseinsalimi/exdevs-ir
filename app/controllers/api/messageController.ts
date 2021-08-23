@@ -10,7 +10,7 @@ router.get('/', authenticate, (req, res) => {
   knex
     .select('*')
     .from('messages')
-    .then((messages) => {
+    .then((messages: any) => {
       res.status(200).json(messages);
     })
     .catch(() => (
@@ -33,7 +33,7 @@ router.get('/:id', authenticate, (req, res) => {
       id: messageId,
     })
     .select('*')
-    .then((message) => {
+    .then((message: any) => {
       res.status(200).json(message);
     })
     .catch(() => (
@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
       res.status(200);
       res.redirect('/');
     })
-    .catch((err) => (
+    .catch((err: Error) => (
       res.status(500).json(err)
     ));
 });

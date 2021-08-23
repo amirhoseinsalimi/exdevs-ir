@@ -1,4 +1,4 @@
-export const generateSecretKey = (length) => {
+export const generateSecretKey = (length: number) => {
   const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-';
   let result = '';
 

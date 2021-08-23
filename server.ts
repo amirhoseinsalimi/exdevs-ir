@@ -4,13 +4,14 @@
  * Module dependencies.
  */
 const debug = require('debug')('generator:server');
+import ErrnoException = NodeJS.ErrnoException;
 import { createServer } from 'http';
 import { app } from './routes';
 
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val) {
+function normalizePort(val: string) {
   const port = parseInt(val, 10);
 
   if (Number.isNaN(port)) {
@@ -40,11 +41,10 @@ const server = createServer(app);
 /**
  * Event listener for HTTP server "error" event.
  */
-function onError(error) {
+function onError(error: ErrnoException) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':

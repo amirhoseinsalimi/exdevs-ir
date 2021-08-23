@@ -11,10 +11,11 @@ router.get('/', (req, res) => {
   knex
     .select('*')
     .from('members')
-    .then((members) => {
+    // TODO: Make interfaces for these types or use an ORM
+    .then((members: any) => {
       res.status(200).json([...members].reverse());
     })
-    .catch((err) => (
+    .catch((err: Error) => (
       res.status(500).json(err)
     ));
 });
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) => {
       id: memberId,
     })
     .select('*')
-    .then((member) => {
+    .then((member: any) => {
       res.status(200).json(member);
     })
     .catch(() => (
