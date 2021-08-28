@@ -13,7 +13,7 @@
     "moduleResolution": "Node",
     "sourceMap": false,
     "allowJs": true,
-    "declaration": true
+    "declaration": false
   },
   "exclude": [
     "./test/",
