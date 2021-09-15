@@ -67,7 +67,7 @@ $(() => {
 
   let currentTeamId = 0;
 
-  $addNewTeam.on('click', function () {
+  $addNewTeam.on('click', async function () {
     $('.modal label[for=photo]').addClass('visible').removeClass('invisible');
     $('.modal #photo').addClass('visible').removeClass('invisible');
 
@@ -102,56 +102,53 @@ $(() => {
     });
   });
 
-  $teamsContainer.on('click', '.btn-delete-team', function () {
+  $teamsContainer.on('click', '.btn-delete-team', async function () {
     if (!window.confirm('Are you sure?')) {
       return;
     }
 
     const teamsId = $(this).closest('.card').data('id');
 
-    deleteTeamById(teamsId)
-      .then(() => {
-        window.location.reload();
-      });
+    await deleteTeamById(teamsId);
+    window.location.reload();
   });
 
-  $teamsContainer.on('click', '.btn-update', function () {
-    const messageId = $(this).closest('.card').data('id');
+  $teamsContainer.on('click', '.btn-update', async function () {
+    const teamId = $(this).closest('.card').data('id');
 
-    getTeamById(messageId)
-      .then((teamArray) => {
-        $('.modal-footer .btn-update').removeClass('invisible').addClass('visible');
-        $('.modal-footer .btn-add').removeClass('visible').addClass('invisible');
+    const teamArray = await getTeamById(teamId);
 
-        $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
-        $('.modal #photo').removeClass('visible').addClass('invisible');
+    $('.modal-footer .btn-update').removeClass('invisible').addClass('visible');
+    $('.modal-footer .btn-add').removeClass('visible').addClass('invisible');
 
-        const {
-          id,
-          name,
-          description,
-          color,
-        } = teamArray[0];
+    $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
+    $('.modal #photo').removeClass('visible').addClass('invisible');
 
-        currentTeamId = id;
+    const {
+      id,
+      name,
+      description,
+      color,
+    } = teamArray[0];
 
-        $('#name').val(name);
-        $('#description').val(description);
-        $('#color').val(color);
+    currentTeamId = id;
 
-        $('#teamModal').modal('toggle');
-      });
+    $('#name').val(name);
+    $('#description').val(description);
+    $('#color').val(color);
+
+    $('#teamModal').modal('toggle');
   });
 
-  getAllTeams()
-    .then(({ teams }) => {
-      teams.forEach(({
-        id,
-        name,
-        description,
-        color,
-      }) => {
-        $teamsContainer.prepend(`
+  const { teams } = getAllTeams();
+
+  teams.forEach(({
+    id,
+    name,
+    description,
+    color,
+  }) => {
+    $teamsContainer.prepend(`
         <div class="col-12 col-md-6 mb-2">
           <div class="card mb-2 d-inline-block h-100" style="width: 100%; border-bottom: 5px solid ${color}" data-id="${id}">
             <div class="card-body">
@@ -167,6 +164,5 @@ $(() => {
           </div>
         </div>
         `);
-      });
-    });
+  });
 });

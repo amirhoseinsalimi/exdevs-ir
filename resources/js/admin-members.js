@@ -59,7 +59,7 @@ const deleteMemberById = async (id) => {
   }
 };
 
-$(() => {
+$(async () => {
   const $membersContainer = $('.members-container');
   const $btnUpdateMember = $('.btn-update-member');
   const $form = $('form');
@@ -107,68 +107,65 @@ $(() => {
     });
   });
 
-  $membersContainer.on('click', '.btn-delete-member', function () {
+  $membersContainer.on('click', '.btn-delete-member', async function () {
     if (!window.confirm('Are you sure?')) {
       return;
     }
 
     const memberId = $(this).closest('.card').data('id');
 
-    deleteMemberById(memberId)
-      .then(() => {
-        window.location.reload();
-      });
+    await deleteMemberById(memberId);
+    window.location.reload();
   });
 
-  $membersContainer.on('click', '.btn-update', function () {
+  $membersContainer.on('click', '.btn-update', async function () {
     const messageId = $(this).closest('.card').data('id');
 
-    getMemberById(messageId)
-      .then((memberArray) => {
-        $('.modal-footer .btn-update').removeClass('invisible').addClass('visible');
-        $('.modal-footer .btn-add').removeClass('visible').addClass('invisible');
+    const memberArray = await getMemberById(messageId);
 
-        $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
-        $('.modal #photo').removeClass('visible').addClass('invisible');
+    $('.modal-footer .btn-update').removeClass('invisible').addClass('visible');
+    $('.modal-footer .btn-add').removeClass('visible').addClass('invisible');
 
-        const {
-          id,
-          full_name: name,
-          role,
-          description,
-          telegram,
-          email,
-          twitter,
-          linkedin,
-          github,
-        } = memberArray[0];
+    $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
+    $('.modal #photo').removeClass('visible').addClass('invisible');
 
-        currentMemberId = id;
+    const {
+      id,
+      full_name: name,
+      role,
+      description,
+      telegram,
+      email,
+      twitter,
+      linkedin,
+      github,
+    } = memberArray[0];
 
-        $('#name').val(name);
-        $('#email').val(email);
-        $('#description').val(description);
-        $('#telegram').val(telegram);
-        $('#github').val(github);
-        $('#role').val(role);
-        $('#twitter').val(twitter);
-        $('#linkedin').val(linkedin);
+    currentMemberId = id;
 
-        $('#memberModal').modal('toggle');
-      });
+    $('#name').val(name);
+    $('#email').val(email);
+    $('#description').val(description);
+    $('#telegram').val(telegram);
+    $('#github').val(github);
+    $('#role').val(role);
+    $('#twitter').val(twitter);
+    $('#linkedin').val(linkedin);
+
+    $('#memberModal').modal('toggle');
   });
 
-  getAllMembers()
-    .then((members) => {
-      members.forEach(({
-        id,
-        full_name,
-        description,
-        photo,
-      }) => {
-        photo = photo.replace(/uploads/g, '');
+  const members = await getAllMembers();
 
-        $membersContainer.prepend(`
+  members.forEach(({
+    id,
+    full_name,
+    description,
+    photo,
+  }) => {
+    photo = photo.replace(/uploads/g, '');
+
+    $membersContainer.prepend(`
         <div class="col-12 col-md-6 col-lg-3 mb-2">
           <div class="card mb-2 d-inline-block h-100" style="width: 100%;" data-id="${id}">
             <img src="${photo}" class="card-img-top" alt="${full_name}'s photo">
@@ -185,6 +182,5 @@ $(() => {
           </div>
         </div>
         `);
-      });
-    });
+  });
 });
