@@ -50,65 +50,61 @@ const deleteMessageById = async (id) => {
   }
 };
 
-$(() => {
+$(async () => {
   const $tBodyMessageTable = $('.messages-table tbody');
   const $btnDeleteMessage = $('.btn-delete-message');
   const $btnReplyMessage = $('.btn-reply-message');
   let currentMessageId = 0;
   let currentMessageEmail = '';
 
-  $btnDeleteMessage.on('click', function () {
-    deleteMessageById(currentMessageId)
-      .then(() => {
-        window.location.reload();
-      });
+  $btnDeleteMessage.on('click', async function () {
+    await deleteMessageById(currentMessageId);
+    window.location.reload();
   });
 
   $btnReplyMessage.on('click', function () {
     window.location.href = `mailto:${currentMessageEmail}`;
   });
 
-  $tBodyMessageTable.on('click', 'tr', function () {
+  $tBodyMessageTable.on('click', 'tr', async function () {
     const messageId = $(this).data('id');
 
-    getMessageById(messageId)
-      .then((messageArray) => {
-        const {
-          id,
-          name,
-          message,
-          email,
-          created_at: date,
-        } = messageArray[0];
+    const messageArray = await getMessageById(messageId);
 
-        currentMessageId = id;
-        currentMessageEmail = email;
+    const {
+      id,
+      name,
+      message,
+      email,
+      created_at: date,
+    } = messageArray[0];
 
-        $('#message-sender-name').text(name);
-        $('#message-sender-email').text(email);
-        $('#message-text').text(message);
-        $('#message-date').text(date);
+    currentMessageId = id;
+    currentMessageEmail = email;
 
-        $('#messageDetailsModal').modal('toggle');
+    $('#message-sender-name').text(name);
+    $('#message-sender-email').text(email);
+    $('#message-text').text(message);
+    $('#message-date').text(date);
 
-        markMessageAsRead(messageId)
-          .then(() => {
-            $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
-          });
-      });
+    $('#messageDetailsModal').modal('toggle');
+
+    await markMessageAsRead(messageId);
+
+    $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
   });
 
-  getAllMessages()
-    .then((messages) => {
-      messages.forEach(({
-        id,
-        name,
-        message,
-        email,
-        created_at: date,
-        is_read: isRead,
-      }) => {
-        $tBodyMessageTable.append(`
+  const messages = await getAllMessages();
+
+  messages.forEach(({
+    id,
+    name,
+    message,
+    email,
+    created_at: date,
+    is_read: isRead,
+  }) => {
+    $tBodyMessageTable.append(`
         <tr data-id="${id}">
           <th scope="row">
             <img
@@ -122,6 +118,5 @@ $(() => {
             <td>${date}</td>
           </tr>
         `);
-      });
-    });
+  });
 });
