@@ -7,21 +7,21 @@ const knex = require('../../../knex-export');
 const router = express.Router();
 
 /* Get All Members */
-router.get('/', (req, res) => {
-  knex
-    .select('*')
-    .from('members')
-    // TODO: Make interfaces for these types or use an ORM
-    .then((members: any) => {
-      res.status(200).json([...members].reverse());
-    })
-    .catch((err: Error) => (
-      res.status(500).json(err)
-    ));
+router.get('/', async (req, res) => {
+  // TODO: Make interfaces for these types or use an ORM
+  try {
+    const members = await knex
+      .select('*')
+      .from('members');
+
+    res.status(200).json([...members].reverse());
+  } catch {
+    res.status(500).render('500')
+  }
 });
 
 /* Get A Specific Member By Its ID */
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id: memberId } = req.params;
 
   if (!/^\d+$/.test(memberId)) {
@@ -30,36 +30,36 @@ router.get('/:id', (req, res) => {
     });
   }
 
-  knex('members')
-    .where({
-      id: memberId,
-    })
-    .select('*')
-    .then((member: any) => {
-      res.status(200).json(member);
-    })
-    .catch(() => (
-      res.status(500).render('500')
-    ));
+  try {
+    const member = await knex('members')
+      .where({
+        id: memberId,
+      })
+      .select('*');
+
+    res.status(200).json(member);
+  } catch {
+    res.status(500).render('500');
+  }
 });
 
 /* Add A Member */
-router.post('/', authenticate, upload.single('photo'), (req, res) => {
+router.post('/', authenticate, upload.single('photo'), async (req, res) => {
   const requestData = req.body;
   requestData.photo = req.file.path;
 
-  knex('members')
-    .insert(requestData)
-    .then(() => {
-      res.redirect('/admin/members');
-    })
-    .catch(() => {
-      res.status(500).render('500');
-    });
+  try {
+    await knex('members')
+      .insert(requestData);
+
+    res.redirect('/admin/members');
+  } catch {
+    res.status(500).render('500');
+  }
 });
 
 /* Update A Specific Member By Its ID */
-router.put('/:id', authenticate, (req, res) => {
+router.put('/:id', authenticate, async (req, res) => {
   const {
     id: memberId,
   } = req.params;
@@ -75,28 +75,28 @@ router.put('/:id', authenticate, (req, res) => {
     github,
   } = req.body;
 
-  knex('members')
-    .where('id', memberId)
-    .update({
-      full_name,
-      role,
-      description,
-      telegram,
-      email,
-      twitter,
-      linkedin,
-      github,
-    })
-    .then(() => (
-      res.status(204).json('Updated')
-    ))
-    .catch(() => (
-      res.status(500).render('500')
-    ));
+  try {
+    await knex('members')
+      .where('id', memberId)
+      .update({
+        full_name,
+        role,
+        description,
+        telegram,
+        email,
+        twitter,
+        linkedin,
+        github,
+      });
+
+    res.status(204).json('Updated');
+  } catch {
+    res.status(500).render('500');
+  }
 });
 
 /* Delete A Specific Member By Its ID */
-router.delete('/:id', authenticate, (req, res) => {
+router.delete('/:id', authenticate, async (req, res) => {
   const { id: memberId } = req.params;
 
   if (!/^\d+$/.test(memberId)) {
@@ -105,15 +105,15 @@ router.delete('/:id', authenticate, (req, res) => {
     });
   }
 
-  knex('members')
-    .where('id', memberId)
-    .del()
-    .then(() => {
-      res.status(204).end();
-    })
-    .catch(() => (
-      res.status(500).render('500')
-    ));
+  try {
+    await knex('members')
+      .where('id', memberId)
+      .del();
+
+    res.status(204).end();
+  } catch {
+    res.status(500).render('500')
+  }
 });
 
 export default router;

@@ -1,29 +1,25 @@
-exports.up = knex =>
-  knex.schema
-    .hasTable('teams')
-    .then(exists => {
-      if (exists) {
-        return knex.schema.alterTable('teams', (table) => {
-          table.string('color').after('description').nullable();
-        });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+exports.up = async (knex) => {
+  const exists = await knex.schema.hasTable('teams');
 
-exports.down = knex =>
-  knex.schema
-    .hasTable('teams')
-    .then(exists => {
-      if (exists) {
-        return knex.schema.alterTable('teams', (table) => {
-          table.dropColumn('color');
-        });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  if (!exists) {
+    return;
+  }
+
+  await knex.schema.alterTable('teams', (table) => {
+    table.string('color').after('description').nullable();
+  });
+};
+
+exports.down = async (knex) => {
+  const exists = await knex.schema.hasTable('teams');
+
+  if (!exists) {
+    return;
+  }
+
+  await knex.schema.alterTable('teams', (table) => {
+    table.dropColumn('color');
+  });
+};
 
 exports.config = { transaction: false };
