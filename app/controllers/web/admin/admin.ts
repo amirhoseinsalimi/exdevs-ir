@@ -14,34 +14,34 @@ router.get('/', (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { user: username, password } = req.body;
 
-  knex
-    .where({
-      username,
-    })
-    .select('*')
-    .from('admins')
-    .then((admins: any) => {
-      if (admins.length !== 0) {
-        bcrypt.compare(password, admins[0].password).then(matched => {
-          if (matched) {
-            // @ts-ignore
-            req.session.username = username;
+  try {
+    const admins = await knex
+      .where({
+        username,
+      })
+      .select('*')
+      .from('admins');
 
-            res.redirect('/admin/messages');
-          } else {
-            res.redirect('/admin');
-          }
-        });
-      } else {
-        res.redirect('/admin');
-      }
-    })
-    .catch(() => {
-      res.status(500).render('500');
-    });
+    if (admins.length === 0) {
+      res.redirect('/admin');
+      return
+    }
+
+    const matched = await bcrypt.compare(password, admins[0].password)
+
+    if (matched) {
+      req.session.username = username;
+
+      res.redirect('/admin/messages');
+    } else {
+      res.redirect('/admin');
+    }
+  } catch {
+    res.status(500).render('500');
+  }
 });
 
 router.post('/logout', (req, res) => {

@@ -1,26 +1,28 @@
-exports.up = knex =>
-  knex.schema
-    .hasTable('admins')
-    .then(exists => {
-      if (!exists) {
-        return knex.schema.createTable('admins', table => {
-          table.increments().primary();
-          table.string('username').notNullable();
-          table.string('password').notNullable();
-          table.timestamps(true, true);
-        });
-      }
-    })
-    .catch(() => {});
+const TABLE_NAME = 'admins';
 
-exports.down = knex =>
-  knex.schema
-    .hasTable('admins')
-    .then(exists => {
-      if (exists) {
-        return knex.schema.dropTableIfExists('admins');
-      }
-    })
-    .catch(() => {});
+exports.up = async (knex) => {
+  const exists = await knex.schema.hasTable(TABLE_NAME);
+
+  if (exists) {
+    return;
+  }
+
+  await knex.schema.createTable(TABLE_NAME, (table) => {
+    table.increments().primary();
+    table.string('username').notNullable();
+    table.string('password').notNullable();
+    table.timestamps(true, true);
+  });
+};
+
+exports.down = async (knex) => {
+  const exists = await knex.schema.hasTable(TABLE_NAME);
+
+  if (!exists) {
+    return;
+  }
+
+  await knex.schema.dropTableIfExists(TABLE_NAME);
+};
 
 exports.config = { transaction: false };
