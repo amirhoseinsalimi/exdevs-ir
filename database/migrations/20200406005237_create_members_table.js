@@ -1,11 +1,13 @@
+const TABLE_NAME = 'members';
+
 exports.up = async (knex) => {
-  const exists = await knex.schema.hasTable('members');
+  const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (exists) {
     return;
   }
 
-  await knex.schema.createTable('members', (table) => {
+  await knex.schema.createTable(TABLE_NAME, (table) => {
     table.increments().primary();
     table.string('full_name').notNullable();
     table.string('role').notNullable();
@@ -21,13 +23,13 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-  const exists = await knex.schema.hasTable('members');
+  const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (!exists) {
     return;
   }
 
-  await knex.schema.dropTableIfExists('members');
+  await knex.schema.dropTableIfExists(TABLE_NAME);
 };
 
 exports.config = { transaction: false };

@@ -1,11 +1,13 @@
+const TABLE_NAME = 'messages';
+
 exports.up = async (knex) => {
-  const exists = await knex.schema.hasTable('messages');
+  const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (exists) {
     return;
   }
 
-  await knex.schema.createTable('messages', (table) => {
+  await knex.schema.createTable(TABLE_NAME, (table) => {
     table.increments().primary();
     table.string('name').notNullable();
     table.string('email').notNullable();
@@ -16,13 +18,13 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-  const exists = await knex.schema.hasTable('messages');
+  const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (!exists) {
     return;
   }
 
-  await knex.schema.dropTableIfExists('messages');
+  await knex.schema.dropTableIfExists(TABLE_NAME);
 };
 
 exports.config = { transaction: false };
