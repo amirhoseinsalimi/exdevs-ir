@@ -17,7 +17,7 @@
     "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js"
   },
   "dependencies": {
-    "bcrypt": "^3.0.8",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.19.0",
     "connect-redis": "^5.2.0",
     "debug": "~2.6.9",
