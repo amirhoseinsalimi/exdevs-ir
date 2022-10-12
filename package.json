@@ -1,7 +1,7 @@
 {
   "name": "exdevs-ir",
   "version": "1.5.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "tsc && gulp build && pm2 start dist/server.js --name exdevs-ir",
     "restart": "tsc && gulp build && pm2 restart exdevs-ir",
