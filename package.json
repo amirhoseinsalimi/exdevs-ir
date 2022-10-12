@@ -75,7 +75,7 @@
     "prettier": "2.0.2",
     "readable-stream": "^3.6.0",
     "sass": "^1.55.0",
-    "supertest": "^6.1.5",
+    "supertest": "^6.3.0",
     "ts-node": "^10.2.0",
     "tsc-watch": "^4.4.0",
     "typescript": "^4.3.5"
