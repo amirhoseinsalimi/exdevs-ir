@@ -8,7 +8,7 @@ const nodemon = require('gulp-nodemon');
 
 /* Plugins related SCSS and CSS */
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 
 
@@ -30,10 +30,6 @@ const imgSrc = 'resources/img/**/*';
 const imgDest = './dist/public/img/';
 const iconSrc = 'resources/icons/**/*';
 const iconDest = './dist/public/icons/';
-
-
-/* Plugins' configuration */
-sass.compiler = require('node-sass');
 
 
 /* SCSS to CSS task */
