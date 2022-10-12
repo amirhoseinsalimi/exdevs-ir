@@ -1,7 +1,7 @@
 {
   "name": "exdevs-ir",
   "version": "1.5.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "tsc && gulp build && pm2 start dist/server.js --name exdevs-ir",
     "restart": "tsc && gulp build && pm2 restart exdevs-ir",
@@ -70,14 +70,14 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "jsdom": "^16.7.0",
+    "jsdom": "^20.0.1",
     "mocha": "^8.4.0",
     "prettier": "2.0.2",
     "readable-stream": "^3.6.0",
     "sass": "^1.55.0",
     "supertest": "^6.3.0",
     "ts-node": "^10.2.0",
-    "tsc-watch": "^4.4.0",
+    "tsc-watch": "^5.0.3",
     "typescript": "^4.3.5"
   },
   "description": "Exceptional Developers Website",
