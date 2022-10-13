@@ -7,6 +7,7 @@ const getAllTeams = async () => {
     });
 
     const response = await fetchResult;
+
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -59,7 +60,7 @@ const deleteTeamById = async (id) => {
   }
 };
 
-$(() => {
+$(async () => {
   const $teamsContainer = $('.teams-container');
   const $btnUpdateTeam = $('.btn-update-team');
   const $form = $('form');
@@ -124,12 +125,7 @@ $(() => {
     $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
     $('.modal #photo').removeClass('visible').addClass('invisible');
 
-    const {
-      id,
-      name,
-      description,
-      color,
-    } = teamArray[0];
+    const { id, name, description, color } = teamArray[0];
 
     currentTeamId = id;
 
@@ -140,14 +136,9 @@ $(() => {
     $('#teamModal').modal('toggle');
   });
 
-  const { teams } = getAllTeams();
+  const { teams } = await getAllTeams();
 
-  teams.forEach(({
-    id,
-    name,
-    description,
-    color,
-  }) => {
+  teams.forEach(({ id, name, description, color }) => {
     $teamsContainer.prepend(`
         <div class="col-12 col-md-6 mb-2">
           <div class="card mb-2 d-inline-block h-100" style="width: 100%; border-bottom: 5px solid ${color}" data-id="${id}">
@@ -157,8 +148,12 @@ $(() => {
             </div>
             <div class="card-footer d-flex justify-content-center">
               <div class="btn-group btn-group-sm mx-auto" role="group" aria-label="Team">
-                <button type="button" class="btn btn-danger btn-delete-team">Delete</button>
-                <button type="button" class="btn btn-info btn-update">Update</button>
+                <button type="button" class="btn btn-danger btn-delete-team">
+                  Delete
+                </button>
+                <button type="button" class="btn btn-info btn-update">
+                  Update
+                </button>
               </div>
             </div>
           </div>
