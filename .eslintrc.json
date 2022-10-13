@@ -9,23 +9,12 @@
   },
   "extends": "airbnb",
   "globals": {
-    "particlesJS" : true
+    "particlesJS": true
   },
   "parserOptions": {
     "ecmaVersion": 8
   },
   "rules": {
-    "no-console": "off",
-    "no-shadow": "off",
-    "no-unused-vars": "warn",
-    "no-use-before-define": "off",
-    "no-plusplus": "off",
-    "prefer-destructuring": "off",
-    "no-param-reassign": "off",
-    "consistent-return": "off",
-    "no-underscore-dangle": "off",
-    "implicit-arrow-linebreak": "off",
-    "arrow-parens": "off",
-    "camelcase": "off"
+    "no-console": "warn"
   }
 }

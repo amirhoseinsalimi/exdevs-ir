@@ -1,17 +1,19 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
 const getAllTeams = async () => {
+  let response = [];
+
   try {
     const fetchResult = await fetch('/api/team', {
       method: 'get',
     });
 
-    const response = await fetchResult;
-
-    return await response.json();
+    response = await (await fetchResult).json;
   } catch (err) {
     console.log(err);
   }
+
+  return response;
 };
 
 const getTeamById = async (id) => {

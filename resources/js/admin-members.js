@@ -1,16 +1,19 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
 const getAllMembers = async () => {
+  let response = [];
+
   try {
     const fetchResult = await fetch('/api/member', {
       method: 'get',
     });
 
-    const response = await fetchResult;
-    return await response.json();
+    response = await (await fetchResult).json();
   } catch (err) {
     console.log(err);
   }
+
+  return response;
 };
 
 const getMemberById = async (id) => {
@@ -157,26 +160,25 @@ $(async () => {
 
   const members = await getAllMembers();
 
-  members.forEach(({
-    id,
-    full_name,
-    description,
-    photo,
-  }) => {
-    photo = photo.replace(/uploads/g, '');
+  members.forEach(({ id, full_name: fullName, description, photo }) => {
+    const photoCleaned = photo.replace(/uploads/g, '');
 
     $membersContainer.prepend(`
         <div class="col-12 col-md-6 col-lg-3 mb-2">
           <div class="card mb-2 d-inline-block h-100" style="width: 100%;" data-id="${id}">
-            <img src="${photo}" class="card-img-top" alt="${full_name}'s photo">
+            <img src="${photoCleaned}" class="card-img-top" alt="${fullName}'s photo">
             <div class="card-body">
-              <h5 class="card-title">${full_name}</h5>
+              <h5 class="card-title">${fullName}</h5>
               <p class="card-text" style="word-break: break-word">${description}</p>
             </div>
             <div class="card-footer d-flex justify-content-center">
               <div class="btn-group btn-group-sm mx-auto" role="group" aria-label="Team member">
-                <button type="button" class="btn btn-danger btn-delete-member">Delete</button>
-                <button type="button" class="btn btn-info btn-update">Update</button>
+                <button type="button" class="btn btn-danger btn-delete-member">
+                  Delete
+                </button>
+                <button type="button" class="btn btn-info btn-update">
+                  Update
+                </button>
               </div>
             </div>
           </div>

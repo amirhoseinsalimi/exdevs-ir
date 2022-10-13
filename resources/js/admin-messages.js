@@ -1,16 +1,19 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 
 const getAllMessages = async () => {
+  let response = [];
+
   try {
     const fetchResult = await fetch('/api/message', {
       method: 'get',
     });
 
-    const response = await fetchResult;
-    return await response.json();
+    response = await (await fetchResult).json();
   } catch (err) {
     console.log(err);
   }
+
+  return response;
 };
 
 const getMessageById = async (id) => {
@@ -71,13 +74,7 @@ $(async () => {
 
     const messageArray = await getMessageById(messageId);
 
-    const {
-      id,
-      name,
-      message,
-      email,
-      created_at: date,
-    } = messageArray[0];
+    const { id, name, message, email, created_at: date } = messageArray[0];
 
     currentMessageId = id;
     currentMessageEmail = email;
@@ -91,20 +88,17 @@ $(async () => {
 
     await markMessageAsRead(messageId);
 
-    $(`[data-id=${messageId}] .read-indicator`).attr('src', '/icons/circle.svg');
+    $(`[data-id=${messageId}] .read-indicator`).attr(
+      'src',
+      '/icons/circle.svg',
+    );
   });
 
   const messages = await getAllMessages();
 
-  messages.forEach(({
-    id,
-    name,
-    message,
-    email,
-    created_at: date,
-    is_read: isRead,
-  }) => {
-    $tBodyMessageTable.append(`
+  messages.forEach(
+    ({ id, name, message, email, created_at: date, is_read: isRead }) => {
+      $tBodyMessageTable.append(`
         <tr data-id="${id}">
           <th scope="row">
             <img
@@ -118,5 +112,6 @@ $(async () => {
             <td>${date}</td>
           </tr>
         `);
-  });
+    },
+  );
 });

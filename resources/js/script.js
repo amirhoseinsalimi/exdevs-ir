@@ -100,10 +100,10 @@ $(() => {
 
   /**
    * Update the content depending on current team
-   * @param currentTeam
+   * @param currentTeamIndex
    */
-  const changeTeam = (currentTeam) => {
-    const team = teamsInfo[currentTeam];
+  const changeTeam = (currentTeamIndex) => {
+    const team = teamsInfo[currentTeamIndex];
 
     $allInfo.fadeOut(500, function () {
       $teamName.html(`<h5>${team.name}</h5>`);
