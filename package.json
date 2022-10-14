@@ -14,7 +14,8 @@
     "db:rollback": "knex migrate:rollback --all",
     "key:generate": "ts-node app/commands/gen-secret.ts",
     "test": "tsc test/*.ts --outDir dist/test && tsc && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
-    "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js"
+    "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -40,6 +41,8 @@
     "useragent": "^2.3.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/bcrypt": "^5.0.0",
     "@types/chai": "^4.2.21",
     "@types/express": "^4.17.13",
@@ -70,7 +73,9 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "husky": "^8.0.1",
     "jsdom": "^20.0.1",
+    "lint-staged": "^13.0.3",
     "mocha": "^8.4.0",
     "prettier": "2.0.2",
     "readable-stream": "^3.6.0",
