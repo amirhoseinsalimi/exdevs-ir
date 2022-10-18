@@ -5,7 +5,7 @@ import * as redis from 'redis';
 import * as logger from 'morgan';
 import * as favicon from 'serve-favicon';
 import * as bodyParser from 'body-parser';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 
 import app from '../../bootstrap/app';
 const RedisStore = require('connect-redis')(session);
