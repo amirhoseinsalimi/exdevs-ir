@@ -54,7 +54,7 @@
     "@types/node": "^18.11.4",
     "@types/redis": "^2.8.31",
     "@types/serve-favicon": "^2.5.3",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.4.12",
     "browser-sync": "^2.27.5",
     "chai": "^4.3.4",
     "cross-env": "^7.0.3",
