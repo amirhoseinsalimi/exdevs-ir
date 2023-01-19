@@ -5,6 +5,8 @@ const {
   ADMIN_PASSWORD,
 } = require('../../env');
 
+const TABLE_NAME = 'admins';
+
 // TODO: Move this to a helper function
 function hashPassword(plainPassword) {
   const saltRounds = 10;
@@ -13,10 +15,10 @@ function hashPassword(plainPassword) {
 }
 
 exports.seed = async (knex) => {
-  await knex('admins').del();
+  await knex(TABLE_NAME).del();
   const password = await hashPassword(ADMIN_PASSWORD);
 
-  await knex('admins').insert({
+  await knex(TABLE_NAME).insert({
     username: ADMIN_USERNAME,
     password,
   });

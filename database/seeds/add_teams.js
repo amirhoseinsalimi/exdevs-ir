@@ -1,7 +1,9 @@
-exports.seed = async (knex) => {
-  await knex('teams').del();
+const TABLE_NAME = 'teams';
 
-  await knex('teams').insert([
+exports.seed = async (knex) => {
+  await knex(TABLE_NAME).del();
+
+  await knex(TABLE_NAME).insert([
     {
       id: 1,
       name: 'Web development',
