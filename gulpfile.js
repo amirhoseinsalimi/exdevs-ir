@@ -72,7 +72,8 @@ gulp.task('nodemon', (done) => {
   const STARTUP_TIMEOUT = 5000;
   const server = nodemon({
     script: 'dist/server.js',
-    stdout: false, // without this line the stdout event won't fire
+    stdout: true, // without this line the stdout event won't fire
+    stderr: true,
   });
   let starting = false;
 
