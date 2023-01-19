@@ -5,7 +5,6 @@ import { join } from 'path';
 const app = express();
 const cwd = process.cwd();
 
-// view engine setup
 app.set('views', join(cwd, 'resources/views'));
 app.set('view engine', 'pug');
 

@@ -9,7 +9,7 @@ const {
 
 module.exports = {
   development: {
-    client: 'mysql2', // Your database driver
+    client: 'mysql2',
     connection: {
       database,
       user,
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   testing: {
-    client: 'mysql2', // Your database driver
+    client: 'mysql2',
     connection: {
       database,
       user,

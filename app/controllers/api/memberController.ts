@@ -6,7 +6,6 @@ import authenticate from '../../middleware/authenticate';
 const knex = require('../../../knex-export');
 const router = express.Router();
 
-/* Get All Members */
 router.get('/', async (req, res) => {
   // TODO: Make interfaces for these types or use an ORM
   try {
@@ -20,7 +19,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-/* Get A Specific Member By Its ID */
 router.get('/:id', async (req, res) => {
   const { id: memberId } = req.params;
 
@@ -43,7 +41,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/* Add A Member */
 router.post('/', authenticate, upload.single('photo'), async (req, res) => {
   const requestData = req.body;
   requestData.photo = req.file.path;
@@ -58,7 +55,6 @@ router.post('/', authenticate, upload.single('photo'), async (req, res) => {
   }
 });
 
-/* Update A Specific Member By Its ID */
 router.put('/:id', authenticate, async (req, res) => {
   const {
     id: memberId,
@@ -95,7 +91,6 @@ router.put('/:id', authenticate, async (req, res) => {
   }
 });
 
-/* Delete A Specific Member By Its ID */
 router.delete('/:id', authenticate, async (req, res) => {
   const { id: memberId } = req.params;
 

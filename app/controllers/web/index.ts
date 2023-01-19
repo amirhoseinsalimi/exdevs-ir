@@ -5,7 +5,6 @@ import shuffle from '../../helpers/shuffle-array';
 const knex = require('../../../knex-export');
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', async (req, res) => {
   try {
     const members = await knex.select('*')

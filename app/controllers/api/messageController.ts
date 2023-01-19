@@ -5,7 +5,6 @@ import authenticate from '../../middleware/authenticate';
 const knex = require('../../../knex-export');
 const router = express.Router();
 
-/* Get All Messages */
 router.get('/', authenticate, async (req, res) => {
   try {
     const messages = await knex
@@ -18,7 +17,6 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
-/* Get A Specific Message By Its ID */
 router.get('/:id', authenticate, async (req, res) => {
   const { id: messageId } = req.params;
 
@@ -41,7 +39,6 @@ router.get('/:id', authenticate, async (req, res) => {
   }
 });
 
-/* Add A Message */
 router.post('/', async (req, res) => {
   try {
     await knex('messages').insert(req.body);
@@ -53,7 +50,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-/* Mark A Specific Message As Read */
 router.put('/:id', authenticate, async (req, res) => {
   const { id: messageId } = req.params;
 
@@ -76,7 +72,6 @@ router.put('/:id', authenticate, async (req, res) => {
   }
 });
 
-/* Delete A Specific Message By Its ID */
 router.delete('/:id', authenticate, async (req, res) => {
   const { id: messageId } = req.params;
 

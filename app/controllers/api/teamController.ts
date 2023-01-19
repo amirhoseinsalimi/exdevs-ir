@@ -6,7 +6,6 @@ import authenticate from '../../middleware/authenticate';
 const knex = require('../../../knex-export');
 const router = express.Router();
 
-/* Get All Teams */
 router.get('/', async (req, res) => {
   try {
     const teams = await knex
@@ -24,7 +23,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-/* Get A Specific Team By Its ID */
 router.get('/:id', async (req, res) => {
   const { id: teamId } = req.params;
 
@@ -47,7 +45,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/* Add A Team */
 router.post('/', authenticate, async (req, res) => {
   try {
     await knex('teams').insert(req.body);
@@ -58,7 +55,6 @@ router.post('/', authenticate, async (req, res) => {
   }
 });
 
-/* Update A Specific Team By Its ID */
 router.put('/:id', authenticate, async (req, res) => {
   const {
     name,
@@ -83,7 +79,6 @@ router.put('/:id', authenticate, async (req, res) => {
   }
 });
 
-/* Delete A Specific Team By Its ID */
 router.delete('/:id', authenticate, async (req, res) => {
   const { id: teamId } = req.params;
 
