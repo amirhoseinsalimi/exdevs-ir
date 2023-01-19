@@ -15,7 +15,7 @@ const {
 const existsAsync = promisify(exists);
 
 describe('API', () => {
-  let adminCookie;
+  let adminCookie: string;
 
   const testName = 'Test T. Test';
   const testEmail = 'test@test.com';
