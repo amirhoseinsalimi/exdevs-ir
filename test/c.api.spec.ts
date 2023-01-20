@@ -1,16 +1,13 @@
 /* tslint:disable */
 
-const { exists } = require('fs');
-const { promisify } = require('util');
-const supertest = require('supertest');
+import { exists } from 'fs';
+import { promisify } from 'util';
+import * as supertest from 'supertest';
 import { expect } from 'chai';
 
-const { app } = require('../routes');
-const knex = require('../knex-export');
-const {
-  ADMIN_USERNAME: adminUsername,
-  ADMIN_PASSWORD: adminPassword,
-} = require('../env');
+import app from '../bootstrap/app';
+import knex from '../knex-export';
+import envs from '../envs';
 
 const existsAsync = promisify(exists);
 
@@ -34,8 +31,8 @@ describe('API', () => {
         .post('/admin')
         .type('form')
         .send({
-          user: adminUsername,
-          password: adminPassword,
+          user: envs.ADMIN_USERNAME,
+          password: envs.ADMIN_PASSWORD,
         })
         .expect(302);
 
@@ -47,34 +44,62 @@ describe('API', () => {
     it('should reject restricted routes without admin cookie set', async () => {
       let text;
 
+      // @ts-ignore
       ({ res: { text } } = await supertest(app).get('/api/message').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).get('/api/message/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).get('/api/message/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).put('/api/message/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).put('/api/message/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).delete('/api/message/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).delete('/api/message/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).post('/api/member').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).post('/api/member').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).put('/api/member/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).put('/api/member/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).delete('/api/member/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).delete('/api/member/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).post('/api/team').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).post('/api/team').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).put('/api/team/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).put('/api/team/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
 
-      ({ res: { text } } = await supertest(app).delete('/api/team/1').expect(302));
+      ({
+        // @ts-ignore
+        res: { text },
+      } = await supertest(app).delete('/api/team/1').expect(302));
       expect(text).equals('Found. Redirecting to /admin');
     });
   });
@@ -133,7 +158,10 @@ describe('API', () => {
 
       await requestWithCookie.expect(204);
 
-      const { is_read: isRead } = await knex.select('*').from('messages').first();
+      const { is_read: isRead } = await knex
+        .select('*')
+        .from('messages')
+        .first();
 
       expect(isRead).equals(1);
     });
@@ -202,16 +230,16 @@ describe('API', () => {
       expect(members.pop())
         .to.be.an('object')
         .and.to.include.keys(
-        'full_name',
-        'role',
-        'description',
-        'photo',
-        'telegram',
-        'email',
-        'twitter',
-        'linkedin',
-        'github',
-      );
+          'full_name',
+          'role',
+          'description',
+          'photo',
+          'telegram',
+          'email',
+          'twitter',
+          'linkedin',
+          'github',
+        );
     });
 
     it('should get a member by its id', async () => {
@@ -328,7 +356,9 @@ describe('API', () => {
     });
 
     it('should get a team by its id', async () => {
-      const { body: team } = await supertest(app).get('/api/team/1').expect(200);
+      const { body: team } = await supertest(app)
+        .get('/api/team/1')
+        .expect(200);
 
       expect(team.pop())
         .to.be.an('object')
@@ -377,8 +407,7 @@ describe('API', () => {
 
   describe('Admin Authentication', () => {
     it('should logout the admin', async () => {
-      const { headers } = await supertest(app)
-        .post('/admin/logout');
+      const { headers } = await supertest(app).post('/admin/logout');
 
       adminCookie = headers['set-cookie'];
 

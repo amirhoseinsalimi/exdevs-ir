@@ -1,6 +1,6 @@
 const TABLE_NAME = 'teams';
 
-exports.seed = async (knex) => {
+exports.seed = async (knex: any) => {
   await knex(TABLE_NAME).del();
 
   await knex(TABLE_NAME).insert([

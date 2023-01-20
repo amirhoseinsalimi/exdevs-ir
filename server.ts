@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-const debug = require('debug')('generator:server');
+import * as deb from 'debug';
+
+const debug = deb('generator:server');
 import ErrnoException = NodeJS.ErrnoException;
 import { createServer } from 'http';
 import { app } from './routes';

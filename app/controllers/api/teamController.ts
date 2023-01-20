@@ -3,15 +3,12 @@ import * as express from 'express';
 import shuffle from '../../helpers/shuffle-array';
 import authenticate from '../../middleware/authenticate';
 
-const knex = require('../../../knex-export');
+import knex from '../../../knex-export';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const teams = await knex
-      .select('*')
-      .from('teams');
-
+    const teams = await knex.select('*').from('teams');
 
     const result = {
       teams: shuffle(teams),
@@ -19,7 +16,7 @@ router.get('/', async (req, res) => {
 
     res.status(200).json(result);
   } catch {
-    res.status(500).render('500')
+    res.status(500).render('500');
   }
 });
 
@@ -41,7 +38,7 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(team);
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
 });
 
@@ -51,27 +48,21 @@ router.post('/', authenticate, async (req, res) => {
 
     res.redirect('/admin/teams');
   } catch {
-    res.status(500).render('500')
+    res.status(500).render('500');
   }
 });
 
 router.put('/:id', authenticate, async (req, res) => {
-  const {
-    name,
-    description,
-    color,
-  } = req.body;
+  const { name, description, color } = req.body;
 
   const { id: teamId } = req.params;
 
   try {
-    await knex('teams')
-      .where('id', teamId)
-      .update({
-        name,
-        description,
-        color,
-      });
+    await knex('teams').where('id', teamId).update({
+      name,
+      description,
+      color,
+    });
 
     res.status(204).json('Updated');
   } catch {
@@ -89,9 +80,7 @@ router.delete('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    await knex('teams')
-      .where('id', teamId)
-      .del();
+    await knex('teams').where('id', teamId).del();
 
     res.status(204).json('Deleted');
   } catch {

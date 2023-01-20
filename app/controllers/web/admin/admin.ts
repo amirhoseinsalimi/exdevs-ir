@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bcrypt from 'bcrypt';
 import { store } from '../../../middleware';
 
-const knex = require('../../../../knex-export');
+import knex from '../../../../knex-export'
 const router = express.Router();
 
 router.get('/', (req, res) => {

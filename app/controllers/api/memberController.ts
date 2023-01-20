@@ -3,7 +3,7 @@ import * as express from 'express';
 import upload from '../../helpers/uploader';
 import authenticate from '../../middleware/authenticate';
 
-const knex = require('../../../knex-export');
+import knex from '../../../knex-export'
 const router = express.Router();
 
 router.get('/', async (req, res) => {

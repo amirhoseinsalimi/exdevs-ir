@@ -10,7 +10,7 @@ const {
   DB_NAME,
   DB_USERNAME,
   DB_PASSWORD,
-} = require('../env');
+} = require('../envs');
 
 export const AppDataSource = new DataSource({
   type: 'mysql',

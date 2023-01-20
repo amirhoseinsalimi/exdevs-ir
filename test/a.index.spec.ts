@@ -2,11 +2,10 @@
 
 import type { Server } from 'http';
 
-const http = require('http');
-
-const { app } = require('../bootstrap/app');
-const knex = require('../knex-export');
-const { PORT: port } = require('../env');
+import * as http from 'http';
+import app from '../bootstrap/app';
+import knex from '../knex-export';
+import envs from '../envs';
 
 let server: Server;
 
@@ -15,7 +14,7 @@ before(async () => {
   await knex.seed.run();
 
   server = await http.createServer(app);
-  server.listen(port);
+  server.listen(envs.PORT);
 });
 
 after(async () => {
