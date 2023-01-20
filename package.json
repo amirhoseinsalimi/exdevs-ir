@@ -15,7 +15,8 @@
     "key:generate": "ts-node app/commands/gen-secret.ts",
     "test": "tsc test/*.ts --outDir dist/test && tsc && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
     "lint": "eslint --fix gulpfile.js bootstrap/app.js counter.js resources/js/script.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -36,8 +37,10 @@
     "postcss-scss": "^4.0.5",
     "pug": "^3.0.2",
     "redis": "^3.1.2",
+    "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
+    "typeorm": "0.3.11",
     "useragent": "^2.3.0"
   },
   "devDependencies": {
@@ -51,7 +54,7 @@
     "@types/mocha": "^10.0.0",
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
-    "@types/node": "^18.11.17",
+    "@types/node": "^16.11.10",
     "@types/redis": "^2.8.31",
     "@types/serve-favicon": "^2.5.3",
     "autoprefixer": "^9.8.6",
@@ -81,9 +84,9 @@
     "readable-stream": "^3.6.0",
     "sass": "^1.55.0",
     "supertest": "^6.3.0",
-    "ts-node": "^10.2.0",
+    "ts-node": "10.7.0",
     "tsc-watch": "^5.0.3",
-    "typescript": "^4.3.5"
+    "typescript": "4.5.2"
   },
   "description": "Exceptional Developers Website",
   "main": "server.ts",
