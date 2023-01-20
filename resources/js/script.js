@@ -1,4 +1,4 @@
-/* eslint no-use-before-define: 0, no-plusplus: 0, func-names: 0 */
+/* eslint no-use-before-define: 0, func-names: 0 */
 
 $(() => {
   const config = {
@@ -179,25 +179,18 @@ $(() => {
     const xUp = evt.touches[0].clientX;
 
     const xDiff = xDown - xUp;
-    const yDiff = yDown - yUp;
 
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) {
-        currentProgress = 0;
-        changeTeam(--currentTeam <= -1 ? currentTeam = 2 : currentTeam);
-      } else {
-        currentProgress = 0;
-        changeTeam(++currentTeam >= 3 ? currentTeam = 0 : currentTeam);
-      }
-    } else if (yDiff > 0) {
-      /* up swipe */
+    if (xDiff > 0) {
+      currentProgress = 0;
+      currentTeam -= 1;
+      changeTeam(currentTeam <= -1 ? (currentTeam = 2) : currentTeam);
     } else {
-      /* down swipe */
+      currentProgress = 0;
+      currentTeam += 1;
+      changeTeam(currentTeam >= 3 ? (currentTeam = 0) : currentTeam);
     }
 
-    /* reset values */
     xDown = null;
-    yDown = null;
   }
 
   D.getElementById('contact-form').addEventListener('submit', () => {
