@@ -1,18 +1,7 @@
-const bcrypt = require('bcrypt');
-
-const {
-  ADMIN_USERNAME,
-  ADMIN_PASSWORD,
-} = require('../../env');
+const { ADMIN_USERNAME, ADMIN_PASSWORD } = require('../../env');
+const { hashPassword } = require('../../app/helpers/hash.ts');
 
 const TABLE_NAME = 'admins';
-
-// TODO: Move this to a helper function
-function hashPassword(plainPassword) {
-  const saltRounds = 10;
-
-  return bcrypt.hash(plainPassword, saltRounds);
-}
 
 exports.seed = async (knex) => {
   await knex(TABLE_NAME).del();
