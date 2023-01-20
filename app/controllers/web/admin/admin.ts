@@ -47,7 +47,6 @@ router.post('/', async (req, res) => {
 router.post('/logout', (req, res) => {
   store.clear(() => {
     res.redirect('/admin');
-    console.log('C');
   });
 });
 
