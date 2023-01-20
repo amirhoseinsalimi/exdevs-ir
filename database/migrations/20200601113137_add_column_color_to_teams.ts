@@ -1,7 +1,9 @@
+import { Knex } from 'knex';
+
 const TABLE_NAME = 'teams';
 const COLUMN_NAME = 'color';
 
-exports.up = async (knex) => {
+export const up = async (knex: Knex) => {
   const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (!exists) {
@@ -13,7 +15,7 @@ exports.up = async (knex) => {
   });
 };
 
-exports.down = async (knex) => {
+export const down = async (knex: Knex) => {
   const exists = await knex.schema.hasTable(TABLE_NAME);
 
   if (!exists) {
@@ -25,4 +27,4 @@ exports.down = async (knex) => {
   });
 };
 
-exports.config = { transaction: false };
+export const config = { transaction: false };
