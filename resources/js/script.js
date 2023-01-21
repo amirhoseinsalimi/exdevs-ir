@@ -72,8 +72,10 @@ $(() => {
       .attr('aria-valuenow', currentProgress);
 
     if (currentProgress >= 100) {
+      currentTeam += 1;
+
       changeTeam(
-        ++currentTeam >= teamsInfo.length ? (currentTeam = 0) : currentTeam,
+        currentTeam >= teamsInfo.length ? (currentTeam = 0) : currentTeam,
       );
       currentProgress = 0;
     }
@@ -213,20 +215,17 @@ $(() => {
     changeTeam(currentTeam >= 3 ? (currentTeam = 0) : currentTeam);
   });
 
-  $('#discardForm, .home-link')
-    .on('click', () => {
-      navigateToHome();
-    });
+  $('#discardForm, .home-link').on('click', () => {
+    navigateToHome();
+  });
 
-  $('.meet-team-link')
-    .on('click', () => {
-      navigateToMeetTheTeam();
-    });
+  $('.meet-team-link').on('click', () => {
+    navigateToMeetTheTeam();
+  });
 
-  $('.contact-link')
-    .on('click', () => {
-      navigateToContact();
-    });
+  $('.contact-link').on('click', () => {
+    navigateToContact();
+  });
 
   $('form a').on('click', () => {
     setTimeout(() => {
