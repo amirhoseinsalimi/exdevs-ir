@@ -99,7 +99,7 @@ $(async () => {
 
   $btnUpdateMember.on('click', async () => {
     await updateMemberById(currentMemberId, {
-      full_name: $('#name').val(),
+      fullName: $('#name').val(),
       email: $('#email').val(),
       description: $('#description').val(),
       telegram: $('#telegram').val(),
@@ -134,7 +134,7 @@ $(async () => {
 
     const {
       id,
-      full_name: name,
+      fullName: name,
       role,
       description,
       telegram,
@@ -142,7 +142,7 @@ $(async () => {
       twitter,
       linkedin,
       github,
-    } = memberArray[0];
+    } = memberArray;
 
     currentMemberId = id;
 
@@ -160,7 +160,7 @@ $(async () => {
 
   const members = await getAllMembers();
 
-  members.forEach(({ id, full_name: fullName, description, photo }) => {
+  members.forEach(({ id, fullName, description, photo }) => {
     const photoCleaned = photo.replace(/uploads/g, '');
 
     $membersContainer.prepend(`

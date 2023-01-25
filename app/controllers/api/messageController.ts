@@ -2,12 +2,12 @@ import * as express from 'express';
 
 import authenticate from '../../middleware/authenticate';
 
-import knex from '../../../knex-export';
+import MessageRepository from '../../repository/MessageRepository';
 const router = express.Router();
 
 router.get('/', authenticate, async (req, res) => {
   try {
-    const messages = await knex.select('*').from('messages');
+    const messages = await MessageRepository.find();
 
     res.status(200).json(messages);
   } catch {
@@ -25,11 +25,11 @@ router.get('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    const message = await knex('messages')
-      .where({
-        id: messageId,
-      })
-      .select('*');
+    const message = await MessageRepository.findOne({
+      where: {
+        id: Number(messageId)
+      }
+    });
 
     res.status(200).json(message);
   } catch {
@@ -39,7 +39,7 @@ router.get('/:id', authenticate, async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    await knex('messages').insert(req.body);
+    await MessageRepository.save(req.body);
 
     res.status(200);
     res.redirect('/');
@@ -58,9 +58,7 @@ router.put('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    await knex('messages').where('id', messageId).update({
-      is_read: true,
-    });
+    await MessageRepository.update(Number(messageId), { isRead: true });
 
     res.status(204).end();
   } catch {
@@ -78,7 +76,7 @@ router.delete('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    await knex('messages').where('id', messageId).del();
+    await MessageRepository.delete(Number(messageId));
 
     res.status(204).end();
   } catch {

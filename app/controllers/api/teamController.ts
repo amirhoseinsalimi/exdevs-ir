@@ -3,12 +3,12 @@ import * as express from 'express';
 import shuffle from '../../helpers/shuffle-array';
 import authenticate from '../../middleware/authenticate';
 
-import knex from '../../../knex-export';
+import TeamRepository from '../../repository/TeamRepository';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const teams = await knex.select('*').from('teams');
+    const teams = await TeamRepository.find();
 
     const result = {
       teams: shuffle(teams),
@@ -30,11 +30,11 @@ router.get('/:id', async (req, res) => {
   }
 
   try {
-    const team = await knex('teams')
-      .where({
-        id: teamId,
-      })
-      .select('*');
+    const team = await TeamRepository.findOne({
+      where: {
+        id: Number(teamId),
+      },
+    });
 
     res.status(200).json(team);
   } catch (err) {
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', authenticate, async (req, res) => {
   try {
-    await knex('teams').insert(req.body);
+    await TeamRepository.save(req.body);
 
     res.redirect('/admin/teams');
   } catch {
@@ -58,11 +58,7 @@ router.put('/:id', authenticate, async (req, res) => {
   const { id: teamId } = req.params;
 
   try {
-    await knex('teams').where('id', teamId).update({
-      name,
-      description,
-      color,
-    });
+    await TeamRepository.update(Number(teamId), { name, description, color });
 
     res.status(204).json('Updated');
   } catch {
@@ -80,7 +76,7 @@ router.delete('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    await knex('teams').where('id', teamId).del();
+    await TeamRepository.delete(Number(teamId));
 
     res.status(204).json('Deleted');
   } catch {

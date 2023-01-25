@@ -3,19 +3,16 @@ import * as express from 'express';
 import upload from '../../helpers/uploader';
 import authenticate from '../../middleware/authenticate';
 
-import knex from '../../../knex-export'
+import { MemberRepository } from '../../repository/MemberRepository';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  // TODO: Make interfaces for these types or use an ORM
   try {
-    const members = await knex
-      .select('*')
-      .from('members');
+    const members = await MemberRepository.find();
 
     res.status(200).json([...members].reverse());
   } catch {
-    res.status(500).render('500')
+    res.status(500).render('500');
   }
 });
 
@@ -29,11 +26,11 @@ router.get('/:id', async (req, res) => {
   }
 
   try {
-    const member = await knex('members')
-      .where({
-        id: memberId,
-      })
-      .select('*');
+    const member = await MemberRepository.findOne({
+      where: {
+        id: Number(memberId),
+      },
+    });
 
     res.status(200).json(member);
   } catch {
@@ -46,8 +43,7 @@ router.post('/', authenticate, upload.single('photo'), async (req, res) => {
   requestData.photo = req.file.path;
 
   try {
-    await knex('members')
-      .insert(requestData);
+    await MemberRepository.save(requestData);
 
     res.redirect('/admin/members');
   } catch {
@@ -56,12 +52,10 @@ router.post('/', authenticate, upload.single('photo'), async (req, res) => {
 });
 
 router.put('/:id', authenticate, async (req, res) => {
-  const {
-    id: memberId,
-  } = req.params;
+  const { id: memberId } = req.params;
 
   const {
-    full_name,
+    fullName,
     role,
     description,
     telegram,
@@ -72,18 +66,16 @@ router.put('/:id', authenticate, async (req, res) => {
   } = req.body;
 
   try {
-    await knex('members')
-      .where('id', memberId)
-      .update({
-        full_name,
-        role,
-        description,
-        telegram,
-        email,
-        twitter,
-        linkedin,
-        github,
-      });
+    await MemberRepository.update(Number(memberId), {
+      fullName,
+      role,
+      description,
+      telegram,
+      email,
+      twitter,
+      linkedin,
+      github,
+    });
 
     res.status(204).json('Updated');
   } catch {
@@ -101,13 +93,11 @@ router.delete('/:id', authenticate, async (req, res) => {
   }
 
   try {
-    await knex('members')
-      .where('id', memberId)
-      .del();
+    await MemberRepository.delete(Number(memberId));
 
     res.status(204).end();
   } catch {
-    res.status(500).render('500')
+    res.status(500).render('500');
   }
 });
 

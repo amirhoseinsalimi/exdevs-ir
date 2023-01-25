@@ -136,7 +136,7 @@ describe('API', () => {
       expect(messages).to.be.an('array').and.to.have.lengthOf(1);
       expect(messages.pop())
         .to.be.an('object')
-        .and.to.include.keys('name', 'email', 'message', 'is_read');
+        .and.to.include.keys('name', 'email', 'message', 'isRead');
     });
 
     it('should get a message by its id', async () => {
@@ -148,7 +148,7 @@ describe('API', () => {
 
       expect(message.pop())
         .to.be.an('object')
-        .and.to.include.keys('name', 'email', 'message', 'is_read');
+        .and.to.include.keys('name', 'email', 'message', 'isRead');
     });
 
     it('should mark message as read by its id', async () => {
@@ -158,7 +158,7 @@ describe('API', () => {
 
       await requestWithCookie.expect(204);
 
-      const { is_read: isRead } = await knex
+      const { isRead } = await knex
         .select('*')
         .from('messages')
         .first();
