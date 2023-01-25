@@ -2,13 +2,14 @@ import * as express from 'express';
 
 import shuffle from '../../helpers/shuffle-array';
 
-const knex = require('../../../knex-export');
+import { AppDataSource } from '../../../database';
+import MemberRepository from '../../repository/MemberRepository';
+
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const members = await knex.select('*')
-    .from('members');
+    const members = await MemberRepository.find();
 
     members.forEach((member: any) => {
       member.photo = member.photo.replace(/uploads/g, '');

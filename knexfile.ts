@@ -1,19 +1,15 @@
 /* Knex.js configuration
    See http://knexjs.org/ for documents
 * */
-const {
-  DB_NAME: database,
-  DB_USERNAME: user,
-  DB_PASSWORD: password,
-} = require('./env');
+import envs from './envs';
 
-module.exports = {
+export default {
   development: {
     client: 'mysql2',
     connection: {
-      database,
-      user,
-      password,
+      database: envs.DB_NAME,
+      user: envs.DB_USERNAME,
+      password: envs.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -31,9 +27,9 @@ module.exports = {
   testing: {
     client: 'mysql2',
     connection: {
-      database,
-      user,
-      password,
+      database: envs.DB_NAME,
+      user: envs.DB_USERNAME,
+      password: envs.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -51,9 +47,9 @@ module.exports = {
   production: {
     client: 'mysql2',
     connection: {
-      database,
-      user,
-      password,
+      database: envs.DB_NAME,
+      user: envs.DB_USERNAME,
+      password: envs.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -66,6 +62,5 @@ module.exports = {
     seeds: {
       directory: `${__dirname}/database/seeds`,
     },
-
   },
 };

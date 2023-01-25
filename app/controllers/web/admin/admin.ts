@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bcrypt from 'bcrypt';
 import { store } from '../../../middleware';
 
-const knex = require('../../../../knex-export');
+import AdminRepository from '../../../repository/AdminRepository';
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,19 +18,14 @@ router.post('/', async (req, res) => {
   const { user: username, password } = req.body;
 
   try {
-    const admins = await knex
-      .where({
-        username,
-      })
-      .select('*')
-      .from('admins');
+    const admins = await AdminRepository.find();
 
     if (admins.length === 0) {
       res.redirect('/admin');
-      return
+      return;
     }
 
-    const matched = await bcrypt.compare(password, admins[0].password)
+    const matched = await bcrypt.compare(password, admins[0].password);
 
     if (matched) {
       req.session.username = username;
@@ -47,7 +42,6 @@ router.post('/', async (req, res) => {
 router.post('/logout', (req, res) => {
   store.clear(() => {
     res.redirect('/admin');
-    console.log('C');
   });
 });
 

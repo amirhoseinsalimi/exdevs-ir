@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+import * as deb from 'debug';
 
-const debug = require('debug')('generator:server');
+const debug = deb('generator:server');
 import ErrnoException = NodeJS.ErrnoException;
 import { createServer } from 'http';
 import { app } from './routes';
+import 'reflect-metadata';
 
 function normalizePort(val: string) {
   const port = parseInt(val, 10);
@@ -44,9 +46,8 @@ function onError(error: ErrnoException) {
 
 function onListening() {
   const address = server.address();
-  const bind = typeof address === 'string'
-    ? `pipe ${address}`
-    : `port ${address.port}`;
+  const bind =
+    typeof address === 'string' ? `pipe ${address}` : `port ${address.port}`;
   debug(`Listening on ${bind}`);
 }
 

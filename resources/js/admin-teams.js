@@ -8,7 +8,7 @@ const getAllTeams = async () => {
       method: 'get',
     });
 
-    response = await (await fetchResult).json;
+    response = await (await fetchResult).json();
   } catch (err) {
     console.log(err);
   }
@@ -127,7 +127,7 @@ $(async () => {
     $('.modal label[for=photo]').removeClass('visible').addClass('invisible');
     $('.modal #photo').removeClass('visible').addClass('invisible');
 
-    const { id, name, description, color } = teamArray[0];
+    const { id, name, description, color } = teamArray;
 
     currentTeamId = id;
 

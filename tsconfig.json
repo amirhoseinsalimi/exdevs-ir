@@ -1,8 +1,5 @@
 {
-  "include": [
-    "./**/*.ts",
-    "./**/*.js"
-  ],
+  "include": ["./**/*.ts", "./**/*.js"],
   "compilerOptions": {
     "noImplicitAny": true,
     "target": "es5",
@@ -13,16 +10,10 @@
     "moduleResolution": "Node",
     "sourceMap": false,
     "allowJs": true,
-    "declaration": false
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
-  "exclude": [
-    "./test/",
-    "./node_modules/",
-    "./dist/",
-    "./resources/"
-  ],
-  "typeRoots": [
-    "./contracts",
-    "./node_modules/@types"
-  ]
+  "exclude": ["./test/", "./node_modules/", "./dist/", "./resources/"],
+  "typeRoots": ["./contracts", "./node_modules/@types"]
 }

@@ -74,7 +74,7 @@ $(async () => {
 
     const messageArray = await getMessageById(messageId);
 
-    const { id, name, message, email, created_at: date } = messageArray[0];
+    const { id, name, message, email, created_at: date } = messageArray;
 
     currentMessageId = id;
     currentMessageEmail = email;
@@ -97,7 +97,7 @@ $(async () => {
   const messages = await getAllMessages();
 
   messages.forEach(
-    ({ id, name, message, email, created_at: date, is_read: isRead }) => {
+    ({ id, name, message, email, created_at: date, isRead }) => {
       $tBodyMessageTable.append(`
         <tr data-id="${id}">
           <th scope="row">

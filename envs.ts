@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+import * as dotenv from 'dotenv';
 
 const result = dotenv.config({
   // eslint-disable-next-line no-confusing-arrow
@@ -11,4 +11,4 @@ if (result.error) {
 
 const { parsed: envs } = result;
 
-module.exports = envs;
+export default envs;
