@@ -22,10 +22,8 @@ app.use(
   }),
 );
 const store = new RedisStore({
-  // @ts-ignore
   host: envs.REDIS_HOST,
-  // @ts-ignore
-  port: envs.REDIS_PORT,
+  port: Number(envs.REDIS_PORT),
   client,
   ttl: 260,
 });
@@ -38,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   session({
-    // @ts-ignore
     secret: envs.SECRET,
     store,
     saveUninitialized: false,
