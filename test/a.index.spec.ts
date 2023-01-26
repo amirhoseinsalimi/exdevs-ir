@@ -14,7 +14,7 @@ before(async () => {
   await knex.seed.run();
 
   server = await http.createServer(app);
-  server.listen(envs.PORT);
+  server.listen(envs.DB_PORT);
 });
 
 after(async () => {
