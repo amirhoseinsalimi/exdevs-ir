@@ -6,7 +6,6 @@ import AdminRepository from '../../../repository/AdminRepository';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  // @ts-ignore
   if (req.session.username) {
     res.redirect('/admin/messages');
   } else {

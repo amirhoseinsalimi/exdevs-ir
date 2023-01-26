@@ -1,7 +1,6 @@
 import * as express from 'express';
 import { join } from 'path';
 
-// @ts-ignore
 const app = express();
 const cwd = process.cwd();
 
