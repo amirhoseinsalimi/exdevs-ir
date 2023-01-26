@@ -62,7 +62,7 @@
     "@types/redis": "^2.8.31",
     "@types/serve-favicon": "^2.5.3",
     "@types/supertest": "^2.0.12",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.4.13",
     "browser-sync": "^2.27.5",
     "chai": "^4.3.7",
     "cross-env": "^7.0.3",
