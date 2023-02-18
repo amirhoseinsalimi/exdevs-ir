@@ -39,6 +39,13 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+  if (!store.clear) {
+    console.warn(
+      'It seems that redis store is not working properly. Error on calling the method `clear`.',
+    );
+    return;
+  }
+
   store.clear(() => {
     res.redirect('/admin');
   });

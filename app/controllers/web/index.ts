@@ -17,7 +17,11 @@ router.get('/', async (req, res) => {
 
     res.status(200).render('website/index', { members: shuffle(members) });
   } catch (err) {
-    throw Error(err.message);
+    if (err instanceof Error) {
+      throw Error(err.message);
+    } else {
+      throw Error('There was an error on returning the list of members.');
+    }
   }
 });
 

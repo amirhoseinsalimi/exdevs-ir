@@ -40,6 +40,11 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', authenticate, upload.single('photo'), async (req, res) => {
   const requestData = req.body;
+
+  if (!req.file?.path) {
+    return res.status(422).json('`photo` field is mandatory.')
+  }
+
   requestData.photo = req.file.path;
 
   try {

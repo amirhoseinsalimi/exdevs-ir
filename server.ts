@@ -47,6 +47,11 @@ function onError(error: ErrnoException) {
 
 function onListening() {
   const address = server.address();
+
+  if (!address) {
+    throw RangeError('The bound cannot be `null` or `undefined`')
+  }
+
   const bind =
     typeof address === 'string' ? `pipe ${address}` : `port ${address.port}`;
   debug(`Listening on ${bind}`);
