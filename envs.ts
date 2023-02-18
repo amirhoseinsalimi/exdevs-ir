@@ -12,6 +12,7 @@ if (dotenvConfigOutput.error) {
 const { parsed: envVariables } = dotenvConfigOutput;
 
 const environmentSchema = z.object({
+  PORT: z.string().default('3001'),
   NODE_ENV: z
     .enum(['development', 'production', 'testing'])
     .default('development'),

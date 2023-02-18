@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import * as deb from 'debug';
+import envs from './envs';
 
 const debug = deb('generator:server');
 import ErrnoException = NodeJS.ErrnoException;
@@ -22,7 +23,7 @@ function normalizePort(val: string) {
   return false;
 }
 
-const port = normalizePort(process.env.PORT || '3001');
+const port = normalizePort(envs.PORT || '3001');
 app.set('port', port);
 
 const server = createServer(app);
