@@ -86,7 +86,7 @@
     "lint-staged": "^13.1.0",
     "mocha": "^10.1.0",
     "prettier": "2.0.2",
-    "readable-stream": "^3.6.0",
+    "readable-stream": "^3.6.2",
     "sass": "^1.55.0",
     "supertest": "^6.3.0",
     "ts-node": "10.7.0",
