@@ -8,7 +8,7 @@ Simply clone and run this website for your personal use :D
 
 ### Requirements to run this website
 1. Node.js and npm
-2. MariaDB or MySQL Server (As the main database)
+2. SQLite (As the main database)
 3. Redis (For session management)
 
 **NOTE**: This project uses `bcrypt` so you should have an LTS version of Node.js.
