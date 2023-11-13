@@ -16,11 +16,7 @@ const environmentSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'testing'])
     .default('development'),
-  DB_HOST: z.string().default('localhost'),
-  DB_PORT: z.string().default('3306'),
   DB_NAME: z.string().min(1),
-  DB_USERNAME: z.string().min(1),
-  DB_PASSWORD: z.string().min(1),
   SECRET: z.string().min(1),
   REDIS_HOST: z.string().min(1),
   REDIS_PORT: z.string().default('6379'),
