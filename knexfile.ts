@@ -5,11 +5,9 @@ import envs from './envs';
 
 export default {
   development: {
-    client: 'mysql2',
+    client: 'sqlite3',
     connection: {
-      database: envs.DB_NAME,
-      user: envs.DB_USERNAME,
-      password: envs.DB_PASSWORD,
+      filename: `${__dirname}/${envs.DB_NAME}`,
     },
     pool: {
       min: 2,
@@ -27,9 +25,7 @@ export default {
   testing: {
     client: 'mysql2',
     connection: {
-      database: envs.DB_NAME,
-      user: envs.DB_USERNAME,
-      password: envs.DB_PASSWORD,
+      filename: `${__dirname}/${envs.DB_NAME}`,
     },
     pool: {
       min: 2,
@@ -45,11 +41,9 @@ export default {
   },
 
   production: {
-    client: 'mysql2',
+    client: 'sqlite3',
     connection: {
-      database: envs.DB_NAME,
-      user: envs.DB_USERNAME,
-      password: envs.DB_PASSWORD,
+      filename: `${__dirname}/${envs.DB_NAME}`,
     },
     pool: {
       min: 2,
