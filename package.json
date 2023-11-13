@@ -40,6 +40,7 @@
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
+    "sqlite3": "^5.1.6",
     "typeorm": "0.3.11",
     "useragent": "^2.3.0",
     "zod": "^3.20.2"
