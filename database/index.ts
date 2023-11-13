@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   database: envs.DB_NAME,
   entities: [Admin, Team, Message, Member],
   synchronize: true,
-  logging: false,
+  logging: envs.NODE_ENV === 'development'
 });
 
 AppDataSource.initialize()
