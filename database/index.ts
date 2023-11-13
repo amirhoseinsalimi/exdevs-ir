@@ -7,15 +7,11 @@ import { Message } from '../app/models/Message';
 import envs from '../envs';
 
 export const AppDataSource = new DataSource({
-  type: 'mysql',
-  host: envs.DB_HOST,
-  port: Number(envs.DB_PORT),
-  username: envs.DB_USERNAME,
-  password: envs.DB_PASSWORD,
+  type: 'sqlite',
   database: envs.DB_NAME,
   entities: [Admin, Team, Message, Member],
   synchronize: true,
-  logging: false,
+  logging: envs.NODE_ENV === 'development'
 });
 
 AppDataSource.initialize()

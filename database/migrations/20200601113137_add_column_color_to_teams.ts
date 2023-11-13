@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 
-const TABLE_NAME = 'teams';
+const TABLE_NAME = 'team';
 const COLUMN_NAME = 'color';
 
 export const up = async (knex: Knex) => {

@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 
-const TABLE_NAME = 'teams';
+const TABLE_NAME = 'team';
 
 export const up = async (knex: Knex) => {
   const exists = await knex.schema.hasTable(TABLE_NAME);

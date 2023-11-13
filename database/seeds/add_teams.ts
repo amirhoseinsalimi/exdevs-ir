@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 
-const TABLE_NAME = 'teams';
+const TABLE_NAME = 'team';
 
 export const seed = async (knex: Knex) => {
   await knex(TABLE_NAME).del();
