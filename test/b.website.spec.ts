@@ -13,7 +13,8 @@ describe('Website', () => {
     const { document } = new JSDOM(text).window;
     const headline = document.querySelector(
       '.headline .headline__header.shining',
-    ).textContent;
+    )?.textContent;
+
     expect(headline).equals('Exceptional Developers');
   });
 
@@ -22,7 +23,8 @@ describe('Website', () => {
 
     const { document } = new JSDOM(text).window;
     const copyrightNotice = document.querySelector('.copyright-notice')
-      .textContent;
+      ?.textContent;
+
     expect(copyrightNotice).equals(`Copyright © ${new Date().getFullYear()}`);
   });
 });
