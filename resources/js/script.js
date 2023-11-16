@@ -211,7 +211,7 @@ $(() => {
 
   $('.switch-team-arrow.next').on('click', () => {
     currentProgress = 0;
-    currentTeam -= 1;
+    currentTeam += 1;
     changeTeam(currentTeam >= 3 ? (currentTeam = 0) : currentTeam);
   });
 
