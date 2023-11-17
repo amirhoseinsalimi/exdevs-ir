@@ -22,10 +22,10 @@ Run `npm i`
 3. **Configure environment variables:**\
 Copy `.env.example` to `.env`, fill all required fields. For `SECRET` field, run `npm run key:generate` and paste the output there. Don't forget to fill the fields for admin user. No worries! Your password will be stored hashed.
 4. **Run migrations:**\
-Run `knex migrate:latest`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
+Run `nom run db:migrate`. See [Knex.js Documentation](https://www.npmjs.com/package/knex) for more\ 
 5. **Run seeds:**\
 It's time to seed the database with some data.\
-`knex seed:run`
+`npm run db:seeds`
 This will also create the admin user for you. Later you can log in with your credentials from `/admin`.
 6. **Run the website:**\
 a. For development: `npm run serve` with a nice hot reload, thanks to [Browser-Sync](https://www.npmjs.com/package/browser-sync) \

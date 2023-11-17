@@ -10,7 +10,6 @@
     "monit": "pm2 monit",
     "db:migrate": "knex migrate:latest",
     "db:seeds": "knex seed:run",
-    "db:seed": "npm run db:seeds",
     "db:rollback": "knex migrate:rollback --all",
     "key:generate": "ts-node app/commands/gen-secret.ts",
     "test": "tsc test/*.ts --outDir dist/ && tsc && cross-env NODE_ENV=testing mocha --timeout 10000 --exit --bail",
